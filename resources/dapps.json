@@ -5,12 +5,5 @@
         "link": "https://wctest.dev.cosmostation.io",
         "icon": "",
         "tags": ["Playground", "NFT"]
-    },
-    {
-        "name": "Splash Dash",
-        "description": "Staking, Dashboard in SUI",
-        "link": "https://wctest.dev.cosmostation.io",
-        "icon": "",
-        "tags": ["Staking", "Portfolio"]
     }
 ]
