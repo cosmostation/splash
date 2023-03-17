@@ -33,12 +33,5 @@
         "link": "https://umi.ag/swap",
         "icon": "https://umi.ag/logo.00aa3c4c.png",
         "tags": ["Exchange"]
-    },
-    {
-        "name": "Dragon Sui",
-        "description": "Discover, Create, Collect & Trade NFTs",
-        "link": "https://devnet.dragonsui.com",
-        "icon": "https://devnet.dragonsui.com/static/media/logo.c5891c5593c904117f6c.png",
-        "tags": ["NFT"]
     }
 ]
