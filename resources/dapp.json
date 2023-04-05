@@ -14,24 +14,10 @@
         "tags": ["Infra"]
     },
     {
-        "name": "Got Beef?",
-        "description": "Got Beef? is a dApp to create on-chain bets on the Sui Network",
-        "link": "https://gotbeef.app/",
-        "icon": "https://storage.googleapis.com/sui-cms-content/gotbeef_499e1b26f2/gotbeef_499e1b26f2.png",
-        "tags": ["Game"]
-    },
-    {
         "name": "Keepsake",
         "description": "The Marketplace for SUI collections and Non Fungible Tokens",
         "link": "https://keepsake.gg/",
         "icon": "https://keepsake.gg/assets/icon/Favicon.png",
         "tags": ["Marketplace"]
-    },
-    {
-        "name": "Umi",
-        "description": "Smart Exchange for Smart Traders",
-        "link": "https://umi.ag/swap",
-        "icon": "https://umi.ag/logo.00aa3c4c.png",
-        "tags": ["Exchange"]
     }
 ]
