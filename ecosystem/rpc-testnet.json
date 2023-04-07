@@ -1,0 +1,80 @@
+[
+    {
+        "name": "Cosmostation",
+        "rpc": ["https://rpc-sui-testnet.cosmostation.io/"],
+        "metrics": "",
+        "wss": ""
+    },
+    {
+        "name": "Artifact",
+        "rpc": ["https://testnet.artifact.systems/sui"],
+        "metrics": "",
+        "wss": ""
+    },
+    {
+        "name": "BartestneT",
+        "rpc": ["https://sui-testnet-rpc.bartestnet.com/"],
+        "metrics": "https://sui-testnet-rpc.bartestnet.com/metrics",
+        "wss": "wss://sui-testnet-rpc.bartestnet.com/websocket"
+    },
+    {
+        "name": "BlockVision",
+        "rpc": ["https://sui-testnet-endpoint.blockvision.org/"],
+        "metrics": "https://sui-testnet-endpoint.blockvision.org/metrics",
+        "wss": "wss://sui-testnet-endpoint.blockvision.org/websocket"
+    },
+    {
+        "name": "Brightly Stake",
+        "rpc": ["https://sui-testnet.brightlystake.com/"],
+        "metrics": "",
+        "wss": ""
+    },
+    {
+        "name": "DSRV",
+        "rpc": ["https://sui-testnet-rpc.allthatnode.com/", "https://sui-testnet-rpc-germany.allthatnode.com/", "https://sui-testnet-rpc-korea.allthatnode.com/"],
+        "metrics": "",
+        "wss": ""
+    },
+    {
+        "name": "Luganodes",
+        "rpc": ["https://sui-rpc.testnet.lgns.net/"],
+        "metrics": "https://sui-rpc.testnet.lgns.net/metrics",
+        "wss": ""
+    },
+    {
+        "name": "N1 Stake",
+        "rpc": ["https://fullnode.testnet.vincagame.com:443/"],
+        "metrics": "",
+        "wss": ""
+    },
+    {
+        "name": "Nodeinfra",
+        "rpc": ["https://sui-testnet.nodeinfra.com/"],
+        "metrics": "",
+        "wss": ""
+    },
+    {
+        "name": "Staketab",
+        "rpc": ["https://rpc-testnet.suiscan.xyz:443/"],
+        "metrics": "https://rpc-testnet.suiscan.xyz/metrics",
+        "wss": "wss://rpc-testnet.suiscan.xyz/websocket"
+    },
+    {
+        "name": "SynergyNodes",
+        "rpc": ["https://sui-testnet-rpc.synergynodes.com/"],
+        "metrics": "",
+        "wss": ""
+    },
+    {
+        "name": "Testnet Pride",
+        "rpc": ["https://sui-rpc-pt.testnet-pride.com/"],
+        "metrics": "https://sui-rpc-pt.testnet-pride.com/metrics",
+        "wss": "wss://sui-rpc-pt.testnet-pride.com/websocket"
+    },
+    {
+        "name": "QuantNode",
+        "rpc": ["https://sui-testnet-fullnode.quantnode.tech/"],
+        "metrics": "",
+        "wss": ""
+    }
+]
