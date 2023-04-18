@@ -1,5 +1,12 @@
 [
     {
+        "name": "Splash Dash",
+        "description": "SUI Staking by Splash",
+        "link": "https://dash.splash.im",
+        "icon": "https://raw.githubusercontent.com/cosmostation/splash/main/resources/logo.png",
+        "tags": ["Staking"]
+    },
+    {
         "name": "Capy",
         "description": "Sui Capy",
         "link": "https://capy.art/",
