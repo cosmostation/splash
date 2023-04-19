@@ -1,0 +1,18 @@
+[
+    {
+        "name": "Cosmostation",
+        "rpc": ["https://sui-devnet-kr-1.cosmostation.io/"],
+        "metrics": "",
+        "wss": ""
+    },
+    {
+        "name": "BlockVision",
+        "rpc": ["https://sui-devnet-endpoint.blockvision.org/"],
+        "metrics": "https://sui-devnet-endpoint.blockvision.org/metrics",
+        "wss": "wss://sui-devnet-endpoint.blockvision.org/websocket"
+    },
+    {
+        "name": "Offical Sui",
+        "rpc": ["https://fullnode.devnet.sui.io/"]
+    }
+]
