@@ -7,8 +7,8 @@
         "tags": ["Staking"]
     },
     {
-        "name": "Capy",
-        "description": "Sui Capy",
+        "name": "SuiFrens",
+        "description": "Have fun minting and mixing your SuiFrens.",
         "link": "https://capy.art/",
         "icon": "https://storage.googleapis.com/sui-cms-content/capy_64caa3122e/capy_64caa3122e.png",
         "tags": ["Game"]
@@ -19,13 +19,6 @@
         "link": "https://suins.io/",
         "icon": "https://raw.githubusercontent.com/SuiNSdapp/docs/main/SuiNS-small2.jpg",
         "tags": ["Infra"]
-    },
-    {
-        "name": "Keepsake",
-        "description": "The Marketplace for SUI collections and Non Fungible Tokens",
-        "link": "https://keepsake.gg/",
-        "icon": "https://keepsake.gg/assets/icon/Favicon.png",
-        "tags": ["Marketplace"]
     },
     {
         "name": "SuiRaffles",
@@ -40,5 +33,12 @@
         "link": "https://dev-sui.belaunch.io/",
         "icon": "https://pbs.twimg.com/profile_images/1631582974562152448/LhKCnA3d_400x400.jpg",
         "tags": ["Launchpad"]
+    },
+    {
+        "name": "Keepsake",
+        "description": "The Marketplace for SUI collections and Non Fungible Tokens",
+        "link": "https://keepsake.gg/",
+        "icon": "https://keepsake.gg/assets/icon/Favicon.png",
+        "tags": ["Marketplace"]
     }
 ]
