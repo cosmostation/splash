@@ -14,3 +14,7 @@
 
 - **Splash Functions**
   - API for using functions implemented in typeccript in SUI on other platforms
+
+
+- **Documentation**
+  - https://docs.splash.im/
