@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="color_accent">#2F1123</color>
+    <color name="color_mode_base01">#080F26</color>
+    <color name="color_mode_base02">#101B30</color>
+    <color name="color_mode_base03">#252F45</color>
+    <color name="color_mode_base04">#869ABE</color>
+    <color name="color_mode_base05">#FBFCFF</color>
+</resources>

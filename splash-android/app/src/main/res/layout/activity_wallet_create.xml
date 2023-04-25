@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dip"
+        android:layout_weight="1">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingBottom="30dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="16dp"
+                android:layout_marginTop="15dp"
+                android:background="@drawable/drawable_create_guide_background"
+                android:orientation="horizontal"
+                android:paddingHorizontal="15dp"
+                android:paddingVertical="16dp">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="3dp"
+                    android:layout_marginTop="2dp"
+                    android:background="@android:color/transparent"
+                    android:src="@drawable/info_light" />
+
+                <TextView
+                    style="@style/TextViewH6"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="6dp"
+                    android:text="@string/wallet_create_description"
+                    android:textColor="@color/color_mode_base05" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="40dp"
+                android:layout_marginEnd="16dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    style="@style/TextViewLabel"
+                    android:text="@string/seed_phrase" />
+
+                <View
+                    android:layout_width="0dip"
+                    android:layout_height="0dp"
+                    android:layout_weight="1" />
+
+                <Button
+                    android:id="@+id/word_12"
+                    style="@style/TextViewH6"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/drawable_button_background"
+                    android:minWidth="0dp"
+                    android:minHeight="0dp"
+                    android:paddingHorizontal="8dp"
+                    android:paddingVertical="4dp"
+                    android:text="12 words"
+                    android:textColor="@color/color_only_base01" />
+
+                <Button
+                    android:id="@+id/word_24"
+                    style="@style/TextViewH6"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="2dp"
+                    android:background="@android:color/transparent"
+                    android:minWidth="0dp"
+                    android:minHeight="0dp"
+                    android:paddingHorizontal="8dp"
+                    android:paddingVertical="4dp"
+                    android:text="24 words"
+                    android:textColor="@color/color_mode_base04"
+                    android:visibility="gone" />
+            </LinearLayout>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recycler"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="16dp"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/drawable_edittext_background"
+                android:paddingHorizontal="8dp"
+                android:paddingVertical="20dp" />
+
+            <LinearLayout
+                android:id="@+id/copy"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="right"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="16dp"
+                android:background="@drawable/drawable_copy_button_background"
+                android:gravity="center"
+                android:orientation="horizontal"
+                android:paddingVertical="2dp"
+                android:paddingStart="2dp"
+                android:paddingEnd="6dp"
+                app:layout_constraintBottom_toTopOf="@id/confirm_btn"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/copy_light"
+                    app:tint="@color/color_mode_base05" />
+
+                <TextView
+                    style="@style/TextViewH6"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/copy"
+                    android:textColor="@color/color_mode_base05"
+                    app:layout_constraintBottom_toBottomOf="@id/confirm_btn"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="@id/title" />
+
+            </LinearLayout>
+
+
+            <TextView
+                style="@style/TextViewLabel"
+                android:layout_marginTop="30dp"
+                android:text="@string/account_name" />
+
+            <EditText
+                android:id="@+id/name"
+                style="@style/InputEditText"
+                android:layout_marginTop="12dp"
+                android:importantForAutofill="no"
+                android:inputType="text"
+                android:maxLength="20" />
+        </LinearLayout>
+    </ScrollView>
+
+    <Button
+        android:id="@+id/next_btn"
+        style="@style/FlatButton"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="16dp"
+        android:background="@drawable/drawable_button_background"
+        android:text="@string/next" />
+
+</LinearLayout>

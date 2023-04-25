@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/navigation_coins"
+        android:icon="@drawable/tab_coin"
+        android:title="@string/coins" />
+
+    <item
+        android:id="@+id/navigation_apps"
+        android:icon="@drawable/tab_app"
+        android:title="@string/app" />
+
+    <item
+        android:id="@+id/navigation_activity"
+        android:icon="@drawable/tab_activity"
+        android:title="@string/activity" />
+
+    <item
+        android:id="@+id/navigation_setting"
+        android:icon="@drawable/tab_setting"
+        android:title="@string/setting" />
+
+</menu>

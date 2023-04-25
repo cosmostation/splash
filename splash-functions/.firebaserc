@@ -1,0 +1,8 @@
+{
+  "projects": {
+    "default": "splash-wallet-60bd6",
+    "release": "splash-wallet-60bd6"
+  },
+  "targets": {},
+  "etags": {}
+}

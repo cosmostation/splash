@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/drawable_coin_gradient"
+        android:gravity="center_horizontal"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="14dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/account_btn"
+                style="@style/TextViewH5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:background="@android:color/transparent"
+                android:drawableStart="@drawable/img_profile"
+                android:drawablePadding="10dp"
+                android:minWidth="0dp"
+                android:minHeight="0dp"
+                android:textAllCaps="false"
+                android:textColor="@color/color_only_base01"
+                tools:text="Account 1" />
+
+            <View
+                android:layout_width="0dip"
+                android:layout_height="0dp"
+                android:layout_weight="1" />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/balance"
+            style="@style/TextViewH1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="18dp"
+            android:gravity="center"
+            android:text="$ 0.00"
+            android:textColor="@color/color_only_base01" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:layout_marginBottom="20dp"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/send_btn"
+                style="@style/MainButton"
+                android:drawableTop="@drawable/img_main_send"
+                android:text="@string/send" />
+
+            <Button
+                android:id="@+id/receive_btn"
+                style="@style/MainButton"
+                android:drawableTop="@drawable/img_main_receive"
+                android:text="@string/receive" />
+
+            <Button
+                android:id="@+id/staking_btn"
+                style="@style/MainButton"
+                android:drawableTop="@drawable/img_main_staking"
+                android:text="@string/staking" />
+
+            <Button
+                android:id="@+id/faucet_btn"
+                style="@style/MainButton"
+                android:drawableTop="@drawable/img_main_faucet"
+                android:text="@string/faucet" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/drawable_bottom_sheet_background"
+        android:orientation="horizontal"
+        android:paddingHorizontal="10dp"
+        android:paddingVertical="10dp">
+
+        <TextView
+            android:id="@+id/asset_count"
+            style="@style/TextViewH4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="10dp"
+            android:textColor="@color/color_mode_base05"
+            tools:text="Coins (4)" />
+
+        <TextView
+            android:id="@+id/nft_count"
+            style="@style/TextViewH4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:padding="10dp"
+            android:textColor="@color/color_mode_base04"
+            tools:text="NFTs (4)" />
+
+        <View
+            android:layout_width="0dip"
+            android:layout_height="0dp"
+            android:layout_weight="1" />
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/color_mode_base03" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recycler"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/color_mode_base01" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/nft_recycler"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/color_mode_base01"
+        android:clipToPadding="true"
+        android:paddingHorizontal="12dp"
+        android:paddingVertical="20dp"
+        android:visibility="gone" />
+
+    <LinearLayout
+        android:id="@+id/nft_empty"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:visibility="gone">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/icon_empty"
+            app:tint="@color/color_mode_base04" />
+
+        <TextView
+            style="@style/TextViewH4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="@string/no_nfts"
+            android:textColor="@color/color_mode_base04" />
+    </LinearLayout>
+</LinearLayout>

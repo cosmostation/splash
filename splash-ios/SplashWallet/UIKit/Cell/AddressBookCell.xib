@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21678"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="Pretendard-SemiBold.otf">
+            <string>Pretendard-SemiBold</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="77" id="KGk-i7-Jjw" customClass="AddressBookCell" customModule="SplashWallet" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="384" height="77"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="384" height="77"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Kbt-kn-opd">
+                        <rect key="frame" x="0.0" y="0.0" width="384" height="77"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="285-0p-vgm">
+                                <rect key="frame" x="20" y="16" width="286" height="19.333333333333329"/>
+                                <fontDescription key="fontDescription" name="Pretendard-SemiBold" family="Pretendard" pointSize="16"/>
+                                <color key="textColor" name="base05"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="address" textAlignment="natural" lineBreakMode="middleTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pAs-Kj-f1w">
+                                <rect key="frame" x="20" y="46" width="286" height="17"/>
+                                <fontDescription key="fontDescription" name="Pretendard-SemiBold" family="Pretendard" pointSize="14"/>
+                                <color key="textColor" name="base04"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ubs-fL-VEc">
+                                <rect key="frame" x="330" y="11.666666666666664" width="54" height="53.999999999999993"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="54" id="1Jo-SQ-dpt"/>
+                                    <constraint firstAttribute="width" constant="54" id="CkD-f3-mDL"/>
+                                </constraints>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" image="icon_handle"/>
+                            </button>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Utj-a7-Ra9">
+                                <rect key="frame" x="0.0" y="76" width="384" height="1"/>
+                                <color key="backgroundColor" name="base03"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="1" id="Vpw-lK-GfW"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="Utj-a7-Ra9" firstAttribute="top" secondItem="pAs-Kj-f1w" secondAttribute="bottom" constant="16" id="36k-S1-noQ"/>
+                            <constraint firstAttribute="trailing" secondItem="Ubs-fL-VEc" secondAttribute="trailing" id="A5W-Oz-1iz"/>
+                            <constraint firstAttribute="bottom" secondItem="Utj-a7-Ra9" secondAttribute="bottom" id="FTs-XR-crw"/>
+                            <constraint firstItem="285-0p-vgm" firstAttribute="top" secondItem="Kbt-kn-opd" secondAttribute="top" constant="16" id="Ifi-v0-ANj"/>
+                            <constraint firstItem="pAs-Kj-f1w" firstAttribute="top" secondItem="285-0p-vgm" secondAttribute="bottom" constant="10" id="KK8-2Q-KR9"/>
+                            <constraint firstItem="Ubs-fL-VEc" firstAttribute="leading" secondItem="285-0p-vgm" secondAttribute="trailing" constant="24" id="Yi7-BR-pfF"/>
+                            <constraint firstItem="Utj-a7-Ra9" firstAttribute="leading" secondItem="Kbt-kn-opd" secondAttribute="leading" id="dYJ-oL-TWM"/>
+                            <constraint firstAttribute="trailing" secondItem="Utj-a7-Ra9" secondAttribute="trailing" id="hAY-Xv-mpI"/>
+                            <constraint firstItem="pAs-Kj-f1w" firstAttribute="leading" secondItem="285-0p-vgm" secondAttribute="leading" id="j40-go-fL1"/>
+                            <constraint firstItem="Ubs-fL-VEc" firstAttribute="centerY" secondItem="Kbt-kn-opd" secondAttribute="centerY" id="jmQ-fq-38g"/>
+                            <constraint firstItem="pAs-Kj-f1w" firstAttribute="trailing" secondItem="285-0p-vgm" secondAttribute="trailing" id="p7d-Cu-ObA"/>
+                            <constraint firstItem="285-0p-vgm" firstAttribute="leading" secondItem="Kbt-kn-opd" secondAttribute="leading" constant="20" id="yMM-s5-s1L"/>
+                        </constraints>
+                    </view>
+                </subviews>
+                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                <color key="tintColor" name="base05"/>
+                <constraints>
+                    <constraint firstAttribute="trailing" secondItem="Kbt-kn-opd" secondAttribute="trailing" id="KaO-fA-TdV"/>
+                    <constraint firstItem="Kbt-kn-opd" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="WaI-3b-ZOF"/>
+                    <constraint firstAttribute="bottom" secondItem="Kbt-kn-opd" secondAttribute="bottom" id="lAL-QA-vdb"/>
+                    <constraint firstItem="Kbt-kn-opd" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="tjD-EK-A2t"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <color key="tintColor" name="base05"/>
+            <connections>
+                <outlet property="addressLabel" destination="pAs-Kj-f1w" id="Nm4-Xg-sAd"/>
+                <outlet property="editBtn" destination="Ubs-fL-VEc" id="VSQ-Vz-QrD"/>
+                <outlet property="nameLabel" destination="285-0p-vgm" id="e6b-Io-tUu"/>
+            </connections>
+            <point key="canvasLocation" x="-1.5267175572519083" y="0.35211267605633806"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="icon_handle" width="24" height="24"/>
+        <namedColor name="base03">
+            <color red="0.90200001001358032" green="0.92500001192092896" blue="0.98400002717971802" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="base04">
+            <color red="0.59600001573562622" green="0.68199998140335083" blue="0.84700000286102295" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="base05">
+            <color red="0.13300000131130219" green="0.13300000131130219" blue="0.13300000131130219" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
+</document>

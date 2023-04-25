@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="Pretendard-SemiBold.otf">
+            <string>Pretendard-SemiBold</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="NftDetailVC" customModule="SplashWallet" customModuleProvider="target">
+            <connections>
+                <outlet property="descriptionTitle" destination="jLI-vv-L0G" id="rgS-dm-KqE"/>
+                <outlet property="nftDescriptionLabel" destination="Kug-oZ-t2E" id="O6w-kp-pq7"/>
+                <outlet property="nftImgView" destination="Pbn-nE-79z" id="e7n-sj-VDn"/>
+                <outlet property="nftNameLabel" destination="tmT-KO-N6Y" id="1sr-C9-UWk"/>
+                <outlet property="nftObjectIdLabel" destination="SOs-lL-AMX" id="XbU-t3-hY0"/>
+                <outlet property="nftTypeLabel" destination="6GU-5U-vPH" id="1dr-ra-gx2"/>
+                <outlet property="objectIdTitle" destination="Wr2-Yf-302" id="GHg-aU-CTr"/>
+                <outlet property="sendNftBtn" destination="h7k-jm-kSR" id="Pbm-gY-rfZ"/>
+                <outlet property="typeTitle" destination="z8L-Bo-22j" id="xjx-fg-osc"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="nft_default" translatesAutoresizingMaskIntoConstraints="NO" id="Pbn-nE-79z">
+                    <rect key="frame" x="76.666666666666686" y="75" width="240" height="240"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="240" id="0va-xj-EHo"/>
+                        <constraint firstAttribute="height" constant="240" id="3SQ-sb-ixY"/>
+                    </constraints>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                            <integer key="value" value="10"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                </imageView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="NFT Name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tmT-KO-N6Y">
+                    <rect key="frame" x="26" y="347" width="273" height="24"/>
+                    <fontDescription key="fontDescription" name="Pretendard-SemiBold" family="Pretendard" pointSize="20"/>
+                    <color key="textColor" name="base05"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tus-6C-82p">
+                    <rect key="frame" x="335" y="338" width="42" height="42"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="42" id="M90-HG-rDC"/>
+                        <constraint firstAttribute="height" constant="42" id="hDN-iu-ucX"/>
+                    </constraints>
+                    <color key="tintColor" name="base04"/>
+                    <state key="normal" title="Button"/>
+                    <buttonConfiguration key="configuration" style="plain" image="icon_link"/>
+                    <connections>
+                        <action selector="onClickLink:" destination="-1" eventType="touchUpInside" id="018-dE-Nd2"/>
+                    </connections>
+                </button>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ERu-07-QrR">
+                    <rect key="frame" x="0.0" y="387" width="393" height="1"/>
+                    <color key="backgroundColor" name="base03"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="1" id="99W-xC-gIt"/>
+                    </constraints>
+                </view>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Object Id" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wr2-Yf-302">
+                    <rect key="frame" x="20" y="404" width="67" height="18.666666666666686"/>
+                    <fontDescription key="fontDescription" name="Pretendard-SemiBold" family="Pretendard" pointSize="16"/>
+                    <color key="textColor" name="base04"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="objectid objectid" lineBreakMode="middleTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SOs-lL-AMX">
+                    <rect key="frame" x="20" y="430.66666666666669" width="353" height="19.333333333333314"/>
+                    <fontDescription key="fontDescription" name="Pretendard-SemiBold" family="Pretendard" pointSize="16"/>
+                    <color key="textColor" name="base05"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Type" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="z8L-Bo-22j">
+                    <rect key="frame" x="19.999999999999996" y="474" width="36.666666666666657" height="18.666666666666686"/>
+                    <fontDescription key="fontDescription" name="Pretendard-SemiBold" family="Pretendard" pointSize="16"/>
+                    <color key="textColor" name="base04"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="type type" lineBreakMode="middleTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6GU-5U-vPH">
+                    <rect key="frame" x="20" y="500.66666666666669" width="353" height="19.333333333333314"/>
+                    <fontDescription key="fontDescription" name="Pretendard-SemiBold" family="Pretendard" pointSize="16"/>
+                    <color key="textColor" name="base05"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Description" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jLI-vv-L0G">
+                    <rect key="frame" x="20" y="544" width="85.333333333333329" height="18.666666666666629"/>
+                    <fontDescription key="fontDescription" name="Pretendard-SemiBold" family="Pretendard" pointSize="16"/>
+                    <color key="textColor" name="base04"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="description description" lineBreakMode="middleTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Kug-oZ-t2E">
+                    <rect key="frame" x="20" y="570.66666666666663" width="353" height="19.333333333333371"/>
+                    <fontDescription key="fontDescription" name="Pretendard-SemiBold" family="Pretendard" pointSize="16"/>
+                    <color key="textColor" name="base05"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="D0W-K8-cuE">
+                    <rect key="frame" x="0.0" y="614" width="393" height="1"/>
+                    <color key="backgroundColor" name="base03"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="1" id="xwC-ui-l3E"/>
+                    </constraints>
+                </view>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="h7k-jm-kSR" customClass="BaseButton" customModule="SplashWallet" customModuleProvider="target">
+                    <rect key="frame" x="16" y="754" width="361" height="48"/>
+                    <color key="backgroundColor" name="primary"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="48" id="oYo-Ak-n2c"/>
+                    </constraints>
+                    <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                    <state key="normal" title="Send NFT">
+                        <color key="titleColor" name="base01"/>
+                    </state>
+                    <connections>
+                        <action selector="onClickSend:" destination="-1" eventType="touchUpInside" id="ede-dm-PSf"/>
+                    </connections>
+                </button>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
+            <color key="backgroundColor" name="base01"/>
+            <color key="tintColor" name="base05"/>
+            <constraints>
+                <constraint firstItem="h7k-jm-kSR" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="16" id="061-Wc-seQ"/>
+                <constraint firstItem="Wr2-Yf-302" firstAttribute="top" secondItem="ERu-07-QrR" secondAttribute="bottom" constant="16" id="0Nr-1k-x4Z"/>
+                <constraint firstItem="D0W-K8-cuE" firstAttribute="top" secondItem="Kug-oZ-t2E" secondAttribute="bottom" constant="24" id="1Ll-dp-49e"/>
+                <constraint firstItem="z8L-Bo-22j" firstAttribute="leading" secondItem="Wr2-Yf-302" secondAttribute="leading" id="2Pk-E8-bHo"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="6GU-5U-vPH" secondAttribute="trailing" constant="20" id="3GK-RY-Uh3"/>
+                <constraint firstItem="Kug-oZ-t2E" firstAttribute="top" secondItem="jLI-vv-L0G" secondAttribute="bottom" constant="8" id="3JN-eB-WmL"/>
+                <constraint firstItem="jLI-vv-L0G" firstAttribute="leading" secondItem="Wr2-Yf-302" secondAttribute="leading" id="7Ad-VW-Xg5"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="h7k-jm-kSR" secondAttribute="trailing" constant="16" id="7WQ-bC-YeI"/>
+                <constraint firstItem="6GU-5U-vPH" firstAttribute="top" secondItem="z8L-Bo-22j" secondAttribute="bottom" constant="8" id="8Pf-9u-SaO"/>
+                <constraint firstItem="jLI-vv-L0G" firstAttribute="top" secondItem="6GU-5U-vPH" secondAttribute="bottom" constant="24" id="Aja-3a-Phf"/>
+                <constraint firstItem="tus-6C-82p" firstAttribute="centerY" secondItem="tmT-KO-N6Y" secondAttribute="centerY" id="DEB-Hx-8Lb"/>
+                <constraint firstItem="tmT-KO-N6Y" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="26" id="FQ1-On-nek"/>
+                <constraint firstItem="ERu-07-QrR" firstAttribute="top" secondItem="tmT-KO-N6Y" secondAttribute="bottom" constant="16" id="Fb2-wD-vnO"/>
+                <constraint firstItem="6GU-5U-vPH" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="20" id="KAV-Hv-3ip"/>
+                <constraint firstItem="tus-6C-82p" firstAttribute="leading" secondItem="tmT-KO-N6Y" secondAttribute="trailing" constant="36" id="LZO-K7-dOG"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="ERu-07-QrR" secondAttribute="trailing" id="TTG-NB-qVm"/>
+                <constraint firstItem="Kug-oZ-t2E" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="20" id="W1Y-7p-86e"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="leading" secondItem="ERu-07-QrR" secondAttribute="leading" id="YXz-Fe-icE"/>
+                <constraint firstItem="tmT-KO-N6Y" firstAttribute="top" secondItem="Pbn-nE-79z" secondAttribute="bottom" constant="32" id="Z8s-Pa-Joj"/>
+                <constraint firstItem="D0W-K8-cuE" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="adT-gm-gFK"/>
+                <constraint firstItem="z8L-Bo-22j" firstAttribute="top" secondItem="SOs-lL-AMX" secondAttribute="bottom" constant="24" id="fcp-f9-F2q"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="tus-6C-82p" secondAttribute="trailing" constant="16" id="gao-NS-SWd"/>
+                <constraint firstItem="SOs-lL-AMX" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="20" id="jga-Jz-4qt"/>
+                <constraint firstItem="SOs-lL-AMX" firstAttribute="top" secondItem="Wr2-Yf-302" secondAttribute="bottom" constant="8" id="lZf-MN-edW"/>
+                <constraint firstItem="Pbn-nE-79z" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="16" id="o6p-wg-jwt"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="Kug-oZ-t2E" secondAttribute="trailing" constant="20" id="rnC-1Z-xpp"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="h7k-jm-kSR" secondAttribute="bottom" constant="16" id="shl-lt-xji"/>
+                <constraint firstItem="Pbn-nE-79z" firstAttribute="centerX" secondItem="fnl-2z-Ty3" secondAttribute="centerX" id="xie-hK-2jG"/>
+                <constraint firstItem="Wr2-Yf-302" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="20" id="zHY-oE-Bcz"/>
+                <constraint firstItem="D0W-K8-cuE" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="zVv-zE-ph1"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="SOs-lL-AMX" secondAttribute="trailing" constant="20" id="zrm-Q5-svb"/>
+            </constraints>
+            <point key="canvasLocation" x="-51.145038167938928" y="-11.267605633802818"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="icon_link" width="24" height="24"/>
+        <image name="nft_default" width="143" height="143"/>
+        <namedColor name="base01">
+            <color red="0.98431372549019602" green="0.9882352941176471" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="base03">
+            <color red="0.90196078431372551" green="0.92549019607843142" blue="0.98431372549019602" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="base04">
+            <color red="0.59607843137254901" green="0.68235294117647061" blue="0.84705882352941175" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="base05">
+            <color red="0.13333333333333333" green="0.13333333333333333" blue="0.13333333333333333" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="primary">
+            <color red="0.19215686274509802" green="0.50980392156862742" blue="0.96078431372549022" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
+</document>

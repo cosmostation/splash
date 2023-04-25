@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="Pretendard-SemiBold.otf">
+            <string>Pretendard-SemiBold</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="TxCheckSheet" customModule="SplashWallet" customModuleProvider="target">
+            <connections>
+                <outlet property="sheetCancelBtn" destination="sXH-c7-8Fe" id="9Ew-UA-zps"/>
+                <outlet property="sheetConfirmBtn" destination="v1G-Kw-cOr" id="ygY-g5-g3a"/>
+                <outlet property="sheetTableView" destination="lLm-Xr-WBM" id="QUq-i3-1Js"/>
+                <outlet property="sheetTitle" destination="sHo-gl-2Za" id="wL3-gE-vmb"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cwl-5w-MQN">
+                    <rect key="frame" x="0.0" y="59" width="393" height="80"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sheet Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sHo-gl-2Za">
+                            <rect key="frame" x="19.999999999999993" y="36" width="100.33333333333331" height="24"/>
+                            <fontDescription key="fontDescription" name="Pretendard-SemiBold" family="Pretendard" pointSize="20"/>
+                            <color key="textColor" name="base05"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="g2Q-hz-PdS">
+                            <rect key="frame" x="0.0" y="79" width="393" height="1"/>
+                            <color key="backgroundColor" name="base03"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="1" id="LcW-O3-xMX"/>
+                            </constraints>
+                        </view>
+                    </subviews>
+                    <color key="backgroundColor" name="base01"/>
+                    <constraints>
+                        <constraint firstAttribute="bottom" secondItem="g2Q-hz-PdS" secondAttribute="bottom" id="3bA-YH-fFC"/>
+                        <constraint firstAttribute="trailing" secondItem="g2Q-hz-PdS" secondAttribute="trailing" id="40F-cD-rfs"/>
+                        <constraint firstItem="sHo-gl-2Za" firstAttribute="leading" secondItem="cwl-5w-MQN" secondAttribute="leading" constant="20" id="4sb-7a-iUT"/>
+                        <constraint firstItem="g2Q-hz-PdS" firstAttribute="leading" secondItem="cwl-5w-MQN" secondAttribute="leading" id="Gve-W1-1b3"/>
+                        <constraint firstAttribute="bottom" secondItem="sHo-gl-2Za" secondAttribute="bottom" constant="20" id="TvL-tL-KtE"/>
+                        <constraint firstAttribute="height" constant="80" id="nLe-pJ-rdR"/>
+                    </constraints>
+                </view>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="lLm-Xr-WBM">
+                    <rect key="frame" x="0.0" y="139" width="393" height="621"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                </tableView>
+                <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="yZp-oR-vX4">
+                    <rect key="frame" x="16" y="772" width="361" height="54"/>
+                    <subviews>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sXH-c7-8Fe" customClass="SeconButton" customModule="SplashWallet" customModuleProvider="target">
+                            <rect key="frame" x="0.0" y="0.0" width="176.66666666666666" height="54"/>
+                            <color key="backgroundColor" name="secondary"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="54" id="6xb-Yf-06V"/>
+                            </constraints>
+                            <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                            <state key="normal" title="Cancel">
+                                <color key="titleColor" name="base01"/>
+                            </state>
+                            <connections>
+                                <action selector="onClickCancel:" destination="-1" eventType="touchUpInside" id="ShR-rg-PoR"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="v1G-Kw-cOr" customClass="BaseButton" customModule="SplashWallet" customModuleProvider="target">
+                            <rect key="frame" x="184.66666666666663" y="0.0" width="176.33333333333337" height="54"/>
+                            <color key="backgroundColor" name="primary"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="54" id="ruB-Dm-wU0"/>
+                            </constraints>
+                            <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                            <state key="normal" title="Send Tx">
+                                <color key="titleColor" name="base01"/>
+                            </state>
+                            <connections>
+                                <action selector="onClickConfirm:" destination="-1" eventType="touchUpInside" id="ZhH-uU-DIx"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                </stackView>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
+            <color key="backgroundColor" name="base01"/>
+            <color key="tintColor" name="base05"/>
+            <constraints>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="yZp-oR-vX4" secondAttribute="trailing" constant="16" id="44P-A7-2cF"/>
+                <constraint firstItem="cwl-5w-MQN" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="50M-Hd-S2a"/>
+                <constraint firstItem="yZp-oR-vX4" firstAttribute="bottom" secondItem="fnl-2z-Ty3" secondAttribute="bottom" constant="8" id="FNC-4X-lAR"/>
+                <constraint firstItem="cwl-5w-MQN" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="Fab-hN-zeH"/>
+                <constraint firstItem="yZp-oR-vX4" firstAttribute="top" secondItem="lLm-Xr-WBM" secondAttribute="bottom" constant="12" id="LbQ-Kv-lNI"/>
+                <constraint firstItem="lLm-Xr-WBM" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="Trb-jT-3QP"/>
+                <constraint firstItem="lLm-Xr-WBM" firstAttribute="top" secondItem="cwl-5w-MQN" secondAttribute="bottom" id="Woh-aQ-gmY"/>
+                <constraint firstItem="yZp-oR-vX4" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="16" id="ceI-Vc-Xcy"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="cwl-5w-MQN" secondAttribute="trailing" id="pMi-sY-QUA"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="lLm-Xr-WBM" secondAttribute="trailing" id="yhf-Oh-9U5"/>
+            </constraints>
+            <point key="canvasLocation" x="139.69465648854961" y="20.422535211267608"/>
+        </view>
+    </objects>
+    <resources>
+        <namedColor name="base01">
+            <color red="0.98431372549019602" green="0.9882352941176471" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="base03">
+            <color red="0.90196078431372551" green="0.92549019607843142" blue="0.98431372549019602" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="base05">
+            <color red="0.13333333333333333" green="0.13333333333333333" blue="0.13333333333333333" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="primary">
+            <color red="0.19215686274509802" green="0.50980392156862742" blue="0.96078431372549022" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="secondary">
+            <color red="0.67843137254901964" green="0.80392156862745101" blue="0.98431372549019602" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
+</document>

@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="NanumSquareEB.otf">
+            <string>NanumSquareOTFEB</string>
+        </array>
+        <array key="Pretendard-SemiBold.otf">
+            <string>Pretendard-SemiBold</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="109" id="KGk-i7-Jjw" customClass="ActivityCell" customModule="SplashWallet" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="503" height="109"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="503" height="109"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KfQ-6V-uhd">
+                        <rect key="frame" x="0.0" y="0.0" width="503" height="109"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fRE-lu-4oG">
+                                <rect key="frame" x="16" y="15.999999999999998" width="140" height="19.333333333333329"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="140" id="7VV-dX-NC2"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Pretendard-SemiBold" family="Pretendard" pointSize="16"/>
+                                <color key="textColor" name="base05"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="749" text="+ 58.34234 SUI" textAlignment="right" lineBreakMode="middleTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FBa-wS-Bek">
+                                <rect key="frame" x="172" y="16.666666666666668" width="315" height="18.000000000000004"/>
+                                <fontDescription key="fontDescription" name="NanumSquareOTFEB" family="NanumSquareOTF" pointSize="16"/>
+                                <color key="textColor" name="base05"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Time" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XF4-Cv-IYf">
+                                <rect key="frame" x="453.66666666666669" y="75.666666666666671" width="33.333333333333314" height="15.666666666666671"/>
+                                <fontDescription key="fontDescription" name="NanumSquareOTFEB" family="NanumSquareOTF" pointSize="14"/>
+                                <color key="textColor" name="base04"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon_tx_success" translatesAutoresizingMaskIntoConstraints="NO" id="ROR-As-Fk3">
+                                <rect key="frame" x="172" y="45.333333333333336" width="18" height="18"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="18" id="ObL-TL-zlq"/>
+                                    <constraint firstAttribute="width" constant="18" id="vJa-65-8Vm"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="749" text="Hash" textAlignment="right" lineBreakMode="middleTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5Oa-63-hqM">
+                                <rect key="frame" x="190" y="46.666666666666664" width="297" height="17"/>
+                                <fontDescription key="fontDescription" name="NanumSquareOTFEB" family="NanumSquareOTF" pointSize="14"/>
+                                <color key="textColor" name="base04"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="(Block)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="x4m-ds-zKv">
+                                <rect key="frame" x="402.33333333333331" y="75.666666666666671" width="47.333333333333314" height="15.666666666666671"/>
+                                <fontDescription key="fontDescription" name="NanumSquareOTFEB" family="NanumSquareOTF" pointSize="14"/>
+                                <color key="textColor" name="base04"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="description" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7Dj-86-aVF">
+                                <rect key="frame" x="16" y="75" width="140" height="17"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="140" id="R98-mS-QS0"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Pretendard-SemiBold" family="Pretendard" pointSize="14"/>
+                                <color key="textColor" name="base05"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="24m-iv-Ibt">
+                                <rect key="frame" x="0.0" y="108" width="503" height="1"/>
+                                <color key="backgroundColor" name="base03"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="1" id="ejv-lP-lro"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="XF4-Cv-IYf" firstAttribute="trailing" secondItem="FBa-wS-Bek" secondAttribute="trailing" id="7vY-v1-7wx"/>
+                            <constraint firstItem="fRE-lu-4oG" firstAttribute="leading" secondItem="KfQ-6V-uhd" secondAttribute="leading" constant="16" id="80B-Hs-5es"/>
+                            <constraint firstItem="fRE-lu-4oG" firstAttribute="top" secondItem="KfQ-6V-uhd" secondAttribute="top" constant="16" id="Aye-FB-RDn"/>
+                            <constraint firstItem="ROR-As-Fk3" firstAttribute="centerY" secondItem="5Oa-63-hqM" secondAttribute="centerY" constant="-1" id="OLr-HX-QFf"/>
+                            <constraint firstItem="5Oa-63-hqM" firstAttribute="top" secondItem="FBa-wS-Bek" secondAttribute="bottom" constant="12" id="Ocb-2l-SyX"/>
+                            <constraint firstAttribute="bottom" secondItem="24m-iv-Ibt" secondAttribute="bottom" id="Opu-Et-BCJ"/>
+                            <constraint firstItem="XF4-Cv-IYf" firstAttribute="leading" secondItem="x4m-ds-zKv" secondAttribute="trailing" constant="4" id="Pfa-jq-dUQ"/>
+                            <constraint firstItem="5Oa-63-hqM" firstAttribute="leading" secondItem="ROR-As-Fk3" secondAttribute="trailing" id="WGh-wX-Gf8"/>
+                            <constraint firstItem="7Dj-86-aVF" firstAttribute="leading" secondItem="fRE-lu-4oG" secondAttribute="leading" id="YW9-LA-MOe"/>
+                            <constraint firstItem="ROR-As-Fk3" firstAttribute="leading" secondItem="FBa-wS-Bek" secondAttribute="leading" id="doF-fV-kuM"/>
+                            <constraint firstItem="24m-iv-Ibt" firstAttribute="top" secondItem="7Dj-86-aVF" secondAttribute="bottom" constant="16" id="eQU-UG-mw0"/>
+                            <constraint firstItem="x4m-ds-zKv" firstAttribute="centerY" secondItem="XF4-Cv-IYf" secondAttribute="centerY" id="eb2-XT-fCL"/>
+                            <constraint firstAttribute="trailing" secondItem="24m-iv-Ibt" secondAttribute="trailing" id="lxa-m7-DDD"/>
+                            <constraint firstItem="7Dj-86-aVF" firstAttribute="centerY" secondItem="x4m-ds-zKv" secondAttribute="centerY" id="oqB-s3-CBk"/>
+                            <constraint firstAttribute="trailing" secondItem="FBa-wS-Bek" secondAttribute="trailing" constant="16" id="sfm-CQ-NTm"/>
+                            <constraint firstItem="XF4-Cv-IYf" firstAttribute="top" secondItem="5Oa-63-hqM" secondAttribute="bottom" constant="12" id="tPQ-a0-Bk9"/>
+                            <constraint firstItem="FBa-wS-Bek" firstAttribute="centerY" secondItem="fRE-lu-4oG" secondAttribute="centerY" id="xWn-gB-dYX"/>
+                            <constraint firstItem="FBa-wS-Bek" firstAttribute="leading" secondItem="fRE-lu-4oG" secondAttribute="trailing" constant="16" id="xtX-8e-uCH"/>
+                            <constraint firstItem="5Oa-63-hqM" firstAttribute="trailing" secondItem="FBa-wS-Bek" secondAttribute="trailing" id="yQV-XG-Trw"/>
+                            <constraint firstItem="24m-iv-Ibt" firstAttribute="leading" secondItem="KfQ-6V-uhd" secondAttribute="leading" id="ypu-JN-GRd"/>
+                        </constraints>
+                    </view>
+                </subviews>
+                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                <constraints>
+                    <constraint firstItem="KfQ-6V-uhd" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="0ma-XU-WfZ"/>
+                    <constraint firstAttribute="trailing" secondItem="KfQ-6V-uhd" secondAttribute="trailing" id="PS7-YE-Cxw"/>
+                    <constraint firstAttribute="bottom" secondItem="KfQ-6V-uhd" secondAttribute="bottom" id="VBg-1i-03b"/>
+                    <constraint firstItem="KfQ-6V-uhd" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="nKx-S5-r6E"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <color key="tintColor" name="base05"/>
+            <connections>
+                <outlet property="actionLabel" destination="FBa-wS-Bek" id="OBM-4i-hDf"/>
+                <outlet property="blockLabel" destination="x4m-ds-zKv" id="ynl-Ni-rij"/>
+                <outlet property="descriptionLabel" destination="7Dj-86-aVF" id="MgA-Nm-3Aa"/>
+                <outlet property="hashLabel" destination="5Oa-63-hqM" id="TLs-3H-go4"/>
+                <outlet property="statusIconImageView" destination="ROR-As-Fk3" id="RDk-gQ-XnK"/>
+                <outlet property="timeLabel" destination="XF4-Cv-IYf" id="qSf-7j-1Eb"/>
+                <outlet property="titleLabel" destination="fRE-lu-4oG" id="Sm3-XF-E9f"/>
+            </connections>
+            <point key="canvasLocation" x="275.57251908396944" y="55.281690140845072"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="icon_tx_success" width="24" height="24"/>
+        <namedColor name="base03">
+            <color red="0.90200001001358032" green="0.92500001192092896" blue="0.98400002717971802" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="base04">
+            <color red="0.59600001573562622" green="0.68199998140335083" blue="0.84700000286102295" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="base05">
+            <color red="0.13300000131130219" green="0.13300000131130219" blue="0.13300000131130219" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
+</document>

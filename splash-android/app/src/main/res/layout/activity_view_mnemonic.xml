@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="16dp"
+        android:layout_marginTop="13dp"
+        android:background="@drawable/drawable_create_guide_background"
+        android:orientation="horizontal"
+        android:paddingHorizontal="15dp"
+        android:paddingVertical="12dp">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="3dp"
+            android:background="@android:color/transparent"
+            android:src="@drawable/info_light" />
+
+        <TextView
+            style="@style/TextViewH6"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="5dp"
+            android:text="@string/wallet_create_description"
+            android:textColor="@color/color_mode_base05" />
+    </LinearLayout>
+
+    <TextView
+        style="@style/TextViewLabel"
+        android:layout_marginTop="30dp"
+        android:text="@string/seed_phrase" />
+
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recycler"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="16dp"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/drawable_edittext_background"
+        android:paddingHorizontal="8dp"
+        android:paddingVertical="20dp" />
+
+    <LinearLayout
+        android:id="@+id/copy"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="right"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="16dp"
+        android:background="@drawable/drawable_copy_button_background"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:paddingVertical="2dp"
+        android:paddingStart="2dp"
+        android:paddingEnd="6dp"
+        app:layout_constraintBottom_toTopOf="@id/confirm_btn"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/copy_light"
+            app:tint="@color/color_mode_base05" />
+
+        <TextView
+            style="@style/TextViewH6"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/copy"
+            android:textColor="@color/color_mode_base05"
+            app:layout_constraintBottom_toBottomOf="@id/confirm_btn"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@id/title" />
+
+    </LinearLayout>
+
+</LinearLayout>

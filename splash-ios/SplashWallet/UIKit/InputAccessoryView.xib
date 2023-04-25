@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="InputAccessoryView" customModule="SplashWallet" customModuleProvider="target">
+            <connections>
+                <outlet property="btnAddressBook" destination="vZk-eI-CX7" id="OTr-0N-yrh"/>
+                <outlet property="btnScan" destination="OAB-gU-QU0" id="Ry2-JA-nKm"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="64" height="32"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="hNx-bG-hrO">
+                    <rect key="frame" x="0.0" y="0.0" width="64" height="32"/>
+                    <subviews>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vZk-eI-CX7">
+                            <rect key="frame" x="0.0" y="0.0" width="32" height="32"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="32" id="P0o-gj-eJv"/>
+                                <constraint firstAttribute="width" constant="32" id="YCq-aJ-WQG"/>
+                            </constraints>
+                            <state key="normal" title="Button"/>
+                            <buttonConfiguration key="configuration" style="plain" image="input_btn_address"/>
+                            <connections>
+                                <action selector="onClickAddressBook:" destination="-1" eventType="touchUpInside" id="rdE-ub-SjA"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OAB-gU-QU0">
+                            <rect key="frame" x="32" y="0.0" width="32" height="32"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="32" id="4lI-CT-NFh"/>
+                                <constraint firstAttribute="height" constant="32" id="R3h-Xs-0Rz"/>
+                            </constraints>
+                            <state key="normal" title="Button"/>
+                            <buttonConfiguration key="configuration" style="plain" image="input_btn_scan"/>
+                            <connections>
+                                <action selector="onClickScan:" destination="-1" eventType="touchUpInside" id="KoH-dz-BSO"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                </stackView>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <color key="tintColor" name="base05"/>
+            <constraints>
+                <constraint firstItem="hNx-bG-hrO" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="515-3F-qOx"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="hNx-bG-hrO" secondAttribute="bottom" id="FqB-Ab-pqA"/>
+                <constraint firstAttribute="trailing" secondItem="hNx-bG-hrO" secondAttribute="trailing" id="ZHy-Ku-EKD"/>
+                <constraint firstItem="hNx-bG-hrO" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="on1-Cx-PAM"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <point key="canvasLocation" x="309.92366412213738" y="-107.74647887323944"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="input_btn_address" width="24" height="24"/>
+        <image name="input_btn_scan" width="24" height="24"/>
+        <namedColor name="base05">
+            <color red="0.13300000131130219" green="0.13300000131130219" blue="0.13300000131130219" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
+</document>

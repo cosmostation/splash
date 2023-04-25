@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:paddingBottom="16dp">
+
+    <View
+        android:layout_width="60dp"
+        android:layout_height="4dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/drawable_bottom_sheet_handle" />
+
+    <TextView
+        style="@style/BottomSheetTitle"
+        android:layout_marginTop="16dp"
+        android:text="@string/delete_account" />
+
+    <TextView
+        style="@style/TextViewH6"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="20dp"
+        android:layout_marginTop="20dp"
+        android:text="@string/delete_warning"
+        android:textColor="@color/color_accent" />
+
+
+    <EditText
+        android:id="@+id/address"
+        style="@style/InputEditText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:ellipsize="middle"
+        android:enabled="false"
+        android:maxLines="2"
+        tools:text="0xf4625db01a7b8770aab" />
+
+    <Button
+        android:id="@+id/confirm_btn"
+        style="@style/FlatButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        android:text="@string/delete" />
+</LinearLayout>

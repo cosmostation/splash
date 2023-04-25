@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="network_titles">
+        <item>Devnet</item>
+    </string-array>
+    <string-array name="network_values">
+        <item>devnet</item>
+    </string-array>
+</resources>

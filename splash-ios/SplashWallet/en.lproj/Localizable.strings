@@ -1,0 +1,162 @@
+/* 
+  Localizable.strings
+  SplashWallet
+
+  Created by yongjoo jung on 2022/12/16.
+  
+*/
+"start" = "START";
+"create_wallet" = "Create a new account";
+"create_wallet_msg" = "Create an account with a set of mnemonics";
+"import_wallet" = "Import wallet";
+"import_mnemonic" = "Import Mnemonics";
+"import_mnemonic_msg" = "Restore an account with your mnemonics";
+"import_private_key" = "Import Private Key";
+"import_private_key_msg" = "Restore an account with your private key";
+"account_name" = "Account Name";
+"mnemonic_phrases" = "Mnemonic phrases";
+"private_key" = "Private Key";
+"touchID" = "Touch ID";
+"faceID" = "Face ID";
+"cancel" = "Cancel";
+"setting" = "Setting";
+"next" = "Next";
+"confirm" = "Confirm";
+"rename" = "Rename";
+"delete" = "Delete";
+"view_mnemonic" = "View Mnemonic";
+"view_private_key" = "View Private Key";
+"add_account" = "Add Account";
+"recipient_address" = "Recipient Address";
+"to_send_amount" = "Send Amount";
+"send_nft" = "Send NFT";
+"object_id" = "Object Id";
+"type" = "Type";
+"description" = "Description";
+"send" = "Send";
+"tx_fee" = "Gas Fee";
+"add_address_book" = "Add Address Book";
+"book_name" = "Name";
+"address" = "Address";
+"edit" = "Edit";
+"my_account" = "My Account";
+"address_book" = "Address Book";
+"current_epoch" = "Currrent Epoch";
+"reward_distibution" = "Reward Distribution";
+"my_staking_status" = "Staking Status";
+"total_staked" = "Total Staked";
+"staked" = "Staked";
+"earned" = "Earned";
+"unstake" = "Unstake";
+"start_stake_title" = "Stake now with Cosmostation!";
+"start_stake_msg" = "Stake SUI to contribute to the platform's security and earn rewards as a delegator.";
+"start_stake_des0" = "Epoches are created every 24 hours.";
+"start_stake_des1" = "If you have started staking, it will remain in a 'pending' state until the current epoch (%@) ends.";
+"start_stake_des2" = "At the end of the next epoch (%@), rewards will be distributed. Each subsequent epoch will be repeated.";
+"start_stake_des3" = "Rewards are compounded and can be used immediately after the start of unstaking.";
+"stake_now" = "Stake Now";
+"available" = "Available";
+"voting_power" = "Voting Power";
+"commission" = "Commission";
+"to_stake_amount" = "Stake Amount";
+"to_unstake_amount" = "Unstake Amount";
+"validator" = "Validator";
+"staked_amount" = "Staked Amount";
+"earned_amount" = "Earned Amount";
+"start_earn_epoch" = "Starts Earning";
+
+
+"init_pin" = "Enter your new PIN";
+"confirm_pin" = "Verify your new PIN";
+"enter_pin" = "Enter PIN";
+"using_touchID" = "Would you like to use Touch ID?";
+"using_faceID" = "Would you like to use Face ID?";
+"insert_account_name" = "Insert Account Name";
+"mnemonic_copied" = "Mnemonic copied\nClear your clipboard after paste it!";
+"mnemonic_wanning" = "This phrase is the only way to recover your account. Do not share with anyone. Losing this mnemonics could lead to loss of your asset.";
+"private_key_copied" = "Private Key copied\nClear your clipboard after paste it!";
+"faucet_success" = "Faucet Success";
+"faucet_fail" = "Faucet Failed";
+"address_copied" = "address copied.";
+"mnemonic_delete" = "Are you sure you would like to delete this account?\nMake sure you have backup of your wallet's mnemonic phrase or private key if you want to restore it later.";
+"insert_recipient_address" = "Insert recipient address";
+"insert_to_send_amount" = "Insert to send amount";
+"insert_private_key" = "Insert Private Key";
+"insert_mnemonic_phrases" = "Insert mnenonic phrases";
+"select_theme" = "Select Theme";
+"select_language" = "Select Language";
+"select_network" = "Select Network";
+"select_asset" = "Select Asset";
+"select_book" = "Select Address Book";
+"select_validator" = "Select Validator";
+"create_account" = "New Account";
+"input_valid_pin" = "Please enter correct PIN code.";
+
+
+
+"vc_title_set_account_name" = "Set Account Name";
+"vc_title_create_account" = "Create Account";
+"vc_title_create_mnemonic" = "Create New Wallet";
+"vc_title_import_private_key" = "Import Private Key";
+"vc_title_import_mnemonic" = "Import Mnemonic";
+"vc_title_receive" = "Receive";
+"vc_title_account" = "Account";
+"vc_title_rename_account" = "Rename Account";
+"vc_title_delete_account" = "Delete Account";
+"vc_title_check_mnemonic" = "Check Mnemonic";
+"vc_title_check_private_key" = "Check PrivateKey";
+"vc_title_send_coin" = "Send Coin";
+"vc_title_nft_detail" = "NFT Detail";
+"vc_title_send_nft" = "Send NFT";
+"vc_title_tx_result" = "Transaction Result";
+"vc_title_scan_qr" = "QR code Scan";
+"vc_title_address_book_list" = "Address Book List";
+"vc_title_add_address_book" = "Add New Address Book";
+"vc_title_edit_address_book" = "Edit Address Book";
+"vc_title_delete_address_book" = "Delete Address Book";
+"vc_title_staking_info" = "Staking Info";
+"vc_title_stake" = "Let's Stake";
+"vc_title_check_stake" = "Check Staking Info";
+"vc_title_staked_list" = "My Staked List";
+"vc_title_check_unstake" = "Check Unstaking Info";
+
+"set_section_wallet" = "Wallet";
+"set_section_general" = "General";
+"set_section_security" = "Security";
+"set_section_app_info" = "App Info";
+"set_account" = "Account";
+"set_network" = "Network";
+"set_address_book" = "Address Book";
+"set_dapps" = "Wallet Connect";
+"set_theme" = "Theme";
+"set_currency" = "Currency";
+"set_language" = "Language";
+"set_app_lock" = "App Lock";
+"set_bio" = "Using Bio";
+"set_hide_asset" = "Hide Asset";
+"set_gitHub" = "Github";
+"set_version" = "Version";
+"set_twitter" = "Twitter";
+"set_feedback" = "Feedback & Bug report";
+
+
+"error_pin_not_matched" = "PIN number is not same. Please init PIN number again!";
+"error_invalid_pin" = "Invalid PIN number";
+"error_account_name" = "Please insert account name.";
+"error_name" = "Please insert name.";
+"error_alreay_exist_account_name" = "Already exist name.";
+"error_invalid_menmonic" = "Invalid Menmonic.";
+"error_invalid_privatekey" = "Invalid Private Key.";
+"error_invalid_address" = "Invalid Address.";
+"error_self_send" = "Self sending is not support.";
+"error_invalid_amount" = "Invalid Amount.";
+"error_only_private_key" = "Only privatekey imported account.";
+"error_not_enough_gas_fee" = "Not enough SUI tokens for gas.";
+"error_tx" = "Sorry, Error with broadcast Tx. \n";
+"error_access_camera_title" = "Camera Access";
+"error_access_camera_msg" = "Request camera access for scan QR-code. Please provide camera access from settings.";
+"error_prepare" = "preparing.";
+"error_empty_address_book" = "Address book is empty.";
+"error_min_stake_amount" = "Available for 1 SUI or more.";
+"error_pending" = "Pending. Unstaking is not possible.";
+"error_not_enough_stake" = "Not enough SUI coins (1.7 above).";

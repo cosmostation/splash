@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="Pretendard-SemiBold.otf">
+            <string>Pretendard-SemiBold</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="290" id="KGk-i7-Jjw" customClass="TxCheckNftSendCell" customModule="SplashWallet" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="610" height="290"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="610" height="290"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TkM-Pm-d5s">
+                        <rect key="frame" x="0.0" y="0.0" width="610" height="290"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Recipient Address" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hm6-WG-kdT">
+                                <rect key="frame" x="20" y="24" width="135" height="20"/>
+                                <fontDescription key="fontDescription" name="Pretendard-SemiBold" family="Pretendard" pointSize="16"/>
+                                <color key="textColor" name="base04"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="recipient address" lineBreakMode="middleTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="K4T-3h-2MC">
+                                <rect key="frame" x="20" y="52" width="570" height="19.333333333333329"/>
+                                <fontDescription key="fontDescription" name="Pretendard-SemiBold" family="Pretendard" pointSize="16"/>
+                                <color key="textColor" name="base05"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="NFT" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pjq-ii-fPN">
+                                <rect key="frame" x="20" y="99.333333333333329" width="30.666666666666671" height="20"/>
+                                <fontDescription key="fontDescription" name="Pretendard-SemiBold" family="Pretendard" pointSize="16"/>
+                                <color key="textColor" name="base04"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" image="nft_default" translatesAutoresizingMaskIntoConstraints="NO" id="Ccb-MS-qiG">
+                                <rect key="frame" x="20" y="127.33333333333331" width="50" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="OOM-Z1-Z6h"/>
+                                    <constraint firstAttribute="width" constant="50" id="cNb-z9-Txr"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="10"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Tx Fee " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XWJ-fW-fuT">
+                                <rect key="frame" x="20.000000000000004" y="205.33333333333334" width="52.333333333333343" height="20"/>
+                                <fontDescription key="fontDescription" name="Pretendard-SemiBold" family="Pretendard" pointSize="16"/>
+                                <color key="textColor" name="base04"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="tx fee" lineBreakMode="middleTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ucu-SJ-AXX">
+                                <rect key="frame" x="20" y="233.33333333333331" width="570" height="19.333333333333343"/>
+                                <fontDescription key="fontDescription" name="Pretendard-SemiBold" family="Pretendard" pointSize="16"/>
+                                <color key="textColor" name="base05"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="nft name" lineBreakMode="middleTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nW4-ha-5f3">
+                                <rect key="frame" x="82" y="142.66666666666663" width="66" height="19.333333333333343"/>
+                                <fontDescription key="fontDescription" name="Pretendard-SemiBold" family="Pretendard" pointSize="16"/>
+                                <color key="textColor" name="base05"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="ucu-SJ-AXX" firstAttribute="trailing" secondItem="K4T-3h-2MC" secondAttribute="trailing" id="77O-4K-Inb"/>
+                            <constraint firstItem="pjq-ii-fPN" firstAttribute="top" secondItem="K4T-3h-2MC" secondAttribute="bottom" constant="28" id="CCF-7l-Jdh"/>
+                            <constraint firstItem="nW4-ha-5f3" firstAttribute="centerY" secondItem="Ccb-MS-qiG" secondAttribute="centerY" id="CgI-hF-ulP"/>
+                            <constraint firstItem="pjq-ii-fPN" firstAttribute="leading" secondItem="Hm6-WG-kdT" secondAttribute="leading" id="IY2-Os-1BL"/>
+                            <constraint firstItem="XWJ-fW-fuT" firstAttribute="top" secondItem="Ccb-MS-qiG" secondAttribute="bottom" constant="28" id="Ola-uc-bKR"/>
+                            <constraint firstItem="K4T-3h-2MC" firstAttribute="leading" secondItem="TkM-Pm-d5s" secondAttribute="leading" constant="20" id="V2z-pb-iBe"/>
+                            <constraint firstItem="K4T-3h-2MC" firstAttribute="top" secondItem="Hm6-WG-kdT" secondAttribute="bottom" constant="8" id="byq-Nj-ZAH"/>
+                            <constraint firstItem="Hm6-WG-kdT" firstAttribute="top" secondItem="TkM-Pm-d5s" secondAttribute="top" constant="24" id="f16-1r-lWg"/>
+                            <constraint firstItem="Hm6-WG-kdT" firstAttribute="leading" secondItem="TkM-Pm-d5s" secondAttribute="leading" constant="20" id="fQq-oN-Fcu"/>
+                            <constraint firstAttribute="trailing" secondItem="K4T-3h-2MC" secondAttribute="trailing" constant="20" id="iOc-61-XQd"/>
+                            <constraint firstItem="ucu-SJ-AXX" firstAttribute="leading" secondItem="K4T-3h-2MC" secondAttribute="leading" id="kgM-oz-h38"/>
+                            <constraint firstItem="XWJ-fW-fuT" firstAttribute="leading" secondItem="pjq-ii-fPN" secondAttribute="leading" id="nlR-3z-HA5"/>
+                            <constraint firstItem="Ccb-MS-qiG" firstAttribute="top" secondItem="pjq-ii-fPN" secondAttribute="bottom" constant="8" id="pRG-VA-Z1a"/>
+                            <constraint firstItem="ucu-SJ-AXX" firstAttribute="top" secondItem="XWJ-fW-fuT" secondAttribute="bottom" constant="8" id="t3W-ee-U6O"/>
+                            <constraint firstItem="Ccb-MS-qiG" firstAttribute="leading" secondItem="TkM-Pm-d5s" secondAttribute="leading" constant="20" symbolic="YES" id="uGU-Td-gqf"/>
+                            <constraint firstItem="nW4-ha-5f3" firstAttribute="leading" secondItem="Ccb-MS-qiG" secondAttribute="trailing" constant="12" id="wHF-8b-WB3"/>
+                            <constraint firstAttribute="bottom" secondItem="ucu-SJ-AXX" secondAttribute="bottom" constant="24" id="z7n-nG-yZX"/>
+                        </constraints>
+                    </view>
+                </subviews>
+                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                <constraints>
+                    <constraint firstAttribute="trailing" secondItem="TkM-Pm-d5s" secondAttribute="trailing" id="IUJ-6v-rvZ"/>
+                    <constraint firstItem="TkM-Pm-d5s" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="S8T-ZR-GTb"/>
+                    <constraint firstItem="TkM-Pm-d5s" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="jVN-aH-jSA"/>
+                    <constraint firstAttribute="bottom" secondItem="TkM-Pm-d5s" secondAttribute="bottom" id="l5L-RV-gC6"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <connections>
+                <outlet property="recipientAddressLabel" destination="K4T-3h-2MC" id="OkN-CK-eOv"/>
+                <outlet property="recipientAddressTitle" destination="Hm6-WG-kdT" id="23R-Ji-qNq"/>
+                <outlet property="sendNftImg" destination="Ccb-MS-qiG" id="33u-Yz-oDW"/>
+                <outlet property="sendNftLabel" destination="nW4-ha-5f3" id="T6x-6h-lrP"/>
+                <outlet property="sendNftTitle" destination="pjq-ii-fPN" id="am1-8R-OLh"/>
+                <outlet property="txFeeLabel" destination="ucu-SJ-AXX" id="oaB-Qg-nJJ"/>
+                <outlet property="txFeeTitle" destination="XWJ-fW-fuT" id="4qC-EP-Rea"/>
+            </connections>
+            <point key="canvasLocation" x="358.77862595419845" y="107.04225352112677"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="nft_default" width="143" height="143"/>
+        <namedColor name="base04">
+            <color red="0.59607843137254901" green="0.68235294117647061" blue="0.84705882352941175" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="base05">
+            <color red="0.13333333333333333" green="0.13333333333333333" blue="0.13333333333333333" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
+</document>

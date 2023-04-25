@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="Pretendard-SemiBold.otf">
+            <string>Pretendard-SemiBold</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="258" id="KGk-i7-Jjw" customClass="TxCheckStakeCell" customModule="SplashWallet" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="521" height="258"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="521" height="258"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tcU-jK-eaN">
+                        <rect key="frame" x="0.0" y="0.0" width="521" height="258"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Validator" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fla-pH-ihk">
+                                <rect key="frame" x="20" y="24" width="66.333333333333329" height="20"/>
+                                <fontDescription key="fontDescription" name="Pretendard-SemiBold" family="Pretendard" pointSize="16"/>
+                                <color key="textColor" name="base04"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="address" lineBreakMode="middleTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eh8-PQ-p1M">
+                                <rect key="frame" x="20" y="52" width="481" height="19.333333333333329"/>
+                                <fontDescription key="fontDescription" name="Pretendard-SemiBold" family="Pretendard" pointSize="16"/>
+                                <color key="textColor" name="base05"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Staking Amount" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4AB-cA-79V">
+                                <rect key="frame" x="20.000000000000007" y="99.333333333333329" width="118.66666666666669" height="20"/>
+                                <fontDescription key="fontDescription" name="Pretendard-SemiBold" family="Pretendard" pointSize="16"/>
+                                <color key="textColor" name="base04"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="stake amount" lineBreakMode="middleTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CFW-Bj-1vR">
+                                <rect key="frame" x="20" y="127.33333333333331" width="481" height="19.333333333333371"/>
+                                <fontDescription key="fontDescription" name="Pretendard-SemiBold" family="Pretendard" pointSize="16"/>
+                                <color key="textColor" name="base05"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Tx Fee " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zGk-dD-65p">
+                                <rect key="frame" x="20.000000000000004" y="174.66666666666666" width="52.333333333333343" height="20"/>
+                                <fontDescription key="fontDescription" name="Pretendard-SemiBold" family="Pretendard" pointSize="16"/>
+                                <color key="textColor" name="base04"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="tx fee" lineBreakMode="middleTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hWI-VA-8Ls">
+                                <rect key="frame" x="20" y="202.66666666666663" width="481" height="19.333333333333343"/>
+                                <fontDescription key="fontDescription" name="Pretendard-SemiBold" family="Pretendard" pointSize="16"/>
+                                <color key="textColor" name="base05"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="eh8-PQ-p1M" secondAttribute="trailing" constant="20" id="0qS-QE-SNy"/>
+                            <constraint firstItem="4AB-cA-79V" firstAttribute="leading" secondItem="fla-pH-ihk" secondAttribute="leading" id="4vE-dr-V2L"/>
+                            <constraint firstItem="fla-pH-ihk" firstAttribute="top" secondItem="tcU-jK-eaN" secondAttribute="top" constant="24" id="611-ti-SeF"/>
+                            <constraint firstItem="CFW-Bj-1vR" firstAttribute="leading" secondItem="eh8-PQ-p1M" secondAttribute="leading" id="6If-uI-Tf3"/>
+                            <constraint firstItem="eh8-PQ-p1M" firstAttribute="top" secondItem="fla-pH-ihk" secondAttribute="bottom" constant="8" id="CHN-uQ-94y"/>
+                            <constraint firstAttribute="bottom" secondItem="hWI-VA-8Ls" secondAttribute="bottom" constant="24" id="Eib-Mu-9Lv"/>
+                            <constraint firstItem="fla-pH-ihk" firstAttribute="leading" secondItem="tcU-jK-eaN" secondAttribute="leading" constant="20" id="HzI-Mn-2mT"/>
+                            <constraint firstItem="hWI-VA-8Ls" firstAttribute="trailing" secondItem="CFW-Bj-1vR" secondAttribute="trailing" id="Mrg-S2-uTi"/>
+                            <constraint firstItem="zGk-dD-65p" firstAttribute="leading" secondItem="4AB-cA-79V" secondAttribute="leading" id="VXN-0N-5qJ"/>
+                            <constraint firstItem="eh8-PQ-p1M" firstAttribute="leading" secondItem="tcU-jK-eaN" secondAttribute="leading" constant="20" id="WFv-aO-zXn"/>
+                            <constraint firstItem="CFW-Bj-1vR" firstAttribute="trailing" secondItem="eh8-PQ-p1M" secondAttribute="trailing" id="XVm-WR-hxX"/>
+                            <constraint firstItem="4AB-cA-79V" firstAttribute="top" secondItem="eh8-PQ-p1M" secondAttribute="bottom" constant="28" id="ee0-5L-jK7"/>
+                            <constraint firstItem="CFW-Bj-1vR" firstAttribute="top" secondItem="4AB-cA-79V" secondAttribute="bottom" constant="8" id="h8i-Tq-TDz"/>
+                            <constraint firstItem="hWI-VA-8Ls" firstAttribute="top" secondItem="zGk-dD-65p" secondAttribute="bottom" constant="8" id="mf1-DL-kiF"/>
+                            <constraint firstItem="hWI-VA-8Ls" firstAttribute="leading" secondItem="CFW-Bj-1vR" secondAttribute="leading" id="npq-g4-pvu"/>
+                            <constraint firstItem="zGk-dD-65p" firstAttribute="top" secondItem="CFW-Bj-1vR" secondAttribute="bottom" constant="28" id="r2n-5o-u10"/>
+                        </constraints>
+                    </view>
+                </subviews>
+                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                <color key="tintColor" name="base05"/>
+                <constraints>
+                    <constraint firstItem="tcU-jK-eaN" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="4JV-dK-YHr"/>
+                    <constraint firstAttribute="trailing" secondItem="tcU-jK-eaN" secondAttribute="trailing" id="6B8-7s-ZGY"/>
+                    <constraint firstItem="tcU-jK-eaN" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="IIz-34-q24"/>
+                    <constraint firstAttribute="bottom" secondItem="tcU-jK-eaN" secondAttribute="bottom" id="T50-jB-7k6"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <color key="tintColor" name="base05"/>
+            <connections>
+                <outlet property="stakeAmountLabel" destination="CFW-Bj-1vR" id="ANC-WH-vEc"/>
+                <outlet property="stakeAmountTitle" destination="4AB-cA-79V" id="bZ7-Um-VAU"/>
+                <outlet property="txFeeLabel" destination="hWI-VA-8Ls" id="k4D-PA-g3u"/>
+                <outlet property="txFeeTitle" destination="zGk-dD-65p" id="igD-dx-CXd"/>
+                <outlet property="validatorLabel" destination="eh8-PQ-p1M" id="Toi-y8-jHc"/>
+                <outlet property="validatorTitle" destination="fla-pH-ihk" id="jzw-Jf-vwY"/>
+            </connections>
+            <point key="canvasLocation" x="286.25954198473283" y="95.774647887323951"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <namedColor name="base04">
+            <color red="0.59600001573562622" green="0.68199998140335083" blue="0.84700000286102295" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="base05">
+            <color red="0.13300000131130219" green="0.13300000131130219" blue="0.13300000131130219" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
+</document>

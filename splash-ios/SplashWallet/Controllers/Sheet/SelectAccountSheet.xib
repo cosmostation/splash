@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="Pretendard-SemiBold.otf">
+            <string>Pretendard-SemiBold</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SelectAccountSheet" customModule="SplashWallet" customModuleProvider="target">
+            <connections>
+                <outlet property="accountsTableView" destination="HyF-Vy-fmb" id="tHy-8C-M4b"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8El-zj-U2D">
+                    <rect key="frame" x="0.0" y="59" width="393" height="80"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Select Account" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YRK-Ou-6k8">
+                            <rect key="frame" x="20" y="36" width="141" height="24"/>
+                            <fontDescription key="fontDescription" name="Pretendard-SemiBold" family="Pretendard" pointSize="20"/>
+                            <color key="textColor" name="base05"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ok3-KK-y33">
+                            <rect key="frame" x="343" y="27" width="42" height="42"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="42" id="ZHh-IN-7Qk"/>
+                                <constraint firstAttribute="height" constant="42" id="bMQ-Hd-G67"/>
+                            </constraints>
+                            <color key="tintColor" name="base04"/>
+                            <state key="normal" title="Button"/>
+                            <buttonConfiguration key="configuration" style="plain" image="icon_set"/>
+                            <connections>
+                                <action selector="onClickDetail:" destination="-1" eventType="touchUpInside" id="Bcf-va-sT8"/>
+                            </connections>
+                        </button>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Iw5-1G-w3B">
+                            <rect key="frame" x="0.0" y="79" width="393" height="1"/>
+                            <color key="backgroundColor" name="base03"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="1" id="1u1-Yc-jR5"/>
+                            </constraints>
+                        </view>
+                    </subviews>
+                    <color key="backgroundColor" name="base01"/>
+                    <constraints>
+                        <constraint firstItem="Ok3-KK-y33" firstAttribute="centerY" secondItem="YRK-Ou-6k8" secondAttribute="centerY" id="6oy-6O-CLn"/>
+                        <constraint firstAttribute="bottom" secondItem="Iw5-1G-w3B" secondAttribute="bottom" id="C7r-4m-g98"/>
+                        <constraint firstAttribute="bottom" secondItem="YRK-Ou-6k8" secondAttribute="bottom" constant="20" id="EJT-Cb-Eg5"/>
+                        <constraint firstItem="YRK-Ou-6k8" firstAttribute="leading" secondItem="8El-zj-U2D" secondAttribute="leading" constant="20" id="L1n-69-cTT"/>
+                        <constraint firstAttribute="trailing" secondItem="Iw5-1G-w3B" secondAttribute="trailing" id="eS4-YF-0Ux"/>
+                        <constraint firstItem="Iw5-1G-w3B" firstAttribute="leading" secondItem="8El-zj-U2D" secondAttribute="leading" id="eZM-4n-aFN"/>
+                        <constraint firstAttribute="height" constant="80" id="ffd-24-SdL"/>
+                        <constraint firstAttribute="trailing" secondItem="Ok3-KK-y33" secondAttribute="trailing" constant="8" id="fwM-ga-IZr"/>
+                    </constraints>
+                </view>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="HyF-Vy-fmb">
+                    <rect key="frame" x="0.0" y="139" width="393" height="713"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                </tableView>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
+            <color key="backgroundColor" name="base01"/>
+            <color key="tintColor" name="base05"/>
+            <constraints>
+                <constraint firstAttribute="bottom" secondItem="HyF-Vy-fmb" secondAttribute="bottom" id="1PR-pG-YGx"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="leading" secondItem="8El-zj-U2D" secondAttribute="leading" id="1mu-mc-tsa"/>
+                <constraint firstItem="HyF-Vy-fmb" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="4Nf-zY-RXR"/>
+                <constraint firstItem="HyF-Vy-fmb" firstAttribute="top" secondItem="8El-zj-U2D" secondAttribute="bottom" id="Rks-84-czf"/>
+                <constraint firstItem="8El-zj-U2D" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="YX3-fv-8JG"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="leading" secondItem="HyF-Vy-fmb" secondAttribute="leading" id="gfH-jh-7nl"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="8El-zj-U2D" secondAttribute="trailing" id="l5E-kF-8XS"/>
+            </constraints>
+            <point key="canvasLocation" x="140" y="21"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="icon_set" width="24" height="24"/>
+        <namedColor name="base01">
+            <color red="0.98431372549019602" green="0.9882352941176471" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="base03">
+            <color red="0.90196078431372551" green="0.92549019607843142" blue="0.98431372549019602" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="base04">
+            <color red="0.59607843137254901" green="0.68235294117647061" blue="0.84705882352941175" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="base05">
+            <color red="0.13333333333333333" green="0.13333333333333333" blue="0.13333333333333333" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
+</document>

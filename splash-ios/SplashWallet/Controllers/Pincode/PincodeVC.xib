@@ -1,0 +1,364 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21678"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="Pretendard-Bold.otf">
+            <string>Pretendard-Bold</string>
+        </array>
+        <array key="Pretendard-SemiBold.otf">
+            <string>Pretendard-SemiBold</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="PincodeVC" customModule="SplashWallet" customModuleProvider="target">
+            <connections>
+                <outlet property="bioBtn" destination="9nC-0Q-YAD" id="OZw-9Q-rY0"/>
+                <outlet property="pinBtn0" destination="ZaJ-me-Gjz" id="4dO-bH-oA0"/>
+                <outlet property="pinBtn1" destination="XBm-03-iPh" id="ATZ-TK-dBp"/>
+                <outlet property="pinBtn2" destination="sEV-N6-Lvz" id="RGH-wn-nQq"/>
+                <outlet property="pinBtn3" destination="A98-tc-kja" id="TqE-xV-7mw"/>
+                <outlet property="pinBtn4" destination="GYS-ph-fE2" id="Bqz-mW-hzc"/>
+                <outlet property="pinBtn5" destination="mVy-O9-65c" id="vl6-Sv-Fbm"/>
+                <outlet property="pinBtn6" destination="MdR-DA-CDr" id="YIj-jw-Qq4"/>
+                <outlet property="pinBtn7" destination="qXI-9h-MK4" id="HEh-Zy-cYZ"/>
+                <outlet property="pinBtn8" destination="9H4-8F-XOJ" id="Pt3-cd-Svz"/>
+                <outlet property="pinBtn9" destination="Z9V-pl-jfX" id="H5w-hn-5VG"/>
+                <outlet property="pinMsgLabel" destination="KIm-bP-vup" id="wrQ-14-I1U"/>
+                <outlet property="stateImgView0" destination="UKB-Rg-sjK" id="kj3-vI-Aps"/>
+                <outlet property="stateImgView1" destination="NeF-NJ-Pjm" id="Mhr-rs-yVJ"/>
+                <outlet property="stateImgView2" destination="31x-av-D99" id="S4I-a2-h0Y"/>
+                <outlet property="stateImgView3" destination="tGx-0x-n59" id="Mtt-3A-cu9"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Spp-aP-iJa">
+                    <rect key="frame" x="0.0" y="48" width="414" height="538"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Enter PIN" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KIm-bP-vup">
+                            <rect key="frame" x="164" y="202" width="86" height="24"/>
+                            <fontDescription key="fontDescription" name="Pretendard-SemiBold" family="Pretendard" pointSize="20"/>
+                            <color key="textColor" name="text01"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="E6i-SJ-nQA">
+                            <rect key="frame" x="113" y="250" width="188" height="38"/>
+                            <subviews>
+                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="circle.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="UKB-Rg-sjK">
+                                    <rect key="frame" x="0.0" y="0.5" width="38" height="37"/>
+                                    <color key="tintColor" name="base04"/>
+                                    <constraints>
+                                        <constraint firstAttribute="width" constant="38" id="Oyd-Rd-kfU"/>
+                                    </constraints>
+                                </imageView>
+                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="circle.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="NeF-NJ-Pjm">
+                                    <rect key="frame" x="50" y="0.5" width="38" height="37"/>
+                                    <color key="tintColor" name="base04"/>
+                                    <constraints>
+                                        <constraint firstAttribute="width" constant="38" id="pRs-2x-rjQ"/>
+                                    </constraints>
+                                </imageView>
+                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="circle.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="31x-av-D99">
+                                    <rect key="frame" x="100" y="0.5" width="38" height="37"/>
+                                    <color key="tintColor" name="base04"/>
+                                    <constraints>
+                                        <constraint firstAttribute="width" constant="38" id="nhA-fx-Jeh"/>
+                                    </constraints>
+                                </imageView>
+                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="circle.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="tGx-0x-n59">
+                                    <rect key="frame" x="150" y="0.5" width="38" height="37"/>
+                                    <color key="tintColor" name="base04"/>
+                                    <constraints>
+                                        <constraint firstAttribute="width" constant="38" id="wad-kG-Q6G"/>
+                                    </constraints>
+                                </imageView>
+                            </subviews>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="38" id="zb4-Qv-M3S"/>
+                            </constraints>
+                        </stackView>
+                    </subviews>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstItem="E6i-SJ-nQA" firstAttribute="top" secondItem="KIm-bP-vup" secondAttribute="bottom" constant="24" id="Cu3-NL-pWZ"/>
+                        <constraint firstItem="KIm-bP-vup" firstAttribute="centerX" secondItem="Spp-aP-iJa" secondAttribute="centerX" id="DcM-kP-6y1"/>
+                        <constraint firstItem="E6i-SJ-nQA" firstAttribute="centerX" secondItem="Spp-aP-iJa" secondAttribute="centerX" id="h9X-KW-PwZ"/>
+                        <constraint firstItem="E6i-SJ-nQA" firstAttribute="centerY" secondItem="Spp-aP-iJa" secondAttribute="centerY" id="hlF-bi-AK8"/>
+                    </constraints>
+                </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lDw-3u-l0k">
+                    <rect key="frame" x="0.0" y="594" width="414" height="302"/>
+                    <color key="backgroundColor" name="primary"/>
+                </view>
+                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="6" translatesAutoresizingMaskIntoConstraints="NO" id="uyc-yi-Fsq">
+                    <rect key="frame" x="0.0" y="594" width="414" height="274"/>
+                    <subviews>
+                        <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="6" translatesAutoresizingMaskIntoConstraints="NO" id="aaM-6I-7Wi">
+                            <rect key="frame" x="0.0" y="0.0" width="414" height="64"/>
+                            <subviews>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZaJ-me-Gjz">
+                                    <rect key="frame" x="0.0" y="0.0" width="134" height="64"/>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="64" id="rcS-63-Ice"/>
+                                    </constraints>
+                                    <fontDescription key="fontDescription" name="Pretendard-Bold" family="Pretendard" pointSize="20"/>
+                                    <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                    <state key="normal" title="0">
+                                        <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </state>
+                                    <connections>
+                                        <action selector="onClickNumber:" destination="-1" eventType="touchUpInside" id="Qas-2A-1Mn"/>
+                                    </connections>
+                                </button>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XBm-03-iPh">
+                                    <rect key="frame" x="140" y="0.0" width="134" height="64"/>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="64" id="kRY-eW-v2H"/>
+                                    </constraints>
+                                    <fontDescription key="fontDescription" name="Pretendard-Bold" family="Pretendard" pointSize="20"/>
+                                    <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                    <state key="normal" title="0">
+                                        <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </state>
+                                    <connections>
+                                        <action selector="onClickNumber:" destination="-1" eventType="touchUpInside" id="SMX-NS-dcQ"/>
+                                    </connections>
+                                </button>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sEV-N6-Lvz">
+                                    <rect key="frame" x="280" y="0.0" width="134" height="64"/>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="64" id="Xak-gH-Pun"/>
+                                    </constraints>
+                                    <fontDescription key="fontDescription" name="Pretendard-Bold" family="Pretendard" pointSize="20"/>
+                                    <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                    <state key="normal" title="0">
+                                        <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </state>
+                                    <connections>
+                                        <action selector="onClickNumber:" destination="-1" eventType="touchUpInside" id="fMo-o8-9hX"/>
+                                    </connections>
+                                </button>
+                            </subviews>
+                        </stackView>
+                        <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="6" translatesAutoresizingMaskIntoConstraints="NO" id="NwM-8t-0ji">
+                            <rect key="frame" x="0.0" y="70" width="414" height="64"/>
+                            <subviews>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="A98-tc-kja">
+                                    <rect key="frame" x="0.0" y="0.0" width="134" height="64"/>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="64" id="JgE-Ih-wJc"/>
+                                    </constraints>
+                                    <fontDescription key="fontDescription" name="Pretendard-Bold" family="Pretendard" pointSize="20"/>
+                                    <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                    <state key="normal" title="0">
+                                        <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </state>
+                                    <connections>
+                                        <action selector="onClickNumber:" destination="-1" eventType="touchUpInside" id="lhg-kB-Rdb"/>
+                                    </connections>
+                                </button>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GYS-ph-fE2">
+                                    <rect key="frame" x="140" y="0.0" width="134" height="64"/>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="64" id="zpc-TE-E6S"/>
+                                    </constraints>
+                                    <fontDescription key="fontDescription" name="Pretendard-Bold" family="Pretendard" pointSize="20"/>
+                                    <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                    <state key="normal" title="0">
+                                        <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </state>
+                                    <connections>
+                                        <action selector="onClickNumber:" destination="-1" eventType="touchUpInside" id="2Oo-50-fNz"/>
+                                    </connections>
+                                </button>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mVy-O9-65c">
+                                    <rect key="frame" x="280" y="0.0" width="134" height="64"/>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="64" id="JPS-AO-eLd"/>
+                                    </constraints>
+                                    <fontDescription key="fontDescription" name="Pretendard-Bold" family="Pretendard" pointSize="20"/>
+                                    <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                    <state key="normal" title="0">
+                                        <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </state>
+                                    <connections>
+                                        <action selector="onClickNumber:" destination="-1" eventType="touchUpInside" id="l1U-mb-n7J"/>
+                                    </connections>
+                                </button>
+                            </subviews>
+                        </stackView>
+                        <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="6" translatesAutoresizingMaskIntoConstraints="NO" id="1P6-Ik-UqG">
+                            <rect key="frame" x="0.0" y="140" width="414" height="64"/>
+                            <subviews>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MdR-DA-CDr">
+                                    <rect key="frame" x="0.0" y="0.0" width="134" height="64"/>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="64" id="NvR-fM-5kz"/>
+                                    </constraints>
+                                    <fontDescription key="fontDescription" name="Pretendard-Bold" family="Pretendard" pointSize="20"/>
+                                    <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                    <state key="normal" title="0">
+                                        <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </state>
+                                    <connections>
+                                        <action selector="onClickNumber:" destination="-1" eventType="touchUpInside" id="muL-XB-gYb"/>
+                                    </connections>
+                                </button>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qXI-9h-MK4">
+                                    <rect key="frame" x="140" y="0.0" width="134" height="64"/>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="64" id="8ch-R1-lM7"/>
+                                    </constraints>
+                                    <fontDescription key="fontDescription" name="Pretendard-Bold" family="Pretendard" pointSize="20"/>
+                                    <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                    <state key="normal" title="0">
+                                        <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </state>
+                                    <connections>
+                                        <action selector="onClickNumber:" destination="-1" eventType="touchUpInside" id="sOk-Lc-XfQ"/>
+                                    </connections>
+                                </button>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9H4-8F-XOJ">
+                                    <rect key="frame" x="280" y="0.0" width="134" height="64"/>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="64" id="cOV-67-pcP"/>
+                                    </constraints>
+                                    <fontDescription key="fontDescription" name="Pretendard-Bold" family="Pretendard" pointSize="20"/>
+                                    <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                    <state key="normal" title="0">
+                                        <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </state>
+                                    <connections>
+                                        <action selector="onClickNumber:" destination="-1" eventType="touchUpInside" id="wV5-qy-ZMl"/>
+                                    </connections>
+                                </button>
+                            </subviews>
+                        </stackView>
+                        <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="6" translatesAutoresizingMaskIntoConstraints="NO" id="QK5-BJ-ffd">
+                            <rect key="frame" x="0.0" y="210" width="414" height="64"/>
+                            <subviews>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9nC-0Q-YAD">
+                                    <rect key="frame" x="0.0" y="0.0" width="134" height="64"/>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="64" id="w8g-04-AQX"/>
+                                    </constraints>
+                                    <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <state key="normal" title="Button"/>
+                                    <buttonConfiguration key="configuration" style="plain"/>
+                                    <connections>
+                                        <action selector="onClickBio:" destination="-1" eventType="touchUpInside" id="Xq7-NP-VhG"/>
+                                    </connections>
+                                </button>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Z9V-pl-jfX">
+                                    <rect key="frame" x="140" y="0.0" width="134" height="64"/>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="64" id="10Z-9a-gBW"/>
+                                    </constraints>
+                                    <fontDescription key="fontDescription" name="Pretendard-Bold" family="Pretendard" pointSize="20"/>
+                                    <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                    <state key="normal" title="0">
+                                        <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </state>
+                                    <connections>
+                                        <action selector="onClickNumber:" destination="-1" eventType="touchUpInside" id="o2D-Wm-fEB"/>
+                                    </connections>
+                                </button>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2Ey-v0-dkC">
+                                    <rect key="frame" x="280" y="0.0" width="134" height="64"/>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="64" id="1rk-jm-NCA"/>
+                                    </constraints>
+                                    <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <state key="normal" title="Button"/>
+                                    <buttonConfiguration key="configuration" style="plain" image="arrowshape.backward.fill" catalog="system"/>
+                                    <connections>
+                                        <action selector="onClickDelete:" destination="-1" eventType="touchUpInside" id="97r-Sy-pvm"/>
+                                    </connections>
+                                </button>
+                            </subviews>
+                        </stackView>
+                    </subviews>
+                    <constraints>
+                        <constraint firstAttribute="trailing" secondItem="aaM-6I-7Wi" secondAttribute="trailing" id="6NF-ra-ImX"/>
+                        <constraint firstItem="1P6-Ik-UqG" firstAttribute="trailing" secondItem="aaM-6I-7Wi" secondAttribute="trailing" id="FfR-Dh-BDw"/>
+                        <constraint firstItem="1P6-Ik-UqG" firstAttribute="leading" secondItem="aaM-6I-7Wi" secondAttribute="leading" id="HSC-Ev-YEc"/>
+                        <constraint firstItem="QK5-BJ-ffd" firstAttribute="trailing" secondItem="aaM-6I-7Wi" secondAttribute="trailing" id="PLT-8L-gc6"/>
+                        <constraint firstItem="aaM-6I-7Wi" firstAttribute="leading" secondItem="uyc-yi-Fsq" secondAttribute="leading" id="YMj-6o-fbx"/>
+                        <constraint firstItem="QK5-BJ-ffd" firstAttribute="leading" secondItem="aaM-6I-7Wi" secondAttribute="leading" id="eO1-cD-GEy"/>
+                        <constraint firstItem="NwM-8t-0ji" firstAttribute="leading" secondItem="aaM-6I-7Wi" secondAttribute="leading" id="gOx-X6-RBH"/>
+                        <constraint firstItem="NwM-8t-0ji" firstAttribute="trailing" secondItem="aaM-6I-7Wi" secondAttribute="trailing" id="l1u-1T-8Ok"/>
+                    </constraints>
+                </stackView>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
+            <color key="backgroundColor" name="base01"/>
+            <color key="tintColor" name="base05"/>
+            <constraints>
+                <constraint firstItem="lDw-3u-l0k" firstAttribute="top" secondItem="uyc-yi-Fsq" secondAttribute="top" id="3ha-0h-MtV"/>
+                <constraint firstItem="Spp-aP-iJa" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="3xg-3P-k7w"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="Spp-aP-iJa" secondAttribute="trailing" id="Brk-t1-BLY"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="uyc-yi-Fsq" secondAttribute="trailing" id="CAa-yG-8Sw"/>
+                <constraint firstItem="uyc-yi-Fsq" firstAttribute="bottom" secondItem="fnl-2z-Ty3" secondAttribute="bottom" constant="6" id="DVX-zr-CAe"/>
+                <constraint firstAttribute="bottom" secondItem="lDw-3u-l0k" secondAttribute="bottom" id="GVt-Yy-Zm0"/>
+                <constraint firstItem="Spp-aP-iJa" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="fKP-Jb-yaz"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="lDw-3u-l0k" secondAttribute="trailing" id="i4B-wf-Sen"/>
+                <constraint firstItem="lDw-3u-l0k" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="meq-lA-cqe"/>
+                <constraint firstItem="uyc-yi-Fsq" firstAttribute="top" secondItem="Spp-aP-iJa" secondAttribute="bottom" constant="8" symbolic="YES" id="o8C-BE-43l"/>
+                <constraint firstItem="uyc-yi-Fsq" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="rOf-iz-WNv"/>
+            </constraints>
+            <point key="canvasLocation" x="131" y="-11"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="arrowshape.backward.fill" catalog="system" width="128" height="104"/>
+        <image name="circle.fill" catalog="system" width="128" height="123"/>
+        <namedColor name="base01">
+            <color red="0.98400002717971802" green="0.98799997568130493" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="base04">
+            <color red="0.59600001573562622" green="0.68199998140335083" blue="0.84700000286102295" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="base05">
+            <color red="0.13300000131130219" green="0.13300000131130219" blue="0.13300000131130219" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="primary">
+            <color red="0.19200000166893005" green="0.50999999046325684" blue="0.96100002527236938" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="text01">
+            <color red="0.13300000131130219" green="0.13300000131130219" blue="0.13300000131130219" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
+</document>

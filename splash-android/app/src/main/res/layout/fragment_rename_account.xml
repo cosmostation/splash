@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:paddingBottom="16dp">
+
+    <View
+        android:layout_width="60dp"
+        android:layout_height="4dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/drawable_bottom_sheet_handle" />
+
+    <TextView
+        style="@style/BottomSheetTitle"
+        android:layout_marginTop="16dp"
+        android:text="@string/rename_account" />
+
+    <TextView
+        style="@style/TextViewH5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="30dp"
+        android:text="@string/account_name"
+        android:textColor="@color/color_mode_base04" />
+
+
+    <EditText
+        android:id="@+id/name"
+        style="@style/InputEditText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:lines="1"
+        tools:text="Account" />
+
+    <Button
+        android:id="@+id/confirm_btn"
+        style="@style/FlatButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        android:text="@string/confirm" />
+</LinearLayout>

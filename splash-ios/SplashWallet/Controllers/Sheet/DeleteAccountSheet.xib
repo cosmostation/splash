@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="Pretendard-SemiBold.otf">
+            <string>Pretendard-SemiBold</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="DeleteAccountSheet" customModule="SplashWallet" customModuleProvider="target">
+            <connections>
+                <outlet property="addressLabel" destination="Zsm-1L-Eqb" id="Itp-qz-l3U"/>
+                <outlet property="deleteAccountTitle" destination="Jel-10-Uq0" id="tFM-K8-pt9"/>
+                <outlet property="deleteBtn" destination="EZt-Jm-hhX" id="6wI-Kc-0HS"/>
+                <outlet property="deleteMsgLabel" destination="lK5-ZB-aT7" id="S1w-tw-hAH"/>
+                <outlet property="nameLabel" destination="XWM-Eu-e5A" id="fIA-e4-ZKd"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DZs-ed-0ie">
+                    <rect key="frame" x="0.0" y="59" width="393" height="80"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Delete Account" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jel-10-Uq0">
+                            <rect key="frame" x="20" y="36" width="142.66666666666666" height="24"/>
+                            <fontDescription key="fontDescription" name="Pretendard-SemiBold" family="Pretendard" pointSize="20"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                    <color key="backgroundColor" name="base01"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="80" id="gIS-gh-lzq"/>
+                        <constraint firstAttribute="bottom" secondItem="Jel-10-Uq0" secondAttribute="bottom" constant="20" id="hXe-W6-U2V"/>
+                        <constraint firstItem="Jel-10-Uq0" firstAttribute="leading" secondItem="DZs-ed-0ie" secondAttribute="leading" constant="20" id="k7o-tC-4oW"/>
+                    </constraints>
+                </view>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lK5-ZB-aT7">
+                    <rect key="frame" x="20" y="147" width="353" height="50.333333333333343"/>
+                    <string key="text">Are you sure you would like to delete this wallet?
+Make sure you have backup of your wallet's mnemonic phrase if you want to restore it later.</string>
+                    <fontDescription key="fontDescription" name="Pretendard-SemiBold" family="Pretendard" pointSize="14"/>
+                    <color key="textColor" name="red"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Klz-NZ-n9M" customClass="CardView" customModule="SplashWallet" customModuleProvider="target">
+                    <rect key="frame" x="16" y="213.33333333333334" width="361" height="80.000000000000028"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XWM-Eu-e5A">
+                            <rect key="frame" x="12" y="7.9999999999999982" width="337" height="19.333333333333329"/>
+                            <fontDescription key="fontDescription" name="Pretendard-SemiBold" family="Pretendard" pointSize="16"/>
+                            <color key="textColor" name="base05"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="aaaa" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Zsm-1L-Eqb">
+                            <rect key="frame" x="12" y="35.333333333333314" width="337" height="17"/>
+                            <fontDescription key="fontDescription" name="Pretendard-SemiBold" family="Pretendard" pointSize="14"/>
+                            <color key="textColor" name="base04"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    <constraints>
+                        <constraint firstAttribute="trailing" secondItem="Zsm-1L-Eqb" secondAttribute="trailing" constant="12" id="3xB-29-OFS"/>
+                        <constraint firstItem="XWM-Eu-e5A" firstAttribute="top" secondItem="Klz-NZ-n9M" secondAttribute="top" constant="8" id="GI1-Pb-V6s"/>
+                        <constraint firstItem="XWM-Eu-e5A" firstAttribute="leading" secondItem="Klz-NZ-n9M" secondAttribute="leading" constant="12" id="IX1-lQ-y8u"/>
+                        <constraint firstAttribute="height" constant="80" id="X9x-lh-Xlg"/>
+                        <constraint firstItem="Zsm-1L-Eqb" firstAttribute="top" secondItem="XWM-Eu-e5A" secondAttribute="bottom" constant="8" id="lMK-de-Tl2"/>
+                        <constraint firstAttribute="trailing" secondItem="XWM-Eu-e5A" secondAttribute="trailing" constant="12" id="oW1-kD-Oio"/>
+                        <constraint firstItem="Zsm-1L-Eqb" firstAttribute="leading" secondItem="Klz-NZ-n9M" secondAttribute="leading" constant="12" id="pVV-Zn-Bwq"/>
+                    </constraints>
+                </view>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EZt-Jm-hhX" customClass="RedButton" customModule="SplashWallet" customModuleProvider="target">
+                    <rect key="frame" x="16" y="756" width="361" height="54"/>
+                    <color key="backgroundColor" name="red"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="54" id="bff-DS-Tb1"/>
+                    </constraints>
+                    <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                    <state key="normal" title="Delete">
+                        <color key="titleColor" name="base01"/>
+                    </state>
+                    <connections>
+                        <action selector="onClickDelete:" destination="-1" eventType="touchUpInside" id="QCN-P4-Alm"/>
+                    </connections>
+                </button>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
+            <color key="backgroundColor" name="base01"/>
+            <color key="tintColor" name="base05"/>
+            <constraints>
+                <constraint firstItem="lK5-ZB-aT7" firstAttribute="top" secondItem="DZs-ed-0ie" secondAttribute="bottom" constant="8" id="9Ce-pz-7Wu"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="Klz-NZ-n9M" secondAttribute="trailing" constant="16" id="Cbq-m4-iO7"/>
+                <constraint firstItem="lK5-ZB-aT7" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="20" id="HCk-pe-ogt"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="EZt-Jm-hhX" secondAttribute="bottom" constant="8" id="KMw-ce-sdh"/>
+                <constraint firstItem="DZs-ed-0ie" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="MPl-Tf-Nqh"/>
+                <constraint firstItem="DZs-ed-0ie" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="XD2-KJ-XNc"/>
+                <constraint firstItem="EZt-Jm-hhX" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="16" id="XLd-eP-vKB"/>
+                <constraint firstItem="DZs-ed-0ie" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="Xw7-UQ-DHp"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="EZt-Jm-hhX" secondAttribute="trailing" constant="16" id="abX-dS-04w"/>
+                <constraint firstItem="Klz-NZ-n9M" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="16" id="eNK-JN-fqV"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="lK5-ZB-aT7" secondAttribute="trailing" constant="20" id="sbF-x0-O1C"/>
+                <constraint firstItem="Klz-NZ-n9M" firstAttribute="top" secondItem="lK5-ZB-aT7" secondAttribute="bottom" constant="16" id="y8e-NY-Lnu"/>
+            </constraints>
+            <point key="canvasLocation" x="91" y="21"/>
+        </view>
+    </objects>
+    <resources>
+        <namedColor name="base01">
+            <color red="0.98431372549019602" green="0.9882352941176471" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="base04">
+            <color red="0.59607843137254901" green="0.68235294117647061" blue="0.84705882352941175" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="base05">
+            <color red="0.13333333333333333" green="0.13333333333333333" blue="0.13333333333333333" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="red">
+            <color red="0.80400002002716064" green="0.10199999809265137" blue="0.10199999809265137" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

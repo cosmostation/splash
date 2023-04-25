@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <TextView
+        style="@style/TextViewLabel"
+        android:layout_marginTop="15dp"
+        android:text="@string/seed_phrase" />
+
+    <EditText
+        android:id="@+id/mnemonic"
+        style="@style/InputEditText"
+        android:layout_marginTop="12dp"
+        android:importantForAutofill="no"
+        android:inputType="textMultiLine"
+        android:lineSpacingExtra="10dp"
+        android:minLines="3" />
+
+    <TextView
+        style="@style/TextViewLabel"
+        android:layout_marginTop="40dp"
+        android:text="@string/account_name" />
+
+    <EditText
+        android:id="@+id/name"
+        style="@style/InputEditText"
+        android:layout_marginTop="12dp"
+        android:importantForAutofill="no"
+        android:inputType="text"
+        android:maxLength="20" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0dip"
+        android:layout_weight="1" />
+
+    <Button
+        android:id="@+id/next_btn"
+        style="@style/FlatButton"
+        android:layout_marginBottom="16dp"
+        android:background="@drawable/drawable_button_background"
+        android:text="@string/next" />
+
+</LinearLayout>

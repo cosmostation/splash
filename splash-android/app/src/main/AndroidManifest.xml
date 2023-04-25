@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <uses-permission android:name="android.permission.INTERNET" />
+
+    <application
+        android:name=".SplashWalletApp"
+        android:allowBackup="true"
+        android:appComponentFactory="whateverString"
+        android:hardwareAccelerated="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:supportsRtl="false"
+        android:theme="@style/AppTheme"
+        android:usesCleartextTraffic="true"
+        tools:replace="android:appComponentFactory">
+        <activity android:name=".ui.password.PinActivity" />
+        <activity
+            android:name=".ui.nft.NftDetailActivity"
+            android:theme="@style/ActionBarAppTheme" />
+        <activity android:name=".ui.transaction.TransactionResultActivity" />
+        <activity
+            android:name=".ui.nft.NftSendActivity"
+            android:theme="@style/ActionBarAppTheme"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name=".ui.main.MainActivity"
+            android:exported="true"
+            android:launchMode="singleTask"
+            android:theme="@style/AppTheme">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".ui.wallet.ViewMnemonicActivity"
+            android:theme="@style/ActionBarAppTheme" />
+        <activity
+            android:name=".ui.wallet.WalletAddIntroActivity"
+            android:launchMode="singleTask"
+            android:theme="@style/ActionBarAppTheme" />
+        <activity
+            android:name=".ui.account.setting.AccountSettingActivity"
+            android:theme="@style/ActionBarAppTheme" />
+        <activity
+            android:name=".ui.coin.CoinSendActivity"
+            android:theme="@style/ActionBarAppTheme"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name=".ui.wallet.WalletReceiveActivity"
+            android:theme="@style/ActionBarAppTheme" />
+        <activity
+            android:name="com.journeyapps.barcodescanner.CaptureActivity"
+            android:screenOrientation="fullSensor"
+            tools:replace="screenOrientation" />
+        <activity
+            android:name=".ui.app.DappActivity"
+            android:exported="true"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait"></activity>
+        <activity
+            android:name=".ui.app.WalletConnectActivity"
+            android:exported="true"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait">
+            <intent-filter>
+                <data android:scheme="wc" />
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+
+                <data
+                    android:host="wc"
+                    android:scheme="splashwallet" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+
+                <data
+                    android:host="dapp"
+                    android:scheme="splashwallet" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+
+                <data
+                    android:host="internaldapp"
+                    android:scheme="splashwallet" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".ui.staking.StakingActivity"
+            android:theme="@style/ActionBarAppTheme" />
+        <activity
+            android:name=".ui.staking.StakingStakeActivity"
+            android:theme="@style/ActionBarAppTheme" />
+        <activity
+            android:name=".ui.staking.StakingObjectListActivity"
+            android:theme="@style/ActionBarAppTheme" />
+        <activity
+            android:name=".ui.wallet.ImportMnemonicActivity"
+            android:theme="@style/ActionBarAppTheme"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name=".ui.wallet.WalletCreateActivity"
+            android:theme="@style/ActionBarAppTheme"
+            android:windowSoftInputMode="adjustPan" />
+    </application>
+
+</manifest>

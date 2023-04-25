@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="Pretendard-SemiBold.otf">
+            <string>Pretendard-SemiBold</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="81" id="KGk-i7-Jjw" customClass="SelectBookCell" customModule="SplashWallet" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="470" height="81"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="470" height="81"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aLY-VQ-rre">
+                        <rect key="frame" x="0.0" y="0.0" width="470" height="81"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1um-11-02Q">
+                                <rect key="frame" x="20" y="12" width="430" height="19.333333333333329"/>
+                                <fontDescription key="fontDescription" name="Pretendard-SemiBold" family="Pretendard" pointSize="16"/>
+                                <color key="textColor" name="base05"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="address" textAlignment="natural" lineBreakMode="middleTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Tm5-Z0-z2N">
+                                <rect key="frame" x="20" y="41.333333333333336" width="430" height="17"/>
+                                <fontDescription key="fontDescription" name="Pretendard-SemiBold" family="Pretendard" pointSize="14"/>
+                                <color key="textColor" name="base04"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DzH-hw-UhT">
+                                <rect key="frame" x="0.0" y="80" width="470" height="1"/>
+                                <color key="backgroundColor" name="base03"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="1" id="Tbt-EV-M8s"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="1um-11-02Q" firstAttribute="top" secondItem="aLY-VQ-rre" secondAttribute="top" constant="12" id="1Q0-4u-prC"/>
+                            <constraint firstItem="DzH-hw-UhT" firstAttribute="leading" secondItem="aLY-VQ-rre" secondAttribute="leading" id="Atf-qA-28v"/>
+                            <constraint firstAttribute="trailing" secondItem="DzH-hw-UhT" secondAttribute="trailing" id="MXb-de-mtD"/>
+                            <constraint firstItem="1um-11-02Q" firstAttribute="leading" secondItem="aLY-VQ-rre" secondAttribute="leading" constant="20" id="bnS-Ja-obw"/>
+                            <constraint firstItem="Tm5-Z0-z2N" firstAttribute="top" secondItem="1um-11-02Q" secondAttribute="bottom" constant="10" id="f0D-yB-5Tp"/>
+                            <constraint firstItem="Tm5-Z0-z2N" firstAttribute="trailing" secondItem="1um-11-02Q" secondAttribute="trailing" id="lf7-Ke-lVN"/>
+                            <constraint firstItem="Tm5-Z0-z2N" firstAttribute="leading" secondItem="1um-11-02Q" secondAttribute="leading" id="q99-61-BYs"/>
+                            <constraint firstItem="DzH-hw-UhT" firstAttribute="top" secondItem="Tm5-Z0-z2N" secondAttribute="bottom" constant="12" id="tUF-qv-DrF"/>
+                            <constraint firstAttribute="trailing" secondItem="1um-11-02Q" secondAttribute="trailing" constant="20" id="tZR-lA-VKD"/>
+                            <constraint firstAttribute="bottom" secondItem="DzH-hw-UhT" secondAttribute="bottom" id="v9r-ph-Wjb"/>
+                        </constraints>
+                    </view>
+                </subviews>
+                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                <color key="tintColor" name="base05"/>
+                <constraints>
+                    <constraint firstItem="aLY-VQ-rre" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="4d2-Fg-v7S"/>
+                    <constraint firstAttribute="bottom" secondItem="aLY-VQ-rre" secondAttribute="bottom" id="Fig-Hj-wI5"/>
+                    <constraint firstAttribute="trailing" secondItem="aLY-VQ-rre" secondAttribute="trailing" id="iQh-e7-vWp"/>
+                    <constraint firstItem="aLY-VQ-rre" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="rhj-11-Ydq"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <color key="tintColor" name="base05"/>
+            <connections>
+                <outlet property="addressLabel" destination="Tm5-Z0-z2N" id="kNA-EV-VG8"/>
+                <outlet property="nameLabel" destination="1um-11-02Q" id="Wtm-BY-tQZ"/>
+            </connections>
+            <point key="canvasLocation" x="251.90839694656486" y="32.74647887323944"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <namedColor name="base03">
+            <color red="0.90200001001358032" green="0.92500001192092896" blue="0.98400002717971802" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="base04">
+            <color red="0.59600001573562622" green="0.68199998140335083" blue="0.84700000286102295" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="base05">
+            <color red="0.13300000131130219" green="0.13300000131130219" blue="0.13300000131130219" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
+</document>

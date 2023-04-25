@@ -1,0 +1,61 @@
+{
+  "extends": [
+    "plugin:react/recommended",
+    "plugin:react-hooks/recommended",
+    "prettier"
+  ],
+  "parser": "@typescript-eslint/parser",
+  "parserOptions": {
+    "ecmaFeatures": {
+      "jsx": true
+    },
+    "ecmaVersion": 2018,
+    "project": "./tsconfig.json",
+    "sourceType": "module"
+  },
+  "env": {
+    "browser": true,
+    "es6": true,
+    "node": true
+  },
+  "plugins": ["@typescript-eslint", "prettier", "react", "react-hooks", "unused-imports"],
+  "rules": {
+    "eqeqeq": 2,
+    "no-else-return": 2,
+    "no-extra-boolean-cast": 2,
+    "no-lonely-if": 2,
+    "no-return-await": 2,
+    "no-shadow": 0,
+    "object-shorthand": 1,
+    "require-await": 2,
+    "prefer-object-spread": 2,
+    "unused-imports/no-unused-imports": 2,
+    "@typescript-eslint/camelcase": 0,
+    "@typescript-eslint/explicit-member-accessibility": [ 1,
+      { "accessibility": "no-public" }
+    ],
+    "@typescript-eslint/member-ordering": 1,
+    "@typescript-eslint/no-empty-interface": 0,
+    "@typescript-eslint/no-explicit-any": 0,
+    "@typescript-eslint/no-inferrable-types": [
+      1,
+      {
+        "ignoreParameters": true,
+        "ignoreProperties": true
+      }
+    ],
+    "@typescript-eslint/no-non-null-assertion": 0,
+    "@typescript-eslint/no-shadow": [1, { "hoist": "all" }],
+    "@typescript-eslint/no-use-before-define": 0,
+    "@typescript-eslint/no-useless-constructor": 2,
+    "prettier/prettier": 1,
+    "react/display-name": 0,
+    "react/jsx-pascal-case": 2,
+    "react/jsx-no-useless-fragment": 1,
+    "react/jsx-no-target-blank": 0,
+    "react/react-in-jsx-scope": 0,
+    "react/prop-types": 0,
+    "react-hooks/exhaustive-deps":0,
+    "react-hooks/rules-of-hooks": 0
+  }
+}

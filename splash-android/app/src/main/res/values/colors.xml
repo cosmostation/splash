@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="color_accent">#F8DDDD</color>
+    <color name="color_blue01">#3182F5</color>
+    <color name="color_blue02">#2051A3</color>
+    <color name="color_blue03">#ADCDFB</color>
+    <color name="color_red01">#CD1A1A</color>
+    <color name="color_red02">#D95253</color>
+    <color name="color_green01">#27BD69</color>
+    <color name="color_gradient01_start">#2051A3</color>
+    <color name="color_gradient01_end">#081C40</color>
+    <color name="color_gradient02_start">#1669C1</color>
+    <color name="color_gradient02_end">#283D8F</color>
+    <color name="color_mode_base01">#FBFCFF</color>
+    <color name="color_mode_base02">#F5F9FF</color>
+    <color name="color_mode_base03">#E6ECFB</color>
+    <color name="color_mode_base04">#98AED8</color>
+    <color name="color_mode_base05">#222222</color>
+    <color name="color_only_base01">#ffffff</color>
+</resources>
