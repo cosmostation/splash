@@ -12,6 +12,7 @@ import androidx.fragment.app.viewModels
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import io.cosmostation.splash.SplashWalletApp
 import io.cosmostation.splash.databinding.FragmentUnstakingSheetBinding
+import io.cosmostation.splash.ui.common.LoadingFragment
 import io.cosmostation.splash.ui.password.PinActivity
 import io.cosmostation.splash.ui.transaction.TransactionResultActivity
 import io.cosmostation.splash.util.DecimalUtils
@@ -23,9 +24,9 @@ class UnstakeSheet(private val item: JSONObject) : BottomSheetDialogFragment() {
     private lateinit var binding: FragmentUnstakingSheetBinding
     private val viewModel: StakeViewModel by viewModels()
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
-    ): View {
+    var dialog: LoadingFragment = LoadingFragment()
+
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
         binding = FragmentUnstakingSheetBinding.inflate(layoutInflater)
         setupViews()
         setupViewModel()
@@ -34,12 +35,14 @@ class UnstakeSheet(private val item: JSONObject) : BottomSheetDialogFragment() {
 
     private fun setupViewModel() {
         viewModel.error.observe(viewLifecycleOwner) {
-            Toast.makeText(context, "Error !", Toast.LENGTH_LONG).show()
+            dialog.dismiss()
+            Toast.makeText(context, it, Toast.LENGTH_LONG).show()
             activity?.recreate()
             dismiss()
         }
 
         viewModel.result.observe(viewLifecycleOwner) {
+            dialog.dismiss()
             activity?.recreate()
             startActivity(Intent(context, TransactionResultActivity::class.java).putExtra("executeResult", it))
             dismiss()
@@ -50,6 +53,7 @@ class UnstakeSheet(private val item: JSONObject) : BottomSheetDialogFragment() {
     private fun setupViews() {
         val resultLauncher = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
             if (result.resultCode == Activity.RESULT_OK) {
+                activity?.supportFragmentManager?.let { dialog.show(it, LoadingFragment::class.java.name) }
                 viewModel.unstake(item)
             }
         }

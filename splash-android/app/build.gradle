@@ -65,8 +65,7 @@ dependencies {
         exclude group: "com.github.stephenc.jcip"
     }
 
-//    implementation(project(':suikotlin')) {
-    implementation('com.github.cosmostation:suikotlin:0.1.6') {
+    implementation('com.github.cosmostation:suikotlin:0.2.0') {
         exclude group: "org.bouncycastle"
     }
 

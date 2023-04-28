@@ -100,7 +100,7 @@ class StakingStakeActivity : ActionBarBaseActivity() {
                 Toast.makeText(this, "Empty amount", Toast.LENGTH_LONG).show()
                 return@setOnClickListener
             }
-            if (BigDecimal(binding.amount.text.toString()) + BigDecimal(binding.gas.text.toString()) > BigDecimal(binding.available.text.toString())) {
+            if (BigDecimal(binding.amount.text.toString()) > BigDecimal(binding.available.text.toString())) {
                 Toast.makeText(this, "Not enough amount", Toast.LENGTH_LONG).show()
                 return@setOnClickListener
             }

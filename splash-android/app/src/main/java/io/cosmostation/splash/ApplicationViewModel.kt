@@ -23,7 +23,7 @@ import java.lang.reflect.Type
 
 class ApplicationViewModel(application: Application) : AndroidViewModel(application) {
     var currentWalletLiveData = MutableLiveData<Wallet?>()
-    var allObjectsMetaLiveData = MutableLiveData<List<SuiObjectInfo>?>()
+    var allObjectsMetaLiveData = MutableLiveData<List<SuiObjectInfo?>?>()
     var allObjectsLiveData = MutableLiveData<List<SuiObjectInfo>?>()
     val allBalances = MutableLiveData<List<Balance>>()
     var allTransactionsLiveData = MutableLiveData<List<SuiTransaction>?>()

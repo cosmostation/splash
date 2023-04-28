@@ -12,6 +12,8 @@ import androidx.fragment.app.viewModels
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import io.cosmostation.splash.SplashWalletApp
 import io.cosmostation.splash.databinding.FragmentStakingSheetBinding
+import io.cosmostation.splash.ui.common.ActionBarBaseActivity
+import io.cosmostation.splash.ui.common.LoadingFragment
 import io.cosmostation.splash.ui.password.PinActivity
 import io.cosmostation.splash.ui.transaction.TransactionResultActivity
 import org.json.JSONObject
@@ -21,9 +23,9 @@ class StakeSheet(val amount: String, val gas: String, private val validatorInfo:
     private lateinit var binding: FragmentStakingSheetBinding
     private val viewModel: StakeViewModel by viewModels()
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
-    ): View {
+    var dialog: LoadingFragment = LoadingFragment()
+
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
         binding = FragmentStakingSheetBinding.inflate(layoutInflater)
         setupViews()
         setupViewModel()
@@ -32,13 +34,15 @@ class StakeSheet(val amount: String, val gas: String, private val validatorInfo:
 
     private fun setupViewModel() {
         viewModel.error.observe(viewLifecycleOwner) {
-            Toast.makeText(context, "Error !", Toast.LENGTH_LONG).show()
+            Toast.makeText(context, it, Toast.LENGTH_LONG).show()
+            dialog.dismiss()
             activity?.recreate()
             dismiss()
         }
 
         viewModel.result.observe(viewLifecycleOwner) {
-            activity?.finish()
+            dialog.dismiss()
+            activity?.recreate()
             startActivity(Intent(context, TransactionResultActivity::class.java).putExtra("executeResult", it))
             dismiss()
             SplashWalletApp.instance.applicationViewModel.loadAllData()
@@ -51,9 +55,11 @@ class StakeSheet(val amount: String, val gas: String, private val validatorInfo:
         binding.gas.text = gas
         val resultLauncher = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
             if (result.resultCode == Activity.RESULT_OK) {
+                activity?.supportFragmentManager?.let { dialog.show(it, LoadingFragment::class.java.name) }
                 viewModel.stake(validatorInfo, amount)
             }
         }
+
         binding.confirmBtn.setOnClickListener {
             resultLauncher.launch(Intent(activity, PinActivity::class.java))
         }

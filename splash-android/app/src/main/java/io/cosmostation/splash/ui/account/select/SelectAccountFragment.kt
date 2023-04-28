@@ -50,7 +50,7 @@ class SelectAccountFragment : BottomSheetDialogFragment() {
 
     private fun setupRecyclerView() {
         adapter = SelectAccountAdapter(requireContext(), onSelect = selectAccount(), address = {
-            SplashWalletApp.instance.applicationViewModel.currentWalletLiveData.value?.address ?: ""
+            SplashWalletApp.instance.applicationViewModel.currentWalletLiveData.value?.id ?: -1L
         })
         binding.recycler.layoutManager = LinearLayoutManager(activity)
         binding.recycler.adapter = adapter
@@ -60,8 +60,8 @@ class SelectAccountFragment : BottomSheetDialogFragment() {
         if (SplashWalletApp.instance.applicationViewModel.currentWalletLiveData.value?.address != it.address) {
             Prefs.currentWalletId = it.id
             SplashWalletApp.instance.applicationViewModel.loadWallet()
+            activity?.recreate()
         }
-
         dismiss()
     }
 }

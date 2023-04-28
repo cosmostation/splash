@@ -57,7 +57,7 @@
     <string name="transaction_result">Transaction Result</string>
     <string name="memo">Memo</string>
     <string name="unlock">Unlock</string>
-    <string name="current_account_delete_error">Can\'t delete current activity</string>
+    <string name="current_account_delete_error">Can\'t delete current wallet</string>
     <string name="nft_detail">NFT Detail</string>
     <string name="rename_empty">Empty name !</string>
     <string name="enter_a_pin_number">Enter a pin number</string>

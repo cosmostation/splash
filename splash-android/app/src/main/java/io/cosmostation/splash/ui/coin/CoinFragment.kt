@@ -34,9 +34,7 @@ class CoinFragment : Fragment() {
     lateinit var barcodeLauncher: ActivityResultLauncher<ScanOptions>
     var currentTab = MainTab.COIN
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
-    ): View {
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
         binding = FragmentCoinBinding.inflate(layoutInflater, container, false)
         setupRecyclerView()
         return binding.root
@@ -143,7 +141,7 @@ class CoinFragment : Fragment() {
         }
 
         SplashWalletApp.instance.applicationViewModel.allBalances.observe(viewLifecycleOwner) { balances ->
-            binding.assetCount.text = "${getString(R.string.assets)} (${balances.size})"
+            binding.assetCount.text = "${getString(R.string.coins2)} (${balances.size})"
             coinAdapter.coins = balances.sortedBy {
                 it.coinType
             }

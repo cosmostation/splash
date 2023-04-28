@@ -12,6 +12,7 @@ import io.cosmostation.splash.SplashConstants
 import io.cosmostation.splash.SplashWalletApp
 import io.cosmostation.splash.databinding.ActivityNftSendBinding
 import io.cosmostation.splash.ui.common.ActionBarBaseActivity
+import io.cosmostation.splash.ui.common.LoadingFragment
 import io.cosmostation.splash.ui.password.PinActivity
 import io.cosmostation.splash.ui.transaction.TransactionResultActivity
 import io.cosmostation.splash.util.DecimalUtils
@@ -60,6 +61,7 @@ class NftSendActivity : ActionBarBaseActivity() {
     private fun setupViews() {
         val resultLauncher = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
             if (result.resultCode == Activity.RESULT_OK) {
+                dialog.show(supportFragmentManager, LoadingFragment::class.java.name)
                 send()
             }
         }
@@ -95,6 +97,8 @@ class NftSendActivity : ActionBarBaseActivity() {
                     Toast.makeText(this@NftSendActivity, "Error !", Toast.LENGTH_LONG).show()
                     binding.loading.visibility = View.GONE
                 }
+            } finally {
+                dialog.dismiss()
             }
         }
     }

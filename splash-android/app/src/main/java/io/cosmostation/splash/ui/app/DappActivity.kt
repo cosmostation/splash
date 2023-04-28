@@ -12,6 +12,7 @@ import io.cosmostation.splash.SplashWalletApp
 import io.cosmostation.splash.api.SuiUtilService
 import io.cosmostation.splash.databinding.ActivityDappBinding
 import io.cosmostation.splash.model.network.TransactionBlock
+import io.cosmostation.splash.ui.common.LoadingFragment
 import io.cosmostation.suikotlin.SuiClient
 import io.cosmostation.suikotlin.model.SuiTransactionBlockResponseOptions
 import kotlinx.coroutines.CoroutineScope
@@ -29,6 +30,8 @@ import java.util.*
 class DappActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityDappBinding
+
+    var dialog: LoadingFragment = LoadingFragment()
 
     override fun onBackPressed() {
         if (binding.webview.canGoBack()) {
@@ -159,6 +162,7 @@ class DappActivity : AppCompatActivity() {
     private fun signAfterAction(title: String, messageId: Long, params: JSONObject, action: (hexTxBytes: String) -> Unit) {
         SignDialog(title, params, object : SignDialog.SignListener {
             override fun confirm() {
+                dialog.show(supportFragmentManager, LoadingFragment::class.java.name)
                 SuiUtilService.create().buildSuiTransactionBlock(TransactionBlock(params.getString("data"), params.getString("account"), SuiClient.instance.currentNetwork.rpcUrl)).enqueue(object : Callback<String> {
                     override fun onResponse(call: Call<String>, response: Response<String>) {
                         response.body()?.let {
@@ -190,6 +194,7 @@ class DappActivity : AppCompatActivity() {
         postMessageJson.put("messageId", messageId)
         runOnUiThread {
             binding.webview.evaluateJavascript(String.format("window.postMessage(%s);", postMessageJson.toString()), null)
+            dialog.dismiss()
         }
     }
 
@@ -203,6 +208,7 @@ class DappActivity : AppCompatActivity() {
         postMessageJson.put("isSplash", true)
         runOnUiThread {
             binding.webview.evaluateJavascript(String.format("window.postMessage(%s);", postMessageJson.toString()), null)
+            dialog.dismiss()
         }
     }
 

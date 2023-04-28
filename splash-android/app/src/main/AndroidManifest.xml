@@ -60,7 +60,7 @@
             android:name=".ui.app.DappActivity"
             android:exported="true"
             android:launchMode="singleTask"
-            android:screenOrientation="portrait"></activity>
+            android:screenOrientation="portrait" />
         <activity
             android:name=".ui.app.WalletConnectActivity"
             android:exported="true"

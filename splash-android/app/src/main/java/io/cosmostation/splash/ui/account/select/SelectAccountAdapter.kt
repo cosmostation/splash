@@ -9,10 +9,7 @@ import io.cosmostation.splash.databinding.ItemSelectAccountBinding
 import io.cosmostation.splash.util.visibleOrInvisible
 
 class SelectAccountAdapter(
-    private val context: Context,
-    var entities: List<Wallet> = listOf(),
-    val onSelect: (entity: Wallet) -> Unit,
-    val address: () -> String
+    private val context: Context, var entities: List<Wallet> = listOf(), val onSelect: (entity: Wallet) -> Unit, val address: () -> Long
 ) : RecyclerView.Adapter<SelectAccountViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): SelectAccountViewHolder {
@@ -24,7 +21,7 @@ class SelectAccountAdapter(
         val entity = entities[position]
         viewHolder.binding.name.text = entity.name
         viewHolder.binding.address.text = entity.address
-        viewHolder.binding.check.visibleOrInvisible(entity.address == address())
+        viewHolder.binding.check.visibleOrInvisible(entity.id == address())
         viewHolder.binding.wrap.setOnClickListener {
             onSelect(entity)
         }

@@ -38,10 +38,14 @@ class StakeViewModel : ViewModel() {
                         val keyPair = SuiClient.instance.getKeyPair(mnemonic)
                         val signedTxBytes = SuiClient.instance.sign(keyPair, intentMessage)
                         CoroutineScope(Dispatchers.IO).launch {
-                            val executeResult = SuiClient.instance.executeTransaction(
-                                txBytes, signedTxBytes, keyPair, SuiTransactionBlockResponseOptions(showInput = true, showEffects = true, showEvents = true)
-                            )
-                            result.postValue(Gson().toJson(executeResult))
+                            try {
+                                val executeResult = SuiClient.instance.executeTransaction(
+                                    txBytes, signedTxBytes, keyPair, SuiTransactionBlockResponseOptions(showInput = true, showEffects = true, showEvents = true)
+                                )
+                                result.postValue(Gson().toJson(executeResult))
+                            } catch (e: Exception) {
+                                error.postValue(e.message)
+                            }
                         }
                     } catch (e: Exception) {
                         error.postValue(e.message)
@@ -68,10 +72,14 @@ class StakeViewModel : ViewModel() {
                         val keyPair = SuiClient.instance.getKeyPair(mnemonic)
                         val signedTxBytes = SuiClient.instance.sign(keyPair, intentMessage)
                         CoroutineScope(Dispatchers.IO).launch {
-                            val executeResult = SuiClient.instance.executeTransaction(
-                                txBytes, signedTxBytes, keyPair, SuiTransactionBlockResponseOptions(showInput = true, showEffects = true, showEvents = true)
-                            )
-                            result.postValue(Gson().toJson(executeResult))
+                            try {
+                                val executeResult = SuiClient.instance.executeTransaction(
+                                    txBytes, signedTxBytes, keyPair, SuiTransactionBlockResponseOptions(showInput = true, showEffects = true, showEvents = true)
+                                )
+                                result.postValue(Gson().toJson(executeResult))
+                            } catch (e: Exception) {
+                                error.postValue(e.message)
+                            }
                         }
                     } catch (e: Exception) {
                         error.postValue(e.message)

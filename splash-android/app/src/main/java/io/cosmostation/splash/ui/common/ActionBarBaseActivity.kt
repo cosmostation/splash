@@ -7,6 +7,7 @@ import androidx.appcompat.app.AppCompatActivity
 
 abstract class ActionBarBaseActivity : AppCompatActivity() {
     abstract val titleResourceId: Int
+    var dialog: LoadingFragment = LoadingFragment()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

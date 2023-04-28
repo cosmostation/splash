@@ -22,13 +22,12 @@
                 android:layout_weight="1"
                 android:gravity="center"
                 android:orientation="vertical"
-                android:paddingVertical="20dp">
+                android:paddingVertical="10dp">
 
                 <TextView
                     style="@style/TextViewH6"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="15dp"
                     android:text="Current epoch"
                     android:textColor="@color/color_mode_base04" />
 
@@ -54,13 +53,12 @@
                 android:layout_weight="1"
                 android:gravity="center"
                 android:orientation="vertical"
-                android:paddingVertical="20dp">
+                android:paddingVertical="10dp">
 
                 <TextView
                     style="@style/TextViewH6"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="15dp"
                     android:text="Reward distribution"
                     android:textColor="@color/color_mode_base04" />
 

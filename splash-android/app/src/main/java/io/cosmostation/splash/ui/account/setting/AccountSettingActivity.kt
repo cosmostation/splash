@@ -15,6 +15,7 @@ import io.cosmostation.splash.ui.account.RenameAccountDialog
 import io.cosmostation.splash.ui.common.ActionBarBaseActivity
 import io.cosmostation.splash.ui.wallet.ViewMnemonicActivity
 import io.cosmostation.splash.ui.wallet.WalletAddIntroActivity
+import io.cosmostation.splash.ui.wallet.WalletAddIntroFragment
 
 class AccountSettingActivity : ActionBarBaseActivity() {
     private lateinit var adapter: AccountSettingAdapter
@@ -47,11 +48,7 @@ class AccountSettingActivity : ActionBarBaseActivity() {
     private fun setupViews() {
         setupRecyclerView()
         binding.createBtn.setOnClickListener {
-            startActivity(
-                Intent(this, WalletAddIntroActivity::class.java).putExtra(
-                    WalletAddIntroActivity.TYPE_KEY, WalletAddIntroActivity.TYPE_VALUE_SETTING
-                )
-            )
+            WalletAddIntroFragment().show(supportFragmentManager, WalletAddIntroFragment::class.java.name)
         }
     }
 
@@ -73,9 +70,7 @@ class AccountSettingActivity : ActionBarBaseActivity() {
                     supportFragmentManager, DeleteAccountDialog::class.java.name
                 )
                 R.id.view -> startActivity(
-                    Intent(
-                        this, ViewMnemonicActivity::class.java
-                    ).putExtra(ViewMnemonicActivity.INTENT_MNEMONIC_KEY, item.mnemonic)
+                    Intent(this, ViewMnemonicActivity::class.java).putExtra(ViewMnemonicActivity.INTENT_MNEMONIC_KEY, item.mnemonic)
                 )
             }
             true

@@ -54,7 +54,7 @@ class TransactionResultActivity : AppCompatActivity() {
         } else {
             binding.resultImage.setImageResource(R.drawable.transaction_fail_light)
             binding.resultText.text = getString(R.string.transaction_fail)
-            binding.resultText.setTextColor(ContextCompat.getColor(this, R.color.color_accent))
+            binding.resultText.setTextColor(ContextCompat.getColor(this, R.color.color_red01))
         }
     }
 

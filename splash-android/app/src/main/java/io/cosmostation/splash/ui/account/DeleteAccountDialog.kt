@@ -43,9 +43,7 @@ class DeleteAccountDialog(private val entity: Wallet) : BottomSheetDialogFragmen
         binding.confirmBtn.setOnClickListener {
             if (SplashWalletApp.instance.applicationViewModel.currentWalletLiveData.value?.id == entity.id) {
                 context?.let {
-                    Toast.makeText(
-                        it, getString(R.string.current_account_delete_error), Toast.LENGTH_LONG
-                    ).show()
+                    Toast.makeText(it, getString(R.string.current_account_delete_error), Toast.LENGTH_LONG).show()
                 }
                 dismiss()
                 return@setOnClickListener
