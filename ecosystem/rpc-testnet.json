@@ -1,7 +1,7 @@
 [
     {
         "name": "Cosmostation",
-        "rpc": ["https://rpc-sui-testnet.cosmostation.io/"],
+        "rpc": ["https://sui-testnet-kr-1.cosmostation.io/", "https://sui-testnet-eu-1.cosmostation.io/", "https://sui-testnet-eu-2.cosmostation.io/", "https://sui-testnet-us-1.cosmostation.io/", "https://sui-testnet-us-2.cosmostation.io/"],
         "metrics": "",
         "wss": ""
     },
