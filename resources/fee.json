@@ -1,8 +1,8 @@
 {
    "sui-testnet":{
       "default":4000000,
-      "stake":700000000,
-      "unstake":800000000
+      "stake":800000000,
+      "unstake":900000000
    },
    "sui-devnet":{
       "default":2000000,
