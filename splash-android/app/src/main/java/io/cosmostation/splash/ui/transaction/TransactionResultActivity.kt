@@ -9,6 +9,7 @@ import io.cosmostation.splash.R
 import io.cosmostation.splash.SplashConstants
 import io.cosmostation.splash.databinding.ActivityTransactionResultBinding
 import io.cosmostation.splash.util.visibleOrGone
+import io.cosmostation.suikotlin.SuiClient
 import org.json.JSONObject
 
 class TransactionResultActivity : AppCompatActivity() {
@@ -34,7 +35,7 @@ class TransactionResultActivity : AppCompatActivity() {
             try {
                 val digest = JSONObject(it).getString("digest")
                 binding.explorerBtn.setOnClickListener {
-                    startActivity(Intent(Intent.ACTION_VIEW, Uri.parse(SplashConstants.txDetailUrl(digest))))
+                    startActivity(Intent(Intent.ACTION_VIEW, Uri.parse(SplashConstants.txDetailUrl(digest, SuiClient.instance.currentNetwork.name))))
                 }
                 binding.explorerBtn.visibleOrGone(true)
             } catch (_: Exception) {

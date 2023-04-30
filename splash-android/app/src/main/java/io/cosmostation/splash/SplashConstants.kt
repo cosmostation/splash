@@ -10,11 +10,11 @@ object SplashConstants {
     const val SPLASH_PLAY_STORE = "https://play.google.com/store/apps/details?id=io.cosmostation.splash"
     const val SPLASH_EMAIL = "splash@cosmostation.io"
 
-    fun txDetailUrl(address: String): String {
-        return "https://explorer.sui.io/transactions/$address"
+    fun txDetailUrl(address: String, network: String): String {
+        return "https://explorer.sui.io/transactions/$address?network=${network.lowercase()}"
     }
 
-    fun objectDetailUrl(objectId: String): String {
-        return "https://explorer.sui.io/object/$objectId"
+    fun objectDetailUrl(objectId: String, network: String): String {
+        return "https://explorer.sui.io/object/$objectId?network=${network.lowercase()}"
     }
 }

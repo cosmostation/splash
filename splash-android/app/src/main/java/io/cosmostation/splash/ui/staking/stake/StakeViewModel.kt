@@ -29,7 +29,7 @@ class StakeViewModel : ViewModel() {
         SplashWalletApp.instance.applicationViewModel.currentWalletLiveData.value?.let { wallet ->
             val validatorAddress = item.getString("suiAddress")
             val signer = wallet.address
-            SuiUtilService.create().buildStakingRequest(StakeRequest(validatorAddress, signer, BigDecimal(amount).multiply(BigDecimal(10).pow(9)).toString(), SuiClient.instance.currentNetwork.rpcUrl)).enqueue(object : Callback<String> {
+            SuiUtilService.create().buildStakingRequest(StakeRequest(validatorAddress, signer, BigDecimal(amount).multiply(BigDecimal(10).pow(9)).toBigInteger().toString(), SuiClient.instance.currentNetwork.rpcUrl)).enqueue(object : Callback<String> {
                 override fun onResponse(call: Call<String>, response: Response<String>) {
                     try {
                         val txBytes = Utils.hexToBytes(response.body())

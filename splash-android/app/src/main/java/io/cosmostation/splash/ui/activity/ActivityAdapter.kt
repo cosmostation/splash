@@ -13,6 +13,7 @@ import io.cosmostation.splash.SplashConstants
 import io.cosmostation.splash.SplashWalletApp
 import io.cosmostation.splash.databinding.ItemActivityBinding
 import io.cosmostation.splash.util.formatToViewTimeDefaults
+import io.cosmostation.suikotlin.SuiClient
 import io.cosmostation.suikotlin.model.SuiTransaction
 import org.json.JSONObject
 import java.net.URLEncoder
@@ -44,7 +45,7 @@ class ActivityAdapter(
                 viewHolder.binding.image.setImageResource(R.drawable.transaction_fail_light)
             }
             viewHolder.binding.wrap.setOnClickListener {
-                val intent = Intent(Intent.ACTION_VIEW, Uri.parse(SplashConstants.txDetailUrl(URLEncoder.encode(transaction.digest, "utf-8"))))
+                val intent = Intent(Intent.ACTION_VIEW, Uri.parse(SplashConstants.txDetailUrl(URLEncoder.encode(transaction.digest, "utf-8"), SuiClient.instance.currentNetwork.name)))
                 context.startActivity(intent)
             }
             viewHolder.binding.wrap.visibility = View.VISIBLE

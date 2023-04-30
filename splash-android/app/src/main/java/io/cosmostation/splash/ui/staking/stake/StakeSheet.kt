@@ -36,13 +36,14 @@ class StakeSheet(val amount: String, val gas: String, private val validatorInfo:
         viewModel.error.observe(viewLifecycleOwner) {
             Toast.makeText(context, it, Toast.LENGTH_LONG).show()
             dialog.dismiss()
-            activity?.recreate()
+            activity?.finish()
             dismiss()
+            SplashWalletApp.instance.applicationViewModel.loadAllData()
         }
 
         viewModel.result.observe(viewLifecycleOwner) {
             dialog.dismiss()
-            activity?.recreate()
+            activity?.finish()
             startActivity(Intent(context, TransactionResultActivity::class.java).putExtra("executeResult", it))
             dismiss()
             SplashWalletApp.instance.applicationViewModel.loadAllData()

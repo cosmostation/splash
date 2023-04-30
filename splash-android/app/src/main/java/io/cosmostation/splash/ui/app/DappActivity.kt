@@ -31,7 +31,7 @@ class DappActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityDappBinding
 
-    var dialog: LoadingFragment = LoadingFragment()
+    var dialog: LoadingFragment? = null
 
     override fun onBackPressed() {
         if (binding.webview.canGoBack()) {
@@ -162,7 +162,7 @@ class DappActivity : AppCompatActivity() {
     private fun signAfterAction(title: String, messageId: Long, params: JSONObject, action: (hexTxBytes: String) -> Unit) {
         SignDialog(title, params, object : SignDialog.SignListener {
             override fun confirm() {
-                dialog.show(supportFragmentManager, LoadingFragment::class.java.name)
+                showLoadingDialog()
                 SuiUtilService.create().buildSuiTransactionBlock(TransactionBlock(params.getString("data"), params.getString("account"), SuiClient.instance.currentNetwork.rpcUrl)).enqueue(object : Callback<String> {
                     override fun onResponse(call: Call<String>, response: Response<String>) {
                         response.body()?.let {
@@ -194,7 +194,7 @@ class DappActivity : AppCompatActivity() {
         postMessageJson.put("messageId", messageId)
         runOnUiThread {
             binding.webview.evaluateJavascript(String.format("window.postMessage(%s);", postMessageJson.toString()), null)
-            dialog.dismiss()
+            hideLoadingDialog()
         }
     }
 
@@ -208,7 +208,18 @@ class DappActivity : AppCompatActivity() {
         postMessageJson.put("isSplash", true)
         runOnUiThread {
             binding.webview.evaluateJavascript(String.format("window.postMessage(%s);", postMessageJson.toString()), null)
-            dialog.dismiss()
+            hideLoadingDialog()
+        }
+    }
+
+    private fun showLoadingDialog() {
+        dialog = LoadingFragment()
+        dialog?.show(supportFragmentManager, LoadingFragment::class.java.name)
+    }
+
+    private fun hideLoadingDialog() {
+        if (dialog?.isAdded == true) {
+            dialog?.dismiss()
         }
     }
 

@@ -3,8 +3,11 @@ package io.cosmostation.splash.ui.coin
 import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
+import android.text.Editable
+import android.text.TextWatcher
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
+import androidx.core.widget.addTextChangedListener
 import coil.ImageLoader
 import coil.decode.SvgDecoder
 import coil.request.ImageRequest
@@ -20,12 +23,15 @@ import io.cosmostation.splash.ui.common.LoadingFragment
 import io.cosmostation.splash.ui.password.PinActivity
 import io.cosmostation.splash.ui.transaction.TransactionResultActivity
 import io.cosmostation.splash.util.DecimalUtils
+import io.cosmostation.splash.util.addDecimalCheckListener
 import io.cosmostation.suikotlin.SuiClient
 import io.cosmostation.suikotlin.model.SuiTransactionBlockResponseOptions
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import java.math.BigDecimal
+import java.math.BigInteger
+import java.math.RoundingMode
 import java.util.*
 
 
@@ -53,7 +59,11 @@ class CoinSendActivity : ActionBarBaseActivity() {
         binding.gas.text = DecimalUtils.toString(SplashConstants.DEFAULT_GAS_BUDGET.toLong(), 9, 9)
         binding.denom.text = denom?.substringAfterLast("::")
         binding.available.text = SplashWalletApp.instance.applicationViewModel.coinMap[denom]?.let {
-            DecimalUtils.toString(it.totalBalance - SplashConstants.DEFAULT_GAS_BUDGET.toLong())
+            if (SplashConstants.SUI_BALANCE_DENOM == denom) {
+                DecimalUtils.toString(it.totalBalance - SplashConstants.DEFAULT_GAS_BUDGET.toLong())
+            } else {
+                DecimalUtils.toString(it.totalBalance)
+            }
         }
         if (SplashConstants.SUI_BALANCE_DENOM == denom) {
             binding.logo.setImageResource(R.drawable.token_sui)
@@ -86,31 +96,22 @@ class CoinSendActivity : ActionBarBaseActivity() {
             }
         }
         binding.nextBtn.setOnClickListener {
+            if (binding.address.text.isEmpty()) {
+                Toast.makeText(this, "Empty receiver", Toast.LENGTH_LONG).show()
+                return@setOnClickListener
+            }
+            if (binding.amount.text.isEmpty() || BigDecimal(binding.amount.text.toString()) <= BigDecimal(0)) {
+                Toast.makeText(this, "Empty amount", Toast.LENGTH_LONG).show()
+                return@setOnClickListener
+            }
+            if (BigDecimal(binding.amount.text.toString()) > BigDecimal(binding.available.text.toString())) {
+                Toast.makeText(this, "Not enough amount", Toast.LENGTH_LONG).show()
+                return@setOnClickListener
+            }
             resultLauncher.launch(Intent(this, PinActivity::class.java))
         }
-//        binding.amount.filters = arrayOf(object : DigitsKeyListener(Locale.getDefault(), Boolean.FALSE, Boolean.TRUE) {
-//            var beforeDecimal = 5
-//            var afterDecimal = 2
-//            override fun filter(
-//                source: CharSequence, start: Int, end: Int, dest: Spanned, dstart: Int, dend: Int
-//            ): CharSequence {
-//                var temp: String = binding.amount.text.toString() + source.toString()
-//                if (temp == ".") {
-//                    return "0."
-//                } else if (temp.indexOf(".") == -1) {
-//                    // no decimal point placed yet
-//                    if (temp.length > beforeDecimal) {
-//                        return ""
-//                    }
-//                } else {
-//                    temp = temp.substring(temp.indexOf(".") + 1)
-//                    if (temp.length > afterDecimal) {
-//                        return ""
-//                    }
-//                }
-//                return super.filter(source, start, end, dest, dstart, dend)
-//            }
-//        })
+
+        binding.amount.addDecimalCheckListener({ binding.available.text.toString() }, metadata?.decimals ?: 9)
     }
 
     private fun doSend() {

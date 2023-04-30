@@ -13,6 +13,7 @@ import io.cosmostation.splash.SplashConstants
 import io.cosmostation.splash.SplashWalletApp
 import io.cosmostation.splash.databinding.ActivityNftDetailBinding
 import io.cosmostation.splash.ui.common.ActionBarBaseActivity
+import io.cosmostation.suikotlin.SuiClient
 import org.json.JSONObject
 import java.net.URLEncoder
 
@@ -60,7 +61,7 @@ class NftDetailActivity : ActionBarBaseActivity() {
         }
         binding.explorerBtn.setOnClickListener {
             val id = intent.getStringExtra("id")
-            val intent = Intent(Intent.ACTION_VIEW, Uri.parse(SplashConstants.objectDetailUrl(URLEncoder.encode(id, "utf-8"))))
+            val intent = Intent(Intent.ACTION_VIEW, Uri.parse(SplashConstants.objectDetailUrl(URLEncoder.encode(id, "utf-8"), SuiClient.instance.currentNetwork.name)))
             startActivity(intent)
         }
     }

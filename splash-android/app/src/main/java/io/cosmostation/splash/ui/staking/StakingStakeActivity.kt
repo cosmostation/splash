@@ -11,6 +11,7 @@ import io.cosmostation.splash.ui.staking.stake.StakeSheet
 import io.cosmostation.splash.ui.staking.stake.UnstakeSheet
 import io.cosmostation.splash.ui.staking.validator.SelectValidatorFragment
 import io.cosmostation.splash.util.DecimalUtils
+import io.cosmostation.splash.util.addDecimalCheckListener
 import org.json.JSONArray
 import org.json.JSONObject
 import java.math.BigDecimal
@@ -45,7 +46,7 @@ class StakingStakeActivity : ActionBarBaseActivity() {
 
     private fun setupViewModels() {
         viewModel.totalBalance.observe(this) {
-            binding.available.text = DecimalUtils.toString(it - 700000000)
+            binding.available.text = DecimalUtils.toString(it - 800000000)
         }
 
         viewModel.epoch.observe(this) {
@@ -96,7 +97,7 @@ class StakingStakeActivity : ActionBarBaseActivity() {
 
     private fun setupViews() {
         binding.nextBtn.setOnClickListener {
-            if (binding.amount.text.isEmpty()) {
+            if (binding.amount.text.isEmpty() || BigDecimal(binding.amount.text.toString()) <= BigDecimal(0)) {
                 Toast.makeText(this, "Empty amount", Toast.LENGTH_LONG).show()
                 return@setOnClickListener
             }
@@ -106,7 +107,7 @@ class StakingStakeActivity : ActionBarBaseActivity() {
             }
             currentValidator?.let { it1 -> StakeSheet(binding.amount.text.toString(), binding.gas.text.toString(), it1).show(supportFragmentManager, UnstakeSheet::class.java.name) }
         }
-        binding.gas.text = "0.7"
+        binding.gas.text = "0.8"
         binding.validatorWrap.setOnClickListener {
             SelectValidatorFragment(object : SelectValidatorFragment.ValidatorSelectListener {
                 override fun select(validator: JSONObject) {
@@ -114,5 +115,6 @@ class StakingStakeActivity : ActionBarBaseActivity() {
                 }
             }).show(supportFragmentManager, DeleteAccountDialog::class.java.name)
         }
+        binding.amount.addDecimalCheckListener({ binding.available.text.toString() }, 9)
     }
 }

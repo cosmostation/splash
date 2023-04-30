@@ -66,6 +66,10 @@ class NftSendActivity : ActionBarBaseActivity() {
             }
         }
         binding.nextBtn.setOnClickListener {
+            if (binding.address.text.isEmpty()) {
+                Toast.makeText(this, "Empty receiver", Toast.LENGTH_LONG).show()
+                return@setOnClickListener
+            }
             resultLauncher.launch(Intent(this, PinActivity::class.java))
         }
     }
