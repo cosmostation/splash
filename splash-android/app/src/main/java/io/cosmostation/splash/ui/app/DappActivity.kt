@@ -48,6 +48,19 @@ class DappActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         binding.dappClose.setOnClickListener { finish() }
+        binding.dappBack.setOnClickListener {
+            if (binding.webview.canGoBack()) {
+                binding.webview.goBack()
+            }
+        }
+        binding.dappForward.setOnClickListener {
+            if (binding.webview.canGoForward()) {
+                binding.webview.goForward()
+            }
+        }
+        binding.dappRefresh.setOnClickListener {
+            binding.webview.reload()
+        }
         binding.url.text = Uri.parse(intent.getStringExtra("url")).host
         WebView.setWebContentsDebuggingEnabled(true)
         binding.webview.settings.apply {

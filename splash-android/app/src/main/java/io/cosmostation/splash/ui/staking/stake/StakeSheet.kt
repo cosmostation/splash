@@ -12,7 +12,6 @@ import androidx.fragment.app.viewModels
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import io.cosmostation.splash.SplashWalletApp
 import io.cosmostation.splash.databinding.FragmentStakingSheetBinding
-import io.cosmostation.splash.ui.common.ActionBarBaseActivity
 import io.cosmostation.splash.ui.common.LoadingFragment
 import io.cosmostation.splash.ui.password.PinActivity
 import io.cosmostation.splash.ui.transaction.TransactionResultActivity

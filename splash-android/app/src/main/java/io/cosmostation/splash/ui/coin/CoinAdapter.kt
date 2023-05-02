@@ -14,12 +14,11 @@ import io.cosmostation.splash.SplashConstants
 import io.cosmostation.splash.databinding.ItemCoinBinding
 import io.cosmostation.splash.model.network.Balance
 import io.cosmostation.splash.model.network.CoinMetadata
+import io.cosmostation.splash.ui.staking.StakingActivity
 import io.cosmostation.splash.util.DecimalUtils
 
 class CoinAdapter(
-    private val context: Context,
-    var coins: List<Balance> = listOf(),
-    var metadataMap: Map<String, CoinMetadata?> = mapOf()
+    private val context: Context, var coins: MutableList<Balance> = mutableListOf(), var metadataMap: Map<String, CoinMetadata?> = mapOf()
 ) : RecyclerView.Adapter<CoinViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CoinViewHolder {
@@ -38,29 +37,35 @@ class CoinAdapter(
                         val imageLoader = ImageLoader.Builder(context).components {
                             add(SvgDecoder.Factory())
                         }.placeholder(R.drawable.token_default).build()
-                        val request = ImageRequest.Builder(context).data(url).target(image)
-                            .transformations(RoundedCornersTransformation(20f)).build()
+                        val request = ImageRequest.Builder(context).data(url).target(image).transformations(RoundedCornersTransformation(20f)).build()
                         val disposable = imageLoader.enqueue(request)
                     }
                 }
                 balance.text = DecimalUtils.toString(coin.totalBalance, it.decimals)
             } ?: run {
-                if (coin.coinType == SplashConstants.SUI_BALANCE_DENOM) {
-                    image.setImageResource(R.drawable.token_sui)
-                } else {
-                    image.setImageResource(R.drawable.token_default)
+                when (coin.coinType) {
+                    SplashConstants.SUI_BALANCE_DENOM -> {
+                        image.setImageResource(R.drawable.token_sui)
+                    }
+                    SplashConstants.SUI_STAKED_BALANCE_DENOM -> {
+                        image.setImageResource(R.drawable.token_staked_sui)
+                    }
+                    else -> {
+                        image.setImageResource(R.drawable.token_default)
+                    }
                 }
                 balance.text = DecimalUtils.toString(coin.totalBalance)
             }
+
             token.text = coin.coinType.substring(
                 coin.coinType.lastIndexOf("::") + 2, coin.coinType.length
             )
             wrap.setOnClickListener {
-                context.startActivity(
-                    Intent(context, CoinSendActivity::class.java).putExtra(
-                        "denom", coin.coinType
-                    )
-                )
+                if (coin.coinType == SplashConstants.SUI_STAKED_BALANCE_DENOM) {
+                    context.startActivity(Intent(context, StakingActivity::class.java))
+                } else {
+                    context.startActivity(Intent(context, CoinSendActivity::class.java).putExtra("denom", coin.coinType))
+                }
             }
         }
     }

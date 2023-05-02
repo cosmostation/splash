@@ -10,9 +10,9 @@ import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.http.GET
 import java.util.concurrent.TimeUnit
 
-interface DappService {
+interface SplashResourceService {
     companion object {
-        fun create(): DappService {
+        fun create(): SplashResourceService {
             val host = "https://raw.githubusercontent.com/cosmostation/splash/main/resources/"
             val builder = Retrofit.Builder().baseUrl(host).addConverterFactory(GsonConverterFactory.create())
 
@@ -23,10 +23,13 @@ interface DappService {
                 builder.client(client)
             }
 
-            return builder.build().create(DappService::class.java)
+            return builder.build().create(SplashResourceService::class.java)
         }
     }
 
     @GET("dapp.json")
     suspend fun dapp(): Response<List<Dapp>>
+
+    @GET("fee.json")
+    suspend fun fee(): Response<Map<String, Map<String, Long>>>
 }

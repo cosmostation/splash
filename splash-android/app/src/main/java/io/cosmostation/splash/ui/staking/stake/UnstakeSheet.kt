@@ -16,6 +16,8 @@ import io.cosmostation.splash.ui.common.LoadingFragment
 import io.cosmostation.splash.ui.password.PinActivity
 import io.cosmostation.splash.ui.transaction.TransactionResultActivity
 import io.cosmostation.splash.util.DecimalUtils
+import io.cosmostation.splash.util.GasUtils
+import io.cosmostation.splash.util.toGasDecimal
 import org.json.JSONObject
 import java.math.BigInteger
 
@@ -58,7 +60,7 @@ class UnstakeSheet(private val item: JSONObject) : BottomSheetDialogFragment() {
             }
         }
 
-        binding.gas.text = "0.7"
+        binding.gas.text = GasUtils.getUnstakeGas().toGasDecimal()
         binding.objectId.text = item.getString("stakedSuiId")
         binding.total.text = DecimalUtils.toString((BigInteger(item.getString("principal")) + BigInteger(item.getString("estimatedReward"))).toLong())
         binding.confirmBtn.setOnClickListener {

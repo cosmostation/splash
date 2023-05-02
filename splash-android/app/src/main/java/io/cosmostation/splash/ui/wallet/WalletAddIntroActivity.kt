@@ -1,6 +1,5 @@
 package io.cosmostation.splash.ui.wallet
 
-import android.content.Intent
 import android.os.Bundle
 import io.cosmostation.splash.R
 import io.cosmostation.splash.databinding.ActivityWalletAddIntroBinding

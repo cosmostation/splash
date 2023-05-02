@@ -1,6 +1,7 @@
 package io.cosmostation.splash.ui.coin
 
 import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -19,12 +20,15 @@ import io.cosmostation.splash.R
 import io.cosmostation.splash.SplashConstants
 import io.cosmostation.splash.SplashWalletApp
 import io.cosmostation.splash.databinding.FragmentCoinBinding
+import io.cosmostation.splash.model.network.Balance
 import io.cosmostation.splash.ui.account.select.SelectAccountFragment
 import io.cosmostation.splash.ui.app.WalletConnectActivity
 import io.cosmostation.splash.ui.nft.NftAdapter
 import io.cosmostation.splash.ui.staking.StakingActivity
 import io.cosmostation.splash.ui.wallet.WalletReceiveActivity
 import io.cosmostation.splash.util.visibleOrGone
+import io.cosmostation.suikotlin.SuiClient
+import io.cosmostation.suikotlin.model.Network
 
 class CoinFragment : Fragment() {
     private lateinit var binding: FragmentCoinBinding
@@ -85,6 +89,13 @@ class CoinFragment : Fragment() {
             }
         }
 
+        binding.explorer.setOnClickListener {
+            SplashWalletApp.instance.applicationViewModel.currentWalletLiveData.value?.address?.let {
+                val intent = Intent(Intent.ACTION_VIEW, Uri.parse(SplashConstants.accountDetailUrl(it, SuiClient.instance.currentNetwork.name)))
+                startActivity(intent)
+            }
+        }
+
         binding.sendBtn.setOnClickListener {
             startActivity(Intent(context, CoinSendActivity::class.java).putExtra(CoinSendActivity.INTENT_DENOM_KEY, SplashConstants.SUI_BALANCE_DENOM))
         }
@@ -121,6 +132,16 @@ class CoinFragment : Fragment() {
                 Toast.makeText(context, it, Toast.LENGTH_LONG).show()
             }
         }
+
+        viewModel.stakeAmount.observe(viewLifecycleOwner) {
+            coinAdapter.coins.find { it.coinType == SplashConstants.SUI_STAKED_BALANCE_DENOM }?.let { find ->
+                find.totalBalance = it
+            } ?: run {
+                coinAdapter.coins.add(Balance(SplashConstants.SUI_STAKED_BALANCE_DENOM, 1, it))
+            }
+            coinAdapter.coins = coinAdapter.coins.sortedBy { it.coinType }.toMutableList()
+            coinAdapter.notifyDataSetChanged()
+        }
     }
 
     private fun setupRecyclerView() {
@@ -134,17 +155,22 @@ class CoinFragment : Fragment() {
     }
 
     private fun setupLiveData() {
-        SplashWalletApp.instance.applicationViewModel.currentWalletLiveData.observe(
-            viewLifecycleOwner
-        ) {
-            binding.accountBtn.text = it?.name
+        SplashWalletApp.instance.applicationViewModel.currentWalletLiveData.observe(viewLifecycleOwner) {
+            it?.let {
+                binding.accountBtn.text = it.name
+            }
+
+            binding.network.text = SuiClient.instance.currentNetwork.name
+            binding.network.visibleOrGone(SuiClient.instance.currentNetwork.name != Network.Mainnet().name)
+            binding.faucetBtn.visibleOrGone(SuiClient.instance.currentNetwork.faucetUrl.isNotEmpty())
         }
 
         SplashWalletApp.instance.applicationViewModel.allBalances.observe(viewLifecycleOwner) { balances ->
-            binding.assetCount.text = "${getString(R.string.coins2)} (${balances.size})"
-            coinAdapter.coins = balances.sortedBy {
-                it.coinType
+            SplashWalletApp.instance.applicationViewModel.currentWalletLiveData.value?.address?.let {
+                viewModel.loadStake(it)
             }
+            binding.assetCount.text = "${getString(R.string.coins2)} (${balances.size})"
+            coinAdapter.coins = balances.toMutableList()
             coinAdapter.notifyDataSetChanged()
             updateTabStatus()
         }

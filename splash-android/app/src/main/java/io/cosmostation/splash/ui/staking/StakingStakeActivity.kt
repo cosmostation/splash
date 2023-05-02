@@ -11,7 +11,9 @@ import io.cosmostation.splash.ui.staking.stake.StakeSheet
 import io.cosmostation.splash.ui.staking.stake.UnstakeSheet
 import io.cosmostation.splash.ui.staking.validator.SelectValidatorFragment
 import io.cosmostation.splash.util.DecimalUtils
+import io.cosmostation.splash.util.GasUtils
 import io.cosmostation.splash.util.addDecimalCheckListener
+import io.cosmostation.splash.util.toGasDecimal
 import org.json.JSONArray
 import org.json.JSONObject
 import java.math.BigDecimal
@@ -107,7 +109,7 @@ class StakingStakeActivity : ActionBarBaseActivity() {
             }
             currentValidator?.let { it1 -> StakeSheet(binding.amount.text.toString(), binding.gas.text.toString(), it1).show(supportFragmentManager, UnstakeSheet::class.java.name) }
         }
-        binding.gas.text = "0.8"
+        binding.gas.text = GasUtils.getStakeGas().toGasDecimal()
         binding.validatorWrap.setOnClickListener {
             SelectValidatorFragment(object : SelectValidatorFragment.ValidatorSelectListener {
                 override fun select(validator: JSONObject) {

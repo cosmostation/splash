@@ -4,7 +4,6 @@ import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import io.cosmostation.splash.R
 import io.cosmostation.splash.databinding.ItemSettingButtonBinding
 import io.cosmostation.splash.databinding.ItemSettingSectionBinding
 import io.cosmostation.splash.databinding.ItemSettingSwitchBinding

@@ -4,10 +4,7 @@ import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import io.cosmostation.splash.database.Wallet
-import io.cosmostation.splash.databinding.ItemSelectAccountBinding
 import io.cosmostation.splash.databinding.ItemSelectValidatorBinding
-import io.cosmostation.splash.util.visibleOrInvisible
 import org.json.JSONArray
 import org.json.JSONObject
 

@@ -6,12 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
-import io.cosmostation.splash.SplashWalletApp
-import io.cosmostation.splash.databinding.FragmentSelectNetworkBinding
 import io.cosmostation.splash.databinding.FragmentSelectorBinding
-import io.cosmostation.splash.util.Prefs
-import io.cosmostation.suikotlin.SuiClient
-import io.cosmostation.suikotlin.model.Network
 
 class SelectorFragment(private val title: String, private val items: List<String>, private val current: String, private val listener: (item: String) -> Unit) : BottomSheetDialogFragment() {
     private lateinit var adapter: SelectorAdapter

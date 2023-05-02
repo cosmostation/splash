@@ -5,6 +5,7 @@ import androidx.lifecycle.ViewModel
 import io.cosmostation.suikotlin.model.SuiTransaction
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
 class ActivityViewModel : ViewModel() {

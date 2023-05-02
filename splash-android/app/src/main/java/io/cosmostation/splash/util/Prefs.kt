@@ -18,7 +18,7 @@ object Prefs {
         set(value) = preference.edit().putLong(CURRENT_WALLET_ID, value).apply()
 
     var network: String
-        get() = preference.getString(CURRENT_NETWORK, "Devnet") ?: "Devnet"
+        get() = preference.getString(CURRENT_NETWORK, "Mainnet") ?: "Mainnet"
         set(value) = preference.edit().putString(CURRENT_NETWORK, value).apply()
 
     var pin: String

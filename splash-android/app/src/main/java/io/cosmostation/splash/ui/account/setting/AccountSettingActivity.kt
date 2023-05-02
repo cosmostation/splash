@@ -14,7 +14,6 @@ import io.cosmostation.splash.ui.account.DeleteAccountDialog
 import io.cosmostation.splash.ui.account.RenameAccountDialog
 import io.cosmostation.splash.ui.common.ActionBarBaseActivity
 import io.cosmostation.splash.ui.wallet.ViewMnemonicActivity
-import io.cosmostation.splash.ui.wallet.WalletAddIntroActivity
 import io.cosmostation.splash.ui.wallet.WalletAddIntroFragment
 
 class AccountSettingActivity : ActionBarBaseActivity() {

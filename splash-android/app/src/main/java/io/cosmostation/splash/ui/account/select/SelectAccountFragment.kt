@@ -60,7 +60,6 @@ class SelectAccountFragment : BottomSheetDialogFragment() {
         if (SplashWalletApp.instance.applicationViewModel.currentWalletLiveData.value?.address != it.address) {
             Prefs.currentWalletId = it.id
             SplashWalletApp.instance.applicationViewModel.loadWallet()
-            activity?.recreate()
         }
         dismiss()
     }

@@ -4,9 +4,7 @@ import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import io.cosmostation.splash.databinding.ItemSelectNetworkBinding
 import io.cosmostation.splash.databinding.ItemSelectorBinding
-import io.cosmostation.splash.util.Prefs
 import io.cosmostation.splash.util.visibleOrInvisible
 
 class SelectorAdapter(

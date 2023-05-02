@@ -23,7 +23,6 @@ class ActivityFragment : Fragment() {
         binding = FragmentActivityBinding.inflate(layoutInflater, container, false)
         setupRecyclerView()
         setupLiveData()
-
         return binding.root
     }
 
@@ -43,11 +42,10 @@ class ActivityFragment : Fragment() {
     }
 
     private fun setupLiveData() {
-        SplashWalletApp.instance.applicationViewModel.allTransactionsLiveData.observe(
-            viewLifecycleOwner
-        ) { item ->
+        SplashWalletApp.instance.applicationViewModel.allTransactionsLiveData.observe(viewLifecycleOwner) { item ->
             item?.let { viewModel.loadActivities(it) }
         }
+
         viewModel.activities.observe(viewLifecycleOwner) {
             binding.empty.visibleOrGone(it.isEmpty())
             binding.recycler.visibleOrGone(it.isNotEmpty())

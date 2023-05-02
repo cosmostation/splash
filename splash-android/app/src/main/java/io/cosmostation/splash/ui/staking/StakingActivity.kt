@@ -1,17 +1,11 @@
 package io.cosmostation.splash.ui.staking
 
-import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
-import android.widget.Toast
-import androidx.activity.result.contract.ActivityResultContracts
 import androidx.activity.viewModels
 import io.cosmostation.splash.R
 import io.cosmostation.splash.databinding.ActivityStakingBinding
-import io.cosmostation.splash.databinding.ActivityWalletImportBinding
 import io.cosmostation.splash.ui.common.ActionBarBaseActivity
-import io.cosmostation.splash.ui.password.PinActivity
 import io.cosmostation.splash.util.DecimalUtils
 import io.cosmostation.splash.util.visibleOrGone
 import org.json.JSONArray

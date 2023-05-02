@@ -35,10 +35,30 @@
                 android:textColor="@color/color_only_base01"
                 tools:text="Account 1" />
 
+            <TextView
+                android:id="@+id/network"
+                style="@style/TextViewH8"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="5dp"
+                android:layout_marginTop="2dp"
+                android:textColor="@color/color_mode_base04"
+                tools:text="Testnet" />
+
             <View
                 android:layout_width="0dip"
                 android:layout_height="0dp"
                 android:layout_weight="1" />
+
+            <ImageView
+                android:id="@+id/explorer"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="15dp"
+                android:padding="5dp"
+                android:src="@drawable/icon_main_explorer"
+                app:tint="@color/color_only_base01" />
+
         </LinearLayout>
 
         <TextView

@@ -14,6 +14,10 @@ fun Date.formatToViewTimeDefaults(): String {
     return sdf.format(this)
 }
 
+fun Long.toGasDecimal(): String {
+    return DecimalUtils.toString(this, 9, 9)
+}
+
 fun View.visibleOrGone(visible: Boolean) {
     visibility = if (visible) View.VISIBLE else View.GONE
 }

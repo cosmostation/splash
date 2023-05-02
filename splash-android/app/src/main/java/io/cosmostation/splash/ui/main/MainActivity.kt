@@ -11,7 +11,6 @@ import io.cosmostation.splash.databinding.ActivityMainBinding
 import io.cosmostation.splash.ui.activity.ActivityFragment
 import io.cosmostation.splash.ui.app.AppFragment
 import io.cosmostation.splash.ui.coin.CoinFragment
-import io.cosmostation.splash.ui.nft.NftFragment
 import io.cosmostation.splash.ui.setting.SettingFragment
 import io.cosmostation.splash.ui.wallet.WalletAddIntroActivity
 import io.cosmostation.splash.util.visibleOrGone

@@ -1,7 +1,6 @@
 package io.cosmostation.splash
 
 import android.app.Application
-import android.content.Intent
 import android.os.Build
 import android.webkit.WebView
 import androidx.appcompat.app.AppCompatDelegate
@@ -18,7 +17,6 @@ import com.walletconnect.android.relay.ConnectionType
 import com.walletconnect.sign.client.Sign
 import com.walletconnect.sign.client.SignClient
 import io.cosmostation.splash.secure.CipherHelper
-import io.cosmostation.splash.ui.common.LoadingFragment
 import io.cosmostation.splash.util.Prefs
 import io.cosmostation.splash.util.ThemeUtils
 import io.cosmostation.suikotlin.SuiClient
@@ -37,25 +35,16 @@ class SplashWalletApp : Application(), ViewModelStoreOwner {
     private val mViewModelStore = ViewModelStore()
     lateinit var applicationViewModel: ApplicationViewModel
 
-    private var loadingFragment: LoadingFragment? = null
-
     override fun getViewModelStore(): ViewModelStore {
         return mViewModelStore
     }
 
     override fun onCreate() {
         super.onCreate()
-        applicationViewModel = ViewModelProvider(
-            this, ViewModelProvider.AndroidViewModelFactory(this)
-        )[ApplicationViewModel::class.java]
+        applicationViewModel = ViewModelProvider(this, ViewModelProvider.AndroidViewModelFactory(this))[ApplicationViewModel::class.java]
         CipherHelper.init(this)
         SuiClient.initialize()
-        val network = when (Prefs.network) {
-            "Devnet" -> Network.Devnet()
-            "Testnet" -> Network.Testnet()
-            "Localnet" -> Network.Localnet()
-            else -> Network.Devnet()
-        }
+        val network = SplashConstants.networks[Prefs.network] ?: Network.Mainnet()
         SuiClient.configure(network)
         setupFresco()
         initWalletConnect()

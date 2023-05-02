@@ -3,11 +3,8 @@ package io.cosmostation.splash.ui.coin
 import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
-import android.text.Editable
-import android.text.TextWatcher
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
-import androidx.core.widget.addTextChangedListener
 import coil.ImageLoader
 import coil.decode.SvgDecoder
 import coil.request.ImageRequest
@@ -23,15 +20,15 @@ import io.cosmostation.splash.ui.common.LoadingFragment
 import io.cosmostation.splash.ui.password.PinActivity
 import io.cosmostation.splash.ui.transaction.TransactionResultActivity
 import io.cosmostation.splash.util.DecimalUtils
+import io.cosmostation.splash.util.GasUtils
 import io.cosmostation.splash.util.addDecimalCheckListener
+import io.cosmostation.splash.util.toGasDecimal
 import io.cosmostation.suikotlin.SuiClient
 import io.cosmostation.suikotlin.model.SuiTransactionBlockResponseOptions
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import java.math.BigDecimal
-import java.math.BigInteger
-import java.math.RoundingMode
 import java.util.*
 
 
@@ -56,11 +53,11 @@ class CoinSendActivity : ActionBarBaseActivity() {
 
     private fun loadData() {
         val denom = intent.getStringExtra(INTENT_DENOM_KEY)
-        binding.gas.text = DecimalUtils.toString(SplashConstants.DEFAULT_GAS_BUDGET.toLong(), 9, 9)
+        binding.gas.text = GasUtils.getDefaultGas().toGasDecimal()
         binding.denom.text = denom?.substringAfterLast("::")
         binding.available.text = SplashWalletApp.instance.applicationViewModel.coinMap[denom]?.let {
             if (SplashConstants.SUI_BALANCE_DENOM == denom) {
-                DecimalUtils.toString(it.totalBalance - SplashConstants.DEFAULT_GAS_BUDGET.toLong())
+                DecimalUtils.toString(it.totalBalance - GasUtils.getDefaultGas())
             } else {
                 DecimalUtils.toString(it.totalBalance)
             }
@@ -75,7 +72,7 @@ class CoinSendActivity : ActionBarBaseActivity() {
             metadata?.let { meta ->
                 binding.denom.text = meta.symbol
                 binding.available.text = SplashWalletApp.instance.applicationViewModel.coinMap[denom]?.let {
-                    DecimalUtils.toString(it.totalBalance - SplashConstants.DEFAULT_GAS_BUDGET, meta.decimals)
+                    DecimalUtils.toString(it.totalBalance - GasUtils.getDefaultGas(), meta.decimals)
                 }
                 meta.iconUrl?.let { url ->
                     val imageLoader = ImageLoader.Builder(this).components {
@@ -127,10 +124,8 @@ class CoinSendActivity : ActionBarBaseActivity() {
                 try {
                     if (denom == SplashConstants.SUI_BALANCE_DENOM) {
                         val objects = SuiClient.instance.paySui(
-                            suiCoins.mapNotNull { it?.objectId }, listOf(binding.address.text.toString()), SplashWalletApp.instance.applicationViewModel.currentWalletLiveData.value!!.address, SplashConstants.DEFAULT_GAS_BUDGET, listOf(
-                                BigDecimal(binding.amount.text.toString()).multiply(
-                                    BigDecimal(10).pow(metadata?.decimals ?: 9)
-                                ).toBigInteger()
+                            suiCoins.mapNotNull { it?.objectId }, listOf(binding.address.text.toString()), SplashWalletApp.instance.applicationViewModel.currentWalletLiveData.value!!.address, GasUtils.getDefaultGas().toInt(), listOf(
+                                BigDecimal(binding.amount.text.toString()).multiply(BigDecimal(10).pow(metadata?.decimals ?: 9)).toBigInteger()
                             )
                         )
                         val txBytes = Base64.getDecoder().decode(objects!!.txBytes)
@@ -141,17 +136,13 @@ class CoinSendActivity : ActionBarBaseActivity() {
                             txBytes, signedTxBytes, keyPair, SuiTransactionBlockResponseOptions(showInput = true, showEffects = true)
                         )
                         startActivity(
-                            Intent(
-                                this@CoinSendActivity, TransactionResultActivity::class.java
-                            ).putExtra("executeResult", Gson().toJson(executeResult))
+                            Intent(this@CoinSendActivity, TransactionResultActivity::class.java).putExtra("executeResult", Gson().toJson(executeResult))
                         )
                         finish()
                     } else {
                         val objects = SuiClient.instance.pay(
-                            currentCoins.mapNotNull { it?.objectId }, listOf(binding.address.text.toString()), SplashWalletApp.instance.applicationViewModel.currentWalletLiveData.value!!.address, SplashConstants.DEFAULT_GAS_BUDGET * 2, null, listOf(
-                                BigDecimal(binding.amount.text.toString()).multiply(
-                                    BigDecimal(10).pow(metadata?.decimals ?: 9)
-                                ).toBigInteger()
+                            currentCoins.mapNotNull { it?.objectId }, listOf(binding.address.text.toString()), SplashWalletApp.instance.applicationViewModel.currentWalletLiveData.value!!.address, GasUtils.getDefaultGas().toInt(), null, listOf(
+                                BigDecimal(binding.amount.text.toString()).multiply(BigDecimal(10).pow(metadata?.decimals ?: 9)).toBigInteger()
                             )
                         )
                         val txBytes = Base64.getDecoder().decode(objects!!.txBytes)
@@ -160,9 +151,7 @@ class CoinSendActivity : ActionBarBaseActivity() {
                         val signedTxBytes = SuiClient.instance.sign(keyPair, intentMessage)
                         val executeResult = SuiClient.instance.executeTransaction(txBytes, signedTxBytes, keyPair, SuiTransactionBlockResponseOptions(showInput = true, showEffects = true))
                         startActivity(
-                            Intent(
-                                this@CoinSendActivity, TransactionResultActivity::class.java
-                            ).putExtra("executeResult", Gson().toJson(executeResult))
+                            Intent(this@CoinSendActivity, TransactionResultActivity::class.java).putExtra("executeResult", Gson().toJson(executeResult))
                         )
                         finish()
                     }

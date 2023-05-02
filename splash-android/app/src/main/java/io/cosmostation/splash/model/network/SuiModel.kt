@@ -3,7 +3,7 @@ package io.cosmostation.splash.model.network
 import org.json.JSONObject
 
 data class Balance(
-    val coinType: String, val coinObjectCount: Int, val totalBalance: Double
+    val coinType: String, val coinObjectCount: Int, var totalBalance: Double
 )
 
 data class CoinMetadata(

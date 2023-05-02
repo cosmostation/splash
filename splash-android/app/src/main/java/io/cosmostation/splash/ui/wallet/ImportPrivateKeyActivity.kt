@@ -8,7 +8,6 @@ import androidx.activity.result.contract.ActivityResultContracts
 import androidx.activity.viewModels
 import io.cosmostation.splash.R
 import io.cosmostation.splash.databinding.ActivityImportPrivateKeyBinding
-import io.cosmostation.splash.databinding.ActivityWalletImportBinding
 import io.cosmostation.splash.ui.common.ActionBarBaseActivity
 import io.cosmostation.splash.ui.password.PinActivity
 
