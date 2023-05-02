@@ -10,8 +10,8 @@ android {
         applicationId "io.cosmostation.splash"
         minSdkVersion 26
         targetSdkVersion 33
-        versionCode 13
-        versionName "0.13.0"
+        versionCode 15
+        versionName "0.15.0"
     }
 
     packagingOptions {

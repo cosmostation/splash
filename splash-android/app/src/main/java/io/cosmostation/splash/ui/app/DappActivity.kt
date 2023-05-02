@@ -176,7 +176,12 @@ class DappActivity : AppCompatActivity() {
         SignDialog(title, params, object : SignDialog.SignListener {
             override fun confirm() {
                 showLoadingDialog()
-                SuiUtilService.create().buildSuiTransactionBlock(TransactionBlock(params.getString("data"), params.getString("account"), SuiClient.instance.currentNetwork.rpcUrl)).enqueue(object : Callback<String> {
+                val temp = if (title == "sui:signTransactionBlock") {
+                    params.getString("transaction")
+                } else {
+                    params.getString("data")
+                }
+                SuiUtilService.create().buildSuiTransactionBlock(TransactionBlock(temp, params.getString("account"), SuiClient.instance.currentNetwork.rpcUrl)).enqueue(object : Callback<String> {
                     override fun onResponse(call: Call<String>, response: Response<String>) {
                         response.body()?.let {
                             action(it)
