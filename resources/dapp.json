@@ -26,12 +26,5 @@
         "link": "https://raffles.suiecosystem.top/",
         "icon": "https://pbs.twimg.com/profile_images/1639286057840570370/uQq6mpwQ_400x400.jpg",
         "tags": ["Raffle"]
-    },
-    {
-        "name": "BeLaunch",
-        "description": "Decentralized launchpad that allows users to launch their own token and create their own initial token sale.",
-        "link": "https://dev-sui.belaunch.io/",
-        "icon": "https://pbs.twimg.com/profile_images/1631582974562152448/LhKCnA3d_400x400.jpg",
-        "tags": ["Launchpad"]
     }
 ]
