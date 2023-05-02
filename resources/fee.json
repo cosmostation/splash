@@ -8,5 +8,10 @@
       "default":2000000,
       "stake":30000000,
       "unstake":40000000
+   },
+   "sui-mainnet":{
+      "default":2000000,
+      "stake":30000000,
+      "unstake":40000000
    }
 }
