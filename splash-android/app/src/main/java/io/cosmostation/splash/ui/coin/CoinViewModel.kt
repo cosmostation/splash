@@ -3,7 +3,6 @@ package io.cosmostation.splash.ui.coin
 import SingleLiveEvent
 import androidx.lifecycle.ViewModel
 import com.google.gson.Gson
-import io.cosmostation.splash.util.DecimalUtils
 import io.cosmostation.suikotlin.SuiClient
 import io.cosmostation.suikotlin.model.JsonRpcRequest
 import kotlinx.coroutines.CoroutineScope
@@ -15,7 +14,7 @@ import java.math.BigInteger
 class CoinViewModel : ViewModel() {
     val faucet = SingleLiveEvent<Boolean>()
     val toast = SingleLiveEvent<String>()
-    val stakeAmount = SingleLiveEvent<Double>()
+    val stakeAmount = SingleLiveEvent<String>()
 
 
     fun faucetClick(address: String) = CoroutineScope(Dispatchers.IO).launch {
@@ -51,7 +50,7 @@ class CoinViewModel : ViewModel() {
                         }
                     }
                 }
-                stakeAmount.postValue((principal + reward).toDouble())
+                stakeAmount.postValue((principal + reward).toString())
             }
         } catch (_: Exception) {
         }

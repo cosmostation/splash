@@ -15,7 +15,7 @@ import io.cosmostation.splash.databinding.ItemCoinBinding
 import io.cosmostation.splash.model.network.Balance
 import io.cosmostation.splash.model.network.CoinMetadata
 import io.cosmostation.splash.ui.staking.StakingActivity
-import io.cosmostation.splash.util.DecimalUtils
+import io.cosmostation.splash.util.formatDecimal
 
 class CoinAdapter(
     private val context: Context, var coins: MutableList<Balance> = mutableListOf(), var metadataMap: Map<String, CoinMetadata?> = mapOf()
@@ -41,7 +41,7 @@ class CoinAdapter(
                         val disposable = imageLoader.enqueue(request)
                     }
                 }
-                balance.text = DecimalUtils.toString(coin.totalBalance, it.decimals)
+                balance.text = coin.totalBalance.formatDecimal(it.decimals)
             } ?: run {
                 when (coin.coinType) {
                     SplashConstants.SUI_BALANCE_DENOM -> {
@@ -54,7 +54,7 @@ class CoinAdapter(
                         image.setImageResource(R.drawable.token_default)
                     }
                 }
-                balance.text = DecimalUtils.toString(coin.totalBalance)
+                balance.text = coin.totalBalance.formatDecimal()
             }
 
             token.text = coin.coinType.substring(

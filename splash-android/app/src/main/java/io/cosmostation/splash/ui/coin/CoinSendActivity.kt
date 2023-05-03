@@ -19,18 +19,15 @@ import io.cosmostation.splash.ui.common.ActionBarBaseActivity
 import io.cosmostation.splash.ui.common.LoadingFragment
 import io.cosmostation.splash.ui.password.PinActivity
 import io.cosmostation.splash.ui.transaction.TransactionResultActivity
-import io.cosmostation.splash.util.DecimalUtils
-import io.cosmostation.splash.util.GasUtils
-import io.cosmostation.splash.util.addDecimalCheckListener
-import io.cosmostation.splash.util.toGasDecimal
+import io.cosmostation.splash.util.*
 import io.cosmostation.suikotlin.SuiClient
 import io.cosmostation.suikotlin.model.SuiTransactionBlockResponseOptions
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import java.math.BigDecimal
+import java.math.BigInteger
 import java.util.*
-
 
 class CoinSendActivity : ActionBarBaseActivity() {
     companion object {
@@ -53,13 +50,13 @@ class CoinSendActivity : ActionBarBaseActivity() {
 
     private fun loadData() {
         val denom = intent.getStringExtra(INTENT_DENOM_KEY)
-        binding.gas.text = GasUtils.getDefaultGas().toGasDecimal()
+        binding.gas.text = GasUtils.getDefaultGas().formatGasDecimal()
         binding.denom.text = denom?.substringAfterLast("::")
         binding.available.text = SplashWalletApp.instance.applicationViewModel.coinMap[denom]?.let {
             if (SplashConstants.SUI_BALANCE_DENOM == denom) {
-                DecimalUtils.toString(it.totalBalance - GasUtils.getDefaultGas())
+                BigInteger(it.totalBalance).minus(GasUtils.getDefaultGas()).formatDecimal()
             } else {
-                DecimalUtils.toString(it.totalBalance)
+                it.totalBalance.formatDecimal()
             }
         }
         if (SplashConstants.SUI_BALANCE_DENOM == denom) {
@@ -72,7 +69,7 @@ class CoinSendActivity : ActionBarBaseActivity() {
             metadata?.let { meta ->
                 binding.denom.text = meta.symbol
                 binding.available.text = SplashWalletApp.instance.applicationViewModel.coinMap[denom]?.let {
-                    DecimalUtils.toString(it.totalBalance - GasUtils.getDefaultGas(), meta.decimals)
+                    BigInteger(it.totalBalance).minus(GasUtils.getDefaultGas()).formatDecimal(meta.decimals)
                 }
                 meta.iconUrl?.let { url ->
                     val imageLoader = ImageLoader.Builder(this).components {
@@ -124,8 +121,8 @@ class CoinSendActivity : ActionBarBaseActivity() {
                 try {
                     if (denom == SplashConstants.SUI_BALANCE_DENOM) {
                         val objects = SuiClient.instance.paySui(
-                            suiCoins.mapNotNull { it?.objectId }, listOf(binding.address.text.toString()), SplashWalletApp.instance.applicationViewModel.currentWalletLiveData.value!!.address, GasUtils.getDefaultGas().toInt(), listOf(
-                                BigDecimal(binding.amount.text.toString()).multiply(BigDecimal(10).pow(metadata?.decimals ?: 9)).toBigInteger()
+                            suiCoins.mapNotNull { it?.objectId }, listOf(binding.address.text.toString()), SplashWalletApp.instance.applicationViewModel.currentWalletLiveData.value!!.address, GasUtils.getDefaultGas(), listOf(
+                                binding.amount.text.toString().parseDecimal(metadata?.decimals ?: 9)
                             )
                         )
                         val txBytes = Base64.getDecoder().decode(objects!!.txBytes)
@@ -141,8 +138,8 @@ class CoinSendActivity : ActionBarBaseActivity() {
                         finish()
                     } else {
                         val objects = SuiClient.instance.pay(
-                            currentCoins.mapNotNull { it?.objectId }, listOf(binding.address.text.toString()), SplashWalletApp.instance.applicationViewModel.currentWalletLiveData.value!!.address, GasUtils.getDefaultGas().toInt(), null, listOf(
-                                BigDecimal(binding.amount.text.toString()).multiply(BigDecimal(10).pow(metadata?.decimals ?: 9)).toBigInteger()
+                            currentCoins.mapNotNull { it?.objectId }, listOf(binding.address.text.toString()), SplashWalletApp.instance.applicationViewModel.currentWalletLiveData.value!!.address, GasUtils.getDefaultGas(), null, listOf(
+                                binding.amount.text.toString().parseDecimal(metadata?.decimals ?: 9)
                             )
                         )
                         val txBytes = Base64.getDecoder().decode(objects!!.txBytes)
@@ -150,9 +147,7 @@ class CoinSendActivity : ActionBarBaseActivity() {
                         val keyPair = SuiClient.instance.getKeyPair(SplashWalletApp.instance.applicationViewModel.currentWalletLiveData.value!!.mnemonic)
                         val signedTxBytes = SuiClient.instance.sign(keyPair, intentMessage)
                         val executeResult = SuiClient.instance.executeTransaction(txBytes, signedTxBytes, keyPair, SuiTransactionBlockResponseOptions(showInput = true, showEffects = true))
-                        startActivity(
-                            Intent(this@CoinSendActivity, TransactionResultActivity::class.java).putExtra("executeResult", Gson().toJson(executeResult))
-                        )
+                        startActivity(Intent(this@CoinSendActivity, TransactionResultActivity::class.java).putExtra("executeResult", Gson().toJson(executeResult)))
                         finish()
                     }
 

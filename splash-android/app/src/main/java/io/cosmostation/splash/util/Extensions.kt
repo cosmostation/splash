@@ -5,6 +5,7 @@ import android.text.TextWatcher
 import android.view.View
 import android.widget.EditText
 import java.math.BigDecimal
+import java.math.BigInteger
 import java.math.RoundingMode
 import java.text.SimpleDateFormat
 import java.util.*
@@ -14,8 +15,23 @@ fun Date.formatToViewTimeDefaults(): String {
     return sdf.format(this)
 }
 
-fun Long.toGasDecimal(): String {
-    return DecimalUtils.toString(this, 9, 9)
+fun BigInteger.formatGasDecimal(): String {
+    return this.formatDecimal(9, 9)
+}
+
+fun String.formatDecimal(decimal: Int = 9, trim: Int = 3): String {
+    return BigInteger(this).formatDecimal(decimal, trim)
+}
+
+fun BigInteger.formatDecimal(decimal: Int = 9, trim: Int = 3): String {
+    if (this <= BigInteger("0")) {
+        return "0.0"
+    }
+    return BigDecimal(this).multiply(BigDecimal(0.1).pow(decimal)).setScale(trim, RoundingMode.DOWN).toString()
+}
+
+fun String.parseDecimal(decimal: Int = 9): BigInteger {
+    return BigDecimal(this).multiply(BigDecimal(10).pow(decimal)).toBigInteger()
 }
 
 fun View.visibleOrGone(visible: Boolean) {

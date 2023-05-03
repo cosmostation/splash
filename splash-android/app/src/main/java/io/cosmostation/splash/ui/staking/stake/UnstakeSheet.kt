@@ -15,9 +15,9 @@ import io.cosmostation.splash.databinding.FragmentUnstakingSheetBinding
 import io.cosmostation.splash.ui.common.LoadingFragment
 import io.cosmostation.splash.ui.password.PinActivity
 import io.cosmostation.splash.ui.transaction.TransactionResultActivity
-import io.cosmostation.splash.util.DecimalUtils
 import io.cosmostation.splash.util.GasUtils
-import io.cosmostation.splash.util.toGasDecimal
+import io.cosmostation.splash.util.formatDecimal
+import io.cosmostation.splash.util.formatGasDecimal
 import org.json.JSONObject
 import java.math.BigInteger
 
@@ -60,9 +60,9 @@ class UnstakeSheet(private val item: JSONObject) : BottomSheetDialogFragment() {
             }
         }
 
-        binding.gas.text = GasUtils.getUnstakeGas().toGasDecimal()
+        binding.gas.text = GasUtils.getUnstakeGas().formatGasDecimal()
         binding.objectId.text = item.getString("stakedSuiId")
-        binding.total.text = DecimalUtils.toString((BigInteger(item.getString("principal")) + BigInteger(item.getString("estimatedReward"))).toLong())
+        binding.total.text = (BigInteger(item.getString("principal")) + BigInteger(item.getString("estimatedReward"))).formatDecimal()
         binding.confirmBtn.setOnClickListener {
             resultLauncher.launch(Intent(activity, PinActivity::class.java))
         }

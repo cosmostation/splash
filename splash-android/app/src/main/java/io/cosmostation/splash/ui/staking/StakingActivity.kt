@@ -6,7 +6,7 @@ import androidx.activity.viewModels
 import io.cosmostation.splash.R
 import io.cosmostation.splash.databinding.ActivityStakingBinding
 import io.cosmostation.splash.ui.common.ActionBarBaseActivity
-import io.cosmostation.splash.util.DecimalUtils
+import io.cosmostation.splash.util.formatDecimal
 import io.cosmostation.splash.util.visibleOrGone
 import org.json.JSONArray
 import java.math.BigInteger
@@ -61,7 +61,7 @@ class StakingActivity : ActionBarBaseActivity() {
         }
 
         viewModel.totalBalance.observe(this) {
-            binding.available.text = DecimalUtils.toString(it)
+            binding.available.text = it.formatDecimal()
         }
 
         viewModel.stakeInfos.observe(this) {
@@ -82,9 +82,9 @@ class StakingActivity : ActionBarBaseActivity() {
                     }
                 }
             }
-            binding.stakeTotal.text = DecimalUtils.toString((principal + reward).toLong())
-            binding.stakeStaked.text = DecimalUtils.toString(principal.toLong())
-            binding.stakeEarned.text = DecimalUtils.toString(reward.toLong())
+            binding.stakeTotal.text = principal.add(reward).formatDecimal()
+            binding.stakeStaked.text = principal.formatDecimal()
+            binding.stakeEarned.text = reward.formatDecimal()
         }
     }
 }

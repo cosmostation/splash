@@ -66,7 +66,7 @@ class ApplicationViewModel(application: Application) : AndroidViewModel(applicat
     }
 
     private fun loadBalances() = CoroutineScope(Dispatchers.IO).launch {
-        allBalances.postValue(listOf(Balance(SplashConstants.SUI_BALANCE_DENOM, 0, 0.0)))
+        allBalances.postValue(listOf(Balance(SplashConstants.SUI_BALANCE_DENOM, 0, "0")))
         currentWalletLiveData.value?.address?.let {
             increaseFetchCount()
 
@@ -75,19 +75,13 @@ class ApplicationViewModel(application: Application) : AndroidViewModel(applicat
                 val balanceListType: Type = object : TypeToken<List<Balance>>() {}.type
                 val result: MutableList<Balance> = Gson().fromJson(Gson().toJson(response?.result), balanceListType)
                 if (result.isEmpty()) {
-                    result.add(Balance(SplashConstants.SUI_BALANCE_DENOM, 0, 0.0))
+                    result.add(Balance(SplashConstants.SUI_BALANCE_DENOM, 0, "0"))
                 }
                 allBalances.postValue(result)
                 coinMap = result.associateBy { it.coinType }
                 loadCoinMetadata(result.map { it.coinType })
             } catch (_: Exception) {
-                allBalances.postValue(
-                    listOf(
-                        Balance(
-                            SplashConstants.SUI_BALANCE_DENOM, 0, 0.0
-                        )
-                    )
-                )
+                allBalances.postValue(listOf(Balance(SplashConstants.SUI_BALANCE_DENOM, 0, "0")))
             } finally {
                 decreaseFetchCount()
             }

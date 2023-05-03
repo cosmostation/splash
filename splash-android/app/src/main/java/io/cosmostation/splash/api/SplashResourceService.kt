@@ -31,5 +31,5 @@ interface SplashResourceService {
     suspend fun dapp(): Response<List<Dapp>>
 
     @GET("fee.json")
-    suspend fun fee(): Response<Map<String, Map<String, Long>>>
+    suspend fun fee(): Response<Map<String, Map<String, String>>>
 }

@@ -8,7 +8,7 @@ import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.google.common.collect.Maps
 import io.cosmostation.splash.databinding.ItemStakingObjectBinding
-import io.cosmostation.splash.util.DecimalUtils
+import io.cosmostation.splash.util.formatDecimal
 import org.json.JSONArray
 import org.json.JSONObject
 import java.math.BigInteger
@@ -27,9 +27,9 @@ class StakingObjectAdapter(
         viewHolder.binding.objectId.text = item.getString("stakedSuiId")
         viewHolder.binding.logo.setImageURI(Uri.parse(validators[validatorAddress]?.getString("imageUrl")))
         viewHolder.binding.validator.text = validators[validatorAddress]?.getString("name")
-        viewHolder.binding.stakeAmount.text = DecimalUtils.toString(BigInteger(item.getString("principal")).toLong(), trim = 9)
+        viewHolder.binding.stakeAmount.text = BigInteger(item.getString("principal")).formatDecimal(trim = 9)
         if (item.has("estimatedReward")) {
-            viewHolder.binding.earned.text = DecimalUtils.toString(BigInteger(item.getString("estimatedReward")).toLong(), trim = 9)
+            viewHolder.binding.earned.text = BigInteger(item.getString("estimatedReward")).formatDecimal(trim = 9)
         } else {
             viewHolder.binding.earned.text = "0.0"
         }

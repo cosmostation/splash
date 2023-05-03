@@ -16,7 +16,7 @@ import org.json.JSONObject
 class StakingViewModel : ViewModel() {
     val epoch = MutableLiveData<Long>()
     val epochEndMs = MutableLiveData<Long>()
-    val totalBalance = MutableLiveData<Double>()
+    val totalBalance = MutableLiveData<String>()
     val stakeInfos = MutableLiveData<String>()
     val validatorInfos = MutableLiveData<JSONArray>()
 

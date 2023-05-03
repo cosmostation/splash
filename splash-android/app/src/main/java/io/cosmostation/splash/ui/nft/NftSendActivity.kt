@@ -16,7 +16,7 @@ import io.cosmostation.splash.ui.common.LoadingFragment
 import io.cosmostation.splash.ui.password.PinActivity
 import io.cosmostation.splash.ui.transaction.TransactionResultActivity
 import io.cosmostation.splash.util.GasUtils
-import io.cosmostation.splash.util.toGasDecimal
+import io.cosmostation.splash.util.formatGasDecimal
 import io.cosmostation.suikotlin.SuiClient
 import io.cosmostation.suikotlin.model.SuiTransactionBlockResponseOptions
 import kotlinx.coroutines.CoroutineScope
@@ -41,7 +41,7 @@ class NftSendActivity : ActionBarBaseActivity() {
 
     private fun loadData() {
         val id = intent.getStringExtra("id")
-        binding.gas.text = GasUtils.getDefaultGas().toGasDecimal()
+        binding.gas.text = GasUtils.getDefaultGas().formatGasDecimal()
         id?.let {
             val objects = SplashWalletApp.instance.applicationViewModel.nftMap[it]
             objects?.let {
@@ -80,7 +80,7 @@ class NftSendActivity : ActionBarBaseActivity() {
         val id = intent.getStringExtra("id")
         CoroutineScope(Dispatchers.IO).launch {
             try {
-                val objects = SuiClient.instance.transferObject(id!!, binding.address.text.toString(), SplashWalletApp.instance.applicationViewModel.currentWalletLiveData.value!!.address, GasUtils.getDefaultGas().toInt())
+                val objects = SuiClient.instance.transferObject(id!!, binding.address.text.toString(), SplashWalletApp.instance.applicationViewModel.currentWalletLiveData.value!!.address, GasUtils.getDefaultGas())
                 val txBytes = Base64.getDecoder().decode(objects!!.txBytes)
                 val intentMessage = byteArrayOf(0, 0, 0) + txBytes
                 val keyPair = SuiClient.instance.getKeyPair(SplashWalletApp.instance.applicationViewModel.currentWalletLiveData.value!!.mnemonic)

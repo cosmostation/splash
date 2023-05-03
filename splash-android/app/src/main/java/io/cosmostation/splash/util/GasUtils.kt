@@ -2,39 +2,40 @@ package io.cosmostation.splash.util
 
 import io.cosmostation.splash.SplashConstants
 import io.cosmostation.suikotlin.SuiClient
+import java.math.BigInteger
 
 object GasUtils {
-    private const val DEFAULT_GAS_BUDGET = 2000000
-    private const val STAKE_GAS_BUDGET = 4000000
-    private const val UNSTAKE_GAS_BUDGET = 4000000
+    private const val DEFAULT_GAS_BUDGET = "2000000"
+    private const val STAKE_GAS_BUDGET = "4000000"
+    private const val UNSTAKE_GAS_BUDGET = "4000000"
 
-    fun getDefaultGas(): Long {
+    fun getDefaultGas(): BigInteger {
         try {
             SplashConstants.suiFees?.get("sui-${SuiClient.instance.currentNetwork.name.lowercase()}")?.get("default")?.let {
-                return it
-            } ?: return DEFAULT_GAS_BUDGET.toLong()
+                return BigInteger(it)
+            } ?: return BigInteger(DEFAULT_GAS_BUDGET)
         } catch (_: Exception) {
-            return DEFAULT_GAS_BUDGET.toLong()
+            return BigInteger(DEFAULT_GAS_BUDGET)
         }
     }
 
-    fun getStakeGas(): Long {
+    fun getStakeGas(): BigInteger {
         try {
             SplashConstants.suiFees?.get("sui-${SuiClient.instance.currentNetwork.name.lowercase()}")?.get("stake")?.let {
-                return it
-            } ?: return STAKE_GAS_BUDGET.toLong()
+                return BigInteger(it)
+            } ?: return BigInteger(STAKE_GAS_BUDGET)
         } catch (_: Exception) {
-            return STAKE_GAS_BUDGET.toLong()
+            return BigInteger(STAKE_GAS_BUDGET)
         }
     }
 
-    fun getUnstakeGas(): Long {
+    fun getUnstakeGas(): BigInteger {
         try {
             SplashConstants.suiFees?.get("sui-${SuiClient.instance.currentNetwork.name.lowercase()}")?.get("unstake")?.let {
-                return it
-            } ?: return UNSTAKE_GAS_BUDGET.toLong()
+                return BigInteger(it)
+            } ?: return BigInteger(UNSTAKE_GAS_BUDGET)
         } catch (_: Exception) {
-            return UNSTAKE_GAS_BUDGET.toLong()
+            return BigInteger(UNSTAKE_GAS_BUDGET)
         }
     }
 }

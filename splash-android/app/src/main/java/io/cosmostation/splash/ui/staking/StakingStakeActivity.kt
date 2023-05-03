@@ -10,10 +10,10 @@ import io.cosmostation.splash.ui.common.ActionBarBaseActivity
 import io.cosmostation.splash.ui.staking.stake.StakeSheet
 import io.cosmostation.splash.ui.staking.stake.UnstakeSheet
 import io.cosmostation.splash.ui.staking.validator.SelectValidatorFragment
-import io.cosmostation.splash.util.DecimalUtils
 import io.cosmostation.splash.util.GasUtils
 import io.cosmostation.splash.util.addDecimalCheckListener
-import io.cosmostation.splash.util.toGasDecimal
+import io.cosmostation.splash.util.formatDecimal
+import io.cosmostation.splash.util.formatGasDecimal
 import org.json.JSONArray
 import org.json.JSONObject
 import java.math.BigDecimal
@@ -48,7 +48,7 @@ class StakingStakeActivity : ActionBarBaseActivity() {
 
     private fun setupViewModels() {
         viewModel.totalBalance.observe(this) {
-            binding.available.text = DecimalUtils.toString(it - 800000000)
+            binding.available.text = BigInteger(it).minus(GasUtils.getStakeGas()).formatDecimal()
         }
 
         viewModel.epoch.observe(this) {
@@ -84,14 +84,14 @@ class StakingStakeActivity : ActionBarBaseActivity() {
                 }
             }
         }
-        binding.yourStaked.text = DecimalUtils.toString(myStake.toLong())
+        binding.yourStaked.text = myStake.formatDecimal()
     }
 
     private fun updateView() {
         currentValidator?.let {
             binding.logo.setImageURI(it.getString("imageUrl"))
             binding.name.text = it.getString("name")
-            binding.currentStaked.text = DecimalUtils.toString(BigInteger(it.getString("stakingPoolSuiBalance")).toLong(), trim = 1)
+            binding.currentStaked.text = BigInteger(it.getString("stakingPoolSuiBalance")).formatDecimal()
             binding.commission.text = "${it.getString("commissionRate").toDouble() * 0.01}%"
             viewModel.stakeInfos.value?.let { it1 -> updateStakeInfo(it1) }
         }
@@ -109,7 +109,7 @@ class StakingStakeActivity : ActionBarBaseActivity() {
             }
             currentValidator?.let { it1 -> StakeSheet(binding.amount.text.toString(), binding.gas.text.toString(), it1).show(supportFragmentManager, UnstakeSheet::class.java.name) }
         }
-        binding.gas.text = GasUtils.getStakeGas().toGasDecimal()
+        binding.gas.text = GasUtils.getStakeGas().formatGasDecimal()
         binding.validatorWrap.setOnClickListener {
             SelectValidatorFragment(object : SelectValidatorFragment.ValidatorSelectListener {
                 override fun select(validator: JSONObject) {

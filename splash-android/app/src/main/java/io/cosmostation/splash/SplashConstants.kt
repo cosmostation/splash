@@ -15,7 +15,7 @@ object SplashConstants {
     const val SPLASH_TWITTER = "https://twitter.com/splash_sui"
     const val SPLASH_PLAY_STORE = "https://play.google.com/store/apps/details?id=io.cosmostation.splash"
     const val SPLASH_EMAIL = "splash@cosmostation.io"
-    var suiFees: Map<String, Map<String, Long>>? = null
+    var suiFees: Map<String, Map<String, String>>? = null
     var networks: Map<String, Network> = mapOf("Mainnet" to Network.Mainnet(), "Testnet" to Network.Testnet(), "Devnet" to Network.Devnet(), "Localnet" to Network.Localnet())
 
     init {
