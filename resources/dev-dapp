@@ -1,0 +1,130 @@
+[
+   {
+      "name":"Capy",
+      "description":"Mint and Mix your SuiFrens.",
+      "link":"https://capy.art/",
+      "tags":[
+         "NFT"
+      ]
+   },
+   {
+      "name":"Kriya Finance",
+      "description":"",
+      "link":"https://www.app.kriya.finance/derivatives/dashboard",
+      "tags":[
+         "DEX"
+      ]
+   },
+   {
+      "name":"Umi",
+      "description":"",
+      "link":"https://umi.ag/swap",
+      "tags":[
+         "DEX"
+      ]
+   },
+   {
+      "name":"Sui Gallery",
+      "description":"NFT Marketplace For the Next Billion User",
+      "link":"https://www.sui.gallery/",
+      "tags":[
+         "NFT"
+      ]
+   },
+   {
+      "name":"Keepsake",
+      "description":"A reimagined NFT gaming marketplace",
+      "link":"https://beta.keepsake.gg/",
+      "tags":[
+         "NFT"
+      ]
+   },
+   {
+      "name":"NojoSwap",
+      "description":"Your gateway to DeFi",
+      "link":"https://nojoswap.com/",
+      "tags":[
+         "DeFi"
+      ]
+   },
+   {
+      "name":"Flame Protocol",
+      "description":"The AMM swap built on Sui",
+      "link":"https://flameswap.io/#/",
+      "tags":[
+         "DEX"
+      ]
+   },
+   {
+      "name":"LuckyStar",
+      "description":"Win your luck, be a lucky star today.",
+      "link":"https://www.luckystar.homes/",
+      "tags":[
+         
+      ]
+   },
+   {
+      "name":"Bucket Protocol",
+      "description":"A decentralized lending protocol with 0% interest loans against $SUI used as a collateral",
+      "link":"https://app.bucketprotocol.io/",
+      "tags":[
+         "DeFi"
+      ]
+   },
+   {
+      "name":"Suvio",
+      "description":"Buy, Sell and Collect NFT.",
+      "link":"https://suvio.io/",
+      "tags":[
+         "NFT"
+      ]
+   },
+   {
+      "name":"Somis.xyz",
+      "description":"The fastest NFT marketplace on Sui",
+      "link":"https://somis.xyz/",
+      "tags":[
+         "NFT"
+      ]
+   },
+   {
+      "name":"Releap Protocol",
+      "description":"Decentralized Social Graph on Sui",
+      "link":"https://releap.xyz/",
+      "tags":[
+         
+      ]
+   },
+   {
+      "name":"Sui MonstrX",
+      "description":"The first raffle system on Sui",
+      "link":"https://raffle.suimonstrx.xyz/",
+      "tags":[
+         "Game"
+      ]
+   },
+   {
+      "name":"Giro Swap",
+      "description":"The first crypto fundraising protocol supports NFT&Token AMM built on Sui",
+      "link":"https://giroswap.com/",
+      "tags":[
+         "DeFi"
+      ]
+   },
+   {
+      "name":"Scallop App",
+      "description":"Next Generation Interest Rate Machine",
+      "link":"https://www.scallop.io/",
+      "tags":[
+         "DeFi"
+      ]
+   },
+   {
+      "name":"Suidex",
+      "description":"The first AMM(Automated Market Maker) on the SUI blockchain.",
+      "link":"https://suidex.io/",
+      "tags":[
+         "DEX"
+      ]
+   }
+]
