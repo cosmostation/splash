@@ -7,6 +7,7 @@ import io.cosmostation.splash.SplashWalletApp
 import io.cosmostation.splash.api.SuiUtilService
 import io.cosmostation.splash.model.network.StakeRequest
 import io.cosmostation.splash.model.network.UnstakeRequest
+import io.cosmostation.splash.util.parseDecimal
 import io.cosmostation.suikotlin.SuiClient
 import io.cosmostation.suikotlin.model.SuiTransactionBlockResponseOptions
 import kotlinx.coroutines.CoroutineScope
@@ -27,7 +28,7 @@ class StakeViewModel : ViewModel() {
         SplashWalletApp.instance.applicationViewModel.currentWalletLiveData.value?.let { wallet ->
             val validatorAddress = item.getString("suiAddress")
             val signer = wallet.address
-            SuiUtilService.create().buildStakingRequest(StakeRequest(validatorAddress, signer, BigDecimal(amount).multiply(BigDecimal(10).pow(9)).toBigInteger().toString(), SuiClient.instance.currentNetwork.rpcUrl)).enqueue(object : Callback<String> {
+            SuiUtilService.create().buildStakingRequest(StakeRequest(validatorAddress, signer, amount.parseDecimal().toString(), SuiClient.instance.currentNetwork.rpcUrl)).enqueue(object : Callback<String> {
                 override fun onResponse(call: Call<String>, response: Response<String>) {
                     try {
                         val txBytes = Utils.hexToBytes(response.body())
