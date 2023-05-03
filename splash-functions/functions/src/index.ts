@@ -1,10 +1,5 @@
 import * as functions from "firebase-functions";
-import {
-  JsonRpcProvider,
-  TransactionBlock,
-  devnetConnection,
-  testnetConnection,
-} from "@mysten/sui.js";
+import { Connection, JsonRpcProvider, TransactionBlock } from "@mysten/sui.js";
 
 const bytesToHex = (bytes: Uint8Array): string => {
   return Buffer.from(bytes).toString("hex");
@@ -15,10 +10,8 @@ const bytesToHex = (bytes: Uint8Array): string => {
 //
 export const buildSuiTransactionBlock = functions.https.onRequest(
   async (request, response) => {
-    let provider = new JsonRpcProvider(testnetConnection);
-    if (request.body.rpc.includes("dev")) {
-      provider = new JsonRpcProvider(devnetConnection);
-    }
+    const connection = new Connection({ fullnode: request.body.rpc });
+    const provider = new JsonRpcProvider(connection);
     const txBlock = TransactionBlock.from(request.body.txBlock);
     txBlock.setSenderIfNotSet(request.body.address);
     const build = await txBlock.build({ provider, onlyTransactionKind: false });
@@ -28,10 +21,8 @@ export const buildSuiTransactionBlock = functions.https.onRequest(
 
 export const buildStakingRequest = functions.https.onRequest(
   async (request, response) => {
-    let provider = new JsonRpcProvider(testnetConnection);
-    if (request.body.rpc.includes("dev")) {
-      provider = new JsonRpcProvider(devnetConnection);
-    }
+    const connection = new Connection({ fullnode: request.body.rpc });
+    const provider = new JsonRpcProvider(connection);
     const tx = new TransactionBlock();
     const stakeCoin = tx.splitCoins(tx.gas, [tx.pure(request.body.amount)]);
     tx.moveCall({
@@ -50,10 +41,8 @@ export const buildStakingRequest = functions.https.onRequest(
 
 export const buildUnstakingRequest = functions.https.onRequest(
   async (request, response) => {
-    let provider = new JsonRpcProvider(testnetConnection);
-    if (request.body.rpc.includes("dev")) {
-      provider = new JsonRpcProvider(devnetConnection);
-    }
+    const connection = new Connection({ fullnode: request.body.rpc });
+    const provider = new JsonRpcProvider(connection);
     const tx = new TransactionBlock();
     tx.moveCall({
       target: "0x3::sui_system::request_withdraw_stake",
