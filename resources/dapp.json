@@ -11,10 +11,10 @@
    {
       "name":"SuiFrens",
       "description":"Have fun minting and mixing your SuiFrens.",
-      "link":"https://capy.art/",
+      "link":"https://suifrens.com/",
       "icon":"https://storage.googleapis.com/sui-cms-content/capy_64caa3122e/capy_64caa3122e.png",
       "tags":[
-         "Game"
+         "NFT"
       ]
    },
    {
@@ -141,6 +141,15 @@
       "icon":"https://pbs.twimg.com/profile_images/1610631313043910656/T6pH86VG_400x400.jpg",
       "tags":[
          "DeFi"
+      ]
+   },
+   {
+      "name":"SuiFrens(Testnet)",
+      "description":"Have fun minting and mixing your SuiFrens.",
+      "link":"https://capy.art/",
+      "icon":"https://storage.googleapis.com/sui-cms-content/capy_64caa3122e/capy_64caa3122e.png",
+      "tags":[
+         "NFT"
       ]
    }
 ]
