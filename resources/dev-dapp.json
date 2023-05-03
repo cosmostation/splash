@@ -1,12 +1,32 @@
 [
    {
-      "name":"Capy",
-      "description":"Mint and Mix your SuiFrens.",
-      "link":"https://capy.art/",
-      "tags":[
-         "NFT"
-      ]
-   },
+        "name": "Splash Dash",
+        "description": "SUI Staking by Splash",
+        "link": "https://dash.splash.im",
+        "icon": "https://raw.githubusercontent.com/cosmostation/splash/main/resources/logo.png",
+        "tags": ["Staking"]
+    },
+    {
+        "name": "SuiFrens",
+        "description": "Have fun minting and mixing your SuiFrens.",
+        "link": "https://capy.art/",
+        "icon": "https://storage.googleapis.com/sui-cms-content/capy_64caa3122e/capy_64caa3122e.png",
+        "tags": ["Game"]
+    },
+    {
+        "name": "Sui Name Service (SuiNS)",
+        "description": "Find your .sui name!",
+        "link": "https://suins.io/",
+        "icon": "https://raw.githubusercontent.com/SuiNSdapp/docs/main/SuiNS-small2.jpg",
+        "tags": ["Infra"]
+    },
+    {
+        "name": "SuiRaffles",
+        "description": "JOIN THE RAFFLE",
+        "link": "https://raffles.suiecosystem.top/",
+        "icon": "https://pbs.twimg.com/profile_images/1639286057840570370/uQq6mpwQ_400x400.jpg",
+        "tags": ["Raffle"]
+    },
    {
       "name":"Kriya Finance",
       "description":"",
