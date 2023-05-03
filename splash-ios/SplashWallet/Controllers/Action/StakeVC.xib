@@ -84,41 +84,41 @@
                     </constraints>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="edD-kS-gZk" customClass="CardView" customModule="SplashWallet" customModuleProvider="target">
-                    <rect key="frame" x="16" y="151" width="361" height="86.666666666666686"/>
+                    <rect key="frame" x="16" y="151" width="361" height="74"/>
                     <subviews>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Voting Power" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ghz-6p-YIo">
-                            <rect key="frame" x="16.000000000000007" y="15.999999999999998" width="98.666666666666686" height="19.333333333333329"/>
-                            <fontDescription key="fontDescription" name="Pretendard-SemiBold" family="Pretendard" pointSize="16"/>
+                            <rect key="frame" x="16" y="16" width="86.333333333333329" height="17"/>
+                            <fontDescription key="fontDescription" name="Pretendard-SemiBold" family="Pretendard" pointSize="14"/>
                             <color key="textColor" name="base04"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0.000" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OGb-Nc-oya">
-                            <rect key="frame" x="300.33333333333331" y="16.666666666666657" width="44.666666666666686" height="18"/>
-                            <fontDescription key="fontDescription" name="NanumSquareOTFEB" family="NanumSquareOTF" pointSize="16"/>
+                            <rect key="frame" x="305.33333333333331" y="16.666666666666657" width="39.666666666666686" height="15.666666666666664"/>
+                            <fontDescription key="fontDescription" name="NanumSquareOTFEB" family="NanumSquareOTF" pointSize="14"/>
                             <color key="textColor" name="base05"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Commission" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KZf-8p-VLx">
-                            <rect key="frame" x="15" y="51.333333333333343" width="91.666666666666671" height="19.333333333333329"/>
-                            <fontDescription key="fontDescription" name="Pretendard-SemiBold" family="Pretendard" pointSize="16"/>
+                            <rect key="frame" x="15" y="41" width="80.333333333333329" height="17"/>
+                            <fontDescription key="fontDescription" name="Pretendard-SemiBold" family="Pretendard" pointSize="14"/>
                             <color key="textColor" name="base04"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0.000" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nvo-in-ruF">
-                            <rect key="frame" x="300" y="52" width="44.666666666666686" height="18"/>
-                            <fontDescription key="fontDescription" name="NanumSquareOTFEB" family="NanumSquareOTF" pointSize="16"/>
+                            <rect key="frame" x="305" y="41.666666666666657" width="39.666666666666686" height="15.666666666666664"/>
+                            <fontDescription key="fontDescription" name="NanumSquareOTFEB" family="NanumSquareOTF" pointSize="14"/>
                             <color key="textColor" name="base05"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Your Staked" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qco-90-BIv">
-                            <rect key="frame" x="16" y="86.666666666666657" width="89.333333333333329" height="19.333333333333329"/>
-                            <fontDescription key="fontDescription" name="Pretendard-SemiBold" family="Pretendard" pointSize="16"/>
+                            <rect key="frame" x="16" y="86.666666666666657" width="78.333333333333329" height="19.333333333333329"/>
+                            <fontDescription key="fontDescription" name="Pretendard-SemiBold" family="Pretendard" pointSize="14"/>
                             <color key="textColor" name="base04"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="0.000" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MHc-PA-EhD">
-                            <rect key="frame" x="300.33333333333331" y="87.333333333333343" width="44.666666666666686" height="18"/>
-                            <fontDescription key="fontDescription" name="NanumSquareOTFEB" family="NanumSquareOTF" pointSize="16"/>
+                            <rect key="frame" x="305.33333333333331" y="87.333333333333343" width="39.666666666666686" height="18"/>
+                            <fontDescription key="fontDescription" name="NanumSquareOTFEB" family="NanumSquareOTF" pointSize="14"/>
                             <color key="textColor" name="base05"/>
                             <nil key="highlightedColor"/>
                         </label>
@@ -133,14 +133,14 @@
                         <constraint firstAttribute="bottom" secondItem="KZf-8p-VLx" secondAttribute="bottom" constant="16" id="dgF-5X-XE7"/>
                         <constraint firstItem="ghz-6p-YIo" firstAttribute="leading" secondItem="edD-kS-gZk" secondAttribute="leading" constant="16" id="lwD-5m-Ofc"/>
                         <constraint firstAttribute="trailing" secondItem="nvo-in-ruF" secondAttribute="trailing" constant="16.333333333333314" id="opp-ny-H22"/>
-                        <constraint firstItem="KZf-8p-VLx" firstAttribute="top" secondItem="ghz-6p-YIo" secondAttribute="bottom" constant="16" id="tXx-nZ-4VD"/>
+                        <constraint firstItem="KZf-8p-VLx" firstAttribute="top" secondItem="ghz-6p-YIo" secondAttribute="bottom" constant="8" id="tXx-nZ-4VD"/>
                         <constraint firstItem="nvo-in-ruF" firstAttribute="centerY" secondItem="KZf-8p-VLx" secondAttribute="centerY" id="tzt-aq-64C"/>
                         <constraint firstItem="qco-90-BIv" firstAttribute="leading" secondItem="edD-kS-gZk" secondAttribute="leading" constant="16" id="zNJ-F9-lXB"/>
                         <constraint firstItem="ghz-6p-YIo" firstAttribute="top" secondItem="edD-kS-gZk" secondAttribute="top" constant="16" id="zcG-Oe-Hcn"/>
                     </constraints>
                 </view>
                 <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Kfx-lc-JkJ" customClass="MDCOutlinedTextField">
-                    <rect key="frame" x="16" y="267.66666666666669" width="361" height="60"/>
+                    <rect key="frame" x="16" y="255" width="361" height="60"/>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <color key="tintColor" name="text01"/>
                     <constraints>
@@ -227,13 +227,13 @@
                     </connections>
                 </button>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Available : " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0GY-Tr-twT">
-                    <rect key="frame" x="265" y="331" width="69" height="17"/>
+                    <rect key="frame" x="264.33333333333331" y="318.33333333333331" width="69" height="17"/>
                     <fontDescription key="fontDescription" name="Pretendard-SemiBold" family="Pretendard" pointSize="14"/>
                     <color key="textColor" name="base04"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0.000" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="04s-jT-1iY">
-                    <rect key="frame" x="338" y="331.66666666666669" width="39" height="15.666666666666686"/>
+                    <rect key="frame" x="337.33333333333331" y="319" width="39.666666666666686" height="15.666666666666686"/>
                     <fontDescription key="fontDescription" name="NanumSquareOTFEB" family="NanumSquareOTF" pointSize="14"/>
                     <color key="textColor" name="base05"/>
                     <nil key="highlightedColor"/>

@@ -24,6 +24,7 @@ class MainTabActivity: BaseVC {
         activityTable.dataSource = self
         activityTable.separatorStyle = .none
         activityTable.register(UINib(nibName: "ActivityCell", bundle: nil), forCellReuseIdentifier: "ActivityCell")
+        activityTable.sectionHeaderTopPadding = 0
         
         refresher = UIRefreshControl()
         refresher.addTarget(self, action: #selector(onRequestFetch), for: .valueChanged)
@@ -105,7 +106,7 @@ extension MainTabActivity: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 40
+        return 60
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {

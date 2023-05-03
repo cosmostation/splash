@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21678"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -27,8 +27,15 @@
             <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IWr-xd-Ozt">
+                    <rect key="frame" x="0.0" y="67" width="393" height="1"/>
+                    <color key="backgroundColor" name="base03"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="1" id="jh7-sD-ofI"/>
+                    </constraints>
+                </view>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="Px2-pc-Zue">
-                    <rect key="frame" x="0.0" y="59" width="393" height="713"/>
+                    <rect key="frame" x="0.0" y="68" width="393" height="704"/>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 </tableView>
                 <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZsY-PL-ezD">
@@ -42,7 +49,7 @@
                             </constraints>
                         </imageView>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No Address Book" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hWQ-qz-kJX">
-                            <rect key="frame" x="48.666666666666657" y="90" width="142.33333333333334" height="21"/>
+                            <rect key="frame" x="48" y="90" width="143.66666666666666" height="21"/>
                             <fontDescription key="fontDescription" name="Pretendard-SemiBold" family="Pretendard" pointSize="18"/>
                             <color key="textColor" name="base04"/>
                             <nil key="highlightedColor"/>
@@ -79,12 +86,15 @@
             <color key="backgroundColor" name="base01"/>
             <color key="tintColor" name="base05"/>
             <constraints>
+                <constraint firstItem="IWr-xd-Ozt" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="8" id="5cc-xZ-Paz"/>
                 <constraint firstItem="efK-wM-NUC" firstAttribute="top" secondItem="Px2-pc-Zue" secondAttribute="bottom" id="7Nc-zt-fQG"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="efK-wM-NUC" secondAttribute="trailing" constant="16" id="7iw-tB-fic"/>
                 <constraint firstItem="Px2-pc-Zue" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="Acr-FO-OlQ"/>
+                <constraint firstItem="IWr-xd-Ozt" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="Qc1-KK-wuu"/>
                 <constraint firstItem="efK-wM-NUC" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="16" id="Qi6-on-PMq"/>
-                <constraint firstItem="Px2-pc-Zue" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="ROS-Mi-fMU"/>
+                <constraint firstItem="Px2-pc-Zue" firstAttribute="top" secondItem="IWr-xd-Ozt" secondAttribute="bottom" id="fc4-aI-A45"/>
                 <constraint firstItem="efK-wM-NUC" firstAttribute="bottom" secondItem="fnl-2z-Ty3" secondAttribute="bottom" constant="8" id="hbv-d7-laL"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="IWr-xd-Ozt" secondAttribute="trailing" id="i4x-El-SRu"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="Px2-pc-Zue" secondAttribute="trailing" id="u8K-6w-kaL"/>
                 <constraint firstItem="ZsY-PL-ezD" firstAttribute="centerX" secondItem="fnl-2z-Ty3" secondAttribute="centerX" id="vwG-Ht-vxo"/>
                 <constraint firstItem="ZsY-PL-ezD" firstAttribute="centerY" secondItem="fnl-2z-Ty3" secondAttribute="centerY" id="wg8-fj-BwY"/>
@@ -96,6 +106,9 @@
         <image name="icon_empty" width="70" height="70"/>
         <namedColor name="base01">
             <color red="0.98400002717971802" green="0.98799997568130493" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="base03">
+            <color red="0.90200001001358032" green="0.92500001192092896" blue="0.98400002717971802" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="base04">
             <color red="0.59600001573562622" green="0.68199998140335083" blue="0.84700000286102295" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

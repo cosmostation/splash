@@ -132,7 +132,7 @@ extension MainTabSetting: UITableViewDelegate, UITableViewDataSource {
         } else if (indexPath.section == 2) {
             if (indexPath.row == 2) { return 0 }
         } else if (indexPath.section == 3) {
-            if (indexPath.row == 0 || indexPath.row == 3) { return 0 }
+            if (indexPath.row == 3) { return 0 }
         }
         return 60
     }
@@ -245,9 +245,9 @@ extension MainTabSetting: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if (indexPath.section == 0) {
             if (indexPath.row == 0) {
-                let selectAccountSheet = SelectAccountSheet(nibName: "SelectAccountSheet", bundle: nil)
-                selectAccountSheet.resultDelegate = self
-                onStartSheet(selectAccountSheet)
+                let accountListVC = AccountListVC(nibName: "AccountListVC", bundle: nil)
+                accountListVC.hidesBottomBarWhenPushed = true
+                self.navigationController?.pushViewController(accountListVC, animated: true)
                 
             } else if (indexPath.row == 1) {
                 let baseSheet = BaseSheet(nibName: "BaseSheet", bundle: nil)
@@ -282,18 +282,10 @@ extension MainTabSetting: UITableViewDelegate, UITableViewDataSource {
                 onStartSheet(baseSheet)
             }
             
-        } else if (indexPath.section == 2) {
-            if (indexPath.row == 0) {
-            } else if (indexPath.row == 1) {
-                print("click bio")
-            } else if (indexPath.row == 2) {
-                print("click hideasset")
-            }
-            
         } else if (indexPath.section == 3) {
             if (indexPath.row == 0) {
-//                guard let url = URL(string: "https://github.com/cosmostation/splash-wallet/tree/main/ios") else { return }
-//                self.onStartSafariWeb(url)
+                guard let url = URL(string: "https://github.com/cosmostation/splash") else { return }
+                self.onStartSafariWeb(url)
                 
             } else if (indexPath.row == 1) {
                 let urlAppStore = URL(string: "itms-apps://itunes.apple.com/app/6447570048")

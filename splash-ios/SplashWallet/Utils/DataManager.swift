@@ -8,6 +8,7 @@
 import Foundation
 import SwiftyJSON
 import SuiSwift
+import Alamofire
 
 class DataManager {
     static let shared = DataManager()
@@ -15,6 +16,7 @@ class DataManager {
     var account: BaseAccount?
     var suiSystem: JSON?
     var suiBalances = Array<(String, NSDecimalNumber)>()
+    var suiStaked = Array<JSON>()
     var suiObjects = Array<JSON>()
     var suiFromTxs = Array<JSON>()
     var suiToTxs = Array<JSON>()
@@ -26,7 +28,11 @@ class DataManager {
     func loadAll() {
         let group = DispatchGroup()
         
-        if (account?.chainConfig is ChainSuiDev) {
+        if (account?.chainConfig is ChainSui) {
+            SuiClient.shared.setConfig(.mainnet, account?.chainConfig?.rpcEndPoint)
+            onFetchSuiData(group)
+
+        } else if (account?.chainConfig is ChainSuiDev) {
             SuiClient.shared.setConfig(.devnet, account?.chainConfig?.rpcEndPoint)
             onFetchSuiData(group)
 
@@ -37,9 +43,9 @@ class DataManager {
         }
         group.notify(queue: .main) {
             
-            if (self.account?.chainConfig is ChainSuiDev ||
-                self.account?.chainConfig is ChainSuiTest ||
-                self.account?.chainConfig is ChainSui) {
+            if (self.account?.chainConfig is ChainSui ||
+                self.account?.chainConfig is ChainSuiDev ||
+                self.account?.chainConfig is ChainSuiTest) {
                 
                 self.suiSystem?["activeValidators"].arrayValue.forEach { validator in
                     self.suiActiveValidators.append(validator)
@@ -85,6 +91,7 @@ class DataManager {
     func onFetchSuiData(_ group: DispatchGroup) {
         suiSystem = nil
         suiBalances.removeAll()
+        suiStaked.removeAll()
         suiObjects.removeAll()
         suiFromTxs.removeAll()
         suiToTxs.removeAll()
@@ -119,12 +126,21 @@ class DataManager {
 //                print("eventQuery ", result)
 //                group.leave()
 //            }
+            
+            group.enter()
+            let getStakesParams = JsonRpcRequest("suix_getStakes", JSON(arrayLiteral: address))
+            SuiClient.shared.SuiRequest(getStakesParams) { stakes, error in
+                stakes?.arrayValue.forEach({ stake in
+                    self.suiStaked.append(stake)
+                })
+                group.leave()
+            }
 
             group.enter()
             let ownedObjectsParams = JsonRpcRequest("suix_getOwnedObjects",
                                                     JSON(arrayLiteral: address, ["filter": nil, "options":["showContent":true, "showType":true]]))
             SuiClient.shared.SuiRequest(ownedObjectsParams) { result, error in
-//                print("suix_getOwnedObjects ", result)
+                //print("suix_getOwnedObjects ", result)
                 result?["data"].arrayValue.forEach { data in
                     self.suiObjects.append(data["data"])
                 }
@@ -153,6 +169,18 @@ class DataManager {
                 group.leave()
             }
             
+            group.enter()
+            AF.request("https://raw.githubusercontent.com/cosmostation/splash/main/resources/fee.json", method: .get)
+                .responseDecodable(of: JSON.self) { response in
+                switch response.result {
+                case .success(let value):
+                    BaseData.instance.setSuiFees(value)
+                case .failure:
+                    print("dynamic fee error")
+                }
+                group.leave()
+            }
+
         }
     }
     
@@ -193,6 +221,26 @@ class DataManager {
         }
         return result
     }
+    
+    func getSuiAmount() -> NSDecimalNumber {
+        if let suiCoin = getAllBalance().filter({ $0.0.contains(SUI_DENOM) == true }).first {
+            return suiCoin.1
+        }
+        return NSDecimalNumber.zero
+    }
+    
+    func getSuiStakedAmount() -> NSDecimalNumber {
+        var staked = NSDecimalNumber.zero
+        var earned = NSDecimalNumber.zero
+        suiStaked.forEach { suiStaked in
+            suiStaked["stakes"].arrayValue.forEach { stakes in
+                staked = staked.adding(NSDecimalNumber(value: stakes["principal"].int64Value))
+                earned = earned.adding(NSDecimalNumber(value: stakes["estimatedReward"].int64Value))
+            }
+        }
+        return staked.adding(earned)
+    }
+    
     
     func onFaucet(_ address: String) async -> JSON? {
         return try? await SuiClient.shared.faucet(address)

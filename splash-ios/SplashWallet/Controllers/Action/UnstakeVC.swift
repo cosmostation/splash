@@ -17,12 +17,14 @@ class UnstakeVC: BaseVC, TxCheckSheetDelegate, PincodeDelegate {
     var suiStaked = Array<JSON>()
     var expendedSections = Set<Int>()
     var selectedObject: JSON!
+    var txFee: NSDecimalNumber!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         cAccount = DataManager.shared.account
         cChainConfig = cAccount.chainConfig
+        txFee = BaseData.instance.getSuiFee(cChainConfig, .TxUnstake)
         
         myStakingTableView.delegate = self
         myStakingTableView.dataSource = self
@@ -38,7 +40,7 @@ class UnstakeVC: BaseVC, TxCheckSheetDelegate, PincodeDelegate {
     
     func onValidateUnstake(_ indexPath: IndexPath) {
         if let suiBalance = DataManager.shared.suiBalances.filter({ $0.0.contains(SUI_DENOM) }).first {
-            if (suiBalance.1.compare(SUI_UNSTAKE_FEE).rawValue < 0) {
+            if (suiBalance.1.compare(txFee).rawValue < 0) {
                 onShowToast(NSLocalizedString("error_not_enough_gas_fee", comment: ""))
                 return
             }
@@ -50,7 +52,7 @@ class UnstakeVC: BaseVC, TxCheckSheetDelegate, PincodeDelegate {
             let validatorName = validator!["name"].stringValue
             let sum = selectedObject["principal"].int64Value + selectedObject["estimatedReward"].int64Value
             let unstakeAmount =  DecimalUtils.toString(String(sum), 9, 9)! + " SUI"
-            let feeAmount = SUI_UNSTAKE_FEE.multiplying(byPowerOf10: -9).stringValue + " SUI"
+            let feeAmount = txFee.multiplying(byPowerOf10: -9).stringValue + " SUI"
             let summary = ["validator" : validatorName, "unstakeAmount" : unstakeAmount, "feeAmount" : feeAmount]
 
             let txCheckSheet = TxCheckSheet(nibName: "TxCheckSheet", bundle: nil)
@@ -88,7 +90,7 @@ class UnstakeVC: BaseVC, TxCheckSheetDelegate, PincodeDelegate {
         
         let signer = cAccount.baseAddress!.address!
         let stakedSui = selectedObject["stakedSuiId"].stringValue
-        let gas_budget = SUI_UNSTAKE_FEE.stringValue
+        let gas_budget = txFee.stringValue
 //        let gas_objectId = getFeeObjectId()
         
         AF.request("https://us-central1-splash-wallet-60bd6.cloudfunctions.net/buildUnstakingRequest",

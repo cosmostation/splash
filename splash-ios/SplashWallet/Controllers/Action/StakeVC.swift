@@ -33,19 +33,21 @@ class StakeVC: BaseVC, BaseSheetDelegate, TxCheckSheetDelegate, PincodeDelegate,
     
     var validator: JSON!
     var available: NSDecimalNumber!
+    var txFee: NSDecimalNumber!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         cAccount = DataManager.shared.account
         cChainConfig = cAccount.chainConfig
+        txFee = BaseData.instance.getSuiFee(cChainConfig, .TxStake)
         
         validator = DataManager.shared.suiActiveValidators.filter({ $0["name"].stringValue == "Cosmostation" }).first
         if (validator == nil) {
             validator = DataManager.shared.suiActiveValidators[0]
         }
         if let balance = DataManager.shared.suiBalances.filter({ $0.0.contains(SUI_DENOM) == true }).first {
-            available = balance.1.subtracting(SUI_STAKE_FEE)
+            available = balance.1.subtracting(txFee)
         }
         
         toStakeAmountTextField.setup()
@@ -82,9 +84,7 @@ class StakeVC: BaseVC, BaseSheetDelegate, TxCheckSheetDelegate, PincodeDelegate,
     }
     
     func updateView() {
-        //dev error
         validatorImg.image = UIImage(named: "validator_default")
-        print("validator ", validator)
         if let url = validator.validatorUrl() {
             validatorImg.af.setImage(withURL: url)
         }
@@ -96,7 +96,7 @@ class StakeVC: BaseVC, BaseSheetDelegate, TxCheckSheetDelegate, PincodeDelegate,
         
         let epoch = DataManager.shared.suiSystem?["epoch"].int64Value
         startEpochLabel.text = "Epoch #" + String(epoch! + 1)
-        gasFeeLabel.text = SUI_STAKE_FEE.multiplying(byPowerOf10: -9).stringValue + " SUI"
+        gasFeeLabel.text = txFee.multiplying(byPowerOf10: -9).stringValue + " SUI"
     }
     
     @objc func onClickValidator() {
@@ -124,7 +124,7 @@ class StakeVC: BaseVC, BaseSheetDelegate, TxCheckSheetDelegate, PincodeDelegate,
         if (onValidate()) {
             let validator = validator["name"].stringValue
             let stakeAmount = toStakeAmountTextField.text!.trimmingCharacters(in: .whitespaces) + " SUI"
-            let feeAmount = SUI_STAKE_FEE.multiplying(byPowerOf10: -9).stringValue + " SUI"
+            let feeAmount = txFee.multiplying(byPowerOf10: -9).stringValue + " SUI"
             let summary = ["validator" : validator, "stakeAmount" : stakeAmount, "feeAmount" : feeAmount]
             
             let txCheckSheet = TxCheckSheet(nibName: "TxCheckSheet", bundle: nil)
@@ -144,6 +144,10 @@ class StakeVC: BaseVC, BaseSheetDelegate, TxCheckSheetDelegate, PincodeDelegate,
         }
         inputAmount = inputAmount.multiplying(byPowerOf10: 9)
         if (inputAmount.compare(available).rawValue > 0) {
+            self.onShowToast(NSLocalizedString("error_invalid_amount", comment: ""))
+            return false;
+        }
+        if (inputAmount.doubleValue.truncatingRemainder(dividingBy: 1.0) != Double.zero) {
             self.onShowToast(NSLocalizedString("error_invalid_amount", comment: ""))
             return false;
         }
@@ -183,7 +187,7 @@ class StakeVC: BaseVC, BaseSheetDelegate, TxCheckSheetDelegate, PincodeDelegate,
         let validatorAddress = validator["suiAddress"].stringValue
         let inputAmount = toStakeAmountTextField.text?.trimmingCharacters(in: .whitespaces)
         let amount = NSDecimalNumber(string: inputAmount, locale: Locale(identifier: "en_US")).multiplying(byPowerOf10: 9).stringValue
-        let gas_budget = SUI_STAKE_FEE.stringValue
+        let gas_budget = txFee.stringValue
 //        let gas_objectId = getFeeObjectId()
 //        var inputCoins = Array<String>()
 //        DataManager.shared.suiObjects.forEach { object in

@@ -12,6 +12,7 @@ extension MDCOutlinedTextField {
     func setup() {
         self.label.textColor = UIColor.base05
         self.tintColor = UIColor.text01
+        self.containerRadius = 8
         self.setFloatingLabelColor(UIColor.primary, for: .editing)
         self.setFloatingLabelColor(UIColor.base04, for: .normal)
         self.setNormalLabelColor(UIColor.base04, for: .normal)
@@ -35,6 +36,7 @@ extension MDCOutlinedTextArea {
     func setup() {
         self.label.textColor = UIColor.base05
         self.tintColor = UIColor.text01
+        self.containerRadius = 8
         self.setFloatingLabel(UIColor.primary, for: .editing)
         self.setFloatingLabel(UIColor.base04, for: .normal)
         self.setNormalLabel(UIColor.base04, for: .normal)

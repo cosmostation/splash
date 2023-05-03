@@ -16,8 +16,7 @@ class ChainSuiTest: ChainConfig {
     
     let HdPath0 = "m/44'/784'/0'/0'/X'"
     
-    let rpcEndPoint = "https://rpc-sui-testnet.cosmostation.io/"
-//    let rpcEndPoint = "https://explorer-rpc.testnet.sui.io/"
+    let rpcEndPoint = "https://sui-testnet-kr-1.cosmostation.io"
     
 
     

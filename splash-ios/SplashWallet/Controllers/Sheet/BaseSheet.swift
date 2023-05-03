@@ -190,13 +190,6 @@ extension BaseSheet: UITableViewDelegate, UITableViewDataSource {
             }
             sheetResult?.onSelectSheet(sheetType, BaseSheetResult.init(indexPath.row, address))
             
-        } else if (sheetType == .SelectChain) {
-            if (indexPath.row == 0) {
-                return
-            } else {
-                sheetResult?.onSelectSheet(sheetType, BaseSheetResult.init(indexPath.row, nil))
-            }
-            
         } else {
             sheetResult?.onSelectSheet(sheetType, BaseSheetResult.init(indexPath.row, nil))
         }

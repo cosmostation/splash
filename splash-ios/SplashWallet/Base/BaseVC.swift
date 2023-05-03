@@ -53,9 +53,9 @@ class BaseVC: UIViewController {
     
     func onStartIntro() {
         let IntroVC = UIStoryboard(name: "Init", bundle: nil).instantiateViewController(withIdentifier: "IntroVC") as! IntroVC
-        let appDelegate = UIApplication.shared.delegate as! AppDelegate
-        appDelegate.window?.rootViewController = IntroVC
-        present(IntroVC, animated: true, completion: nil)
+        let rootVC = UINavigationController(rootViewController: IntroVC)
+        UIApplication.shared.windows.first?.rootViewController = rootVC
+        UIApplication.shared.windows.first?.makeKeyAndVisible()
     }
     
     func onStartMainTab(_ ani: Bool = true) {
@@ -104,10 +104,11 @@ class BaseVC: UIViewController {
     }
     
     
-    func checkEnoughFee(_ chainConfig: ChainConfig) -> Bool {
+    func checkEnoughFee(_ chainConfig: ChainConfig, _ type: TxCheckSheetType) -> Bool {
         if let suiBalance = DataManager.shared.suiBalances.filter({ $0.0.contains(SUI_DENOM) }).first {
             let available = suiBalance.1
-            if (available.compare(SUI_GLOBAL_FEE).rawValue > 0) {
+            let fee = BaseData.instance.getSuiFee(chainConfig, type)
+            if (available.compare(fee).rawValue > 0) {
                 return true
             }
         }

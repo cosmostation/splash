@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import SwiftyJSON
 import SQLite
 import SwiftKeychainWrapper
 import UIKit
@@ -248,7 +249,7 @@ final class BaseData : NSObject{
             let chainConfig = getChainConfig(rawChainName) {
             return chainConfig
         }
-        return ChainSuiTest()
+        return ChainSui()
     }
     
     func setLanguage(_ lang: Int) {
@@ -280,6 +281,54 @@ final class BaseData : NSObject{
             }
         }
         return []
+    }
+    
+    func setSuiFees(_ json: JSON) {
+        if let encoded = try? JSONEncoder().encode(json) {
+            UserDefaults.standard.setValue(encoded, forKey: KEY_SUI_FEES)
+        }
+    }
+    
+    func getSuiFees() -> JSON? {
+        if let savedData = UserDefaults.standard.object(forKey: KEY_SUI_FEES) as? Data {
+            if let result = try? JSONDecoder().decode(JSON.self, from: savedData) {
+                return result
+            }
+        }
+        return nil
+    }
+    
+    func getSuiFee(_ chainConfig: ChainConfig, _ type: TxCheckSheetType) -> NSDecimalNumber {
+        var result = NSDecimalNumber.zero
+        if let feeInfo = getSuiFees() {
+            var fees: JSON?
+            if (chainConfig is ChainSuiDev) {
+                fees = feeInfo["sui-devnet"]
+            } else if (chainConfig is ChainSuiTest) {
+                fees = feeInfo["sui-testnet"]
+            } else if (chainConfig is ChainSui) {
+                fees = feeInfo["sui-mainnet"]
+            }
+            if (type == .TxSend || type == .TxNFTSend) {
+                result = NSDecimalNumber(string: fees?["default"].stringValue)
+            } else if (type == .TxStake) {
+                result = NSDecimalNumber(string: fees?["stake"].stringValue)
+            } else if (type == .TxUnstake) {
+                result = NSDecimalNumber(string: fees?["unstake"].stringValue)
+            }
+        }
+        
+        //using in app fee
+        if (NSDecimalNumber.notANumber == result || NSDecimalNumber.zero == result) {
+            if (type == .TxSend || type == .TxNFTSend) {
+                result = NSDecimalNumber.init(string: "4000000")
+            } else if (type == .TxStake) {
+                result = NSDecimalNumber.init(string: "700000000")
+            } else if (type == .TxUnstake) {
+                result = NSDecimalNumber.init(string: "800000000")
+            }
+        }
+        return result
     }
     
     func isRequiredUnlock() -> Bool {

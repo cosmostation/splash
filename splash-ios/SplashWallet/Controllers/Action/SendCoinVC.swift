@@ -25,8 +25,9 @@ class SendCoinVC: BaseVC, BaseSheetDelegate, TxCheckSheetDelegate, ScanDelegate,
     @IBOutlet weak var gasFeeLabel: UILabel!
     @IBOutlet weak var sendBtn: BaseButton!
     
-    var balance: (String, NSDecimalNumber)!
+    var coinType: String!
     var available: NSDecimalNumber!
+    var txFee: NSDecimalNumber!
     var decimal: Int16 = 9
     
     override func viewDidLoad() {
@@ -34,6 +35,7 @@ class SendCoinVC: BaseVC, BaseSheetDelegate, TxCheckSheetDelegate, ScanDelegate,
         
         cAccount = DataManager.shared.account
         cChainConfig = cAccount.chainConfig
+        txFee = BaseData.instance.getSuiFee(cChainConfig, .TxSend)
         
         let recipientTrailingView = InputAccessoryView(frame: CGRect(x: 0, y: 0, width: 64, height: 32))
         recipientTrailingView.actionAddressBook = { self.onClickAddessBook() }
@@ -76,18 +78,18 @@ class SendCoinVC: BaseVC, BaseSheetDelegate, TxCheckSheetDelegate, ScanDelegate,
     }
     
     func updateView() {
-        gasFeeLabel.text = SUI_GLOBAL_FEE.multiplying(byPowerOf10: -9).stringValue + " SUI"
+        gasFeeLabel.text = txFee.multiplying(byPowerOf10: -9).stringValue + " SUI"
         
-        available = balance.1
-        if (balance.0.contains(SUI_DENOM) == true) {
-            available = available.subtracting(SUI_GLOBAL_FEE)
+        available = DataManager.shared.suiBalances.filter { $0.0.contains(coinType) == true }.first!.1
+        if (coinType.contains(SUI_DENOM)) {
+            available = available.subtracting(txFee)
             availableImg.image = UIImage(named: "coin_sui")
         } else {
             availableImg.image = UIImage(named: "coin_default")
         }
-        
-        availableSymbolLabel.text = balance.0.getCoinSymbol()
-        availableAmountLabel.text = DecimalUtils.toString(balance.1.stringValue, decimal, decimal)
+
+        availableSymbolLabel.text = coinType.getCoinSymbol()
+        availableAmountLabel.text = DecimalUtils.toString(available.stringValue, decimal, decimal)
     }
     
     @objc func onClickAsset() {
@@ -114,9 +116,9 @@ class SendCoinVC: BaseVC, BaseSheetDelegate, TxCheckSheetDelegate, ScanDelegate,
     
     func onSelectSheet(_ sheetType: SheetType?, _ result: BaseSheetResult) {
         if (sheetType == .SelectCoin) {
-            balance = DataManager.shared.suiBalances[result.position!]
+            coinType = DataManager.shared.suiBalances[result.position!].0
             updateView()
-            
+
         } else if (sheetType == .SelectBook) {
             recipientTextField.text = result.address
         }
@@ -137,7 +139,7 @@ class SendCoinVC: BaseVC, BaseSheetDelegate, TxCheckSheetDelegate, ScanDelegate,
         if (onValidate()) {
             let recipient = recipientTextField.text!.trimmingCharacters(in: .whitespaces)
             let sendAmount = toSendAmountTextField.text!.trimmingCharacters(in: .whitespaces) + " " + self.availableSymbolLabel.text!
-            let feeAmount = SUI_GLOBAL_FEE.multiplying(byPowerOf10: -9).stringValue + " SUI"
+            let feeAmount = txFee.multiplying(byPowerOf10: -9).stringValue + " SUI"
             let summary = ["recipient" : recipient, "sendAmount" : sendAmount, "feeAmount" : feeAmount]
             
             let txCheckSheet = TxCheckSheet(nibName: "TxCheckSheet", bundle: nil)
@@ -170,17 +172,9 @@ class SendCoinVC: BaseVC, BaseSheetDelegate, TxCheckSheetDelegate, ScanDelegate,
             self.onShowToast(NSLocalizedString("error_invalid_amount", comment: ""))
             return false;
         }
-        
-        if (balance.0.contains(SUI_DENOM) == true) {
-            if ((SUI_GLOBAL_FEE.adding(inputAmount)).compare(available).rawValue > 0) {
-                self.onShowToast(NSLocalizedString("error_invalid_amount", comment: ""))
-                return false;
-            }
-        } else {
-            if (inputAmount.compare(available).rawValue > 0) {
-                self.onShowToast(NSLocalizedString("error_invalid_amount", comment: ""))
-                return false;
-            }
+        if (inputAmount.doubleValue.truncatingRemainder(dividingBy: 1.0) != Double.zero) {
+            self.onShowToast(NSLocalizedString("error_invalid_amount", comment: ""))
+            return false;
         }
         return true
     }
@@ -214,22 +208,22 @@ class SendCoinVC: BaseVC, BaseSheetDelegate, TxCheckSheetDelegate, ScanDelegate,
         let sender = cAccount.baseAddress!.address!
         let receipient = inputAddress
         let amount = NSDecimalNumber(string: inputAmount, locale: Locale(identifier: "en_US")).multiplying(byPowerOf10: decimal).stringValue
-        let gas_budget = SUI_GLOBAL_FEE.stringValue
+        let gas_budget = txFee.stringValue
 //        let gas_objectId = getFeeObjectId()
         var inputCoins = Array<String>()
         DataManager.shared.suiObjects.forEach { object in
-            if (object["type"].stringValue == balance.0) {
+            if (object["type"].stringValue.contains(coinType)) {
                 inputCoins.append(object["objectId"].stringValue)
             }
         }
         
-        if (balance.0.contains(SUI_DENOM) == true) {
+        if (coinType.contains(SUI_DENOM)) {
             let params = JsonRpcRequest("unsafe_paySui", JSON(arrayLiteral: sender, inputCoins, [receipient], [amount], gas_budget))
             SuiClient.shared.SuiRequest(params) { result, error in
                 print("result ", result)
                 self.onExcuteSuiTx(result, error)
             }
-            
+
         } else {
             let params = JsonRpcRequest("unsafe_pay", JSON(arrayLiteral: sender, inputCoins, [receipient], [amount], JSON.null, gas_budget))
             SuiClient.shared.SuiRequest(params) { result, error in

@@ -16,7 +16,7 @@ class ChainSui: ChainConfig {
     
     let HdPath0 = "m/44'/784'/0'/0'/X'"
     
-    let rpcEndPoint = ""
+    let rpcEndPoint = "https://sui-mainnet-us-2.cosmostation.io"
     
     func keynPaths() -> [KeynPath] {
         var result = [KeynPath]()

@@ -76,6 +76,7 @@ class IntroVC: BaseVC, BaseSheetDelegate, PincodeDelegate {
     }
     
     func onSelectSheet(_ sheetType: SheetType?, _ result: BaseSheetResult) {
+        print("onSelectSheet ", sheetType)
         if (sheetType == .SelectNewAccount) {
             if (result.position == 0) {
                 DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(500), execute: {
@@ -98,6 +99,7 @@ class IntroVC: BaseVC, BaseSheetDelegate, PincodeDelegate {
     func onNextVc(_ type: NewAccountType) {
         let createNameVC = CreateNameVC(nibName: "CreateNameVC", bundle: nil)
         createNameVC.newAccountType = type
+        print("onNextVc ", self.navigationController)
         self.navigationController?.pushViewController(createNameVC, animated: true)
     }
 }

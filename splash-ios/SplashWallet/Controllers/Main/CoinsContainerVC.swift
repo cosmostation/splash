@@ -23,6 +23,7 @@ class CoinsContainerVC: BaseVC {
         assetTable.dataSource = self
         assetTable.separatorStyle = .none
         assetTable.register(UINib(nibName: "AssetCell", bundle: nil), forCellReuseIdentifier: "AssetCell")
+        assetTable.sectionHeaderTopPadding = 0
         
         refresher = UIRefreshControl()
         refresher.addTarget(self, action: #selector(onRequestFetch), for: .valueChanged)
@@ -58,7 +59,11 @@ class CoinsContainerVC: BaseVC {
     @objc func onDataFetched() {
         refresher.endRefreshing()
         suiBalances.removeAll()
-        suiBalances = DataManager.shared.suiBalances
+        DataManager.shared.suiBalances.forEach { balance in
+            if (balance.0.contains(SUI_DENOM) == false) {
+                suiBalances.append(balance)
+            }
+        }
         assetTable.reloadData()
     }
 
@@ -66,32 +71,62 @@ class CoinsContainerVC: BaseVC {
 
 extension CoinsContainerVC: UITableViewDelegate, UITableViewDataSource {
     
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 2
+    }
+    
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 0
+    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if (suiBalances.count > 0) {
+        if (section == 0) {
+            return 2
+        } else {
             return suiBalances.count
         }
-        return 1
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier:"AssetCell") as? AssetCell
-        if (suiBalances.count > 0) {
-            cell?.onBindBalance(cChainConfig, suiBalances[indexPath.row])
+        if (indexPath.section == 0) {
+            cell?.onBindSuiBalance(cChainConfig, indexPath.row)
         } else {
-            cell?.onBindEmpty()
+            cell?.onBindBalance(cChainConfig, suiBalances[indexPath.row])
         }
         return cell!
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if (!checkEnoughFee(cChainConfig)) {
-            onShowToast(NSLocalizedString("error_not_enough_gas_fee", comment: ""))
-            return
+        if (indexPath.section == 0) {
+            if (indexPath.row == 0) {
+                if (!checkEnoughFee(cChainConfig, .TxSend)) {
+                    onShowToast(NSLocalizedString("error_not_enough_gas_fee", comment: ""))
+                    return
+                }
+                let sendCoinVC = SendCoinVC(nibName: "SendCoinVC", bundle: nil)
+                sendCoinVC.coinType = SUI_DENOM
+                sendCoinVC.hidesBottomBarWhenPushed = true
+                self.navigationController?.pushViewController(sendCoinVC, animated: true)
+                
+            } else {
+                let stakingInfoVC = StakingInfoVC(nibName: "StakingInfoVC", bundle: nil)
+                stakingInfoVC.hidesBottomBarWhenPushed = true
+                self.navigationController?.pushViewController(stakingInfoVC, animated: true)
+            }
+            
+        } else {
+            if (!checkEnoughFee(cChainConfig, .TxSend)) {
+                onShowToast(NSLocalizedString("error_not_enough_gas_fee", comment: ""))
+                return
+            }
+            let sendCoinVC = SendCoinVC(nibName: "SendCoinVC", bundle: nil)
+            sendCoinVC.coinType = suiBalances[indexPath.row].0
+            sendCoinVC.hidesBottomBarWhenPushed = true
+            self.navigationController?.pushViewController(sendCoinVC, animated: true)
+            
         }
-        let sendCoinVC = SendCoinVC(nibName: "SendCoinVC", bundle: nil)
-        sendCoinVC.balance = suiBalances[indexPath.row]
-        sendCoinVC.hidesBottomBarWhenPushed = true
-        self.navigationController?.pushViewController(sendCoinVC, animated: true)
+        
     }
 }
 

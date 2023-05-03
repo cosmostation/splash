@@ -28,37 +28,22 @@ class AssetCell: UITableViewCell {
         self.coinImgView.image = UIImage(named: "coin_default")
     }
     
-    func onBindBalance(_ chainConfig: ChainConfig?, _ balance: (String, NSDecimalNumber)) {
-//        let decimal = balance.1["decimals"].int16 ?? 9
-//        let available = balance.0["totalBalance"].stringValue
-//        let symbol = balance.1["symbol"].string ?? balance.0["coinType"].stringValue.components(separatedBy: "::").last!
-//
-//        self.symbolLabel.text = symbol
-//        self.amountLabel.text = DecimalUtils.toString(available, decimal)
-//        if let url = URL(string: balance.1["iconUrl"].stringValue) {
-//            coinImgView.af.setImage(withURL: url)
-//        } else {
-//            if (balance.0["coinType"].stringValue == chainConfig?.denom) {
-//                coinImgView.image = UIImage(named: "coin_sui")
-//            } else {
-//                coinImgView.image = UIImage(named: "coin_default")
-//            }
-//        }
-        
-        
-        symbolLabel.text = balance.0.getCoinSymbol()
-        amountLabel.text = DecimalUtils.toString(balance.1.stringValue, 9)
-        if (balance.0.contains(SUI_DENOM) == true) {
+    func onBindSuiBalance(_ chainConfig: ChainConfig?, _ position: Int) {
+        if (position == 0) {
+            symbolLabel.text = "SUI"
+            amountLabel.text = DecimalUtils.toString(DataManager.shared.getSuiAmount().stringValue, 9)
             coinImgView.image = UIImage(named: "coin_sui")
         } else {
-            coinImgView.image = UIImage(named: "coin_default")
+            symbolLabel.text = "Staked SUI"
+            amountLabel.text = DecimalUtils.toString(DataManager.shared.getSuiStakedAmount().stringValue, 9)
+            coinImgView.image = UIImage(named: "coin_sui_staked")
         }
     }
     
-    func onBindEmpty() {
-        self.coinImgView.image = UIImage(named: "coin_sui")
-        self.symbolLabel.text = "SUI"
-        self.amountLabel.text = DecimalUtils.toString("0", 9)
+    func onBindBalance(_ chainConfig: ChainConfig?, _ balance: (String, NSDecimalNumber)) {
+        symbolLabel.text = balance.0.getCoinSymbol()
+        amountLabel.text = DecimalUtils.toString(balance.1.stringValue, 9)
+        coinImgView.image = UIImage(named: "coin_default")
     }
     
 }

@@ -60,7 +60,7 @@ class NftDetailVC: BaseVC {
     }
     
     @IBAction func onClickSend(_ sender: UIButton) {
-        if (!checkEnoughFee(cChainConfig)) {
+        if (!checkEnoughFee(cChainConfig, .TxSend)) {
             onShowToast(NSLocalizedString("error_not_enough_gas_fee", comment: ""))
             return
         }

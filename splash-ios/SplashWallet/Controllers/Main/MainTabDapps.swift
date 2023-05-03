@@ -16,6 +16,10 @@ class MainTabDapps: BaseVC {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        tableView.separatorStyle = .none
+        tableView.sectionHeaderTopPadding = 0
+        
         AF.request("https://raw.githubusercontent.com/cosmostation/splash/main/resources/dapp.json",
                    method: .get).response { response in
             switch response.result {

@@ -13,6 +13,7 @@ class MainTabAsset: BaseVC, SelectAccountDelegate, MDCTabBarViewDelegate {
     
     @IBOutlet weak var accountView: UIView!
     @IBOutlet weak var accountLabel: UILabel!
+    @IBOutlet weak var chainLabel: UILabel!
     
     @IBOutlet weak var dashLayer: UIView!
     @IBOutlet weak var dashBalanceLabel: UILabel!
@@ -101,11 +102,23 @@ class MainTabAsset: BaseVC, SelectAccountDelegate, MDCTabBarViewDelegate {
         cAccount = DataManager.shared.account
         cChainConfig = cAccount.chainConfig
         accountLabel.text = cAccount.name
+        if (cChainConfig is ChainSui) {
+            dashBtnFaucet.isHidden = true
+            chainLabel.text = ""
+        } else {
+            if (cChainConfig is ChainSuiDev) {
+                chainLabel.text = "Devnet"
+                
+            } else if (cChainConfig is ChainSuiTest) {
+                chainLabel.text = "Testnet"
+            }
+            dashBtnFaucet.isHidden = false
+        }
     }
     
     @objc func onDataFetched() {
-        let suiBalances = DataManager.shared.suiBalances
-        assetTabbar.items[0].title = "Coins (" + String(suiBalances.count) + ")"
+        let coinsCnt = DataManager.shared.suiBalances.filter { $0.0.contains(SUI_DENOM) == false }.count
+        assetTabbar.items[0].title = "Coins (" + String(coinsCnt + 2) + ")"
         
         var suiNFTs = Array<JSON>()
         DataManager.shared.suiObjects.forEach { object in
@@ -123,6 +136,18 @@ class MainTabAsset: BaseVC, SelectAccountDelegate, MDCTabBarViewDelegate {
         onStartSheet(selectAccountSheet)
     }
     
+    
+    @IBAction func onClickExplorer(_ sender: UIButton) {
+        var urlString = "https://explorer.sui.io/address/" + cAccount.baseAddress!.address!
+        if (cChainConfig is ChainSuiDev) {
+            urlString = urlString + "?network=devnet"
+        } else if (cChainConfig is ChainSuiTest) {
+            urlString = urlString + "?network=testnet"
+        }
+        guard let url = URL(string: urlString) else { return }
+        self.onStartSafariWeb(url)
+    }
+    
     func onClickAccountDetail() {
         DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(500), execute: {
             let accountListVC = AccountListVC(nibName: "AccountListVC", bundle: nil)
@@ -130,7 +155,6 @@ class MainTabAsset: BaseVC, SelectAccountDelegate, MDCTabBarViewDelegate {
             self.navigationController?.pushViewController(accountListVC, animated: true)
         });
     }
-    
     func onSelectAccount(_ account: BaseAccount) {
         if (account.id != self.cAccount.id) {
             BaseData.instance.setRecentAccount(account.id!)
@@ -139,12 +163,12 @@ class MainTabAsset: BaseVC, SelectAccountDelegate, MDCTabBarViewDelegate {
     }
 
     @IBAction func onClickSend(_ sender: UIButton) {
-        if (!checkEnoughFee(cChainConfig)) {
+        if (!checkEnoughFee(cChainConfig, .TxSend)) {
             onShowToast(NSLocalizedString("error_not_enough_gas_fee", comment: ""))
             return
         }
         let sendCoinVC = SendCoinVC(nibName: "SendCoinVC", bundle: nil)
-        sendCoinVC.balance = DataManager.shared.suiBalances.filter({ $0.0.contains(SUI_DENOM) == true }).first
+        sendCoinVC.coinType = SUI_DENOM
         sendCoinVC.hidesBottomBarWhenPushed = true
         self.navigationController?.pushViewController(sendCoinVC, animated: true)
     }

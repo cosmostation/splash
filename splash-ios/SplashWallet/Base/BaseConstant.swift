@@ -18,6 +18,8 @@ let KEY_THEME                           = "KEY_THEME"
 let KEY_LANGUAGE                        = "KEY_LANGUAGE"
 let KEY_ADDRESS_BOOK                    = "KEY_ADDRESS_BOOK"
 
+let KEY_SUI_FEES                        = "KEY_SUI_FEES"
+
 
 let font1 = UIFont(name: "Pretendard-Bold", size: 36.0)
 let font2 = UIFont(name: "Pretendard-SemiBold", size: 24.0)
@@ -27,12 +29,6 @@ let font5 = UIFont(name: "Pretendard-SemiBold", size: 16.0)
 let font6 = UIFont(name: "Pretendard-SemiBold", size: 14.0)
 let font7 = UIFont(name: "Pretendard-Medium", size: 14.0)
 let font8 = UIFont(name: "Pretendard-SemiBold", size: 12.0)
-
-
-let SUI_GLOBAL_FEE = NSDecimalNumber.init(string: "4000000")
-let SUI_STAKE_FEE = NSDecimalNumber.init(string: "700000000")
-let SUI_STAKE_THRESHOLD = SUI_STAKE_FEE.adding(NSDecimalNumber(string: "1000000000"))
-let SUI_UNSTAKE_FEE = NSDecimalNumber.init(string: "800000000")
 
 
 public enum Theme: Int {

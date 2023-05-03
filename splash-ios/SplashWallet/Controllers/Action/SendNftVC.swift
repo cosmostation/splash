@@ -25,12 +25,14 @@ class SendNftVC: BaseVC, BaseSheetDelegate, TxCheckSheetDelegate, ScanDelegate, 
     @IBOutlet weak var sendBtn: BaseButton!
     
     var suiNFT: JSON!
+    var txFee: NSDecimalNumber!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         cAccount = DataManager.shared.account
         cChainConfig = cAccount.chainConfig
+        txFee = BaseData.instance.getSuiFee(cChainConfig, .TxSend)
         
         let recipientTrailingView = InputAccessoryView(frame: CGRect(x: 0, y: 0, width: 64, height: 32))
         recipientTrailingView.actionAddressBook = { self.onClickAddessBook() }
@@ -57,7 +59,7 @@ class SendNftVC: BaseVC, BaseSheetDelegate, TxCheckSheetDelegate, ScanDelegate, 
     }
     
     func updateView() {
-        gasFeeLabel.text = SUI_GLOBAL_FEE.multiplying(byPowerOf10: -9).stringValue + " SUI"
+        gasFeeLabel.text = txFee.multiplying(byPowerOf10: -9).stringValue + " SUI"
         
         if let url = suiNFT.nftULR() {
             nftImgView.af.setImage(withURL: url)
@@ -106,7 +108,7 @@ class SendNftVC: BaseVC, BaseSheetDelegate, TxCheckSheetDelegate, ScanDelegate, 
     @IBAction func onClickSend(_ sender: UIButton) {
         if (onValidate()) {
             let recipient = recipientTextField.text!.trimmingCharacters(in: .whitespaces)
-            let feeAmount = SUI_GLOBAL_FEE.multiplying(byPowerOf10: -9).stringValue + " SUI"
+            let feeAmount = txFee.multiplying(byPowerOf10: -9).stringValue + " SUI"
             let nftName = suiNFT["content"]["fields"]["name"].stringValue
             let nftUrl = suiNFT.nftULR()?.absoluteString ?? ""
             let summary = ["recipient" : recipient, "nftName" : nftName, "nftUrl" : nftUrl, "feeAmount" : feeAmount]
@@ -157,7 +159,7 @@ class SendNftVC: BaseVC, BaseSheetDelegate, TxCheckSheetDelegate, ScanDelegate, 
 
         let sender = cAccount.baseAddress!.address!
         let receipient = recipientTextField.text!.trimmingCharacters(in: .whitespaces)
-        let gas_budget = SUI_GLOBAL_FEE.stringValue
+        let gas_budget = txFee.stringValue
 //        let gas_objectId = getFeeObjectId()
         let inputNft = suiNFT["objectId"].stringValue
 

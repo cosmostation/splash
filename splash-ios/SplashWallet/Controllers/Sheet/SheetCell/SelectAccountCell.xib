@@ -92,10 +92,10 @@
     <resources>
         <image name="icon_checked" width="24" height="24"/>
         <namedColor name="base03">
-            <color red="0.90600001811981201" green="0.93300002813339233" blue="0.9649999737739563" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.90200001001358032" green="0.92500001192092896" blue="0.98400002717971802" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="base04">
-            <color red="0.58799999952316284" green="0.65100002288818359" blue="0.74900001287460327" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.59600001573562622" green="0.68199998140335083" blue="0.84700000286102295" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="base05">
             <color red="0.13300000131130219" green="0.13300000131130219" blue="0.13300000131130219" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

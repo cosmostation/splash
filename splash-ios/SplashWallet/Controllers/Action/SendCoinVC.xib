@@ -41,14 +41,14 @@
                     <rect key="frame" x="16" y="75" width="361" height="60"/>
                     <subviews>
                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="coin_default" translatesAutoresizingMaskIntoConstraints="NO" id="gNb-up-pqU">
-                            <rect key="frame" x="8" y="16" width="28" height="28"/>
+                            <rect key="frame" x="16" y="16" width="28" height="28"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="28" id="DuE-Vf-KAF"/>
                                 <constraint firstAttribute="height" constant="28" id="r0K-ue-fqz"/>
                             </constraints>
                         </imageView>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="SYMBOL" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9us-uE-SdR">
-                            <rect key="frame" x="44.000000000000007" y="20.333333333333329" width="65.666666666666686" height="19.333333333333329"/>
+                            <rect key="frame" x="52.000000000000007" y="20.333333333333329" width="65.666666666666686" height="19.333333333333329"/>
                             <fontDescription key="fontDescription" name="Pretendard-SemiBold" family="Pretendard" pointSize="16"/>
                             <color key="textColor" name="base05"/>
                             <nil key="highlightedColor"/>
@@ -77,7 +77,7 @@
                         <constraint firstItem="gNb-up-pqU" firstAttribute="centerY" secondItem="a7e-rK-1do" secondAttribute="centerY" id="epn-b5-qf1"/>
                         <constraint firstItem="9us-uE-SdR" firstAttribute="centerY" secondItem="gNb-up-pqU" secondAttribute="centerY" id="rTb-KA-PYz"/>
                         <constraint firstItem="yyj-qt-Dyg" firstAttribute="centerY" secondItem="a7e-rK-1do" secondAttribute="centerY" id="zEZ-rk-fi6"/>
-                        <constraint firstItem="gNb-up-pqU" firstAttribute="leading" secondItem="a7e-rK-1do" secondAttribute="leading" constant="8" id="zeS-3t-Zwe"/>
+                        <constraint firstItem="gNb-up-pqU" firstAttribute="leading" secondItem="a7e-rK-1do" secondAttribute="leading" constant="16" id="zeS-3t-Zwe"/>
                     </constraints>
                 </view>
                 <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="s1c-Im-fb3" customClass="MDCOutlinedTextField">
@@ -165,6 +165,7 @@
             </subviews>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <color key="backgroundColor" name="base01"/>
+            <color key="tintColor" name="base05"/>
             <constraints>
                 <constraint firstItem="KY3-Ik-BRg" firstAttribute="leading" secondItem="a7e-rK-1do" secondAttribute="leading" id="1r3-Qc-NYr"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="a7e-rK-1do" secondAttribute="trailing" constant="16" id="4Dm-aJ-r2e"/>

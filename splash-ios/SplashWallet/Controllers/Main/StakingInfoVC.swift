@@ -72,7 +72,9 @@ class StakingInfoVC: BaseVC {
     
     func onStartStake() {
         if let suiBalance = DataManager.shared.suiBalances.filter({ $0.0.contains(SUI_DENOM) }).first {
-            if (suiBalance.1.compare(SUI_STAKE_THRESHOLD).rawValue < 0) {
+            let txFee = BaseData.instance.getSuiFee(cChainConfig, .TxSend)
+            let stakeThreshold = NSDecimalNumber(string: "1000000000")
+            if (suiBalance.1.compare(txFee.adding(stakeThreshold)).rawValue < 0) {
                 self.onShowToast(NSLocalizedString("error_not_enough_stake", comment: ""))
                 return
             }
@@ -82,16 +84,9 @@ class StakingInfoVC: BaseVC {
     }
     
     func onStartUnstake() {
-        if let suiBalance = DataManager.shared.suiBalances.filter({ $0.0.contains(SUI_DENOM) }).first {
-            if (suiBalance.1.compare(SUI_UNSTAKE_FEE).rawValue < 0) {
-                self.onShowToast(NSLocalizedString("error_not_enough_gas_fee", comment: ""))
-                return
-            }
-            
-            let unstakeVC = UnstakeVC(nibName: "UnstakeVC", bundle: nil)
-            unstakeVC.suiStaked = suiStaked
-            self.navigationController?.pushViewController(unstakeVC, animated: true)
-        }
+        let unstakeVC = UnstakeVC(nibName: "UnstakeVC", bundle: nil)
+        unstakeVC.suiStaked = suiStaked
+        self.navigationController?.pushViewController(unstakeVC, animated: true)
     }
 }
 

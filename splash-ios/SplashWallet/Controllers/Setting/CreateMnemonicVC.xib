@@ -990,7 +990,8 @@
                 </button>
             </subviews>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
-            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+            <color key="backgroundColor" name="base01"/>
+            <color key="tintColor" name="base05"/>
             <constraints>
                 <constraint firstItem="ewa-V6-Cea" firstAttribute="top" secondItem="DUP-Jc-fbP" secondAttribute="bottom" constant="44" id="6uy-99-77N"/>
                 <constraint firstItem="DUP-Jc-fbP" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="16" id="D10-8v-bgR"/>
@@ -1012,16 +1013,16 @@
     <resources>
         <image name="icon_info" width="24" height="24"/>
         <namedColor name="base01">
-            <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.98400002717971802" green="0.98799997568130493" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="base04">
-            <color red="0.58799999952316284" green="0.65100002288818359" blue="0.74900001287460327" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.59600001573562622" green="0.68199998140335083" blue="0.84700000286102295" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="base05">
             <color red="0.13300000131130219" green="0.13300000131130219" blue="0.13300000131130219" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="primary">
-            <color red="0.012000000104308128" green="0.49399998784065247" blue="0.92900002002716064" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.19200000166893005" green="0.50999999046325684" blue="0.96100002527236938" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="red">
             <color red="0.80400002002716064" green="0.10199999809265137" blue="0.10199999809265137" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

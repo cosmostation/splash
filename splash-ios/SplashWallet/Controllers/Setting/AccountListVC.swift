@@ -132,7 +132,7 @@ extension AccountListVC: UITableViewDelegate, UITableViewDataSource {
             let renameSheet = RenameSheet(nibName: "RenameSheet", bundle: nil)
             renameSheet.toUpdateAccount = self.accounts[indexPath.row]
             renameSheet.resultDelegate = self
-            self.onStartSheet(renameSheet)
+            self.onStartSheet(renameSheet, 240)
         }
         cell?.actionDelete = {
             self.toDeleteAccount = self.accounts[indexPath.row]

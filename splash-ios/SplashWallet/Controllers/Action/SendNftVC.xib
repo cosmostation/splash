@@ -160,6 +160,7 @@
             </subviews>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <color key="backgroundColor" name="base01"/>
+            <color key="tintColor" name="base05"/>
             <constraints>
                 <constraint firstItem="2DG-kG-rSN" firstAttribute="top" secondItem="i5x-DN-w3w" secondAttribute="bottom" constant="30" id="9EX-Yx-bEP"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="WWe-cu-WYW" secondAttribute="trailing" constant="16" id="9cT-He-iUh"/>

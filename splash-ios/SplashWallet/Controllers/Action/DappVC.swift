@@ -10,6 +10,7 @@ import web3swift
 
 class DappVC: BaseVC {
     @IBOutlet weak var webView: WKWebView!
+    @IBOutlet weak var urlLabel: UILabel!
     
     var dappURL: String?
     
@@ -20,7 +21,12 @@ class DappVC: BaseVC {
         if let dappUrl = dappURL, let url = URL(string: dappUrl) {
             navigationItem.title = url.host
             webView.load(URLRequest(url: url))
+            urlLabel.text = url.host
         }
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        self.navigationController?.setNavigationBarHidden(true, animated: false)
     }
     
     func initWebView() {
@@ -89,9 +95,15 @@ extension DappVC: WKScriptMessageHandler {
         }
         let okAction = UIAlertAction(title: NSLocalizedString("ok", comment: ""), style: .default) { _ in
             self.onShowWait()
+            var txBlock = ""
+            if (title == "sui:signTransactionBlock") {
+                txBlock = params["transaction"].stringValue
+            } else {
+                txBlock = params["data"].stringValue
+            }
             AF.request("https://us-central1-splash-wallet-60bd6.cloudfunctions.net/buildSuiTransactionBlock",
                        method: .post,
-                       parameters: ["rpc": DataManager.shared.account?.chainConfig?.rpcEndPoint, "txBlock":params["data"].stringValue, "address":params["account"].stringValue],
+                       parameters: ["rpc": DataManager.shared.account?.chainConfig?.rpcEndPoint, "txBlock":txBlock, "address":params["account"].stringValue],
                        encoder: JSONParameterEncoder.default).response { response in
                 switch response.result {
                 case .success(let value):
@@ -132,6 +144,26 @@ extension DappVC: WKScriptMessageHandler {
         webView.evaluateJavaScript("window.postMessage(\(postMessageJson.rawString() ?? ""));")
         onDismissWait()
     }
+    
+    @IBAction func goForward() {
+        if (webView.canGoForward) {
+            webView.goForward()
+        }
+    }
+    
+    @IBAction func goBack() {
+        if (webView.canGoBack) {
+            webView.goBack()
+        }
+    }
+    
+    @IBAction func refresh() {
+        webView.reload()
+    }
+    
+    @IBAction func close() {
+        self.navigationController?.popViewController(animated: true)
+    }
 }
 
 extension DappVC: WKNavigationDelegate, WKUIDelegate {
@@ -163,7 +195,7 @@ extension DappVC: WKNavigationDelegate, WKUIDelegate {
     
     func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
         if let host = webView.url?.host {
-            navigationItem.title = host
+            self.urlLabel.text = host
         }
     }
 }
