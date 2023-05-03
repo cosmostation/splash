@@ -57,7 +57,7 @@
       "name":"Umi",
       "description":"Smart Exchange for Smart Traders",
       "link":"https://umi.ag/swap",
-      "icon":"https://umi.ag/logo.00aa3c4c.png",
+      "icon":"https://raw.githubusercontent.com/cosmostation/splash/main/resources/dapp/umi.jpeg",
       "tags":[
          "DEX"
       ]
