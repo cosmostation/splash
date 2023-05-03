@@ -1,30 +1,146 @@
 [
-    {
-        "name": "Splash Dash",
-        "description": "SUI Staking by Splash",
-        "link": "https://dash.splash.im",
-        "icon": "https://raw.githubusercontent.com/cosmostation/splash/main/resources/logo.png",
-        "tags": ["Staking"]
-    },
-    {
-        "name": "SuiFrens",
-        "description": "Have fun minting and mixing your SuiFrens.",
-        "link": "https://capy.art/",
-        "icon": "https://storage.googleapis.com/sui-cms-content/capy_64caa3122e/capy_64caa3122e.png",
-        "tags": ["Game"]
-    },
-    {
-        "name": "Sui Name Service (SuiNS)",
-        "description": "Find your .sui name!",
-        "link": "https://suins.io/",
-        "icon": "https://raw.githubusercontent.com/SuiNSdapp/docs/main/SuiNS-small2.jpg",
-        "tags": ["Infra"]
-    },
-    {
-        "name": "SuiRaffles",
-        "description": "JOIN THE RAFFLE",
-        "link": "https://raffles.suiecosystem.top/",
-        "icon": "https://pbs.twimg.com/profile_images/1639286057840570370/uQq6mpwQ_400x400.jpg",
-        "tags": ["Raffle"]
-    }
+   {
+      "name":"Splash Dash",
+      "description":"SUI Staking by Splash",
+      "link":"https://dash.splash.im",
+      "icon":"https://raw.githubusercontent.com/cosmostation/splash/main/resources/logo.png",
+      "tags":[
+         "Staking"
+      ]
+   },
+   {
+      "name":"SuiFrens",
+      "description":"Have fun minting and mixing your SuiFrens.",
+      "link":"https://capy.art/",
+      "icon":"https://storage.googleapis.com/sui-cms-content/capy_64caa3122e/capy_64caa3122e.png",
+      "tags":[
+         "Game"
+      ]
+   },
+   {
+      "name":"Sui Name Service (SuiNS)",
+      "description":"Find your .sui name!",
+      "link":"https://suins.io/",
+      "icon":"https://raw.githubusercontent.com/SuiNSdapp/docs/main/SuiNS-small2.jpg",
+      "tags":[
+         "Infra"
+      ]
+   },
+   {
+      "name":"SuiRaffles",
+      "description":"JOIN THE RAFFLE",
+      "link":"https://raffles.suiecosystem.top/",
+      "icon":"https://pbs.twimg.com/profile_images/1639286057840570370/uQq6mpwQ_400x400.jpg",
+      "tags":[
+         "Raffle"
+      ]
+   },
+   {
+      "name":"Suvio",
+      "description":"Buy, Sell and Collect NFT.",
+      "link":"https://suvio.io/",
+      "icon":"https://pbs.twimg.com/profile_images/1629084218558124034/DWHJAoF0_400x400.jpg",
+      "tags":[
+         "NFT"
+      ]
+   },
+   {
+      "name":"BeLaunch",
+      "description":"Decentralized launchpad that allows users to launch their own token and create their own initial token sale.",
+      "link":"https://dev-sui.belaunch.io/",
+      "icon":"https://pbs.twimg.com/profile_images/1631582974562152448/LhKCnA3d_400x400.jpg",
+      "tags":[
+         "Launchpad"
+      ]
+   },
+   {
+      "name":"Umi",
+      "description":"Smart Exchange for Smart Traders",
+      "link":"https://umi.ag/swap",
+      "icon":"https://umi.ag/logo.00aa3c4c.png",
+      "tags":[
+         "DEX"
+      ]
+   },
+   {
+      "name":"Keepsake",
+      "description":"The Marketplace for SUI collections and Non Fungible Tokens",
+      "link":"https://keepsake.gg/",
+      "icon":"https://keepsake.gg/assets/icon/Favicon.png",
+      "tags":[
+         "Marketplace"
+      ]
+   },
+   {
+      "name":"Sui Gallery",
+      "description":"NFT Marketplace For the Next Billion User",
+      "link":"https://www.sui.gallery/",
+      "icon":"https://pbs.twimg.com/profile_images/1652004909091356672/B5S6JzVn_400x400.jpg",
+      "tags":[
+         "NFT"
+      ]
+   },
+   {
+      "name":"Flame Protocol",
+      "description":"The AMM swap built on Sui",
+      "link":"https://flameswap.io",
+      "icon":"https://pbs.twimg.com/profile_images/1647887224749588481/rvlXgLAA_400x400.jpg",
+      "tags":[
+         "DEX"
+      ]
+   },
+   {
+      "name":"Bucket Protocol",
+      "description":"A decentralized lending protocol with 0% interest loans against $SUI used as a collateral",
+      "link":"https://app.bucketprotocol.io/",
+      "icon":"https://www.gitbook.com/cdn-cgi/image/width=40,dpr=2,height=40,fit=contain,format=auto/https%3A%2F%2F2714711625-files.gitbook.io%2F~%2Ffiles%2Fv0%2Fb%2Fgitbook-x-prod.appspot.com%2Fo%2Fspaces%252FwUcWattcSzL6wK5QPKbk%252Ficon%252FlpdBmqXBJ5qT754qcQ00%252Fbucket-black.png%3Falt%3Dmedia%26token%3D245f7e07-1df2-4eaf-85a9-3bdceff20913",
+      "tags":[
+         "DeFi"
+      ]
+   },
+   {
+      "name":"Somis.xyz",
+      "description":"The fastest NFT marketplace on Sui",
+      "link":"https://somis.xyz/",
+      "icon":"https://pbs.twimg.com/profile_images/1637677480206286849/vNBM3E8p_400x400.png",
+      "tags":[
+         "NFT"
+      ]
+   },
+   {
+      "name":"Releap Protocol",
+      "description":"Decentralized Social Graph on Sui",
+      "link":"https://releap.xyz/",
+      "icon":"https://pbs.twimg.com/profile_images/1645643336571822083/jusqyC8h_400x400.jpg",
+      "tags":[
+         "Social"
+      ]
+   },
+   {
+      "name":"Sui MonstrX",
+      "description":"The first raffle system on Sui",
+      "link":"https://raffle.suimonstrx.xyz/",
+      "icon":"https://raffle.suimonstrx.xyz/logo.png",
+      "tags":[
+         "Game"
+      ]
+   },
+   {
+      "name":"Giro Swap",
+      "description":"The first crypto fundraising protocol supports NFT&Token AMM built on Sui",
+      "link":"https://giroswap.com/",
+      "icon":"https://pbs.twimg.com/profile_images/1643880409841946624/XgH0CFbV_400x400.jpg",
+      "tags":[
+         "DeFi"
+      ]
+   },
+   {
+      "name":"Scallop App",
+      "description":"Next Generation Interest Rate Machine",
+      "link":"https://www.scallop.io/",
+      "icon":"https://pbs.twimg.com/profile_images/1610631313043910656/T6pH86VG_400x400.jpg",
+      "tags":[
+         "DeFi"
+      ]
+   }
 ]
