@@ -80,6 +80,10 @@ class StakingInfoVC: BaseVC {
             }
             let stakeVC = StakeVC(nibName: "StakeVC", bundle: nil)
             self.navigationController?.pushViewController(stakeVC, animated: true)
+            
+        } else {
+            self.onShowToast(NSLocalizedString("error_not_enough_stake", comment: ""))
+            return
         }
     }
     
