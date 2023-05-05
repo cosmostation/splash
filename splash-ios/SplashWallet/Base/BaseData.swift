@@ -336,6 +336,9 @@ final class BaseData : NSObject{
     }
     
     
+    var geckoPrice: GeckoPrice?
+    
+    
     
     let ACCOUNT_TABLE           = Table("base_account")
     let ACCOUNT_ID              = Expression<Int64>("id")
