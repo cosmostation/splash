@@ -67,6 +67,7 @@ class MainActivity : AppCompatActivity() {
         binding.bottomNavigation.setOnNavigationItemSelectedListener { menuItem ->
             val transaction = fragmentManager.beginTransaction()
 
+            binding.refresh.isEnabled = true
             when (menuItem.itemId) {
                 R.id.navigation_coins -> {
                     transaction.replace(
@@ -74,6 +75,7 @@ class MainActivity : AppCompatActivity() {
                     ).commitAllowingStateLoss()
                 }
                 R.id.navigation_apps -> {
+                    binding.refresh.isEnabled = false
                     transaction.replace(
                         R.id.fragment_container, appFragment, getString(R.string.app)
                     ).commitAllowingStateLoss()

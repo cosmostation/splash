@@ -61,7 +61,10 @@ class DappActivity : AppCompatActivity() {
         binding.dappRefresh.setOnClickListener {
             binding.webview.reload()
         }
-        binding.url.text = Uri.parse(intent.getStringExtra("url")).host
+        val url = intent.data?.getQueryParameter("url") ?: run {
+            intent.getStringExtra("url")
+        }
+        binding.url.text = Uri.parse(url).host
         WebView.setWebContentsDebuggingEnabled(true)
         binding.webview.settings.apply {
             javaScriptEnabled = true
@@ -100,7 +103,7 @@ class DappActivity : AppCompatActivity() {
                 return true
             }
         }
-        intent.getStringExtra("url")?.let { binding.webview.loadUrl(it) }
+        url?.let { binding.webview.loadUrl(it) }
     }
 
     fun processRequest(request: String) {

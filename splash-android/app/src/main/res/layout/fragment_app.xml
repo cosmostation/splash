@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -32,6 +31,7 @@
             android:layout_height="wrap_content"
             android:layout_marginEnd="16dp"
             android:textColor="@color/color_mode_base05"
+            android:visibility="gone"
             tools:text="0" />
     </LinearLayout>
 
@@ -42,35 +42,9 @@
         android:layout_marginTop="30dp"
         android:background="@color/color_mode_base03" />
 
-
-    <LinearLayout
-        android:id="@+id/empty"
+    <WebView
+        android:id="@+id/webview"
         android:layout_width="match_parent"
         android:layout_height="0dip"
-        android:layout_weight="1"
-        android:gravity="center"
-        android:orientation="vertical"
-        android:visibility="gone">
-
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/icon_empty"
-            app:tint="@color/color_mode_base04" />
-
-        <TextView
-            style="@style/TextViewH4"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:text="@string/no_dapps"
-            android:textColor="@color/color_mode_base04" />
-    </LinearLayout>
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recycler"
-        android:layout_width="match_parent"
-        android:layout_height="0dip"
-        android:layout_weight="1"
-        android:visibility="gone" />
+        android:layout_weight="1" />
 </LinearLayout>
