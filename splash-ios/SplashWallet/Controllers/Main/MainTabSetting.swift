@@ -127,8 +127,6 @@ extension MainTabSetting: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         if (indexPath.section == 0) {
             if (indexPath.row == 2) { return 0 }
-        } else if (indexPath.section == 1) {
-            if (indexPath.row == 1) { return 0 }
         } else if (indexPath.section == 2) {
             if (indexPath.row == 2) { return 0 }
         } else if (indexPath.section == 3) {
@@ -174,16 +172,17 @@ extension MainTabSetting: UITableViewDelegate, UITableViewDataSource {
                 return baseCell!
                 
             } else if (indexPath.row == 1) {
+                baseCell?.iconImg.image = UIImage(named: "set_language")
+                baseCell?.titleLabel.text = NSLocalizedString("set_language", comment: "")
+                baseCell?.msgLabel.text = Language.getLanguages()[BaseData.instance.getLanguage()].description
+                return baseCell!
+                
+            } else if (indexPath.row == 2) {
                 baseCell?.iconImg.image = UIImage(named: "set_currency")
                 baseCell?.titleLabel.text = NSLocalizedString("set_currency", comment: "")
                 baseCell?.msgLabel.text = "USD"
                 return baseCell!
                 
-            } else if (indexPath.row == 2) {
-                baseCell?.iconImg.image = UIImage(named: "set_language")
-                baseCell?.titleLabel.text = NSLocalizedString("set_language", comment: "")
-                baseCell?.msgLabel.text = Language.getLanguages()[BaseData.instance.getLanguage()].description
-                return baseCell!
             }
             
         } else if (indexPath.section == 2) {
@@ -273,13 +272,14 @@ extension MainTabSetting: UITableViewDelegate, UITableViewDataSource {
                 onStartSheet(baseSheet)
                 
             } else if (indexPath.row == 1) {
-                print("click currency")
-                
-            } else if (indexPath.row == 2) {
                 let baseSheet = BaseSheet(nibName: "BaseSheet", bundle: nil)
                 baseSheet.sheetResult = self
                 baseSheet.sheetType = .SelectLanguage
                 onStartSheet(baseSheet)
+                
+            } else if (indexPath.row == 2) {
+                print("click currency")
+                
             }
             
         } else if (indexPath.section == 3) {

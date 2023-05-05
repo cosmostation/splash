@@ -167,6 +167,7 @@
 		E183004029E1846000EA3C47 /* Pretendard-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = E183003D29E17A4000EA3C47 /* Pretendard-Medium.otf */; };
 		E183004329E18AE900EA3C47 /* SendNftVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E183004129E18AE900EA3C47 /* SendNftVC.swift */; };
 		E183004429E18AE900EA3C47 /* SendNftVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = E183004229E18AE900EA3C47 /* SendNftVC.xib */; };
+		E1A245AF2A04D29800D3F77A /* GeckoPrice.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1A245AE2A04D29800D3F77A /* GeckoPrice.swift */; };
 		E1C6287B29ACF290005A4AD2 /* SelectChainCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1C6287929ACF290005A4AD2 /* SelectChainCell.swift */; };
 		E1C6287C29ACF290005A4AD2 /* SelectChainCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E1C6287A29ACF290005A4AD2 /* SelectChainCell.xib */; };
 		E1C6287E29ACF8D0005A4AD2 /* ChainSuiDev.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1C6287D29ACF8D0005A4AD2 /* ChainSuiDev.swift */; };
@@ -339,6 +340,7 @@
 		E183003D29E17A4000EA3C47 /* Pretendard-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-Medium.otf"; sourceTree = "<group>"; };
 		E183004129E18AE900EA3C47 /* SendNftVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SendNftVC.swift; sourceTree = "<group>"; };
 		E183004229E18AE900EA3C47 /* SendNftVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SendNftVC.xib; sourceTree = "<group>"; };
+		E1A245AE2A04D29800D3F77A /* GeckoPrice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeckoPrice.swift; sourceTree = "<group>"; };
 		E1C6287929ACF290005A4AD2 /* SelectChainCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectChainCell.swift; sourceTree = "<group>"; };
 		E1C6287A29ACF290005A4AD2 /* SelectChainCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SelectChainCell.xib; sourceTree = "<group>"; };
 		E1C6287D29ACF8D0005A4AD2 /* ChainSuiDev.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChainSuiDev.swift; sourceTree = "<group>"; };
@@ -493,6 +495,7 @@
 				04666AFE2952829B00185F2F /* BaseAccount.swift */,
 				045B246F29AA390E00DBDCB2 /* BaseAddress.swift */,
 				04BD3DD529E6AD19006C7810 /* AddressBook.swift */,
+				E1A245AE2A04D29800D3F77A /* GeckoPrice.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -1001,6 +1004,7 @@
 				041529202950898C0090418B /* CardView.swift in Sources */,
 				E171BB0129E70921001E70F9 /* AddressBookListVC.swift in Sources */,
 				045D26112949BA4B00A7805D /* SceneDelegate.swift in Sources */,
+				E1A245AF2A04D29800D3F77A /* GeckoPrice.swift in Sources */,
 				E1C6288229ACF8F4005A4AD2 /* ChainSuiLocal.swift in Sources */,
 				04666B0429529E2900185F2F /* ChainSui.swift in Sources */,
 				04188E2029DAA1F600C7D7D6 /* LanguageCell.swift in Sources */,
