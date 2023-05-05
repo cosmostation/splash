@@ -68,6 +68,18 @@
                     tools:text="SUI" />
 
                 <TextView
+                    android:id="@+id/network"
+                    style="@style/TextViewH6"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:textColor="@color/color_mode_base04"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toEndOf="@id/denom"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:text="Devnet" />
+
+                <TextView
                     android:id="@+id/available"
                     style="@style/TextViewH5"
                     android:layout_width="wrap_content"

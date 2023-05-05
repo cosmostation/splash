@@ -4,6 +4,7 @@ import android.content.Context
 import android.content.Intent
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import coil.ImageLoader
 import coil.decode.SvgDecoder
@@ -11,11 +12,15 @@ import coil.request.ImageRequest
 import coil.transform.RoundedCornersTransformation
 import io.cosmostation.splash.R
 import io.cosmostation.splash.SplashConstants
+import io.cosmostation.splash.SplashWalletApp
 import io.cosmostation.splash.databinding.ItemCoinBinding
 import io.cosmostation.splash.model.network.Balance
 import io.cosmostation.splash.model.network.CoinMetadata
 import io.cosmostation.splash.ui.staking.StakingActivity
 import io.cosmostation.splash.util.formatDecimal
+import io.cosmostation.suikotlin.SuiClient
+import io.cosmostation.suikotlin.model.Network
+import java.math.BigDecimal
 
 class CoinAdapter(
     private val context: Context, var coins: MutableList<Balance> = mutableListOf(), var metadataMap: Map<String, CoinMetadata?> = mapOf()
@@ -56,10 +61,35 @@ class CoinAdapter(
                 }
                 balance.text = coin.totalBalance.formatDecimal()
             }
+            onePrice.text = "$ 0.0"
+            price.text = "$ 0.0"
+            changes.text = ""
+            if (SuiClient.instance.currentNetwork.name == Network.Mainnet().name) {
+                SplashWalletApp.instance.applicationViewModel.priceMap.value?.let { priceMap ->
+                    SplashConstants.coingeckoIdMap[coin.coinType]?.let { coinType ->
+                        val tokenPrice = priceMap[coinType]?.get("usd")
+                        val tokenChange = priceMap[coinType]?.get("usd_24h_change")
+                        tokenPrice?.let {
+                            onePrice.text = String.format("$ %.2f", it)
+                            price.text = String.format("$ %.2f", BigDecimal(it).multiply(BigDecimal(coin.totalBalance.formatDecimal())))
+                        }
+                        tokenChange?.let {
+                            if (it >= 0) {
+                                changes.setTextColor(ContextCompat.getColor(context, R.color.color_green01))
+                                changes.text = "${String.format("+%.1f", it)}%"
+                            } else {
+                                changes.setTextColor(ContextCompat.getColor(context, R.color.color_red01))
+                                changes.text = "${String.format("%.1f", it)}%"
+                            }
+                        }
+                    }
+                }
+            }
 
             token.text = coin.coinType.substring(
                 coin.coinType.lastIndexOf("::") + 2, coin.coinType.length
             )
+
             wrap.setOnClickListener {
                 if (coin.coinType == SplashConstants.SUI_STAKED_BALANCE_DENOM) {
                     context.startActivity(Intent(context, StakingActivity::class.java))

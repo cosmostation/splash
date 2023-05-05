@@ -4,7 +4,6 @@ import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
-import com.google.android.material.bottomnavigation.BottomNavigationView
 import io.cosmostation.splash.R
 import io.cosmostation.splash.SplashWalletApp
 import io.cosmostation.splash.databinding.ActivityMainBinding
@@ -30,6 +29,9 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
         setupFragment()
         setupLiveData()
+        binding.bottomNavigation.postDelayed({
+            binding.bottomNavigation.selectedItemId = R.id.navigation_coins
+        }, 250)
     }
 
     override fun onResume() {
@@ -62,7 +64,7 @@ class MainActivity : AppCompatActivity() {
         val fragmentTransaction = fragmentManager.beginTransaction()
         fragmentTransaction.replace(R.id.fragment_container, walletFragment).commitNow()
 
-        findViewById<BottomNavigationView>(R.id.bottom_navigation).setOnNavigationItemSelectedListener { menuItem ->
+        binding.bottomNavigation.setOnNavigationItemSelectedListener { menuItem ->
             val transaction = fragmentManager.beginTransaction()
 
             when (menuItem.itemId) {

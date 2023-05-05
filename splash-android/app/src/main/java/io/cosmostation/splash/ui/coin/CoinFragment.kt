@@ -155,13 +155,21 @@ class CoinFragment : Fragment() {
     }
 
     private fun setupLiveData() {
+        SplashWalletApp.instance.applicationViewModel.priceMap.observe(viewLifecycleOwner) {
+            coinAdapter.notifyDataSetChanged()
+        }
+
         SplashWalletApp.instance.applicationViewModel.currentWalletLiveData.observe(viewLifecycleOwner) {
             it?.let {
                 binding.accountBtn.text = it.name
             }
 
             binding.network.text = SuiClient.instance.currentNetwork.name
-            binding.network.visibleOrGone(SuiClient.instance.currentNetwork.name != Network.Mainnet().name)
+            if (SuiClient.instance.currentNetwork.name == Network.Mainnet().name) {
+                binding.network.setTextColor(ContextCompat.getColor(requireContext(), R.color.color_blue04))
+            } else {
+                binding.network.setTextColor(ContextCompat.getColor(requireContext(), R.color.color_mode_base04))
+            }
             binding.faucetBtn.visibleOrGone(SuiClient.instance.currentNetwork.faucetUrl.isNotEmpty())
         }
 

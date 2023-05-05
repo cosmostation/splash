@@ -82,9 +82,9 @@ class StakingActivity : ActionBarBaseActivity() {
                     }
                 }
             }
-            binding.stakeTotal.text = principal.add(reward).formatDecimal()
-            binding.stakeStaked.text = principal.formatDecimal()
-            binding.stakeEarned.text = reward.formatDecimal()
+            binding.stakeTotal.text = principal.add(reward).formatDecimal(trim = 9)
+            binding.stakeStaked.text = principal.formatDecimal(trim = 9)
+            binding.stakeEarned.text = reward.formatDecimal(trim = 9)
         }
     }
 }

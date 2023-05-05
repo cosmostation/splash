@@ -32,6 +32,13 @@ class SettingFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         setupRecyclerView()
+        setupViewModels()
+    }
+
+    private fun setupViewModels() {
+        SplashWalletApp.instance.applicationViewModel.currentWalletLiveData.observe(viewLifecycleOwner) {
+            loadSettingItems()
+        }
     }
 
     private fun setupRecyclerView() {

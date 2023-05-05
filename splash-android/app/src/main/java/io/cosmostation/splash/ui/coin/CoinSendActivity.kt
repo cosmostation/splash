@@ -21,6 +21,7 @@ import io.cosmostation.splash.ui.password.PinActivity
 import io.cosmostation.splash.ui.transaction.TransactionResultActivity
 import io.cosmostation.splash.util.*
 import io.cosmostation.suikotlin.SuiClient
+import io.cosmostation.suikotlin.model.Network
 import io.cosmostation.suikotlin.model.SuiTransactionBlockResponseOptions
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -50,6 +51,8 @@ class CoinSendActivity : ActionBarBaseActivity() {
 
     private fun loadData() {
         val denom = intent.getStringExtra(INTENT_DENOM_KEY)
+        binding.network.visibleOrGone(SuiClient.instance.currentNetwork.name != Network.Mainnet().name)
+        binding.network.text = SuiClient.instance.currentNetwork.name
         binding.gas.text = GasUtils.getDefaultGas().formatGasDecimal()
         binding.denom.text = denom?.substringAfterLast("::")
         binding.available.text = SplashWalletApp.instance.applicationViewModel.coinMap[denom]?.let {

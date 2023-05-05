@@ -21,9 +21,7 @@ class SelectAccountFragment : BottomSheetDialogFragment() {
     private lateinit var binding: FragmentSelectAccountBinding
     private val viewModel: AccountViewModel by viewModels()
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
-    ): View {
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
         binding = FragmentSelectAccountBinding.inflate(layoutInflater)
 
         setupViews()

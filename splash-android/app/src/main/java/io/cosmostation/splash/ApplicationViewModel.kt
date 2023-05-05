@@ -5,6 +5,7 @@ import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MutableLiveData
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
+import io.cosmostation.splash.api.CoingeckoService
 import io.cosmostation.splash.database.AppDatabase
 import io.cosmostation.splash.database.Wallet
 import io.cosmostation.splash.model.network.Balance
@@ -32,12 +33,22 @@ class ApplicationViewModel(application: Application) : AndroidViewModel(applicat
     val nftMap = mutableMapOf<String, SuiObjectInfo>()
     val coinMetadataMap = MutableLiveData<Map<String, CoinMetadata?>>()
     val suiSystemInfo = MutableLiveData<String?>()
+    var priceMap = MutableLiveData<Map<String, Map<String, Double>>?>()
 
     fun loadAllData() {
         loadSuiSystem()
         loadBalances()
         loadObjects()
         loadTransactions()
+    }
+
+    private fun loadPrice(coinTypes: List<String>) = CoroutineScope(Dispatchers.IO).launch {
+        try {
+            val result = CoingeckoService.create().price(coinTypes.mapNotNull { SplashConstants.coingeckoIdMap[it] }.toSet(), "usd", true).body()
+            priceMap.postValue(result)
+        } catch (e: Exception) {
+            print(e)
+        }
     }
 
     private fun loadSuiSystem() = CoroutineScope(Dispatchers.IO).launch {
@@ -80,6 +91,7 @@ class ApplicationViewModel(application: Application) : AndroidViewModel(applicat
                 allBalances.postValue(result)
                 coinMap = result.associateBy { it.coinType }
                 loadCoinMetadata(result.map { it.coinType })
+                loadPrice(result.map { it.coinType })
             } catch (_: Exception) {
                 allBalances.postValue(listOf(Balance(SplashConstants.SUI_BALANCE_DENOM, 0, "0")))
             } finally {
