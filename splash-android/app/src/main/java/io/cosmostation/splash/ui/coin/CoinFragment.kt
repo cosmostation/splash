@@ -26,9 +26,12 @@ import io.cosmostation.splash.ui.app.WalletConnectActivity
 import io.cosmostation.splash.ui.nft.NftAdapter
 import io.cosmostation.splash.ui.staking.StakingActivity
 import io.cosmostation.splash.ui.wallet.WalletReceiveActivity
+import io.cosmostation.splash.util.formatDecimal
 import io.cosmostation.splash.util.visibleOrGone
 import io.cosmostation.suikotlin.SuiClient
 import io.cosmostation.suikotlin.model.Network
+import java.math.BigDecimal
+import java.math.RoundingMode
 
 class CoinFragment : Fragment() {
     private lateinit var binding: FragmentCoinBinding
@@ -141,6 +144,26 @@ class CoinFragment : Fragment() {
             }
             coinAdapter.coins = coinAdapter.coins.sortedBy { it.coinType }.toMutableList()
             coinAdapter.notifyDataSetChanged()
+            updateTotalBalance()
+        }
+    }
+
+    private fun updateTotalBalance() {
+        if (SuiClient.instance.currentNetwork.name == Network.Mainnet().name) {
+            var total = BigDecimal(0)
+            coinAdapter.coins.forEach { coin ->
+                SplashWalletApp.instance.applicationViewModel.priceMap.value?.let { priceMap ->
+                    SplashConstants.coingeckoIdMap[coin.coinType]?.let { coinType ->
+                        val tokenPrice = priceMap[coinType]?.get("usd")
+                        tokenPrice?.let {
+                            total += BigDecimal(it).multiply(BigDecimal(coin.totalBalance.formatDecimal()))
+                        }
+                    }
+                }
+            }
+            binding.price.text = "$ ${total.setScale(3, RoundingMode.DOWN)}"
+        } else {
+            binding.price.text = "$ 0.00"
         }
     }
 
@@ -157,6 +180,7 @@ class CoinFragment : Fragment() {
     private fun setupLiveData() {
         SplashWalletApp.instance.applicationViewModel.priceMap.observe(viewLifecycleOwner) {
             coinAdapter.notifyDataSetChanged()
+            updateTotalBalance()
         }
 
         SplashWalletApp.instance.applicationViewModel.currentWalletLiveData.observe(viewLifecycleOwner) {
