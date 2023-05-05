@@ -99,14 +99,9 @@ class DataManager {
         suiActiveValidators.removeAll()
         suiAtRiskValidators.removeAll()
         
+        BaseData.instance.geckoPrice = nil
+        
         if let address = account?.baseAddress?.address {
-            group.enter()
-            let systemStateParams = JsonRpcRequest("suix_getLatestSuiSystemState", JSON())
-            SuiClient.shared.SuiRequest(systemStateParams) { state, error in
-//                print("suiSystem ", state)
-                self.suiSystem = state
-                group.leave()
-            }
             
 //            group.enter()
 //            let allBalancesParams = JsonRpcRequest("suix_getAllBalances", JSON(arrayLiteral: address))
@@ -127,60 +122,104 @@ class DataManager {
 //                group.leave()
 //            }
             
-            group.enter()
-            let getStakesParams = JsonRpcRequest("suix_getStakes", JSON(arrayLiteral: address))
-            SuiClient.shared.SuiRequest(getStakesParams) { stakes, error in
-                stakes?.arrayValue.forEach({ stake in
-                    self.suiStaked.append(stake)
-                })
-                group.leave()
-            }
-
-            group.enter()
-            let ownedObjectsParams = JsonRpcRequest("suix_getOwnedObjects",
-                                                    JSON(arrayLiteral: address, ["filter": nil, "options":["showContent":true, "showType":true]]))
-            SuiClient.shared.SuiRequest(ownedObjectsParams) { result, error in
-                //print("suix_getOwnedObjects ", result)
-                result?["data"].arrayValue.forEach { data in
-                    self.suiObjects.append(data["data"])
-                }
-                group.leave()
-            }
-
-            group.enter()
-            let toTxsParams = JsonRpcRequest("suix_queryTransactionBlocks",
-                                             JSON(arrayLiteral: ["filter": ["ToAddress": address], "options": ["showEffects": true, "showInput":true, "showBalanceChanges":true]],
-                                                  JSON.null, 50, true))
-            SuiClient.shared.SuiRequest(toTxsParams) { result, error in
-                result?["data"].arrayValue.forEach { data in
-                    self.suiToTxs.append(data)
-                }
-                group.leave()
-            }
             
-            group.enter()
-            let fromTxsParams = JsonRpcRequest("suix_queryTransactionBlocks",
-                                               JSON(arrayLiteral: ["filter": ["FromAddress": address], "options": ["showEffects": true, "showInput":true, "showBalanceChanges":true]],
-                                                    JSON.null, 50, true))
-            SuiClient.shared.SuiRequest(fromTxsParams) { result, error in
-                result?["data"].arrayValue.forEach { data in
-                    self.suiFromTxs.append(data)
-                }
-                group.leave()
-            }
+
             
-            group.enter()
-            AF.request("https://raw.githubusercontent.com/cosmostation/splash/main/resources/fee.json", method: .get)
-                .responseDecodable(of: JSON.self) { response in
-                switch response.result {
-                case .success(let value):
-                    BaseData.instance.setSuiFees(value)
-                case .failure:
-                    print("dynamic fee error")
-                }
-                group.leave()
+            onFetchSystem(group)
+            onFetchStakeInfo(group, address)
+            onFetchOwnedObjects(group, address)
+            onFetchHistory(group, address)
+            onFetchFee(group)
+            
+            if (self.account?.chainConfig is ChainSui) {
+                onFetchPrice(group)
             }
 
+        }
+    }
+    
+    func onFetchSystem(_ group: DispatchGroup) {
+        group.enter()
+        let systemStateParams = JsonRpcRequest("suix_getLatestSuiSystemState", JSON())
+        SuiClient.shared.SuiRequest(systemStateParams) { state, error in
+//            print("suiSystem ", state)
+            self.suiSystem = state
+            group.leave()
+        }
+    }
+    
+    func onFetchStakeInfo(_ group: DispatchGroup, _ address: String) {
+        group.enter()
+        let getStakesParams = JsonRpcRequest("suix_getStakes", JSON(arrayLiteral: address))
+        SuiClient.shared.SuiRequest(getStakesParams) { stakes, error in
+            stakes?.arrayValue.forEach({ stake in
+                self.suiStaked.append(stake)
+            })
+            group.leave()
+        }
+    }
+    
+    func onFetchOwnedObjects(_ group: DispatchGroup, _ address: String) {
+        group.enter()
+        let ownedObjectsParams = JsonRpcRequest("suix_getOwnedObjects",
+                                                JSON(arrayLiteral: address, ["filter": nil, "options":["showContent":true, "showType":true]]))
+        SuiClient.shared.SuiRequest(ownedObjectsParams) { result, error in
+            result?["data"].arrayValue.forEach { data in
+                self.suiObjects.append(data["data"])
+            }
+            group.leave()
+        }
+    }
+    
+    func onFetchHistory(_ group: DispatchGroup, _ address: String) {
+        group.enter()
+        let toTxsParams = JsonRpcRequest("suix_queryTransactionBlocks",
+                                         JSON(arrayLiteral: ["filter": ["ToAddress": address], "options": ["showEffects": true, "showInput":true, "showBalanceChanges":true]],
+                                              JSON.null, 50, true))
+        SuiClient.shared.SuiRequest(toTxsParams) { result, error in
+            result?["data"].arrayValue.forEach { data in
+                self.suiToTxs.append(data)
+            }
+            group.leave()
+        }
+        
+        group.enter()
+        let fromTxsParams = JsonRpcRequest("suix_queryTransactionBlocks",
+                                           JSON(arrayLiteral: ["filter": ["FromAddress": address], "options": ["showEffects": true, "showInput":true, "showBalanceChanges":true]],
+                                                JSON.null, 50, true))
+        SuiClient.shared.SuiRequest(fromTxsParams) { result, error in
+            result?["data"].arrayValue.forEach { data in
+                self.suiFromTxs.append(data)
+            }
+            group.leave()
+        }
+    }
+    
+    func onFetchFee(_ group: DispatchGroup) {
+        group.enter()
+        AF.request("https://raw.githubusercontent.com/cosmostation/splash/main/resources/fee.json", method: .get)
+            .responseDecodable(of: JSON.self) { response in
+            switch response.result {
+            case .success(let value):
+                BaseData.instance.setSuiFees(value)
+            case .failure:
+                print("dynamic fee error")
+            }
+            group.leave()
+        }
+    }
+    
+    func onFetchPrice(_ group: DispatchGroup) {
+        group.enter()
+        AF.request("https://api.mintscan.io/v2/utils/market/price/coingecko_id/sui?currency=usd", method: .get)
+            .responseDecodable(of: JSON.self) { response in
+            switch response.result {
+            case .success(let value):
+                BaseData.instance.geckoPrice = GeckoPrice(value)
+            case .failure:
+                print("price error")
+            }
+            group.leave()
         }
     }
     

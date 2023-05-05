@@ -1,0 +1,93 @@
+[
+  {
+    "name": "Cosmostation",
+    "rpc": [
+      "https://sui-mainnet-ca-1.cosmostation.io",
+      "https://sui-mainnet-ca-2.cosmostation.io",
+      "https://sui-mainnet-eu-1.cosmostation.io",
+      "https://sui-mainnet-eu-2.cosmostation.io",
+      "https://sui-mainnet-eu-3.cosmostation.io",
+      "https://sui-mainnet-eu-4.cosmostation.io",
+      "https://sui-mainnet-us-1.cosmostation.io",
+      "https://sui-mainnet-us-2.cosmostation.io"
+    ],
+    "metrics": "",
+    "wss": ""
+  },
+  {
+    "name": "Testnet pride",
+    "rpc": ["https://sui-rpc-mainnet.testnet-pride.com/"],
+    "metrics": "",
+    "wss": "wss://sui-rpc-mainnet.testnet-pride.com/websocket"
+  },
+  {
+    "name": "Nodeinfra",
+    "rpc": ["https://sui-mainnet.nodeinfra.com/"],
+    "metrics": "",
+    "wss": ""
+  },
+  {
+    "name": "Chainbase",
+    "rpc": ["https://mainnet-rpc.sui.chainbase.online/"],
+    "metrics": "",
+    "wss": ""
+  },
+  {
+    "name": "BlockVision",
+    "rpc": ["https://sui-mainnet-endpoint.blockvision.org/"],
+    "metrics": "https://sui-mainnet-endpoint.blockvision.org/metrics",
+    "wss": "wss://sui-mainnet-endpoint.blockvision.org/websocket"
+  },
+  {
+    "name": "Staketab",
+    "rpc": ["https://rpc-mainnet.suiscan.xyz/"],
+    "metrics": "https://rpc-mainnet.suiscan.xyz/metrics",
+    "wss": "wss://rpc-mainnet.suiscan.xyz/websocket"
+  },
+  {
+    "name": "Allnodes",
+    "rpc": ["https://sui.publicnode.com/"],
+    "metrics": "",
+    "wss": ""
+  },
+  {
+    "name": "BlockEden",
+    "rpc": ["https://sui-mainnet.blockeden.xyz/"],
+    "metrics": "",
+    "wss": ""
+  },
+  {
+    "name": "DSRV",
+    "rpc": [
+      "https://sui-mainnet-rpc.allthatnode.com",
+      "https://sui-mainnet-rpc-germany.allthatnode.com",
+      "https://sui-mainnet-rpc-korea.allthatnode.com"
+    ],
+    "metrics": "",
+    "wss": ""
+  },
+  {
+    "name": "Bartestnet",
+    "rpc": ["https://sui-mainnet-rpc.bartestnet.com/"],
+    "metrics": "https://sui-mainnet-rpc.bartestnet.com/metrics",
+    "wss": "wss://sui-mainnet-rpc.bartestnet.com/websocket"
+  },
+  {
+    "name": "Chainode Tech",
+    "rpc": ["https://sui1mainnet-rpc.chainode.tech/"],
+    "metrics": "",
+    "wss": "wss://sui1mainnet-ws.chainode.tech"
+  },
+  {
+    "name": "Triton One",
+    "rpc": ["https://mainnet.sui.rpcpool.com/"],
+    "metrics": "",
+    "wss": "wss://mainnet.sui.rpcpool.com"
+  },
+  {
+    "name": "Blast",
+    "rpc": ["https://sui-mainnet.public.blastapi.io"],
+    "metrics": "",
+    "wss": "wss://sui-mainnet.public.blastapi.io"
+  }
+]

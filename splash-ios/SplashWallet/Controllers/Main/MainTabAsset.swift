@@ -103,16 +103,16 @@ class MainTabAsset: BaseVC, SelectAccountDelegate, MDCTabBarViewDelegate {
         cChainConfig = cAccount.chainConfig
         accountLabel.text = cAccount.name
         if (cChainConfig is ChainSui) {
-            dashBtnFaucet.isHidden = true
-            chainLabel.text = ""
-        } else {
-            if (cChainConfig is ChainSuiDev) {
-                chainLabel.text = "Devnet"
-                
-            } else if (cChainConfig is ChainSuiTest) {
-                chainLabel.text = "Testnet"
-            }
-            dashBtnFaucet.isHidden = false
+            chainLabel.text = "Mainnet"
+            chainLabel.textColor = .primary
+            
+        } else if (cChainConfig is ChainSuiDev) {
+            chainLabel.text = "Devnet"
+            chainLabel.textColor = .base04
+            
+        } else if (cChainConfig is ChainSuiTest) {
+            chainLabel.text = "Testnet"
+            chainLabel.textColor = .base04
         }
     }
     
@@ -128,6 +128,13 @@ class MainTabAsset: BaseVC, SelectAccountDelegate, MDCTabBarViewDelegate {
             }
         }
         assetTabbar.items[1].title = "NFTs (" + String(suiNFTs.count) + ")"
+        
+        
+        let suiPrice = BaseData.instance.geckoPrice?.price ?? NSDecimalNumber.zero
+        let allSuiAmount = DataManager.shared.getSuiAmount().adding(DataManager.shared.getSuiStakedAmount())
+        let allSuiValue = allSuiAmount.multiplying(byPowerOf10: -9).multiplying(by: suiPrice)
+        dashBalanceLabel.text = "$" + DecimalUtils.toString(allSuiValue.stringValue, 0, 2)!
+
     }
     
     @objc func onClickAccount() {

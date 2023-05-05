@@ -29,13 +29,31 @@ class AssetCell: UITableViewCell {
     }
     
     func onBindSuiBalance(_ chainConfig: ChainConfig?, _ position: Int) {
+        let suiPrice = BaseData.instance.geckoPrice?.price ?? NSDecimalNumber.zero
+        let suiPriceChange = BaseData.instance.geckoPrice?.priceChange ?? NSDecimalNumber.zero
+        
+        priceLabel.text = "$" + DecimalUtils.toString(suiPrice.stringValue, 0, 2)!
+        if (suiPriceChange.compare(NSDecimalNumber.zero).rawValue >= 0) {
+            priceChangeLabel.text = "+" + DecimalUtils.toString(suiPriceChange.stringValue, 0, 2)! + "%"
+            priceChangeLabel.textColor = .green
+        } else {
+            priceChangeLabel.text = DecimalUtils.toString(suiPriceChange.stringValue, 0, 2)! + "%"
+            priceChangeLabel.textColor = .red
+        }
+        
         if (position == 0) {
+            let suiAmount = DataManager.shared.getSuiAmount()
+            let suiValue = suiAmount.multiplying(byPowerOf10: -9).multiplying(by: suiPrice)
             symbolLabel.text = "SUI"
-            amountLabel.text = DecimalUtils.toString(DataManager.shared.getSuiAmount().stringValue, 9)
+            amountLabel.text = DecimalUtils.toString(suiAmount.stringValue, 9)
+            valueLabel.text = "$" + DecimalUtils.toString(suiValue.stringValue, 0, 2)!
             coinImgView.image = UIImage(named: "coin_sui")
         } else {
+            let stakedSuiAmount = DataManager.shared.getSuiStakedAmount()
+            let stakedSuiValue = stakedSuiAmount.multiplying(byPowerOf10: -9).multiplying(by: suiPrice)
             symbolLabel.text = "Staked SUI"
-            amountLabel.text = DecimalUtils.toString(DataManager.shared.getSuiStakedAmount().stringValue, 9)
+            amountLabel.text = DecimalUtils.toString(stakedSuiAmount.stringValue, 9)
+            valueLabel.text = "$" + DecimalUtils.toString(stakedSuiValue.stringValue, 0, 2)!
             coinImgView.image = UIImage(named: "coin_sui_staked")
         }
     }

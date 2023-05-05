@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_0" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21678"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -56,7 +56,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="89l-Fo-T2d">
-                                <rect key="frame" x="72" y="42" width="88.666666666666686" height="19"/>
+                                <rect key="frame" x="72" y="42" width="90.666666666666686" height="19"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$0.00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hK6-bp-bt0">
                                         <rect key="frame" x="0.0" y="1.6666666666666634" width="40" height="15.666666666666664"/>
@@ -65,7 +65,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="+0.00%" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aaU-UC-iiM">
-                                        <rect key="frame" x="44" y="3.3333333333333366" width="44.666666666666657" height="13.333333333333336"/>
+                                        <rect key="frame" x="46" y="4.3333333333333366" width="44.666666666666657" height="13.333333333333336"/>
                                         <fontDescription key="fontDescription" name="NanumSquareOTFEB" family="NanumSquareOTF" pointSize="12"/>
                                         <color key="textColor" name="green"/>
                                         <nil key="highlightedColor"/>
@@ -73,12 +73,12 @@
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstItem="aaU-UC-iiM" firstAttribute="leading" secondItem="hK6-bp-bt0" secondAttribute="trailing" constant="4" id="CQj-HR-YFb"/>
+                                    <constraint firstItem="aaU-UC-iiM" firstAttribute="leading" secondItem="hK6-bp-bt0" secondAttribute="trailing" constant="6" id="CQj-HR-YFb"/>
                                     <constraint firstAttribute="height" constant="19" id="EWh-vj-xu1"/>
                                     <constraint firstItem="hK6-bp-bt0" firstAttribute="leading" secondItem="89l-Fo-T2d" secondAttribute="leading" id="H3x-iF-qhY"/>
                                     <constraint firstAttribute="trailing" secondItem="aaU-UC-iiM" secondAttribute="trailing" id="KvL-Ns-4pW"/>
                                     <constraint firstItem="hK6-bp-bt0" firstAttribute="centerY" secondItem="89l-Fo-T2d" secondAttribute="centerY" id="Qf6-W2-kFz"/>
-                                    <constraint firstItem="aaU-UC-iiM" firstAttribute="firstBaseline" secondItem="hK6-bp-bt0" secondAttribute="firstBaseline" id="dtO-6G-0sX"/>
+                                    <constraint firstItem="aaU-UC-iiM" firstAttribute="firstBaseline" secondItem="hK6-bp-bt0" secondAttribute="firstBaseline" constant="1" id="dtO-6G-0sX"/>
                                 </constraints>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$0.00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Yrv-xj-ZZF">
