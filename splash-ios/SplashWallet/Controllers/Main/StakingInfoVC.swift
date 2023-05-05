@@ -48,6 +48,8 @@ class StakingInfoVC: BaseVC {
     }
     
     func onUpdateView() {
+        onDismissWait()
+        refresher.endRefreshing()
         stakeInfoTableview.reloadData()
     }
     
@@ -57,16 +59,13 @@ class StakingInfoVC: BaseVC {
     
     func onFetchStakeInfo(_ showWait: Bool? = true) {
         if (showWait == true) { self.onShowWait() }
-        let group = DispatchGroup()
-        group.enter()
+        suiStaked.removeAll()
         let getStakesParams = JsonRpcRequest("suix_getStakes", JSON(arrayLiteral: cAccount.baseAddress?.address))
         SuiClient.shared.SuiRequest(getStakesParams) { stakes, error in
             stakes?.arrayValue.forEach({ stake in
                 self.suiStaked.append(stake)
             })
-            self.onDismissWait()
             self.onUpdateView()
-            group.leave()
         }
     }
     
