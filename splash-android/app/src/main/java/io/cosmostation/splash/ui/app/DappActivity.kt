@@ -114,6 +114,11 @@ class DappActivity : AppCompatActivity() {
             val messageId = requestJson.getLong("messageId")
             val messageJson = requestJson.getJSONObject("message")
             when (messageJson.getString("method")) {
+                "get-chain" -> {
+                    val dataJson = JSONObject()
+                    dataJson.put("chain", SuiClient.instance.currentNetwork.name.lowercase())
+                    appToWebResult(messageJson, dataJson, messageId)
+                }
                 "get-account-request" -> {
                     SplashWalletApp.instance.applicationViewModel.currentWalletLiveData.value?.let {
                         val keyPair = SuiClient.instance.getKeyPair(it.mnemonic)
