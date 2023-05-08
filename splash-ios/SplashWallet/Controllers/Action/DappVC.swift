@@ -17,6 +17,7 @@ class DappVC: BaseVC {
     private var publishers = [AnyCancellable]()
     
     override func viewDidLoad() {
+        cChainConfig = DataManager.shared.account?.chainConfig
         initWebView()
         if let dappUrl = dappURL, let url = URL(string: dappUrl) {
             navigationItem.title = url.host
