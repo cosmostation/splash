@@ -61,6 +61,9 @@ extension DappVC: WKScriptMessageHandler {
                 let data: [String: String] = ["address":DataManager.shared.account!.baseAddress!.address!,
                                                 "publicKey": DataManager.shared.account!.publicKey!.toHexString()]
                 appToWebResult(messageJSON, JSON(data), messageId)
+            } else if (method == "get-chain") {
+                let data: [String: String] = ["chain":cChainConfig.chainDpName.lowercased()]
+                appToWebResult(messageJSON, JSON(data), messageId)
             } else if (method == "execute-transaction-request") {
                 signAfterAction(title: "sui:signAndExecuteTransactionBlock", messageId: messageId, params: messageJSON["params"]) { hexTxBytes in
                     let txBytes = Data(hex: hexTxBytes)
