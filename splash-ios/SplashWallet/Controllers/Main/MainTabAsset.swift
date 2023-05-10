@@ -102,14 +102,14 @@ class MainTabAsset: BaseVC, SelectAccountDelegate, MDCTabBarViewDelegate {
         cAccount = DataManager.shared.account
         cChainConfig = cAccount.chainConfig
         accountLabel.text = cAccount.name
+        dashBtnFaucet.isHidden = false
         if (cChainConfig is ChainSui) {
             chainLabel.text = "Mainnet"
             chainLabel.textColor = .primary
-            
+            dashBtnFaucet.isHidden = true
         } else if (cChainConfig is ChainSuiDev) {
             chainLabel.text = "Devnet"
             chainLabel.textColor = .base04
-            
         } else if (cChainConfig is ChainSuiTest) {
             chainLabel.text = "Testnet"
             chainLabel.textColor = .base04
