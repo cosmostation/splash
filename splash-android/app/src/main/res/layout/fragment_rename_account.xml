@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical"
@@ -18,30 +18,24 @@
         android:layout_marginTop="16dp"
         android:text="@string/rename_account" />
 
-    <TextView
-        style="@style/TextViewH5"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="30dp"
-        android:text="@string/account_name"
-        android:textColor="@color/color_mode_base04" />
 
+    <com.google.android.material.textfield.TextInputLayout
+        style="@style/TextInputLayout"
+        android:layout_marginTop="20dp"
+        app:endIconMode="clear_text">
 
-    <EditText
-        android:id="@+id/name"
-        style="@style/InputEditText"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="12dp"
-        android:lines="1"
-        tools:text="Account" />
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/name"
+            style="@style/InputEditText"
+            android:hint="@string/account_name"
+            android:lines="1" />
+    </com.google.android.material.textfield.TextInputLayout>
 
     <Button
         android:id="@+id/confirm_btn"
         style="@style/FlatButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="20dp"
         android:text="@string/confirm" />
 </LinearLayout>

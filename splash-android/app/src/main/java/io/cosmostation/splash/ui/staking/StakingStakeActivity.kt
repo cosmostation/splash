@@ -99,7 +99,7 @@ class StakingStakeActivity : ActionBarBaseActivity() {
 
     private fun setupViews() {
         binding.nextBtn.setOnClickListener {
-            if (binding.amount.text.isEmpty() || BigDecimal(binding.amount.text.toString()) <= BigDecimal(0)) {
+            if (binding.amount.text?.isEmpty() == true || BigDecimal(binding.amount.text.toString()) <= BigDecimal(0)) {
                 Toast.makeText(this, "Empty amount", Toast.LENGTH_LONG).show()
                 return@setOnClickListener
             }

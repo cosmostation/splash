@@ -67,7 +67,7 @@ class NftSendActivity : ActionBarBaseActivity() {
             }
         }
         binding.nextBtn.setOnClickListener {
-            if (binding.address.text.isEmpty()) {
+            if (binding.address.text?.isEmpty() == true) {
                 Toast.makeText(this, "Empty receiver", Toast.LENGTH_LONG).show()
                 return@setOnClickListener
             }
@@ -78,29 +78,32 @@ class NftSendActivity : ActionBarBaseActivity() {
     private fun send() {
         binding.loading.visibility = View.VISIBLE
         val id = intent.getStringExtra("id")
-        CoroutineScope(Dispatchers.IO).launch {
-            try {
-                val objects = SuiClient.instance.transferObject(id!!, binding.address.text.toString(), SplashWalletApp.instance.applicationViewModel.currentWalletLiveData.value!!.address, GasUtils.getDefaultGas())
-                val txBytes = Base64.getDecoder().decode(objects!!.txBytes)
-                val intentMessage = byteArrayOf(0, 0, 0) + txBytes
-                val keyPair = SuiClient.instance.getKeyPair(SplashWalletApp.instance.applicationViewModel.currentWalletLiveData.value!!.mnemonic)
-                val signedTxBytes = SuiClient.instance.sign(keyPair, intentMessage)
-                val executeResult = SuiClient.instance.executeTransaction(
-                    txBytes, signedTxBytes, keyPair, SuiTransactionBlockResponseOptions(showInput = true, showEffects = true)
-                )
-                startActivity(
-                    Intent(
-                        this@NftSendActivity, TransactionResultActivity::class.java
-                    ).putExtra("executeResult", Gson().toJson(executeResult))
-                )
-                finish()
-            } catch (e: Exception) {
-                runOnUiThread {
-                    Toast.makeText(this@NftSendActivity, "Error !", Toast.LENGTH_LONG).show()
-                    binding.loading.visibility = View.GONE
+        SplashWalletApp.instance.applicationViewModel.currentWalletLiveData.value?.let { wallet ->
+
+            CoroutineScope(Dispatchers.IO).launch {
+                try {
+                    val objects = SuiClient.instance.transferObject(id!!, binding.address.text.toString(), wallet.address, GasUtils.getDefaultGas())
+                    val txBytes = Base64.getDecoder().decode(objects!!.txBytes)
+                    val intentMessage = byteArrayOf(0, 0, 0) + txBytes
+                    val keyPair = wallet.mnemonic?.let {
+                        SuiClient.instance.getKeyPair(it)
+                    } ?: wallet.privateKey?.let {
+                        SuiClient.instance.getKeyPairByPrivateKey(it)
+                    }
+                    keyPair?.let {
+                        val signedTxBytes = SuiClient.instance.sign(keyPair, intentMessage)
+                        val executeResult = SuiClient.instance.executeTransaction(txBytes, signedTxBytes, keyPair, SuiTransactionBlockResponseOptions(showInput = true, showEffects = true))
+                        startActivity(Intent(this@NftSendActivity, TransactionResultActivity::class.java).putExtra("executeResult", Gson().toJson(executeResult)))
+                        finish()
+                    }
+                } catch (e: Exception) {
+                    runOnUiThread {
+                        Toast.makeText(this@NftSendActivity, "Error !", Toast.LENGTH_LONG).show()
+                        binding.loading.visibility = View.GONE
+                    }
+                } finally {
+                    dialog.dismiss()
                 }
-            } finally {
-                dialog.dismiss()
             }
         }
     }

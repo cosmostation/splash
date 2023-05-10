@@ -20,20 +20,27 @@
             android:gravity="center_vertical"
             android:orientation="horizontal">
 
-            <Button
+            <LinearLayout
                 android:id="@+id/account_btn"
-                style="@style/TextViewH5"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="20dp"
-                android:background="@android:color/transparent"
-                android:drawableStart="@drawable/img_profile"
-                android:drawablePadding="10dp"
-                android:minWidth="0dp"
-                android:minHeight="0dp"
-                android:textAllCaps="false"
-                android:textColor="@color/color_only_base01"
-                tools:text="Account 1" />
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/img_profile" />
+
+                <TextView
+                    android:id="@+id/account_name"
+                    style="@style/TextViewH5"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:textColor="@color/color_only_base01"
+                    tools:text="Account 1" />
+            </LinearLayout>
 
             <TextView
                 android:id="@+id/network"
@@ -41,7 +48,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="5dp"
-                android:layout_marginTop="2dp"
+                android:layout_marginTop="0dp"
                 android:textColor="@color/color_mode_base04"
                 tools:text="Testnet" />
 

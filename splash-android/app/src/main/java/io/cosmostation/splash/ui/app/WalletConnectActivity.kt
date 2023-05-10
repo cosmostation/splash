@@ -186,26 +186,20 @@ class WalletConnectActivity : AppCompatActivity() {
                     return
                 }
 
-                val sessionNamespaces: MutableMap<String, Sign.Model.Namespace.Session> =
-                    mutableMapOf()
+                val sessionNamespaces: MutableMap<String, Sign.Model.Namespace.Session> = mutableMapOf()
                 val methods = sessionProposal.requiredNamespaces.values.flatMap { it.methods }
                 val events = sessionProposal.requiredNamespaces.values.flatMap { it.events }
                 runOnUiThread {
                     val chains = sessionProposal.requiredNamespaces.values.flatMap { it.chains }
                     chains.map { chain ->
                         val chainName = chain.split(":")[0]
-                        val address =
-                            SplashWalletApp.instance.applicationViewModel.currentWalletLiveData.value!!.address
+                        val address = SplashWalletApp.instance.applicationViewModel.currentWalletLiveData.value!!.address
                         sessionNamespaces[chainName] = Sign.Model.Namespace.Session(
-                            accounts = listOf("$chain:$address"),
-                            methods = methods,
-                            events = events,
-                            extensions = null
+                            accounts = listOf("$chain:$address"), methods = methods, events = events, extensions = null
                         )
                     }
                     val approveProposal = Sign.Params.Approve(
-                        proposerPublicKey = sessionProposal.proposerPublicKey,
-                        namespaces = sessionNamespaces
+                        proposerPublicKey = sessionProposal.proposerPublicKey, namespaces = sessionNamespaces
                     )
 
                     binding.loadingLayer.apply {
@@ -240,8 +234,7 @@ class WalletConnectActivity : AppCompatActivity() {
             return
         }
 
-        val address =
-            SplashWalletApp.instance.applicationViewModel.currentWalletLiveData.value!!.address
+        val address = SplashWalletApp.instance.applicationViewModel.currentWalletLiveData.value!!.address
         binding.wcAddress.text = address
 
         if (proposal.icons.isNotEmpty()) {
@@ -276,8 +269,7 @@ class WalletConnectActivity : AppCompatActivity() {
 
                             override fun cancel() {
                                 val response = Sign.Params.Response(
-                                    sessionTopic = sessionRequest.topic,
-                                    jsonRpcResponse = Sign.Model.JsonRpcResponse.JsonRpcError(
+                                    sessionTopic = sessionRequest.topic, jsonRpcResponse = Sign.Model.JsonRpcResponse.JsonRpcError(
                                         sessionRequest.request.id, 500, "Cancel request."
                                     )
                                 )
@@ -298,14 +290,7 @@ class WalletConnectActivity : AppCompatActivity() {
                 val temp = list[0] as? Map<String, Any>
                 temp?.let {
                     val params = listOf(
-                        SplashWalletApp.instance.applicationViewModel.currentWalletLiveData.value!!.address,
-                        temp["packageObjectId"],
-                        temp["module"],
-                        temp["function"],
-                        temp["typeArguments"],
-                        temp["arguments"],
-                        temp["gasPayment"],
-                        (temp["gasBudget"] as Double).toInt()
+                        SplashWalletApp.instance.applicationViewModel.currentWalletLiveData.value!!.address, temp["packageObjectId"], temp["module"], temp["function"], temp["typeArguments"], temp["arguments"], temp["gasPayment"], (temp["gasBudget"] as Double).toInt()
                     )
                     val tempResult = SuiClient.instance.fetchCustomRequest(
                         JsonRpcRequest(
@@ -317,27 +302,30 @@ class WalletConnectActivity : AppCompatActivity() {
                     )
                     val txBytes = Base64.getDecoder().decode(transferTxBytes.txBytes)
                     val intentMessage = byteArrayOf(0, 0, 0) + txBytes
-                    val mnemonic =
-                        SplashWalletApp.instance.applicationViewModel.currentWalletLiveData.value!!.mnemonic
-                    val keyPair = SuiClient.instance.getKeyPair(mnemonic)
-                    val signedTxBytes = SuiClient.instance.sign(keyPair, intentMessage)
-                    val executeResult = SuiClient.instance.executeTransaction(
-                        txBytes, signedTxBytes, keyPair, SuiTransactionBlockResponseOptions(showInput = true, showEffects = true)
-                    )
-                    val response = Sign.Params.Response(
-                        sessionTopic = sessionRequest.topic,
-                        jsonRpcResponse = Sign.Model.JsonRpcResponse.JsonRpcResult(
-                            sessionRequest.request.id, Gson().toJson(executeResult)
+                    val keyPair = SplashWalletApp.instance.applicationViewModel.currentWalletLiveData.value?.mnemonic?.let {
+                        SuiClient.instance.getKeyPair(it)
+                    } ?: SplashWalletApp.instance.applicationViewModel.currentWalletLiveData.value?.privateKey?.let {
+                        SuiClient.instance.getKeyPairByPrivateKey(it)
+                    }
+
+                    keyPair?.let {
+                        val signedTxBytes = SuiClient.instance.sign(keyPair, intentMessage)
+                        val executeResult = SuiClient.instance.executeTransaction(
+                            txBytes, signedTxBytes, keyPair, SuiTransactionBlockResponseOptions(showInput = true, showEffects = true)
                         )
-                    )
-                    SignClient.respond(response) {}
+                        val response = Sign.Params.Response(
+                            sessionTopic = sessionRequest.topic, jsonRpcResponse = Sign.Model.JsonRpcResponse.JsonRpcResult(
+                                sessionRequest.request.id, Gson().toJson(executeResult)
+                            )
+                        )
+                        SignClient.respond(response) {}
+                    }
                 } ?: run {
                     throw Exception()
                 }
             } catch (e: Exception) {
                 val response = Sign.Params.Response(
-                    sessionTopic = sessionRequest.topic,
-                    jsonRpcResponse = Sign.Model.JsonRpcResponse.JsonRpcError(
+                    sessionTopic = sessionRequest.topic, jsonRpcResponse = Sign.Model.JsonRpcResponse.JsonRpcError(
                         sessionRequest.request.id, 500, "Signing error."
                     )
                 )
@@ -349,11 +337,9 @@ class WalletConnectActivity : AppCompatActivity() {
 
     private fun approveGetAccountRequest(sessionRequest: Sign.Model.SessionRequest) {
         try {
-            val address =
-                SplashWalletApp.instance.applicationViewModel.currentWalletLiveData.value!!.address
+            val address = SplashWalletApp.instance.applicationViewModel.currentWalletLiveData.value!!.address
             val response = Sign.Params.Response(
-                sessionTopic = sessionRequest.topic,
-                jsonRpcResponse = Sign.Model.JsonRpcResponse.JsonRpcResult(
+                sessionTopic = sessionRequest.topic, jsonRpcResponse = Sign.Model.JsonRpcResponse.JsonRpcResult(
                     sessionRequest.request.id, address
                 )
             )
@@ -363,8 +349,7 @@ class WalletConnectActivity : AppCompatActivity() {
             ).show()
         } catch (e: Exception) {
             val response = Sign.Params.Response(
-                sessionTopic = sessionRequest.topic,
-                jsonRpcResponse = Sign.Model.JsonRpcResponse.JsonRpcError(
+                sessionTopic = sessionRequest.topic, jsonRpcResponse = Sign.Model.JsonRpcResponse.JsonRpcError(
                     sessionRequest.request.id, 500, "Signing error."
                 )
             )
@@ -457,10 +442,7 @@ class WalletConnectActivity : AppCompatActivity() {
         ): Boolean {
             AlertDialog.Builder(
                 view.context
-            ).setMessage(message)
-                .setPositiveButton("OK") { dialog: DialogInterface?, which: Int -> result.confirm() }
-                .setOnDismissListener { dialog: DialogInterface? -> result.confirm() }.create()
-                .show()
+            ).setMessage(message).setPositiveButton("OK") { dialog: DialogInterface?, which: Int -> result.confirm() }.setOnDismissListener { dialog: DialogInterface? -> result.confirm() }.create().show()
             return true
         }
 
@@ -469,11 +451,7 @@ class WalletConnectActivity : AppCompatActivity() {
         ): Boolean {
             AlertDialog.Builder(
                 view.context
-            ).setMessage(message)
-                .setPositiveButton("OK") { _: DialogInterface?, _: Int -> result.confirm() }
-                .setNegativeButton("Cancel") { _: DialogInterface?, _: Int -> result.cancel() }
-                .setOnDismissListener { dialog: DialogInterface? -> result.cancel() }.create()
-                .show()
+            ).setMessage(message).setPositiveButton("OK") { _: DialogInterface?, _: Int -> result.confirm() }.setNegativeButton("Cancel") { _: DialogInterface?, _: Int -> result.cancel() }.setOnDismissListener { dialog: DialogInterface? -> result.cancel() }.create().show()
             return true
         }
     }

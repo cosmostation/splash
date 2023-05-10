@@ -21,9 +21,7 @@ class DeleteAccountDialog(private val entity: Wallet) : BottomSheetDialogFragmen
     private lateinit var binding: FragmentDeleteAccountBinding
     private val viewModel: AccountViewModel by viewModels()
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
-    ): View {
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
         binding = FragmentDeleteAccountBinding.inflate(layoutInflater)
         setupViews()
 
@@ -39,7 +37,8 @@ class DeleteAccountDialog(private val entity: Wallet) : BottomSheetDialogFragmen
                     dismiss()
                 }
             }
-        binding.address.setText(entity.address)
+        binding.address.text = entity.address
+        binding.name.text = SplashWalletApp.instance.applicationViewModel.currentWalletLiveData.value?.name
         binding.confirmBtn.setOnClickListener {
             if (SplashWalletApp.instance.applicationViewModel.currentWalletLiveData.value?.id == entity.id) {
                 context?.let {

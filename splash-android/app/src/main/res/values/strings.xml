@@ -44,10 +44,10 @@
     <string name="confirm">Confirm</string>
     <string name="delete_account">Delete account</string>
     <string name="delete">Delete</string>
-    <string name="delete_warning">Even though you are removing this account you will able to re-derive it using your mnemonic in this or another account.</string>
+    <string name="delete_warning">Are you sure you would like to delete this wallet?Make sure you have backup of your wallet\'s mnemonic phrase if you want to restore it later.</string>
     <string name="token_available">Available balance</string>
     <string name="amount">Amount</string>
-    <string name="recipient_address">Recipient address</string>
+    <string name="recipient_address">Recipient</string>
     <string name="object_id">Object id</string>
     <string name="description">Description</string>
     <string name="type">Type</string>
@@ -71,6 +71,7 @@
     <string name="transaction_fail">Transaction Fail</string>
     <string name="view_in_explorer">View in explorer</string>
     <string name="view_mnemonics">View mnemonics</string>
+    <string name="view_private_key">View private key</string>
     <string name="rename">Rename</string>
     <string name="wallet_connect">Wallet Connect</string>
     <string name="sign">Sign</string>

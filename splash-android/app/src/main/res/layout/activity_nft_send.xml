@@ -94,19 +94,20 @@
                 </androidx.constraintlayout.widget.ConstraintLayout>
             </androidx.constraintlayout.widget.ConstraintLayout>
 
-            <TextView
-                style="@style/TextViewLabel"
-                android:layout_marginTop="40dp"
-                android:text="@string/recipient_address" />
 
-            <EditText
-                android:id="@+id/address"
-                style="@style/InputEditText"
-                android:layout_marginTop="10dp"
-                android:importantForAutofill="no"
-                android:inputType="textMultiLine"
-                android:maxLines="2" />
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/TextInputLayout"
+                android:layout_marginTop="40dp">
 
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/address"
+                    style="@style/InputEditText"
+                    android:layout_marginTop="12dp"
+                    android:hint="@string/recipient_address"
+                    android:importantForAutofill="no"
+                    android:inputType="textMultiLine"
+                    android:maxLines="2" />
+            </com.google.android.material.textfield.TextInputLayout>
         </LinearLayout>
     </ScrollView>
 
@@ -172,8 +173,8 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:background="#66000000"
-        android:elevation="10dp"
         android:clickable="true"
+        android:elevation="10dp"
         android:focusable="true"
         android:gravity="center"
         android:visibility="gone"

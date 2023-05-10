@@ -106,8 +106,7 @@
         android:layout_height="wrap_content"
         android:orientation="vertical"
         android:paddingHorizontal="20dp"
-        android:paddingVertical="20dp"
-        android:visibility="gone">
+        android:paddingVertical="20dp">
 
         <TextView
             style="@style/TextViewH5"
@@ -133,6 +132,5 @@
         android:layout_width="match_parent"
         android:layout_height="1dp"
         android:layout_marginBottom="30dp"
-        android:background="@color/color_mode_base03"
-        android:visibility="gone" />
+        android:background="@color/color_mode_base03" />
 </LinearLayout>

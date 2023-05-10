@@ -35,7 +35,7 @@ class WalletAddIntroActivity : ActionBarBaseActivity() {
 
     private fun setupViews() {
         binding.importBtn.setOnClickListener {
-            WalletAddIntroFragment().show(supportFragmentManager, WalletAddIntroFragment::class.java.name)
+            AddAccountDialog().show(supportFragmentManager, AddAccountDialog::class.java.name)
         }
     }
 }

@@ -37,14 +37,14 @@ class ImportMnemonicActivity : ActionBarBaseActivity() {
     private fun setupViews() {
         val resultLauncher = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
             if (result.resultCode == Activity.RESULT_OK) {
-                viewModel.createClick(
+                viewModel.createByMnemonic(
                     binding.name.text.toString(), binding.mnemonic.text.toString()
                 )
             }
         }
 
         binding.nextBtn.setOnClickListener {
-            if (binding.name.text.isEmpty() || binding.mnemonic.text.isEmpty()) {
+            if (binding.name.text?.isEmpty() == true || binding.mnemonic.text?.isEmpty() == true) {
                 Toast.makeText(this, "Empty !", Toast.LENGTH_LONG).show()
                 return@setOnClickListener
             }

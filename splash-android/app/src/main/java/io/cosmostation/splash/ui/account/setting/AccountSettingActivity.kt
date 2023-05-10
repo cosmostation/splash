@@ -13,8 +13,9 @@ import io.cosmostation.splash.ui.account.AccountViewModel
 import io.cosmostation.splash.ui.account.DeleteAccountDialog
 import io.cosmostation.splash.ui.account.RenameAccountDialog
 import io.cosmostation.splash.ui.common.ActionBarBaseActivity
+import io.cosmostation.splash.ui.wallet.AddAccountDialog
 import io.cosmostation.splash.ui.wallet.ViewMnemonicActivity
-import io.cosmostation.splash.ui.wallet.WalletAddIntroFragment
+import io.cosmostation.splash.ui.wallet.ViewPrivateKeyActivity
 
 class AccountSettingActivity : ActionBarBaseActivity() {
     private lateinit var adapter: AccountSettingAdapter
@@ -47,7 +48,7 @@ class AccountSettingActivity : ActionBarBaseActivity() {
     private fun setupViews() {
         setupRecyclerView()
         binding.createBtn.setOnClickListener {
-            WalletAddIntroFragment().show(supportFragmentManager, WalletAddIntroFragment::class.java.name)
+            AddAccountDialog().show(supportFragmentManager, AddAccountDialog::class.java.name)
         }
     }
 
@@ -60,6 +61,7 @@ class AccountSettingActivity : ActionBarBaseActivity() {
     private fun selectMoreMenu(): (view: View, entity: Wallet) -> Unit = { view, item ->
         val popup = PopupMenu(this, view)
         popup.inflate(R.menu.account_setting_menu)
+        popup.menu.findItem(R.id.view).isEnabled = item.mnemonic != null
         popup.setOnMenuItemClickListener {
             when (it.itemId) {
                 R.id.rename -> RenameAccountDialog(item).show(
@@ -70,6 +72,9 @@ class AccountSettingActivity : ActionBarBaseActivity() {
                 )
                 R.id.view -> startActivity(
                     Intent(this, ViewMnemonicActivity::class.java).putExtra(ViewMnemonicActivity.INTENT_MNEMONIC_KEY, item.mnemonic)
+                )
+                R.id.view_private_key -> startActivity(
+                    Intent(this, ViewPrivateKeyActivity::class.java).putExtra(ViewPrivateKeyActivity.INTENT_PRIVATE_KEY_KEY, item.privateKey)
                 )
             }
             true

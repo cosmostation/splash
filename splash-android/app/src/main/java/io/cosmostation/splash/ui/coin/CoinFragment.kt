@@ -185,7 +185,7 @@ class CoinFragment : Fragment() {
 
         SplashWalletApp.instance.applicationViewModel.currentWalletLiveData.observe(viewLifecycleOwner) {
             it?.let {
-                binding.accountBtn.text = it.name
+                binding.accountName.text = it.name
             }
 
             binding.network.text = SuiClient.instance.currentNetwork.name

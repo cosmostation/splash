@@ -10,4 +10,8 @@
     <item
         android:id="@+id/view"
         android:title="@string/view_mnemonics" />
+
+    <item
+        android:id="@+id/view_private_key"
+        android:title="@string/view_private_key" />
 </menu>

@@ -120,13 +120,21 @@ class DappActivity : AppCompatActivity() {
                     appToWebResult(messageJson, dataJson, messageId)
                 }
                 "get-account-request" -> {
-                    SplashWalletApp.instance.applicationViewModel.currentWalletLiveData.value?.let {
-                        val keyPair = SuiClient.instance.getKeyPair(it.mnemonic)
-                        val pubKey = keyPair.publicKey.abyte
-                        val dataJson = JSONObject()
-                        dataJson.put("address", it.address)
-                        dataJson.put("publicKey", Utils.bytesToHex(pubKey))
-                        appToWebResult(messageJson, dataJson, messageId)
+                    SplashWalletApp.instance.applicationViewModel.currentWalletLiveData.value?.let { wallet ->
+                        val keyPair = wallet.mnemonic?.let {
+                            SuiClient.instance.getKeyPair(it)
+                        } ?: wallet.privateKey?.let {
+                            SuiClient.instance.getKeyPairByPrivateKey(it)
+                        }
+                        keyPair?.let {
+                            val pubKey = keyPair.publicKey.abyte
+                            val dataJson = JSONObject()
+                            dataJson.put("address", wallet.address)
+                            dataJson.put("publicKey", Utils.bytesToHex(pubKey))
+                            appToWebResult(messageJson, dataJson, messageId)
+                        } ?: {
+                            appToWebError("Get account error", messageId)
+                        }
                     }
                 }
                 "execute-transaction-request" -> {
@@ -134,15 +142,24 @@ class DappActivity : AppCompatActivity() {
                     signAfterAction("sui:signAndExecuteTransactionBlock", messageId, params) {
                         val txBytes = Utils.hexToBytes(it)
                         val intentMessage = byteArrayOf(0, 0, 0) + txBytes
-                        val mnemonic = SplashWalletApp.instance.applicationViewModel.currentWalletLiveData.value!!.mnemonic
-                        val keyPair = SuiClient.instance.getKeyPair(mnemonic)
-                        val signedTxBytes = SuiClient.instance.sign(keyPair, intentMessage)
-                        CoroutineScope(Dispatchers.IO).launch {
-                            val executeResult = SuiClient.instance.executeTransaction(
-                                txBytes, signedTxBytes, keyPair, SuiTransactionBlockResponseOptions(showInput = true, showEffects = true, showEvents = true)
-                            )
-                            val resultJson = JSONObject(Gson().toJson(executeResult))
-                            appToWebResult(messageJson, resultJson, messageId)
+                        SplashWalletApp.instance.applicationViewModel.currentWalletLiveData.value?.let { wallet ->
+                            val keyPair = wallet.mnemonic?.let {
+                                SuiClient.instance.getKeyPair(it)
+                            } ?: wallet.privateKey?.let {
+                                SuiClient.instance.getKeyPairByPrivateKey(it)
+                            }
+                            keyPair?.let {
+                                val signedTxBytes = SuiClient.instance.sign(keyPair, intentMessage)
+                                CoroutineScope(Dispatchers.IO).launch {
+                                    val executeResult = SuiClient.instance.executeTransaction(
+                                        txBytes, signedTxBytes, keyPair, SuiTransactionBlockResponseOptions(showInput = true, showEffects = true, showEvents = true)
+                                    )
+                                    val resultJson = JSONObject(Gson().toJson(executeResult))
+                                    appToWebResult(messageJson, resultJson, messageId)
+                                }
+                            } ?: run {
+                                appToWebError("Sign error", messageId)
+                            }
                         }
                     }
                 }

@@ -62,7 +62,7 @@ class NftsContainerVC: BaseVC {
         DataManager.shared.suiObjects.forEach { object in
             let typeS = object["type"].string?.lowercased()
 //            print("typeS ", typeS)
-            if (typeS?.contains("nft") == true && typeS?.contains("coin") == false) {
+            if (typeS?.contains("stakedsui") == false && typeS?.contains("coin") == false) {
                 suiNFTs.append(object)
             }
         }

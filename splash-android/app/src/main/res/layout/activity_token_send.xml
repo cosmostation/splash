@@ -19,24 +19,6 @@
             android:orientation="vertical"
             android:paddingBottom="30dp">
 
-            <TextView
-                style="@style/TextViewLabel"
-                android:layout_marginTop="30dp"
-                android:text="@string/recipient_address" />
-
-            <EditText
-                android:id="@+id/address"
-                style="@style/InputEditText"
-                android:layout_marginTop="12dp"
-                android:importantForAutofill="no"
-                android:inputType="textMultiLine"
-                android:maxLines="2" />
-
-            <TextView
-                style="@style/TextViewLabel"
-                android:layout_marginTop="40dp"
-                android:text="@string/token_available" />
-
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -90,20 +72,34 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
                     tools:text="100 SUI" />
-
             </androidx.constraintlayout.widget.ConstraintLayout>
 
-            <TextView
-                style="@style/TextViewLabel"
-                android:layout_marginTop="40dp"
-                android:text="@string/amount" />
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/TextInputLayout"
+                android:layout_marginTop="20dp">
 
-            <EditText
-                android:id="@+id/amount"
-                style="@style/InputEditText"
-                android:layout_marginTop="12dp"
-                android:importantForAutofill="no"
-                android:inputType="numberDecimal" />
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/address"
+                    style="@style/InputEditText"
+                    android:hint="@string/recipient_address"
+                    android:importantForAutofill="no"
+                    android:inputType="textMultiLine"
+                    android:maxLines="2" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/TextInputLayout"
+                android:layout_marginTop="20dp">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/amount"
+                    style="@style/InputEditText"
+                    android:hint="@string/amount"
+                    android:importantForAutofill="no"
+                    android:inputType="numberDecimal"
+                    android:maxLines="1" />
+            </com.google.android.material.textfield.TextInputLayout>
         </LinearLayout>
     </ScrollView>
 

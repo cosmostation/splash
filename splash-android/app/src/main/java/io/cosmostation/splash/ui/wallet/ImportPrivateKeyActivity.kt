@@ -44,7 +44,7 @@ class ImportPrivateKeyActivity : ActionBarBaseActivity() {
         }
 
         binding.nextBtn.setOnClickListener {
-            if (binding.name.text.isEmpty() || binding.privateKey.text.isEmpty()) {
+            if (binding.name.text?.isEmpty() == true || binding.privateKey.text?.isEmpty() == true) {
                 Toast.makeText(this, "Empty !", Toast.LENGTH_LONG).show()
                 return@setOnClickListener
             }

@@ -123,7 +123,7 @@ class MainTabAsset: BaseVC, SelectAccountDelegate, MDCTabBarViewDelegate {
         var suiNFTs = Array<JSON>()
         DataManager.shared.suiObjects.forEach { object in
             let typeS = object["type"].string?.lowercased()
-            if (typeS?.contains("nft") == true && typeS?.contains("coin") == false) {
+            if (typeS?.contains("stakedsui") == false && typeS?.contains("coin") == false) {
                 suiNFTs.append(object)
             }
         }

@@ -43,10 +43,25 @@
                     android:textColor="@color/color_mode_base05" />
             </LinearLayout>
 
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/TextInputLayout"
+                android:layout_marginTop="20dp">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/name"
+                    style="@style/InputEditText"
+                    android:layout_marginTop="12dp"
+                    android:hint="@string/account_name"
+                    android:importantForAutofill="no"
+                    android:inputType="text"
+                    android:lines="1"
+                    android:maxLength="20" />
+            </com.google.android.material.textfield.TextInputLayout>
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="40dp"
+                android:layout_marginTop="20dp"
                 android:layout_marginEnd="16dp"
                 android:orientation="horizontal">
 
@@ -134,19 +149,6 @@
 
             </LinearLayout>
 
-
-            <TextView
-                style="@style/TextViewLabel"
-                android:layout_marginTop="30dp"
-                android:text="@string/account_name" />
-
-            <EditText
-                android:id="@+id/name"
-                style="@style/InputEditText"
-                android:layout_marginTop="12dp"
-                android:importantForAutofill="no"
-                android:inputType="text"
-                android:maxLength="20" />
         </LinearLayout>
     </ScrollView>
 

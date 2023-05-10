@@ -171,10 +171,12 @@ class ApplicationViewModel(application: Application) : AndroidViewModel(applicat
             }
 
             val entity = AppDatabase.getInstance().walletDao().selectById(Prefs.currentWalletId)
-            entity?.let {
-                if (it.address != SuiKey.getSuiAddress(it.mnemonic)) {
-                    entity.address = SuiKey.getSuiAddress(it.mnemonic)
-                    AppDatabase.getInstance().walletDao().insert(it)
+            entity?.let { wallet ->
+                wallet.mnemonic?.let { mnemonic ->
+                    if (wallet.address != SuiKey.getSuiAddress(mnemonic)) {
+                        wallet.address = SuiKey.getSuiAddress(mnemonic)
+                        AppDatabase.getInstance().walletDao().insert(wallet)
+                    }
                 }
             }
             var currentWallet: Wallet? = null

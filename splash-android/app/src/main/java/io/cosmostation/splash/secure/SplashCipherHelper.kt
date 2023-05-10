@@ -11,9 +11,11 @@ object SplashCipherHelper {
         return CipherHelper.encrypt(aesEncrypted)
     }
 
-    fun decrypt(input: String, key: String): String {
-        val keystoreDecrypted = CipherHelper.decrypt(input)
-        return aesDecrypt(keystoreDecrypted, key)
+    fun decrypt(input: String?, key: String): String? {
+        input?.let {
+            val keystoreDecrypted = CipherHelper.decrypt(it)
+            return aesDecrypt(keystoreDecrypted, key)
+        } ?: run { return null }
     }
 
     private fun aesEncrypt(input: String, key: String): String {

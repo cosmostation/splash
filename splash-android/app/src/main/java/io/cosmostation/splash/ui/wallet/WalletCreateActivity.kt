@@ -48,7 +48,7 @@ class WalletCreateActivity : ActionBarBaseActivity() {
             registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
                 if (result.resultCode == Activity.RESULT_OK) {
                     viewModel.mnemonic.value?.let { mnemonic ->
-                        viewModel.createClick(
+                        viewModel.createByMnemonic(
                             binding.name.text.toString(), mnemonic
                         )
                     }
@@ -59,7 +59,7 @@ class WalletCreateActivity : ActionBarBaseActivity() {
         binding.recycler.layoutManager = GridLayoutManager(this, 3)
         binding.recycler.adapter = adapter
         binding.nextBtn.setOnClickListener {
-            if (binding.name.text.isEmpty()) {
+            if (binding.name.text?.isEmpty() == true) {
                 Toast.makeText(this, "Empty !", Toast.LENGTH_LONG).show()
                 return@setOnClickListener
             }

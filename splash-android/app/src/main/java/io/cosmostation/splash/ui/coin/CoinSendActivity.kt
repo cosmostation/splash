@@ -93,11 +93,11 @@ class CoinSendActivity : ActionBarBaseActivity() {
             }
         }
         binding.nextBtn.setOnClickListener {
-            if (binding.address.text.isEmpty()) {
+            if (binding.address.text?.isEmpty() == true) {
                 Toast.makeText(this, "Empty receiver", Toast.LENGTH_LONG).show()
                 return@setOnClickListener
             }
-            if (binding.amount.text.isEmpty() || BigDecimal(binding.amount.text.toString()) <= BigDecimal(0)) {
+            if (binding.amount.text?.isEmpty() == true || BigDecimal(binding.amount.text.toString()) <= BigDecimal(0)) {
                 Toast.makeText(this, "Empty amount", Toast.LENGTH_LONG).show()
                 return@setOnClickListener
             }
@@ -128,32 +128,43 @@ class CoinSendActivity : ActionBarBaseActivity() {
                                 binding.amount.text.toString().parseDecimal(metadata?.decimals ?: 9)
                             )
                         )
-                        val txBytes = Base64.getDecoder().decode(objects!!.txBytes)
-                        val intentMessage = byteArrayOf(0, 0, 0) + txBytes
-                        val keyPair = SuiClient.instance.getKeyPair(SplashWalletApp.instance.applicationViewModel.currentWalletLiveData.value!!.mnemonic)
-                        val signedTxBytes = SuiClient.instance.sign(keyPair, intentMessage)
-                        val executeResult = SuiClient.instance.executeTransaction(
-                            txBytes, signedTxBytes, keyPair, SuiTransactionBlockResponseOptions(showInput = true, showEffects = true)
-                        )
-                        startActivity(
-                            Intent(this@CoinSendActivity, TransactionResultActivity::class.java).putExtra("executeResult", Gson().toJson(executeResult))
-                        )
-                        finish()
+                        SplashWalletApp.instance.applicationViewModel.currentWalletLiveData.value?.let { wallet ->
+                            val keyPair = wallet.mnemonic?.let {
+                                SuiClient.instance.getKeyPair(it)
+                            } ?: wallet.privateKey?.let {
+                                SuiClient.instance.getKeyPairByPrivateKey(it)
+                            }
+                            keyPair?.let {
+                                val txBytes = Base64.getDecoder().decode(objects!!.txBytes)
+                                val intentMessage = byteArrayOf(0, 0, 0) + txBytes
+                                val signedTxBytes = SuiClient.instance.sign(keyPair, intentMessage)
+                                val executeResult = SuiClient.instance.executeTransaction(txBytes, signedTxBytes, keyPair, SuiTransactionBlockResponseOptions(showInput = true, showEffects = true))
+                                startActivity(Intent(this@CoinSendActivity, TransactionResultActivity::class.java).putExtra("executeResult", Gson().toJson(executeResult)))
+                            }
+                            finish()
+                        }
                     } else {
                         val objects = SuiClient.instance.pay(
                             currentCoins.mapNotNull { it?.objectId }, listOf(binding.address.text.toString()), SplashWalletApp.instance.applicationViewModel.currentWalletLiveData.value!!.address, GasUtils.getDefaultGas(), null, listOf(
                                 binding.amount.text.toString().parseDecimal(metadata?.decimals ?: 9)
                             )
                         )
-                        val txBytes = Base64.getDecoder().decode(objects!!.txBytes)
-                        val intentMessage = byteArrayOf(0, 0, 0) + txBytes
-                        val keyPair = SuiClient.instance.getKeyPair(SplashWalletApp.instance.applicationViewModel.currentWalletLiveData.value!!.mnemonic)
-                        val signedTxBytes = SuiClient.instance.sign(keyPair, intentMessage)
-                        val executeResult = SuiClient.instance.executeTransaction(txBytes, signedTxBytes, keyPair, SuiTransactionBlockResponseOptions(showInput = true, showEffects = true))
-                        startActivity(Intent(this@CoinSendActivity, TransactionResultActivity::class.java).putExtra("executeResult", Gson().toJson(executeResult)))
-                        finish()
+                        SplashWalletApp.instance.applicationViewModel.currentWalletLiveData.value?.let { wallet ->
+                            val keyPair = wallet.mnemonic?.let {
+                                SuiClient.instance.getKeyPair(it)
+                            } ?: wallet.privateKey?.let {
+                                SuiClient.instance.getKeyPairByPrivateKey(it)
+                            }
+                            keyPair?.let {
+                                val txBytes = Base64.getDecoder().decode(objects!!.txBytes)
+                                val intentMessage = byteArrayOf(0, 0, 0) + txBytes
+                                val signedTxBytes = SuiClient.instance.sign(keyPair, intentMessage)
+                                val executeResult = SuiClient.instance.executeTransaction(txBytes, signedTxBytes, keyPair, SuiTransactionBlockResponseOptions(showInput = true, showEffects = true))
+                                startActivity(Intent(this@CoinSendActivity, TransactionResultActivity::class.java).putExtra("executeResult", Gson().toJson(executeResult)))
+                                finish()
+                            }
+                        }
                     }
-
                 } catch (e: Exception) {
                     runOnUiThread {
                         Toast.makeText(this@CoinSendActivity, "Error !", Toast.LENGTH_LONG).show()

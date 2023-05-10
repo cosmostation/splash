@@ -170,17 +170,19 @@
                 </LinearLayout>
             </LinearLayout>
 
-            <TextView
-                style="@style/TextViewLabel"
-                android:layout_marginTop="20dp"
-                android:text="@string/amount" />
 
-            <EditText
-                android:id="@+id/amount"
-                style="@style/InputEditText"
-                android:layout_marginTop="12dp"
-                android:importantForAutofill="no"
-                android:inputType="numberDecimal" />
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/TextInputLayout"
+                android:layout_marginTop="20dp">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/amount"
+                    style="@style/InputEditText"
+                    android:layout_marginTop="12dp"
+                    android:hint="@string/amount"
+                    android:importantForAutofill="no"
+                    android:inputType="numberDecimal" />
+            </com.google.android.material.textfield.TextInputLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"

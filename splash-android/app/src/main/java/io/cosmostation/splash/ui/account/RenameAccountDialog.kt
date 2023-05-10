@@ -26,9 +26,9 @@ class RenameAccountDialog(private val entity: Wallet) : BottomSheetDialogFragmen
     private fun setupViews() {
         binding.name.setText(entity.name)
         binding.confirmBtn.setOnClickListener {
-            if (binding.name.text.equals(entity.name)) {
+            if (binding.name.text?.equals(entity.name) == true) {
                 dismiss()
-            } else if (binding.name.text.isBlank()) {
+            } else if (binding.name.text?.isBlank() == true) {
                 Toast.makeText(context, getString(R.string.rename_empty), Toast.LENGTH_LONG).show()
             } else {
                 entity.name = binding.name.text.toString()

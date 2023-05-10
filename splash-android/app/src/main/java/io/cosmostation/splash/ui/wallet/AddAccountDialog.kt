@@ -8,12 +8,10 @@ import android.view.ViewGroup
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import io.cosmostation.splash.databinding.FragmentIntroAddWalletBinding
 
-class WalletAddIntroFragment : BottomSheetDialogFragment() {
+class AddAccountDialog : BottomSheetDialogFragment() {
     private lateinit var binding: FragmentIntroAddWalletBinding
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
-    ): View {
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
         binding = FragmentIntroAddWalletBinding.inflate(layoutInflater)
 
         setupViews()
@@ -35,7 +33,7 @@ class WalletAddIntroFragment : BottomSheetDialogFragment() {
         }
         binding.importPrivateKey.setOnClickListener {
             activity?.let {
-                startActivity(Intent(it, ImportMnemonicActivity::class.java))
+                startActivity(Intent(it, ImportPrivateKeyActivity::class.java))
                 it.finish()
             }
         }

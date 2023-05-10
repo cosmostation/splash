@@ -39,6 +39,9 @@
             android:name=".ui.wallet.ViewMnemonicActivity"
             android:theme="@style/ActionBarAppTheme" />
         <activity
+            android:name=".ui.wallet.ViewPrivateKeyActivity"
+            android:theme="@style/ActionBarAppTheme" />
+        <activity
             android:name=".ui.wallet.WalletAddIntroActivity"
             android:launchMode="singleTask"
             android:theme="@style/ActionBarAppTheme" />
@@ -115,6 +118,10 @@
             android:theme="@style/ActionBarAppTheme" />
         <activity
             android:name=".ui.wallet.ImportMnemonicActivity"
+            android:theme="@style/ActionBarAppTheme"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name=".ui.wallet.ImportPrivateKeyActivity"
             android:theme="@style/ActionBarAppTheme"
             android:windowSoftInputMode="adjustPan" />
         <activity

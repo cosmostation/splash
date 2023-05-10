@@ -28,22 +28,43 @@
         android:textColor="@color/color_red01" />
 
 
-    <EditText
-        android:id="@+id/address"
-        style="@style/InputEditText"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginHorizontal="16dp"
         android:layout_marginTop="30dp"
-        android:ellipsize="middle"
-        android:enabled="false"
-        android:maxLines="2"
-        tools:text="0xf4625db01a7b8770aab" />
+        android:background="@drawable/drawable_edittext_background"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/name"
+            style="@style/TextViewH5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="16dp"
+            android:layout_marginTop="16dp"
+            android:textColor="@color/color_mode_base05"
+            tools:text="Account" />
+
+        <TextView
+            android:id="@+id/address"
+            style="@style/TextViewH6"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="16dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="16dp"
+            android:enabled="false"
+            android:textColor="@color/color_mode_base04"
+            tools:text="0xf4625db01a7b8770aab25db01a7b8770aab25db01a7b8770aab25db01a7b8770aab25db01a7b8770aab" />
+    </LinearLayout>
 
     <Button
         android:id="@+id/confirm_btn"
         style="@style/FlatButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="30dp"
+        android:backgroundTint="@color/color_red01"
         android:text="@string/delete" />
 </LinearLayout>

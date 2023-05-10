@@ -1,20 +1,20 @@
 <resources>
 
-    <style name="AppTheme" parent="@style/Theme.AppCompat.Light.NoActionBar">
-        <item name="colorPrimary">@color/color_mode_base01</item>
-        <item name="colorPrimaryDark">@color/color_mode_base05</item>
+    <style name="AppTheme" parent="@style/Theme.MaterialComponents.Light.NoActionBar">
+        <item name="colorPrimary">@color/color_mode_base05</item>
+        <item name="colorPrimaryDark">@color/color_mode_base01</item>
         <item name="colorAccent">@color/color_blue01</item>
         <item name="android:windowBackground">@color/color_mode_base01</item>
         <item name="fontFamily">@font/font_bold</item>
-        <item name="android:windowLightStatusBar">false</item>
-        <item name="android:statusBarColor">@color/color_mode_base01</item>
         <item name="bottomSheetDialogTheme">@style/BaseBottomSheetDialog</item>
+        <item name="android:statusBarColor">@color/color_mode_base01</item>
+        <item name="android:windowLightStatusBar">false</item>
     </style>
 
-    <style name="ActionBarAppTheme" parent="@style/Theme.AppCompat.Light.DarkActionBar">
+    <style name="ActionBarAppTheme" parent="@style/Theme.MaterialComponents.Light.DarkActionBar">
         <item name="toolbarStyle">@style/Widget.Toolbar</item>
-        <item name="colorPrimary">@color/color_mode_base01</item>
-        <item name="colorPrimaryDark">@color/color_mode_base05</item>
+        <item name="colorPrimary">@color/color_mode_base05</item>
+        <item name="colorPrimaryDark">@color/color_mode_base01</item>
         <item name="colorAccent">@color/color_blue01</item>
         <item name="android:statusBarColor">@color/color_mode_base01</item>
         <item name="android:windowBackground">@color/color_mode_base01</item>
