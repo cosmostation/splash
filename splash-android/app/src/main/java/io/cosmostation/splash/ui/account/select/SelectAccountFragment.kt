@@ -55,7 +55,7 @@ class SelectAccountFragment : BottomSheetDialogFragment() {
     }
 
     private fun selectAccount(): (entity: Wallet) -> Unit = {
-        if (SplashWalletApp.instance.applicationViewModel.currentWalletLiveData.value?.address != it.address) {
+        if (SplashWalletApp.instance.applicationViewModel.currentWalletLiveData.value?.id != it.id) {
             Prefs.currentWalletId = it.id
             SplashWalletApp.instance.applicationViewModel.loadWallet()
         }

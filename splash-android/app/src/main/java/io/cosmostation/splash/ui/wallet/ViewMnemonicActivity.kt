@@ -1,11 +1,14 @@
 package io.cosmostation.splash.ui.wallet
 
+import android.content.Intent
 import android.os.Bundle
 import android.widget.Toast
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.recyclerview.widget.GridLayoutManager
 import io.cosmostation.splash.R
 import io.cosmostation.splash.databinding.ActivityViewMnemonicBinding
 import io.cosmostation.splash.ui.common.ActionBarBaseActivity
+import io.cosmostation.splash.ui.password.PinActivity
 import io.cosmostation.splash.util.ExportUtils
 
 class ViewMnemonicActivity : ActionBarBaseActivity() {
@@ -24,6 +27,16 @@ class ViewMnemonicActivity : ActionBarBaseActivity() {
         binding = ActivityViewMnemonicBinding.inflate(layoutInflater)
         setContentView(binding.root)
         setupViews()
+        checkPassword()
+    }
+
+    private fun checkPassword() {
+        val resultLauncher = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
+            if (result.resultCode != RESULT_OK) {
+                finish()
+            }
+        }
+        resultLauncher.launch(Intent(this, PinActivity::class.java))
     }
 
     private fun setupViews() {

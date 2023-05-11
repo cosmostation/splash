@@ -77,6 +77,9 @@ dependencies {
     implementation("io.coil-kt:coil-svg:2.2.2")
 
     implementation 'net.i2p.crypto:eddsa:0.3.0'
+    implementation("org.bitcoinj:bitcoinj-core:0.16.2") {
+        exclude group: "org.bouncycastle"
+    }
 
     implementation 'androidx.activity:activity-ktx:1.6.1'
     implementation 'androidx.fragment:fragment-ktx:1.5.5'

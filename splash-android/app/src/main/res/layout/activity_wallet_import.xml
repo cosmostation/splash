@@ -21,16 +21,21 @@
 
     <com.google.android.material.textfield.TextInputLayout
         style="@style/TextInputLayout"
+        android:layout_height="wrap_content"
         android:layout_marginTop="20dp">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/mnemonic"
             style="@style/InputEditText"
+            android:layout_height="wrap_content"
             android:layout_marginTop="12dp"
+            android:gravity="top"
             android:hint="@string/seed_phrase"
             android:importantForAutofill="no"
             android:inputType="textMultiLine"
-            android:lineSpacingExtra="10dp" />
+            android:lineSpacingExtra="15dp"
+            android:minHeight="120dp"
+            android:minLines="3" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <View

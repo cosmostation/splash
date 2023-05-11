@@ -10,6 +10,9 @@ import io.cosmostation.splash.R
 import io.cosmostation.splash.databinding.ActivityImportPrivateKeyBinding
 import io.cosmostation.splash.ui.common.ActionBarBaseActivity
 import io.cosmostation.splash.ui.password.PinActivity
+import net.i2p.crypto.eddsa.spec.EdDSANamedCurveTable
+import net.i2p.crypto.eddsa.spec.EdDSAPrivateKeySpec
+import org.bouncycastle.util.encoders.Hex
 
 class ImportPrivateKeyActivity : ActionBarBaseActivity() {
     private lateinit var binding: ActivityImportPrivateKeyBinding
@@ -37,16 +40,24 @@ class ImportPrivateKeyActivity : ActionBarBaseActivity() {
     private fun setupViews() {
         val resultLauncher = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
             if (result.resultCode == Activity.RESULT_OK) {
-                viewModel.createClick(
-                    binding.name.text.toString(), binding.privateKey.text.toString()
-                )
+                viewModel.createClick(binding.name.text.toString(), binding.privateKey.text.toString())
             }
         }
 
         binding.nextBtn.setOnClickListener {
             if (binding.name.text?.isEmpty() == true || binding.privateKey.text?.isEmpty() == true) {
-                Toast.makeText(this, "Empty !", Toast.LENGTH_LONG).show()
+                Toast.makeText(this, "Empty private key", Toast.LENGTH_LONG).show()
                 return@setOnClickListener
+            }
+
+            binding.privateKey.text?.toString()?.let {
+                try {
+                    val keySpecs = EdDSANamedCurveTable.getByName(EdDSANamedCurveTable.ED_25519)
+                    EdDSAPrivateKeySpec(Hex.decode(it), keySpecs)
+                } catch (e: Exception) {
+                    Toast.makeText(this, "Not valid private key !", Toast.LENGTH_LONG).show()
+                    return@setOnClickListener
+                }
             }
 
             resultLauncher.launch(Intent(this, PinActivity::class.java))

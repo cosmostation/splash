@@ -10,6 +10,7 @@ import io.cosmostation.splash.R
 import io.cosmostation.splash.databinding.ActivityWalletImportBinding
 import io.cosmostation.splash.ui.common.ActionBarBaseActivity
 import io.cosmostation.splash.ui.password.PinActivity
+import org.bitcoinj.crypto.MnemonicCode
 
 class ImportMnemonicActivity : ActionBarBaseActivity() {
     private lateinit var binding: ActivityWalletImportBinding
@@ -45,8 +46,17 @@ class ImportMnemonicActivity : ActionBarBaseActivity() {
 
         binding.nextBtn.setOnClickListener {
             if (binding.name.text?.isEmpty() == true || binding.mnemonic.text?.isEmpty() == true) {
-                Toast.makeText(this, "Empty !", Toast.LENGTH_LONG).show()
+                Toast.makeText(this, "Empty mnemonic", Toast.LENGTH_LONG).show()
                 return@setOnClickListener
+            }
+
+            binding.mnemonic.text?.toString()?.let {
+                try {
+                    MnemonicCode.INSTANCE.check(it.split(" "))
+                } catch (e: Exception) {
+                    Toast.makeText(this, "Not valid Mnemonic", Toast.LENGTH_LONG).show()
+                    return@setOnClickListener
+                }
             }
 
             resultLauncher.launch(Intent(this, PinActivity::class.java))
