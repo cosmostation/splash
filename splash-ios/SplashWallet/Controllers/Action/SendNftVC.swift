@@ -68,7 +68,7 @@ class SendNftVC: BaseVC, BaseSheetDelegate, TxCheckSheetDelegate, ScanDelegate, 
         }
         let name = suiNFT["content"]["fields"]["name"].stringValue
         let objectId = suiNFT["objectId"].stringValue
-        let type = suiNFT["type"].stringValue.components(separatedBy: "::").last!
+        let type = suiNFT["type"].stringValue
         nftNameLabel.text = name
         nftObjectIdLabel.text = objectId
         nftTypeLabel.text = type

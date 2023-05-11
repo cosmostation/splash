@@ -39,7 +39,7 @@ class NftDetailVC: BaseVC {
             
             let name = suiNFT["content"]["fields"]["name"].stringValue
             let objectId = suiNFT["objectId"].stringValue
-            let type = suiNFT["type"].stringValue.components(separatedBy: "::").last!
+            let type = suiNFT["type"].stringValue
             let description = suiNFT["content"]["fields"]["description"].stringValue
             nftNameLabel.text = name
             nftObjectIdLabel.text = objectId
