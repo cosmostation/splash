@@ -173,7 +173,7 @@
 
             <com.google.android.material.textfield.TextInputLayout
                 style="@style/TextInputLayout"
-                android:layout_marginTop="20dp">
+                android:layout_marginTop="10dp">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/amount"
@@ -187,7 +187,7 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
+                android:layout_marginTop="-15dp"
                 android:gravity="right"
                 android:orientation="horizontal">
 

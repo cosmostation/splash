@@ -97,7 +97,7 @@
 
     <style name="TextInputLayout" parent="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
         <item name="android:layout_width">match_parent</item>
-        <item name="android:layout_height">70dp</item>
+        <item name="android:layout_height">wrap_content</item>
         <item name="android:layout_marginHorizontal">16dp</item>
         <item name="boxStrokeColor">@color/text_input_layout_stroke_color</item>
         <item name="android:textColorHint">@color/color_mode_base04</item>
@@ -113,7 +113,7 @@
 
     <style name="InputEditText" parent="">
         <item name="android:layout_width">match_parent</item>
-        <item name="android:layout_height">60dp</item>
+        <item name="android:layout_height">wrap_content</item>
         <item name="android:textColor">@color/color_mode_base05</item>
         <item name="android:paddingHorizontal">16dp</item>
         <item name="android:textSize">16sp</item>

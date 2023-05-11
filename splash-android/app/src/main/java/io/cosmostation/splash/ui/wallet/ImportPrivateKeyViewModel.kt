@@ -14,7 +14,7 @@ class ImportPrivateKeyViewModel : ViewModel() {
     val create = SingleLiveEvent<Any>()
     val privateKey = MutableLiveData<String>()
 
-    fun createClick(name: String, privateKey: String) = viewModelScope.launch {
+    fun createByPrivateKey(name: String, privateKey: String) = viewModelScope.launch {
         val wallet = Wallet.createByPrivateKey(name, privateKey)
         val id = AppDatabase.getInstance().walletDao().insert(wallet)
         Prefs.currentWalletId = id
