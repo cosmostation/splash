@@ -44,16 +44,14 @@
             style="@style/TextViewH6"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="6dp"
-            android:textColor="@color/color_mode_base05"
+            android:layout_marginTop="5dp"
+            android:textColor="@color/color_mode_base04"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/name"
             tools:text="Commission : 5%, APY : 20.8%" />
-
     </androidx.constraintlayout.widget.ConstraintLayout>
-
 
     <ImageView
         android:id="@+id/check"

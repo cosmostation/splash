@@ -161,7 +161,7 @@ class CoinFragment : Fragment() {
                     }
                 }
             }
-            binding.price.text = "$ ${total.setScale(3, RoundingMode.DOWN)}"
+            binding.price.text = "$ ${total.setScale(2, RoundingMode.DOWN)}"
         } else {
             binding.price.text = "$ 0.00"
         }

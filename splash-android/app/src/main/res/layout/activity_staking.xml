@@ -36,7 +36,7 @@
                     style="@style/TextViewH3"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
+                    android:layout_marginTop="6dp"
                     android:textColor="@color/color_mode_base05"
                     tools:text="100" />
             </LinearLayout>
@@ -67,7 +67,7 @@
                     style="@style/TextViewH3"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
+                    android:layout_marginTop="6dp"
                     android:textColor="@color/color_mode_base05"
                     tools:text="100" />
             </LinearLayout>
@@ -120,7 +120,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="20dp"
-                android:layout_marginTop="12dp"
+                android:layout_marginTop="8dp"
                 android:orientation="horizontal">
 
                 <TextView
@@ -145,7 +145,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="20dp"
-                android:layout_marginTop="12dp"
+                android:layout_marginTop="8dp"
                 android:orientation="horizontal">
 
                 <TextView
@@ -171,7 +171,9 @@
                 style="@style/FlatButton"
                 android:layout_marginVertical="20dp"
                 android:background="@drawable/drawable_button_background"
-                android:text="Unstake" />
+                android:padding="8dp"
+                android:text="Unstake"
+                android:textSize="16sp" />
         </LinearLayout>
 
         <LinearLayout
@@ -209,7 +211,6 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
                 android:orientation="horizontal"
                 android:paddingHorizontal="20dp">
 
@@ -327,7 +328,9 @@ immediately after the start of unstaking"
                 style="@style/FlatButton"
                 android:layout_marginVertical="20dp"
                 android:background="@drawable/drawable_button_background"
-                android:text="Stake now" />
+                android:padding="8dp"
+                android:text="@string/stake_now"
+                android:textSize="16sp" />
         </LinearLayout>
 
     </LinearLayout>

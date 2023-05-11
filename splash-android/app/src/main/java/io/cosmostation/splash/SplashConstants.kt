@@ -10,7 +10,7 @@ object SplashConstants {
     const val IPFS = "https://ipfs.io/ipfs/"
     const val SUI_DENOM = "0x2::coin::Coin<0x2::sui::SUI>"
     const val SUI_BALANCE_DENOM = "0x2::sui::SUI"
-    const val SUI_STAKED_BALANCE_DENOM = "0x2::sui::StakedSUI"
+    const val SUI_STAKED_BALANCE_DENOM = "0x2::sui::Staked SUI"
     const val COINGECKO_SUI_ID = "sui"
     const val SPLASH_GITHUB = "https://github.com/cosmostation/splash"
     const val SPLASH_TWITTER = "https://twitter.com/splash_sui"

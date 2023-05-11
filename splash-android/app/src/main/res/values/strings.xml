@@ -47,7 +47,7 @@
     <string name="delete_warning">Are you sure you would like to delete this wallet?Make sure you have backup of your wallet\'s mnemonic phrase if you want to restore it later.</string>
     <string name="token_available">Available balance</string>
     <string name="amount">Amount</string>
-    <string name="recipient_address">Recipient</string>
+    <string name="recipient_address">Recipient address</string>
     <string name="object_id">Object id</string>
     <string name="description">Description</string>
     <string name="type">Type</string>
@@ -87,4 +87,5 @@
     <string name="staking">Staking</string>
     <string name="staking_title">SUI Staking</string>
     <string name="staking_objects_title">Staking Object List</string>
+    <string name="stake_now">Stake now</string>
 </resources>

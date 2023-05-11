@@ -112,7 +112,8 @@
             android:theme="@style/ActionBarAppTheme" />
         <activity
             android:name=".ui.staking.StakingStakeActivity"
-            android:theme="@style/ActionBarAppTheme" />
+            android:theme="@style/ActionBarAppTheme"
+            android:windowSoftInputMode="adjustPan" />
         <activity
             android:name=".ui.staking.StakingObjectListActivity"
             android:theme="@style/ActionBarAppTheme" />
