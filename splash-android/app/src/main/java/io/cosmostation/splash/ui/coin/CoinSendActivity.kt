@@ -57,9 +57,9 @@ class CoinSendActivity : ActionBarBaseActivity() {
         binding.denom.text = denom?.substringAfterLast("::")
         binding.available.text = SplashWalletApp.instance.applicationViewModel.coinMap[denom]?.let {
             if (SplashConstants.SUI_BALANCE_DENOM == denom) {
-                BigInteger(it.totalBalance).minus(GasUtils.getDefaultGas()).formatDecimal()
+                BigInteger(it.totalBalance).minus(GasUtils.getDefaultGas()).formatDecimal(trim = 9)
             } else {
-                it.totalBalance.formatDecimal()
+                it.totalBalance.formatDecimal(trim = 9)
             }
         }
         if (SplashConstants.SUI_BALANCE_DENOM == denom) {
@@ -72,7 +72,11 @@ class CoinSendActivity : ActionBarBaseActivity() {
             metadata?.let { meta ->
                 binding.denom.text = meta.symbol
                 binding.available.text = SplashWalletApp.instance.applicationViewModel.coinMap[denom]?.let {
-                    BigInteger(it.totalBalance).minus(GasUtils.getDefaultGas()).formatDecimal(meta.decimals)
+                    if (SplashConstants.SUI_BALANCE_DENOM == denom) {
+                        BigInteger(it.totalBalance).minus(GasUtils.getDefaultGas()).formatDecimal(trim = 9)
+                    } else {
+                        BigInteger(it.totalBalance).formatDecimal(meta.decimals, 9)
+                    }
                 }
                 meta.iconUrl?.let { url ->
                     val imageLoader = ImageLoader.Builder(this).components {

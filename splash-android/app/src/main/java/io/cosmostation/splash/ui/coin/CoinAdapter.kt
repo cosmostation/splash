@@ -33,7 +33,9 @@ class CoinAdapter(
 
     override fun onBindViewHolder(viewHolder: CoinViewHolder, position: Int) {
         val coin = coins[position]
+        viewHolder.disposable?.dispose()
         viewHolder.binding.apply {
+            image.setImageResource(R.drawable.token_default)
             metadataMap[coin.coinType]?.let {
                 if (it.symbol == "SUI") {
                     image.setImageResource(R.drawable.token_sui)
@@ -43,10 +45,11 @@ class CoinAdapter(
                             add(SvgDecoder.Factory())
                         }.placeholder(R.drawable.token_default).build()
                         val request = ImageRequest.Builder(context).data(url).target(image).transformations(RoundedCornersTransformation(20f)).build()
-                        val disposable = imageLoader.enqueue(request)
+                        viewHolder.disposable = imageLoader.enqueue(request)
                     }
                 }
                 balance.text = coin.totalBalance.formatDecimal(it.decimals)
+                token.text = it.symbol
             } ?: run {
                 when (coin.coinType) {
                     SplashConstants.SUI_BALANCE_DENOM -> {
@@ -60,6 +63,7 @@ class CoinAdapter(
                     }
                 }
                 balance.text = coin.totalBalance.formatDecimal()
+                token.text = coin.coinType.substring(coin.coinType.lastIndexOf("::") + 2, coin.coinType.length)
             }
             onePrice.text = "$ 0.0"
             price.text = "$ 0.0"
@@ -85,10 +89,6 @@ class CoinAdapter(
                     }
                 }
             }
-
-            token.text = coin.coinType.substring(
-                coin.coinType.lastIndexOf("::") + 2, coin.coinType.length
-            )
 
             wrap.setOnClickListener {
                 if (coin.coinType == SplashConstants.SUI_STAKED_BALANCE_DENOM) {

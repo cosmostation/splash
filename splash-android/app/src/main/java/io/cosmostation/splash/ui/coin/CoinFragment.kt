@@ -142,7 +142,7 @@ class CoinFragment : Fragment() {
             } ?: run {
                 coinAdapter.coins.add(Balance(SplashConstants.SUI_STAKED_BALANCE_DENOM, 1, it))
             }
-            coinAdapter.coins = coinAdapter.coins.sortedBy { it.coinType }.toMutableList()
+            coinAdapter.coins = coinAdapter.coins.sortedBy { if (SplashConstants.SUI_BALANCE_DENOM == it.coinType) "00" else if (it.coinType == SplashConstants.SUI_STAKED_BALANCE_DENOM) "01" else it.coinType }.toMutableList()
             coinAdapter.notifyDataSetChanged()
             updateTotalBalance()
         }
