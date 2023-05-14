@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21678"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -47,14 +47,14 @@
                                 <constraint firstAttribute="height" constant="28" id="r0K-ue-fqz"/>
                             </constraints>
                         </imageView>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="SYMBOL" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9us-uE-SdR">
-                            <rect key="frame" x="52.000000000000007" y="20.333333333333329" width="65.666666666666686" height="19.333333333333329"/>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" horizontalCompressionResistancePriority="749" text="SYMBOL231l23j12l31j23lk123j1l231j23" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9us-uE-SdR">
+                            <rect key="frame" x="51.999999999999986" y="20.333333333333329" width="215.66666666666663" height="19.333333333333329"/>
                             <fontDescription key="fontDescription" name="Pretendard-SemiBold" family="Pretendard" pointSize="16"/>
                             <color key="textColor" name="base05"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0.000" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yyj-qt-Dyg">
-                            <rect key="frame" x="278.33333333333331" y="21" width="44.666666666666686" height="18"/>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" text="0.000" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yyj-qt-Dyg">
+                            <rect key="frame" x="277.66666666666669" y="21" width="45.333333333333314" height="18"/>
                             <fontDescription key="fontDescription" name="NanumSquareOTFEB" family="NanumSquareOTF" pointSize="16"/>
                             <color key="textColor" name="base05"/>
                             <nil key="highlightedColor"/>
@@ -71,6 +71,7 @@
                     <constraints>
                         <constraint firstItem="86R-4v-pdF" firstAttribute="centerY" secondItem="a7e-rK-1do" secondAttribute="centerY" id="0YF-UL-1hY"/>
                         <constraint firstAttribute="height" constant="60" id="1DE-gC-TJs"/>
+                        <constraint firstItem="yyj-qt-Dyg" firstAttribute="leading" secondItem="9us-uE-SdR" secondAttribute="trailing" constant="10" id="87Z-8D-jDw"/>
                         <constraint firstAttribute="trailing" secondItem="86R-4v-pdF" secondAttribute="trailing" constant="10" id="Qcc-xt-Huf"/>
                         <constraint firstItem="86R-4v-pdF" firstAttribute="leading" secondItem="yyj-qt-Dyg" secondAttribute="trailing" id="Y7h-po-Gdj"/>
                         <constraint firstItem="9us-uE-SdR" firstAttribute="leading" secondItem="gNb-up-pqU" secondAttribute="trailing" constant="8" id="dYH-QQ-aQ4"/>

@@ -21,6 +21,7 @@ class DataManager {
     var suiFromTxs = Array<JSON>()
     var suiToTxs = Array<JSON>()
     var suiTxs = Array<JSON>()
+    var suiCoinMeta: [String: JSON] = [:]
     var suiActiveValidators = Array<JSON>()
     var suiAtRiskValidators = Array<JSON>()
 //    var suiValidatorsEvent = Array<JSON>()
@@ -85,6 +86,19 @@ class DataManager {
 //                print("suiObjects ", self.suiObjects)
             }
             NotificationCenter.default.post(name: Notification.Name("DataFetched"), object: nil, userInfo: nil)
+            self.loadMetaData()
+        }
+    }
+    
+    func loadMetaData() {
+        self.suiBalances.forEach { denom, balance in
+            let param = JsonRpcRequest("suix_getCoinMetadata", JSON(arrayLiteral: denom.getCoinType()))
+            SuiClient.shared.SuiRequest(param) { result, error in
+                if let result = result {
+                    self.suiCoinMeta[denom] = result
+                    NotificationCenter.default.post(name: Notification.Name("DataFetched"), object: nil, userInfo: nil)
+                }
+            }
         }
     }
     
@@ -96,6 +110,7 @@ class DataManager {
         suiFromTxs.removeAll()
         suiToTxs.removeAll()
         suiTxs.removeAll()
+        suiCoinMeta.removeAll()
         suiActiveValidators.removeAll()
         suiAtRiskValidators.removeAll()
         

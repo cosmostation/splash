@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21678"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -36,8 +36,8 @@
                                     <constraint firstAttribute="width" constant="36" id="yEg-xu-rQ6"/>
                                 </constraints>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="SYMBOL" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="etn-RE-1EZ">
-                                <rect key="frame" x="72" y="19.666666666666668" width="73.666666666666686" height="21.000000000000004"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="SYMBOL" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="etn-RE-1EZ">
+                                <rect key="frame" x="72" y="19.666666666666668" width="289" height="21.000000000000004"/>
                                 <fontDescription key="fontDescription" name="Pretendard-SemiBold" family="Pretendard" pointSize="18"/>
                                 <color key="textColor" name="base05"/>
                                 <nil key="highlightedColor"/>
@@ -61,6 +61,7 @@
                             <constraint firstItem="etn-RE-1EZ" firstAttribute="centerY" secondItem="fCF-dO-rnl" secondAttribute="centerY" id="08p-lO-jcu"/>
                             <constraint firstItem="fCF-dO-rnl" firstAttribute="centerY" secondItem="75Z-Sw-V3X" secondAttribute="centerY" id="9nu-PQ-3rs"/>
                             <constraint firstAttribute="bottom" secondItem="iK2-bO-IMT" secondAttribute="bottom" id="MYS-Ng-jjZ"/>
+                            <constraint firstItem="BvI-OB-p4t" firstAttribute="leading" secondItem="etn-RE-1EZ" secondAttribute="trailing" constant="10" id="PrG-rB-XJ5"/>
                             <constraint firstAttribute="trailing" secondItem="iK2-bO-IMT" secondAttribute="trailing" id="SuE-RJ-h3L"/>
                             <constraint firstItem="BvI-OB-p4t" firstAttribute="centerY" secondItem="etn-RE-1EZ" secondAttribute="centerY" id="TXr-cy-sYv"/>
                             <constraint firstItem="fCF-dO-rnl" firstAttribute="leading" secondItem="75Z-Sw-V3X" secondAttribute="leading" constant="20" id="WZ7-YW-hl1"/>

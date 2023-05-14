@@ -79,7 +79,6 @@ class SendCoinVC: BaseVC, BaseSheetDelegate, TxCheckSheetDelegate, ScanDelegate,
     
     func updateView() {
         gasFeeLabel.text = txFee.multiplying(byPowerOf10: -9).stringValue + " SUI"
-        
         available = DataManager.shared.suiBalances.filter { $0.0.contains(coinType) == true }.first!.1
         if (coinType.contains(SUI_DENOM)) {
             available = available.subtracting(txFee)
@@ -90,6 +89,16 @@ class SendCoinVC: BaseVC, BaseSheetDelegate, TxCheckSheetDelegate, ScanDelegate,
 
         availableSymbolLabel.text = coinType.getCoinSymbol()
         availableAmountLabel.text = DecimalUtils.toString(available.stringValue, decimal, decimal)
+        
+        if let meta = DataManager.shared.suiCoinMeta[coinType] {
+            availableSymbolLabel.text = meta["symbol"].stringValue
+            availableAmountLabel.text = DecimalUtils.toString(available.stringValue, meta["decimals"].int16Value, meta["decimals"].int16Value)
+            if let iconUrl = meta["iconUrl"].string, let url = URL(string: iconUrl) {
+                availableImg.af.setImage(withURL: url)
+            } else {
+                availableImg.image = UIImage(named: "coin_default")
+            }
+        }
     }
     
     @objc func onClickAsset() {

@@ -43,14 +43,14 @@
                                     <constraint firstAttribute="height" constant="1" id="XWi-7F-6nx"/>
                                 </constraints>
                             </view>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0.000" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Bs6-Sn-Lqu">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" text="0.000" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Bs6-Sn-Lqu">
                                 <rect key="frame" x="378" y="19.666666666666668" width="51" height="20.000000000000004"/>
                                 <fontDescription key="fontDescription" name="NanumSquareOTFEB" family="NanumSquareOTF" pointSize="18"/>
                                 <color key="textColor" name="base05"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="SYMBOL" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="30W-xc-IwY">
-                                <rect key="frame" x="72" y="19" width="73.666666666666686" height="21"/>
+                                <rect key="frame" x="72" y="19" width="296" height="21"/>
                                 <fontDescription key="fontDescription" name="Pretendard-SemiBold" family="Pretendard" pointSize="18"/>
                                 <color key="textColor" name="base05"/>
                                 <nil key="highlightedColor"/>
@@ -93,6 +93,7 @@
                             <constraint firstItem="89l-Fo-T2d" firstAttribute="top" secondItem="30W-xc-IwY" secondAttribute="bottom" constant="2" id="3sq-rO-uI0"/>
                             <constraint firstAttribute="bottom" secondItem="a3K-ST-OtE" secondAttribute="bottom" id="8Ov-gP-x3B"/>
                             <constraint firstItem="Yrv-xj-ZZF" firstAttribute="centerY" secondItem="hK6-bp-bt0" secondAttribute="centerY" id="8YG-z7-dSl"/>
+                            <constraint firstItem="Bs6-Sn-Lqu" firstAttribute="leading" secondItem="30W-xc-IwY" secondAttribute="trailing" constant="10" id="Mff-Ge-tap"/>
                             <constraint firstItem="a3K-ST-OtE" firstAttribute="leading" secondItem="ruX-ei-yOL" secondAttribute="leading" id="R4n-Z5-D3G"/>
                             <constraint firstItem="E86-tg-TMG" firstAttribute="top" secondItem="ruX-ei-yOL" secondAttribute="top" constant="21" id="SGb-gm-fLS"/>
                             <constraint firstAttribute="trailing" secondItem="a3K-ST-OtE" secondAttribute="trailing" id="TnN-XQ-EDw"/>

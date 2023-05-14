@@ -59,9 +59,24 @@ class AssetCell: UITableViewCell {
     }
     
     func onBindBalance(_ chainConfig: ChainConfig?, _ balance: (String, NSDecimalNumber)) {
-        symbolLabel.text = balance.0.getCoinSymbol()
-        amountLabel.text = DecimalUtils.toString(balance.1.stringValue, 9)
-        coinImgView.image = UIImage(named: "coin_default")
+        if let meta = DataManager.shared.suiCoinMeta[balance.0] {
+            symbolLabel.text = meta["symbol"].stringValue
+            amountLabel.text = DecimalUtils.toString(balance.1.stringValue, meta["decimals"].int16Value)
+            if let iconUrl = meta["iconUrl"].string, let url = URL(string: iconUrl) {
+                coinImgView.af.setImage(withURL: url)
+            } else {
+                coinImgView.image = UIImage(named: "coin_default")
+            }
+        } else {
+            symbolLabel.text = balance.0.getCoinSymbol()
+            amountLabel.text = DecimalUtils.toString(balance.1.stringValue, 9)
+            coinImgView.image = UIImage(named: "coin_default")
+        }
+        
+        priceLabel.text = "$" + DecimalUtils.toString(NSDecimalNumber.zero.stringValue, 0, 2)!
+        priceChangeLabel.text = "+" + DecimalUtils.toString(NSDecimalNumber.zero.stringValue, 0, 2)! + "%"
+        priceChangeLabel.textColor = .green
+        valueLabel.text = "$" + DecimalUtils.toString(NSDecimalNumber.zero.stringValue, 0, 2)!
     }
     
 }

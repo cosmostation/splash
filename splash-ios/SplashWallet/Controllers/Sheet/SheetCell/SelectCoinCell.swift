@@ -29,6 +29,16 @@ class SelectCoinCell: UITableViewCell {
         } else {
             coinImgView.image = UIImage(named: "coin_default")
         }
+        
+        if let meta = DataManager.shared.suiCoinMeta[balance.0] {
+            symbolLabel.text = meta["symbol"].stringValue
+            amountLabel.text = DecimalUtils.toString(balance.1.stringValue, meta["decimals"].int16Value, meta["decimals"].int16Value)
+            if let iconUrl = meta["iconUrl"].string, let url = URL(string: iconUrl) {
+                coinImgView.af.setImage(withURL: url)
+            } else {
+                coinImgView.image = UIImage(named: "coin_default")
+            }
+        }
     }
     
 }

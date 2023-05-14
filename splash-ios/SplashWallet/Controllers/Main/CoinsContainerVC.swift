@@ -36,6 +36,7 @@ class CoinsContainerVC: BaseVC {
         self.navigationController?.setNavigationBarHidden(true, animated: false)
         NotificationCenter.default.addObserver(self, selector: #selector(self.onAccountReady), name: Notification.Name("AccountReady"), object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(self.onDataFetched), name: Notification.Name("DataFetched"), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(self.onMetadataFetched), name: Notification.Name("MetadataFetched"), object: nil)
         mainTabVC = ((self.parent)?.parent)?.parent as? MainTab
     }
     
@@ -43,6 +44,7 @@ class CoinsContainerVC: BaseVC {
         super.viewWillDisappear(animated)
         NotificationCenter.default.removeObserver(self, name: Notification.Name("AccountReady"), object: nil)
         NotificationCenter.default.removeObserver(self, name: Notification.Name("DataFetched"), object: nil)
+        NotificationCenter.default.removeObserver(self, name: Notification.Name("MetadataFetched"), object: nil)
         refresher.endRefreshing()
     }
     
@@ -64,6 +66,10 @@ class CoinsContainerVC: BaseVC {
                 suiBalances.append(balance)
             }
         }
+        assetTable.reloadData()
+    }
+    
+    @objc func onMetadataFetched() {
         assetTable.reloadData()
     }
 
