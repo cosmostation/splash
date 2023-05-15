@@ -36,5 +36,18 @@
 			</array>
 		</dict>
 	</dict>
+	<key>CFBundleURLTypes</key>
+	<array>
+		<dict>
+			<key>CFBundleTypeRole</key>
+			<string>Editor</string>
+			<key>CFBundleURLName</key>
+			<string>splashwallet</string>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>splashwallet</string>
+			</array>
+		</dict>
+	</array>
 </dict>
 </plist>
