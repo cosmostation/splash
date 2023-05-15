@@ -9,6 +9,7 @@ import io.cosmostation.splash.SplashWalletApp
 import io.cosmostation.splash.databinding.ActivityMainBinding
 import io.cosmostation.splash.ui.activity.ActivityFragment
 import io.cosmostation.splash.ui.app.AppFragment
+import io.cosmostation.splash.ui.app.DappActivity
 import io.cosmostation.splash.ui.coin.CoinFragment
 import io.cosmostation.splash.ui.setting.SettingFragment
 import io.cosmostation.splash.ui.wallet.WalletAddIntroActivity
@@ -22,6 +23,7 @@ class MainActivity : AppCompatActivity() {
     private val activityFragment: Fragment = ActivityFragment()
     private val settingFragment: Fragment = SettingFragment()
     private lateinit var binding: ActivityMainBinding
+    private var needOpenUrl: String? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -32,6 +34,32 @@ class MainActivity : AppCompatActivity() {
         binding.bottomNavigation.postDelayed({
             binding.bottomNavigation.selectedItemId = R.id.navigation_coins
         }, 250)
+        processSchemeIntent(intent)
+    }
+
+    override fun onNewIntent(intent: Intent?) {
+        super.onNewIntent(intent)
+        processSchemeIntent(intent, true)
+    }
+
+    private fun processSchemeIntent(intent: Intent?, open: Boolean = false) {
+        intent?.data?.let { data ->
+            if (data.scheme != "splashwallet" || !("dapp" == data.host || "internaldapp" == data.host)) {
+                return
+            }
+
+            if (data.query?.startsWith("url=") == true) {
+                data.query?.replace("url=", "")
+            } else {
+                data.query
+            }?.let {
+                if (open) {
+                    startActivity(Intent(this, DappActivity::class.java).putExtra("url", it))
+                } else {
+                    needOpenUrl = it
+                }
+            }
+        }
     }
 
     override fun onResume() {
@@ -52,6 +80,10 @@ class MainActivity : AppCompatActivity() {
                 startActivity(Intent(this, WalletAddIntroActivity::class.java))
             } else {
                 SplashWalletApp.instance.applicationViewModel.loadAllData()
+                needOpenUrl?.let {
+                    startActivity(Intent(this, DappActivity::class.java).putExtra("url", it))
+                    needOpenUrl = null
+                }
             }
         }
     }

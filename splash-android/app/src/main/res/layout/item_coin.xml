@@ -32,6 +32,8 @@
                 style="@style/TextViewH4"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:ellipsize="end"
+                android:lines="1"
                 android:textColor="@color/color_mode_base05"
                 tools:text="SUI" />
 
