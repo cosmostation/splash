@@ -33,7 +33,6 @@
                     </tabBar>
                     <connections>
                         <segue destination="H8s-vI-hed" kind="relationship" relationship="viewControllers" id="dTC-QW-OAI"/>
-                        <segue destination="D9N-Ci-I5v" kind="relationship" relationship="viewControllers" id="0px-cL-Gu8"/>
                         <segue destination="iK0-Oi-kcF" kind="relationship" relationship="viewControllers" id="qZS-VU-2cx"/>
                         <segue destination="awH-PL-Esi" kind="relationship" relationship="viewControllers" id="gRZ-FO-BaS"/>
                     </connections>
@@ -322,7 +321,7 @@
             <objects>
                 <viewController restorationIdentifier="MainTabDapps" storyboardIdentifier="MainTabDapps" id="URj-ci-gpz" customClass="MainTabDapps" customModule="SplashWallet" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="bDv-Wa-XCx">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="813"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yur-G4-81u">
@@ -343,7 +342,7 @@
                                 </constraints>
                             </view>
                             <wkWebView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sxR-qy-Kd9">
-                                <rect key="frame" x="0.0" y="144" width="414" height="669"/>
+                                <rect key="frame" x="0.0" y="144" width="414" height="718"/>
                                 <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <wkWebViewConfiguration key="configuration">
                                     <audiovisualMediaTypes key="mediaTypesRequiringUserActionForPlayback" none="YES"/>

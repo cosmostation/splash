@@ -53,5 +53,7 @@ class MainTab: UITabBarController, UITabBarControllerDelegate {
     
     @objc func onDataFetched() {
         self.onDismissWait()
+        DataManager.shared.openDappVCAction?()
+        DataManager.shared.openDappVCAction = nil
     }
 }

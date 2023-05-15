@@ -67,7 +67,7 @@ class ActivityCell: UITableViewCell {
             if (balanceChange["owner"]["AddressOwner"].stringValue == myAddress) {
                 let symbol = balanceChange["coinType"].stringValue.components(separatedBy: "::").last ?? ""
                 let amount = balanceChange["amount"].int64Value
-                action = DecimalUtils.toString(amount, 9)! + " " + symbol
+                action = DecimalUtils.toString(amount, 9)! + " " + symbol.trunc(length: 7)
             }
         }
         
