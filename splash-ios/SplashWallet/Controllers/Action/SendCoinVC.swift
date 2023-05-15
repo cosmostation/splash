@@ -93,6 +93,7 @@ class SendCoinVC: BaseVC, BaseSheetDelegate, TxCheckSheetDelegate, ScanDelegate,
         if let meta = DataManager.shared.suiCoinMeta[coinType] {
             availableSymbolLabel.text = meta["symbol"].stringValue
             availableAmountLabel.text = DecimalUtils.toString(available.stringValue, meta["decimals"].int16Value, meta["decimals"].int16Value)
+            decimal = meta["decimals"].int16Value
             if let iconUrl = meta["iconUrl"].string, let url = URL(string: iconUrl) {
                 availableImg.af.setImage(withURL: url)
             } else {
