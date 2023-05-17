@@ -34,6 +34,28 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+
+                <data
+                    android:host="dapp"
+                    android:scheme="splashwallet" />
+            </intent-filter>
+
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+
+                <data
+                    android:host="internaldapp"
+                    android:scheme="splashwallet" />
+            </intent-filter>
         </activity>
         <activity
             android:name=".ui.wallet.ViewMnemonicActivity"
@@ -84,26 +106,6 @@
 
                 <data
                     android:host="wc"
-                    android:scheme="splashwallet" />
-            </intent-filter>
-            <intent-filter>
-                <action android:name="android.intent.action.VIEW" />
-
-                <category android:name="android.intent.category.DEFAULT" />
-                <category android:name="android.intent.category.BROWSABLE" />
-
-                <data
-                    android:host="dapp"
-                    android:scheme="splashwallet" />
-            </intent-filter>
-            <intent-filter>
-                <action android:name="android.intent.action.VIEW" />
-
-                <category android:name="android.intent.category.DEFAULT" />
-                <category android:name="android.intent.category.BROWSABLE" />
-
-                <data
-                    android:host="internaldapp"
                     android:scheme="splashwallet" />
             </intent-filter>
         </activity>

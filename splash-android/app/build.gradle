@@ -10,8 +10,8 @@ android {
         applicationId "io.cosmostation.splash"
         minSdkVersion 26
         targetSdkVersion 33
-        versionCode 100
-        versionName "1.0.0"
+        versionCode 102
+        versionName "1.0.2"
     }
 
     packagingOptions {
@@ -65,7 +65,7 @@ dependencies {
         exclude group: "com.github.stephenc.jcip"
     }
 
-    implementation('com.github.cosmostation:suikotlin:0.3.0') {
+    implementation('com.github.cosmostation:suikotlin:0.3.1') {
         exclude group: "org.bouncycastle"
     }
 

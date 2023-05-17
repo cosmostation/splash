@@ -17,6 +17,7 @@ class DappVC: BaseVC {
     private var publishers = [AnyCancellable]()
     
     override func viewDidLoad() {
+        cChainConfig = DataManager.shared.account?.chainConfig
         initWebView()
         if let dappUrl = dappURL, let url = URL(string: dappUrl) {
             navigationItem.title = url.host
@@ -60,6 +61,9 @@ extension DappVC: WKScriptMessageHandler {
             if (method == "get-account-request") {
                 let data: [String: String] = ["address":DataManager.shared.account!.baseAddress!.address!,
                                                 "publicKey": DataManager.shared.account!.publicKey!.toHexString()]
+                appToWebResult(messageJSON, JSON(data), messageId)
+            } else if (method == "get-chain") {
+                let data: [String: String] = ["chain":cChainConfig.chainDpName.lowercased()]
                 appToWebResult(messageJSON, JSON(data), messageId)
             } else if (method == "execute-transaction-request") {
                 signAfterAction(title: "sui:signAndExecuteTransactionBlock", messageId: messageId, params: messageJSON["params"]) { hexTxBytes in

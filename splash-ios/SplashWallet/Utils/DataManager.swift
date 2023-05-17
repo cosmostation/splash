@@ -24,6 +24,7 @@ class DataManager {
     var suiCoinMeta: [String: JSON] = [:]
     var suiActiveValidators = Array<JSON>()
     var suiAtRiskValidators = Array<JSON>()
+    var openDappVCAction: (() -> ())? = nil
 //    var suiValidatorsEvent = Array<JSON>()
     
     func loadAll() {
@@ -325,5 +326,9 @@ extension String {
             return symbol
         }
         return ""
+    }
+    
+    func trunc(length: Int, trailing: String = "…") -> String {
+        return (self.count > length) ? self.prefix(length) + trailing : self
     }
 }

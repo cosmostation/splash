@@ -65,9 +65,15 @@ class ActivityCell: UITableViewCell {
         let balanceChanges = activity["balanceChanges"].arrayValue
         balanceChanges.forEach { balanceChange in
             if (balanceChange["owner"]["AddressOwner"].stringValue == myAddress) {
-                let symbol = balanceChange["coinType"].stringValue.components(separatedBy: "::").last ?? ""
+                var symbol = balanceChange["coinType"].stringValue.components(separatedBy: "::").last ?? ""
                 let amount = balanceChange["amount"].int64Value
-                action = DecimalUtils.toString(amount, 9)! + " " + symbol
+                action = DecimalUtils.toString(amount, 9)! + " " + symbol.trunc(length: 7)
+                if let meta = DataManager.shared.suiCoinMeta.first(where: { item in item.key.contains(balanceChange["coinType"].stringValue) })?.value {
+                    let decimal = meta["decimals"].int16Value
+                    symbol = meta["symbol"].stringValue
+                    action = DecimalUtils.toString(amount, decimal)! + " " + symbol.trunc(length: 7)
+                }
+                
             }
         }
         
