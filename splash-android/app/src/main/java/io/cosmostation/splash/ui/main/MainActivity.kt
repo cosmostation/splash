@@ -13,6 +13,7 @@ import io.cosmostation.splash.ui.app.DappActivity
 import io.cosmostation.splash.ui.coin.CoinFragment
 import io.cosmostation.splash.ui.setting.SettingFragment
 import io.cosmostation.splash.ui.wallet.WalletAddIntroActivity
+import io.cosmostation.splash.util.ThemeUtils
 import io.cosmostation.splash.util.visibleOrGone
 
 class MainActivity : AppCompatActivity() {
@@ -99,6 +100,7 @@ class MainActivity : AppCompatActivity() {
         binding.bottomNavigation.setOnNavigationItemSelectedListener { menuItem ->
             val transaction = fragmentManager.beginTransaction()
 
+            binding.refresh.isEnabled = true
             when (menuItem.itemId) {
                 R.id.navigation_coins -> {
                     transaction.replace(
@@ -106,9 +108,11 @@ class MainActivity : AppCompatActivity() {
                     ).commitAllowingStateLoss()
                 }
                 R.id.navigation_apps -> {
-                    transaction.replace(
-                        R.id.fragment_container, appFragment, getString(R.string.app)
-                    ).commitAllowingStateLoss()
+                    binding.refresh.isEnabled = false
+//                    transaction.replace(
+//                        R.id.fragment_container, appFragment, getString(R.string.app)
+//                    ).commitAllowingStateLoss()
+                    startActivity(Intent(this, DappActivity::class.java).putExtra("url", "https://dapps.splash.im?theme=${ThemeUtils.currentMode(this)?.lowercase()}"))
                 }
                 R.id.navigation_activity -> {
                     transaction.replace(
@@ -122,7 +126,7 @@ class MainActivity : AppCompatActivity() {
                 }
                 else -> {}
             }
-            true
+            binding.refresh.isEnabled
         }
     }
 }

@@ -13,10 +13,15 @@ android {
         versionCode 102
         versionName "1.0.2"
     }
-
     packagingOptions {
-        exclude 'META-INF/*'
+        jniLibs {
+            excludes += ['META-INF/*']
+        }
+        resources {
+            excludes += ['META-INF/*']
+        }
     }
+
 
     buildTypes {
         release {

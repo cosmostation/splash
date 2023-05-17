@@ -10,34 +10,62 @@
         android:id="@+id/tool_bar"
         android:layout_width="match_parent"
         android:layout_height="56dp"
-        app:contentInsetStartWithNavigation="0dp">
+        app:contentInsetStart="0dp">
 
         <LinearLayout
             android:id="@+id/dapp_layout"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:layout_marginHorizontal="10dp"
             android:gravity="center_vertical"
             android:orientation="horizontal">
+
+            <ImageView
+                android:id="@+id/dapp_close"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="5dp"
+                android:padding="5dp"
+                android:src="@drawable/btn_close_24"
+                app:tint="@color/color_mode_base05" />
+
+            <LinearLayout
+                android:layout_width="0dip"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@drawable/drawable_edittext_background"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:id="@+id/url_type"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginStart="10dp"
+                    android:src="@drawable/icon_https"
+                    app:tint="@color/color_mode_base05" />
+
+                <TextView
+                    android:id="@+id/url"
+                    style="@style/TextViewH6"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:ellipsize="end"
+                    android:lines="1"
+                    android:paddingHorizontal="10dp"
+                    android:gravity="center_vertical"
+                    android:textColor="@color/color_mode_base05"
+                    tools:text="dapps.splash.im.dapps.splash.im" />
+            </LinearLayout>
 
             <ImageView
                 android:id="@+id/dapp_refresh"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginEnd="0dp"
+                android:layout_marginStart="10dp"
                 android:padding="10dp"
                 android:src="@drawable/img_dapp_refresh"
                 app:tint="@color/color_mode_base05" />
-
-            <TextView
-                android:id="@+id/url"
-                style="@style/TextViewH6"
-                android:layout_width="0dip"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:ellipsize="end"
-                android:lines="1"
-                android:textColor="@color/color_mode_base05"
-                tools:text="https://" />
 
             <ImageView
                 android:id="@+id/dapp_back"
@@ -52,18 +80,8 @@
                 android:id="@+id/dapp_forward"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginEnd="30dp"
                 android:padding="5dp"
                 android:src="@drawable/img_dapp_forward"
-                app:tint="@color/color_mode_base05" />
-
-            <ImageView
-                android:id="@+id/dapp_close"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginRight="10dp"
-                android:padding="5dp"
-                android:src="@drawable/btn_close_24"
                 app:tint="@color/color_mode_base05" />
         </LinearLayout>
     </androidx.appcompat.widget.Toolbar>

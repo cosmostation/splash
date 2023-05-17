@@ -143,6 +143,7 @@ class CoinFragment : Fragment() {
                 coinAdapter.coins.add(Balance(SplashConstants.SUI_STAKED_BALANCE_DENOM, 1, it))
             }
             coinAdapter.coins = coinAdapter.coins.sortedBy { if (SplashConstants.SUI_BALANCE_DENOM == it.coinType) "00" else if (it.coinType == SplashConstants.SUI_STAKED_BALANCE_DENOM) "01" else it.coinType }.toMutableList()
+            binding.assetCount.text = "${getString(R.string.coins2)} (${coinAdapter.coins.size})"
             coinAdapter.notifyDataSetChanged()
             updateTotalBalance()
         }
@@ -201,8 +202,8 @@ class CoinFragment : Fragment() {
             SplashWalletApp.instance.applicationViewModel.currentWalletLiveData.value?.address?.let {
                 viewModel.loadStake(it)
             }
-            binding.assetCount.text = "${getString(R.string.coins2)} (${balances.size})"
             coinAdapter.coins = balances.toMutableList()
+            binding.assetCount.text = "${getString(R.string.coins2)} (${coinAdapter.coins.size})"
             coinAdapter.notifyDataSetChanged()
             updateTabStatus()
         }
@@ -213,7 +214,7 @@ class CoinFragment : Fragment() {
                 val nfts = item.filter {
                     !it.type.contains("Coin", true) && !it.type.contains("StakedSui", true)
                 }
-                binding.nftCount.text = "${getString(R.string.nft)} (${nfts.size})"
+                binding.nftCount.text = "${getString(R.string.nfts)} (${nfts.size})"
                 nftAdapter.nfts.addAll(nfts)
                 nftAdapter.notifyDataSetChanged()
                 updateTabStatus()

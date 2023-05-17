@@ -1,6 +1,7 @@
 package io.cosmostation.splash.ui.app
 
 import android.content.DialogInterface
+import android.content.Intent
 import android.graphics.Bitmap
 import android.net.Uri
 import android.os.Bundle
@@ -8,6 +9,8 @@ import android.webkit.*
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import com.google.gson.Gson
+import io.cosmostation.splash.BuildConfig
+import io.cosmostation.splash.R
 import io.cosmostation.splash.SplashWalletApp
 import io.cosmostation.splash.api.SuiUtilService
 import io.cosmostation.splash.databinding.ActivityDappBinding
@@ -19,6 +22,7 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import net.i2p.crypto.eddsa.Utils
+import org.apache.commons.lang3.StringUtils
 import org.json.JSONObject
 import retrofit2.Call
 import retrofit2.Callback
@@ -41,6 +45,18 @@ class DappActivity : AppCompatActivity() {
         }
     }
 
+    override fun onNewIntent(intent: Intent?) {
+        super.onNewIntent(intent)
+        intent?.data?.let { data ->
+            if (data.scheme == "splashwallet" && "internaldapp" == data.host) {
+                data.query?.replace("url=", "")?.let {
+                    setUrl(it)
+                    binding.webview.loadUrl(it)
+                }
+            }
+        }
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -58,6 +74,16 @@ class DappActivity : AppCompatActivity() {
                 binding.webview.goForward()
             }
         }
+        binding.url.setOnClickListener {
+            DappUrlDialog(binding.webview.url ?: "", object : DappUrlDialog.UrlListener {
+                override fun input(url: String) {
+                    if (StringUtils.isNotEmpty(binding.webview.url) && binding.webview.url != url) {
+                        binding.webview.loadUrl(url)
+                    }
+                }
+
+            }).show(supportFragmentManager, "dialog")
+        }
         binding.dappRefresh.setOnClickListener {
             binding.webview.reload()
         }
@@ -66,17 +92,46 @@ class DappActivity : AppCompatActivity() {
             javaScriptEnabled = true
             domStorageEnabled = true
             mixedContentMode = WebSettings.MIXED_CONTENT_ALWAYS_ALLOW
+            userAgentString = userAgentString + " Splash/APP/DappTab/Android" + BuildConfig.VERSION_NAME
         }
         binding.webview.webViewClient = object : WebViewClient() {
             override fun onPageStarted(view: WebView?, url: String?, favicon: Bitmap?) {
                 super.onPageStarted(view, url, favicon)
-                binding.url.text = Uri.parse(url).host
+                url?.let { setUrl(it) }
                 try {
                     val inputStream = assets.open("injectScript.js")
                     inputStream.bufferedReader().use(BufferedReader::readText)
                 } catch (e: Exception) {
                     null
                 }?.let { view?.loadUrl("javascript:(function(){$it})()") }
+            }
+
+            override fun shouldOverrideUrlLoading(view: WebView, url: String): Boolean {
+                if (url.startsWith("intent:")) {
+                    try {
+                        val intent = Intent.parseUri(url, Intent.URI_INTENT_SCHEME)
+                        val existPackage: Intent? = intent.getPackage()?.let {
+                            packageManager?.getLaunchIntentForPackage(it)
+                        }
+                        if (existPackage != null) {
+                            startActivity(intent)
+                        } else {
+                            val marketIntent = Intent(Intent.ACTION_VIEW)
+                            marketIntent.data = Uri.parse("market://details?id=" + intent.getPackage())
+                            startActivity(marketIntent)
+                        }
+                        return true
+                    } catch (e: Exception) {
+                        e.printStackTrace()
+                    }
+                } else if (url.startsWith("https://") || url.startsWith("http://")) {
+                    binding.webview.loadUrl(url)
+                    return true
+                } else {
+                    startActivity(Intent(Intent.ACTION_VIEW, Uri.parse(url)))
+                    return true
+                }
+                return false
             }
         }
         binding.webview.addJavascriptInterface(DappJavascriptInterface(), "station")
@@ -100,8 +155,17 @@ class DappActivity : AppCompatActivity() {
             }
         }
         intent.getStringExtra("url")?.let {
-            binding.url.text = Uri.parse(it).host
+            setUrl(it)
             binding.webview.loadUrl(it)
+        }
+    }
+
+    private fun setUrl(url: String) {
+        binding.url.text = Uri.parse(url).host
+        if (url.startsWith("https://")) {
+            binding.urlType.setImageResource(R.drawable.icon_https)
+        } else {
+            binding.urlType.setImageResource(R.drawable.icon_http)
         }
     }
 
