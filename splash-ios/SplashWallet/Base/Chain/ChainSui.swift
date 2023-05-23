@@ -26,4 +26,4 @@ class ChainSui: ChainConfig {
     
 }
 
-let SUI_DENOM = "0x2::sui::SUI"
+let SUI_DENOM = "0x2::coin::Coin<0x2::sui::SUI>"

@@ -120,7 +120,7 @@ class BaseVC: UIViewController {
         var amount = NSDecimalNumber.zero
         DataManager.shared.suiObjects.forEach { object in
             let type = object["type"].stringValue
-            if (type.starts(with: "0x2::coin::Coin") && type.contains(SUI_DENOM)) {
+            if (type.contains(SUI_DENOM)) {
                 let newAmount = NSDecimalNumber.init(string:  object["content"]["fields"]["balance"].stringValue)
                 if (newAmount.compare(amount).rawValue > 0) {
                     amount = newAmount

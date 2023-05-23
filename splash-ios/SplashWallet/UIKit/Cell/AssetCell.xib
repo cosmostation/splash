@@ -43,14 +43,17 @@
                                     <constraint firstAttribute="height" constant="1" id="XWi-7F-6nx"/>
                                 </constraints>
                             </view>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" text="0.000" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Bs6-Sn-Lqu">
-                                <rect key="frame" x="378" y="19.666666666666668" width="51" height="20.000000000000004"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" text="0.000" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Bs6-Sn-Lqu">
+                                <rect key="frame" x="218" y="19.666666666666668" width="211" height="20.000000000000004"/>
                                 <fontDescription key="fontDescription" name="NanumSquareOTFEB" family="NanumSquareOTF" pointSize="18"/>
                                 <color key="textColor" name="base05"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="SYMBOL" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="30W-xc-IwY">
-                                <rect key="frame" x="72" y="19" width="296" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="SYMBOL" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="30W-xc-IwY">
+                                <rect key="frame" x="72" y="19" width="130" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="130" id="d6w-W8-ZBe"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" name="Pretendard-SemiBold" family="Pretendard" pointSize="18"/>
                                 <color key="textColor" name="base05"/>
                                 <nil key="highlightedColor"/>
@@ -58,13 +61,13 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="89l-Fo-T2d">
                                 <rect key="frame" x="72" y="42" width="90.666666666666686" height="19"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$0.00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hK6-bp-bt0">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$0.00" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hK6-bp-bt0">
                                         <rect key="frame" x="0.0" y="1.6666666666666634" width="40" height="15.666666666666664"/>
                                         <fontDescription key="fontDescription" name="NanumSquareOTFEB" family="NanumSquareOTF" pointSize="14"/>
                                         <color key="textColor" name="base04"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="+0.00%" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aaU-UC-iiM">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="+0.00%" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aaU-UC-iiM">
                                         <rect key="frame" x="46" y="4.3333333333333366" width="44.666666666666657" height="13.333333333333336"/>
                                         <fontDescription key="fontDescription" name="NanumSquareOTFEB" family="NanumSquareOTF" pointSize="12"/>
                                         <color key="textColor" name="green"/>
@@ -81,7 +84,7 @@
                                     <constraint firstItem="aaU-UC-iiM" firstAttribute="firstBaseline" secondItem="hK6-bp-bt0" secondAttribute="firstBaseline" constant="1" id="dtO-6G-0sX"/>
                                 </constraints>
                             </view>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$0.00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Yrv-xj-ZZF">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$0.00" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Yrv-xj-ZZF">
                                 <rect key="frame" x="389" y="43.666666666666664" width="40" height="15.666666666666664"/>
                                 <fontDescription key="fontDescription" name="NanumSquareOTFEB" family="NanumSquareOTF" pointSize="14"/>
                                 <color key="textColor" name="base04"/>
@@ -93,7 +96,6 @@
                             <constraint firstItem="89l-Fo-T2d" firstAttribute="top" secondItem="30W-xc-IwY" secondAttribute="bottom" constant="2" id="3sq-rO-uI0"/>
                             <constraint firstAttribute="bottom" secondItem="a3K-ST-OtE" secondAttribute="bottom" id="8Ov-gP-x3B"/>
                             <constraint firstItem="Yrv-xj-ZZF" firstAttribute="centerY" secondItem="hK6-bp-bt0" secondAttribute="centerY" id="8YG-z7-dSl"/>
-                            <constraint firstItem="Bs6-Sn-Lqu" firstAttribute="leading" secondItem="30W-xc-IwY" secondAttribute="trailing" constant="10" id="Mff-Ge-tap"/>
                             <constraint firstItem="a3K-ST-OtE" firstAttribute="leading" secondItem="ruX-ei-yOL" secondAttribute="leading" id="R4n-Z5-D3G"/>
                             <constraint firstItem="E86-tg-TMG" firstAttribute="top" secondItem="ruX-ei-yOL" secondAttribute="top" constant="21" id="SGb-gm-fLS"/>
                             <constraint firstAttribute="trailing" secondItem="a3K-ST-OtE" secondAttribute="trailing" id="TnN-XQ-EDw"/>
@@ -101,6 +103,7 @@
                             <constraint firstItem="89l-Fo-T2d" firstAttribute="leading" secondItem="30W-xc-IwY" secondAttribute="leading" id="ZwS-ST-iQ6"/>
                             <constraint firstItem="Yrv-xj-ZZF" firstAttribute="trailing" secondItem="Bs6-Sn-Lqu" secondAttribute="trailing" id="aQu-NN-VOX"/>
                             <constraint firstItem="Bs6-Sn-Lqu" firstAttribute="centerY" secondItem="30W-xc-IwY" secondAttribute="centerY" id="bFN-I4-Lkj"/>
+                            <constraint firstItem="Bs6-Sn-Lqu" firstAttribute="leading" secondItem="30W-xc-IwY" secondAttribute="trailing" constant="16" id="hOj-tt-prd"/>
                             <constraint firstAttribute="trailing" secondItem="Bs6-Sn-Lqu" secondAttribute="trailing" constant="20" id="jQH-yE-Atd"/>
                             <constraint firstItem="30W-xc-IwY" firstAttribute="leading" secondItem="E86-tg-TMG" secondAttribute="trailing" constant="16" id="nbr-4W-UGx"/>
                             <constraint firstItem="30W-xc-IwY" firstAttribute="top" secondItem="ruX-ei-yOL" secondAttribute="top" constant="19" id="rMU-nh-XvR"/>

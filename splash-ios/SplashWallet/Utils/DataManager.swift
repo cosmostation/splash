@@ -23,9 +23,7 @@ class DataManager {
     var suiTxs = Array<JSON>()
     var suiCoinMeta: [String: JSON] = [:]
     var suiActiveValidators = Array<JSON>()
-    var suiAtRiskValidators = Array<JSON>()
     var openDappVCAction: (() -> ())? = nil
-//    var suiValidatorsEvent = Array<JSON>()
     
     func loadAll() {
         let group = DispatchGroup()
@@ -41,19 +39,15 @@ class DataManager {
         } else if (account?.chainConfig is ChainSuiTest) {
             SuiClient.shared.setConfig(.testnet, account?.chainConfig?.rpcEndPoint)
             onFetchSuiData(group)
-
         }
+        
         group.notify(queue: .main) {
-            
             if (self.account?.chainConfig is ChainSui ||
                 self.account?.chainConfig is ChainSuiDev ||
                 self.account?.chainConfig is ChainSuiTest) {
                 
                 self.suiSystem?["activeValidators"].arrayValue.forEach { validator in
                     self.suiActiveValidators.append(validator)
-                }
-                self.suiSystem?["atRiskValidators"].arrayValue.forEach { riskValidator in
-                    self.suiAtRiskValidators.append(riskValidator)
                 }
                 self.suiActiveValidators.sort {
                     if ($0["name"].stringValue == "Cosmostation") { return true }
@@ -87,19 +81,7 @@ class DataManager {
 //                print("suiObjects ", self.suiObjects)
             }
             NotificationCenter.default.post(name: Notification.Name("DataFetched"), object: nil, userInfo: nil)
-            self.loadMetaData()
-        }
-    }
-    
-    func loadMetaData() {
-        self.suiBalances.forEach { denom, balance in
-            let param = JsonRpcRequest("suix_getCoinMetadata", JSON(arrayLiteral: denom.getCoinType()))
-            SuiClient.shared.SuiRequest(param) { result, error in
-                if let result = result {
-                    self.suiCoinMeta[denom] = result
-                    NotificationCenter.default.post(name: Notification.Name("DataFetched"), object: nil, userInfo: nil)
-                }
-            }
+            self.onFetchSuiCoinMeta()
         }
     }
     
@@ -113,34 +95,10 @@ class DataManager {
         suiTxs.removeAll()
         suiCoinMeta.removeAll()
         suiActiveValidators.removeAll()
-        suiAtRiskValidators.removeAll()
         
         BaseData.instance.geckoPrice = nil
         
         if let address = account?.baseAddress?.address {
-            
-//            group.enter()
-//            let allBalancesParams = JsonRpcRequest("suix_getAllBalances", JSON(arrayLiteral: address))
-//            SuiClient.shared.SuiRequest(allBalancesParams) { balances, error in
-//                balances?.forEach({ _, balance in
-////                    print("balance ", balance)
-//                    self.onFetchSuiCoinMeta(group, balance)
-//                })
-//                group.leave()
-//            }
-            
-//            group.enter()
-//            let eventQueryParams = JsonRpcRequest("suix_queryEvents",
-//                                                  JSON(arrayLiteral: ["MoveEventType":"0x3::validator_set::ValidatorEpochInfoEvent"]))
-//            print("eventQueryParams ", eventQueryParams)
-//            SuiClient.shared.SuiRequest(eventQueryParams) { result, error in
-//                print("eventQuery ", result)
-//                group.leave()
-//            }
-            
-            
-
-            
             onFetchSystem(group)
             onFetchStakeInfo(group, address)
             onFetchOwnedObjects(group, address)
@@ -161,6 +119,29 @@ class DataManager {
 //            print("suiSystem ", state)
             self.suiSystem = state
             group.leave()
+        }
+    }
+    
+//    func onFetchAllBalance(_ group: DispatchGroup, _ address: String) {
+//        group.enter()
+//        let allBalancesParams = JsonRpcRequest("suix_getAllBalances", JSON(arrayLiteral: address))
+//        SuiClient.shared.SuiRequest(allBalancesParams) { balances, error in
+//            balances?.forEach({ _, balance in
+//            })
+//            group.leave()
+//        }
+//    }
+    
+    func onFetchSuiCoinMeta() {
+        self.suiBalances.forEach { denom, balance in
+            let param = JsonRpcRequest("suix_getCoinMetadata", JSON(arrayLiteral: denom.getCoinType()))
+            SuiClient.shared.SuiRequest(param) { result, error in
+                if let result = result {
+                    self.suiCoinMeta[denom] = result
+                    print("onFetchSuiCoinMeta ", result)
+                    NotificationCenter.default.post(name: Notification.Name("DataFetched"), object: nil, userInfo: nil)
+                }
+            }
         }
     }
     
@@ -238,25 +219,6 @@ class DataManager {
             group.leave()
         }
     }
-    
-//    func onFetchSuiCoinMeta(_ group: DispatchGroup, _ balance: JSON) {
-//        if let coinType = balance["coinType"].string {
-//            group.enter()
-//            let coinMetadataParams = JsonRpcRequest("suix_getCoinMetadata", JSON(arrayLiteral: coinType))
-//            SuiClient.shared.SuiRequest(coinMetadataParams) { metaData, error in
-//                if let metaData = metaData {
-//                    self.suiBalances.append((balance, metaData))
-//                } else {
-//                    self.suiBalances.append((balance, JSON()))
-//                }
-//                group.leave()
-//            }
-//        }
-//    }
-    
-//    func getSuiBalance() {
-//
-//    }
     
     func getAllBalance() -> Array<(String, NSDecimalNumber)> {
         var result = Array<(String, NSDecimalNumber)>()
