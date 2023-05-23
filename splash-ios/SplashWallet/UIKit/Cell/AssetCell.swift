@@ -25,6 +25,7 @@ class AssetCell: UITableViewCell {
     
     override func prepareForReuse() {
         super.prepareForReuse()
+        self.coinImgView.af.cancelImageRequest()
         self.coinImgView.image = UIImage(named: "coin_default")
     }
     
@@ -59,7 +60,6 @@ class AssetCell: UITableViewCell {
     }
     
     func onBindBalance(_ chainConfig: ChainConfig?, _ balance: (String, NSDecimalNumber)) {
-        coinImgView.af.cancelImageRequest()
         if let meta = DataManager.shared.suiCoinMeta[balance.0] {
             symbolLabel.text = meta["symbol"].stringValue
             amountLabel.text = DecimalUtils.toString(balance.1.stringValue, meta["decimals"].int16Value)
