@@ -24,21 +24,21 @@ class NftAdapter(private val context: Context, val nfts: MutableList<SuiObjectIn
 
     override fun onBindViewHolder(viewHolder: NftViewHolder, position: Int) {
         val nft = nfts[position]
-        val contentJson = JSONObject(Gson().toJson(nft.content))
+        val displayJson = JSONObject(Gson().toJson(nft.display))
         viewHolder.binding.apply {
             try {
                 viewHolder.disposable?.dispose()
                 image.setImageResource(R.drawable.nft_default)
-                val url = contentJson.getJSONObject("fields").getString("img_url").replace("ipfs://", SplashConstants.IPFS)
+                val url = displayJson.getJSONObject("data").getString("image_url").replace("ipfs://", SplashConstants.IPFS)
                 val imageLoader = ImageLoader.Builder(context).components {
                     add(SvgDecoder.Factory())
                 }.placeholder(R.drawable.nft_default).build()
                 val request = ImageRequest.Builder(context).data(url).target(image).size(320).transformations(RoundedCornersTransformation(20f)).build()
                 viewHolder.disposable = imageLoader.enqueue(request)
-            } catch (_: Exception) {
-            }
+            } catch (_: Exception) { }
+
             try {
-                title.text = contentJson.getJSONObject("fields").getString("name")
+                title.text = displayJson.getJSONObject("data").getString("name")
             } catch (e: Exception) {
                 title.text = nft.objectId
             }

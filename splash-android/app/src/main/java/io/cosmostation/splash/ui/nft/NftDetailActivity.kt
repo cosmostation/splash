@@ -40,7 +40,7 @@ class NftDetailActivity : ActionBarBaseActivity() {
                 binding.type.text = objects.type
                 binding.objectId.text = id
                 try {
-                    val url = contentJson.getJSONObject("fields").getString("img_url").replace("ipfs://", SplashConstants.IPFS)
+                    val url = contentJson.getJSONObject("fields").getString("url").replace("ipfs://", SplashConstants.IPFS)
                     val imageLoader = ImageLoader.Builder(this).components {
                         add(SvgDecoder.Factory())
                     }.placeholder(R.drawable.nft_default).build()

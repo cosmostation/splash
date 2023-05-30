@@ -70,7 +70,7 @@ dependencies {
         exclude group: "com.github.stephenc.jcip"
     }
 
-    implementation('com.github.cosmostation:suikotlin:0.3.1') {
+    implementation('com.github.cosmostation:suikotlin:0.3.2') {
         exclude group: "org.bouncycastle"
     }
 

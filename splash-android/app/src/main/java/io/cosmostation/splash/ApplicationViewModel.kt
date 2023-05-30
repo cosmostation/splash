@@ -13,13 +13,11 @@ import io.cosmostation.splash.model.network.CoinMetadata
 import io.cosmostation.splash.util.Prefs
 import io.cosmostation.suikotlin.SuiClient
 import io.cosmostation.suikotlin.key.SuiKey
-import io.cosmostation.suikotlin.model.JsonRpcRequest
-import io.cosmostation.suikotlin.model.SuiObjectInfo
-import io.cosmostation.suikotlin.model.SuiTransaction
-import io.cosmostation.suikotlin.model.TransactionQuery
+import io.cosmostation.suikotlin.model.*
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import org.json.JSONObject
 import java.lang.reflect.Type
 
 class ApplicationViewModel(application: Application) : AndroidViewModel(application) {
@@ -34,6 +32,8 @@ class ApplicationViewModel(application: Application) : AndroidViewModel(applicat
     val coinMetadataMap = MutableLiveData<Map<String, CoinMetadata?>>()
     val suiSystemInfo = MutableLiveData<String?>()
     var priceMap = MutableLiveData<Map<String, Map<String, Double>>?>()
+    var dynamicFieldData = MutableLiveData<List<String?>>()
+    var allMultiObjectsMetaLiveData = MutableLiveData<List<SuiObjectInfo>?>()
 
     fun loadAllData() {
         loadSuiSystem()
@@ -122,7 +122,7 @@ class ApplicationViewModel(application: Application) : AndroidViewModel(applicat
         currentWalletLiveData.value?.address?.let {
             increaseFetchCount()
             try {
-                val objects = SuiClient.instance.getObjectsByOwner(it)
+                val objects = SuiClient.instance.getObjectsByOwner(it, SuiObjectDataOptions(showContent = true, showDisplay = true))
                 allObjectsMetaLiveData.postValue(objects)
                 if (objects.isEmpty()) {
                     return@launch
@@ -133,6 +133,38 @@ class ApplicationViewModel(application: Application) : AndroidViewModel(applicat
             } finally {
                 decreaseFetchCount()
             }
+        }
+    }
+
+    fun loadDynamicFields(objectId: String?) = CoroutineScope(Dispatchers.IO).launch {
+        try {
+            val objectIdList = mutableListOf<String>()
+            objectId?.let {
+                val dynamicFields = SuiClient.instance.fetchCustomRequest(JsonRpcRequest("suix_getDynamicFields", listOf(it)))?.result
+                dynamicFields?.let { field ->
+                    val jsonField = JSONObject(Gson().toJson(field)).getJSONArray("data")
+                    for (i in 0 until jsonField.length()) {
+                        val fieldType = jsonField.getJSONObject(i).getJSONObject("name").getString("type")
+                        if (fieldType.contains("0x2::kiosk::Item")) {
+                            val objectId = jsonField.getJSONObject(i).getJSONObject("name").getJSONObject("value").getString("id")
+                            objectIdList.add(objectId)
+                        }
+                    }
+                    dynamicFieldData.postValue(objectIdList)
+                }
+            }
+        } catch (_: Exception) { }
+    }
+
+    fun loadMultiObjects() = CoroutineScope(Dispatchers.IO).launch {
+        dynamicFieldData.value?.let {
+            try {
+                val objects = SuiClient.instance.getMultiObjectsById(it, SuiObjectDataOptions(showContent = true, showDisplay = true))
+                allMultiObjectsMetaLiveData.postValue(objects)
+                if (objects.isEmpty()) {
+                    return@launch
+                }
+            } catch (_: Exception) { }
         }
     }
 
