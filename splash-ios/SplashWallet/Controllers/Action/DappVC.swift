@@ -7,22 +7,41 @@ import BigInt
 import Combine
 import SuiSwift
 import web3swift
+import MaterialComponents
 
 class DappVC: BaseVC {
     @IBOutlet weak var webView: WKWebView!
     @IBOutlet weak var urlLabel: UILabel!
+    @IBOutlet weak var sslImageView: UIImageView!
+    @IBOutlet weak var urlWrapView: UIView!
+    @IBOutlet weak var urlTextField: MDCOutlinedTextField!
     
     var dappURL: String?
+    var httpsImageView: UIImageView?
     
     private var publishers = [AnyCancellable]()
     
     override func viewDidLoad() {
         cChainConfig = DataManager.shared.account?.chainConfig
+        urlWrapView.layer.cornerRadius = 8
         initWebView()
+        urlTextField.delegate = self
+        
+        httpsImageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 8, height: 11))
+        
         if let dappUrl = dappURL, let url = URL(string: dappUrl) {
             navigationItem.title = url.host
-            webView.load(URLRequest(url: url))
+            loadUrl(urlText: dappUrl)
             urlLabel.text = url.host
+            urlTextField.clearButtonMode = .always
+            urlTextField.text = dappUrl
+            urlTextField.leadingView = httpsImageView
+            urlTextField.leadingViewMode = .always
+            if (url.scheme == "https") {
+                httpsImageView?.image = UIImage(named: "icon_https")
+            } else {
+                httpsImageView?.image = UIImage(named: "icon_http")
+            }
         }
     }
     
@@ -46,6 +65,13 @@ class DappVC: BaseVC {
         webView.allowsBackForwardNavigationGestures = true
         webView.uiDelegate = self
         webView.allowsLinkPreview = false
+        if let dictionary = Bundle.main.infoDictionary,
+            let version = dictionary["CFBundleShortVersionString"] as? String {
+            webView.evaluateJavaScript("navigator.userAgent") { (result, error) in
+                let originUserAgent = result as! String
+                self.webView.customUserAgent = "SplashWallet/APP/DappTab/iOS/\(version) \(originUserAgent)"
+            }
+        }
     }
     
 
@@ -168,6 +194,17 @@ extension DappVC: WKScriptMessageHandler {
     @IBAction func close() {
         self.navigationController?.popViewController(animated: true)
     }
+    
+    func loadUrl(urlText: String) {
+        var formattedURLString = urlText
+        if !formattedURLString.hasPrefix("https://") && !formattedURLString.hasPrefix("http://") {
+            formattedURLString = "https://" + formattedURLString
+        }
+        
+        if let url = URL(string: formattedURLString) {
+            self.webView.load(URLRequest(url: url))
+        }
+    }
 }
 
 extension DappVC: WKNavigationDelegate, WKUIDelegate {
@@ -199,7 +236,42 @@ extension DappVC: WKNavigationDelegate, WKUIDelegate {
     
     func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
         if let host = webView.url?.host {
+            self.urlTextField.text = webView.url?.absoluteString
             self.urlLabel.text = host
+            if (webView.url?.scheme == "https") {
+                self.httpsImageView?.image = UIImage(named: "icon_https")
+            } else {
+                self.httpsImageView?.image = UIImage(named: "icon_http")
+            }
         }
+    }
+    
+    func webView(_ webView: WKWebView, decidePolicyFor navigationAction: WKNavigationAction, decisionHandler: @escaping (WKNavigationActionPolicy) -> Void) {
+        if let url = navigationAction.request.url {
+            if (url.scheme == "splashwallet" && url.host == "internaldapp") {
+                if let query = url.query?.removingPercentEncoding {
+                    self.loadUrl(urlText: query.replacingOccurrences(of: "url=", with: ""))
+                    decisionHandler(.cancel)
+                    return
+                }
+            }
+        }
+        
+        if navigationAction.navigationType == .linkActivated {
+            guard let url = navigationAction.request.url else {return}
+            webView.load(URLRequest(url: url))
+        }
+        
+        decisionHandler(.allow)
+    }
+}
+
+extension DappVC: UITextFieldDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        urlTextField.resignFirstResponder()
+        if let urlText = urlTextField.text {
+            loadUrl(urlText: urlText)
+        }
+        return true
     }
 }

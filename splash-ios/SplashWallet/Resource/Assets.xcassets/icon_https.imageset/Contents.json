@@ -1,12 +1,15 @@
 {
   "images" : [
     {
-      "filename" : "network.pdf",
+      "filename" : "326668_closed_lock_icon-_1_.pdf",
       "idiom" : "universal"
     }
   ],
   "info" : {
     "author" : "xcode",
     "version" : 1
+  },
+  "properties" : {
+    "template-rendering-intent" : "template"
   }
 }

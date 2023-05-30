@@ -32,9 +32,10 @@
                         <color key="selectedImageTintColor" name="AccentColor"/>
                     </tabBar>
                     <connections>
-                        <segue destination="H8s-vI-hed" kind="relationship" relationship="viewControllers" id="dTC-QW-OAI"/>
-                        <segue destination="iK0-Oi-kcF" kind="relationship" relationship="viewControllers" id="qZS-VU-2cx"/>
-                        <segue destination="awH-PL-Esi" kind="relationship" relationship="viewControllers" id="gRZ-FO-BaS"/>
+                        <segue destination="H8s-vI-hed" kind="relationship" relationship="viewControllers" id="ROb-Il-Lfz"/>
+                        <segue destination="D9N-Ci-I5v" kind="relationship" relationship="viewControllers" id="Qxz-mf-ov8"/>
+                        <segue destination="iK0-Oi-kcF" kind="relationship" relationship="viewControllers" id="l53-Vw-yZz"/>
+                        <segue destination="awH-PL-Esi" kind="relationship" relationship="viewControllers" id="Vxk-Ue-f5U"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="UPg-2U-4ar" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -150,10 +151,10 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="4cM-TI-vVs">
-                                        <rect key="frame" x="12" y="177" width="390" height="80"/>
+                                        <rect key="frame" x="60" y="177" width="294" height="80"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="A1U-bD-BbW">
-                                                <rect key="frame" x="0.0" y="0.0" width="130" height="80"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="98" height="80"/>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <fontDescription key="fontDescription" name="Pretendard-SemiBold" family="Pretendard" pointSize="12"/>
                                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -166,7 +167,7 @@
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eXq-wN-UE3">
-                                                <rect key="frame" x="130" y="0.0" width="130" height="80"/>
+                                                <rect key="frame" x="98" y="0.0" width="98" height="80"/>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <fontDescription key="fontDescription" name="Pretendard-SemiBold" family="Pretendard" pointSize="12"/>
                                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -179,7 +180,7 @@
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="M87-EC-QCK">
-                                                <rect key="frame" x="260" y="0.0" width="130" height="80"/>
+                                                <rect key="frame" x="196" y="0.0" width="98" height="80"/>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <fontDescription key="fontDescription" name="Pretendard-SemiBold" family="Pretendard" pointSize="12"/>
                                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -192,7 +193,7 @@
                                                 </connections>
                                             </button>
                                             <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nJo-SY-Ioh">
-                                                <rect key="frame" x="390" y="0.0" width="0.0" height="80"/>
+                                                <rect key="frame" x="294" y="0.0" width="0.0" height="80"/>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <fontDescription key="fontDescription" name="Pretendard-SemiBold" family="Pretendard" pointSize="12"/>
                                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -234,13 +235,12 @@
                                     <constraint firstItem="yfr-xE-ha5" firstAttribute="top" secondItem="Dv3-3S-TrW" secondAttribute="top" id="FMu-xu-cVp"/>
                                     <constraint firstItem="yfr-xE-ha5" firstAttribute="centerY" secondItem="Dv3-3S-TrW" secondAttribute="centerY" id="FNk-jI-0OJ"/>
                                     <constraint firstItem="Dv3-3S-TrW" firstAttribute="top" secondItem="McR-gS-UX6" secondAttribute="top" constant="59" id="Hvh-QT-K74"/>
+                                    <constraint firstItem="4cM-TI-vVs" firstAttribute="centerX" secondItem="McR-gS-UX6" secondAttribute="centerX" id="KRk-ye-gmo"/>
                                     <constraint firstItem="4cM-TI-vVs" firstAttribute="top" secondItem="l8V-XG-X7p" secondAttribute="bottom" constant="24" id="OxT-AD-euJ"/>
-                                    <constraint firstAttribute="trailing" secondItem="4cM-TI-vVs" secondAttribute="trailing" constant="12" id="RTy-m8-ZFI"/>
                                     <constraint firstItem="yfr-xE-ha5" firstAttribute="leading" secondItem="Dv3-3S-TrW" secondAttribute="leading" id="Y6o-aX-O01"/>
                                     <constraint firstItem="WfJ-KH-SsS" firstAttribute="centerY" secondItem="Dv3-3S-TrW" secondAttribute="centerY" id="Ye6-jV-SvL"/>
                                     <constraint firstItem="RC3-kv-pBE" firstAttribute="leading" secondItem="RBb-lk-5Wy" secondAttribute="trailing" constant="2" id="ZEp-cD-unw"/>
                                     <constraint firstItem="Dv3-3S-TrW" firstAttribute="leading" secondItem="McR-gS-UX6" secondAttribute="leading" constant="20" symbolic="YES" id="c4t-3s-28Y"/>
-                                    <constraint firstItem="4cM-TI-vVs" firstAttribute="leading" secondItem="McR-gS-UX6" secondAttribute="leading" constant="12" id="ghP-ah-Hiy"/>
                                     <constraint firstItem="RBb-lk-5Wy" firstAttribute="leading" secondItem="Dv3-3S-TrW" secondAttribute="trailing" constant="8" symbolic="YES" id="lD6-yj-P1H"/>
                                     <constraint firstAttribute="height" constant="275" id="pwZ-gU-SG9"/>
                                     <constraint firstItem="RBb-lk-5Wy" firstAttribute="centerY" secondItem="Dv3-3S-TrW" secondAttribute="centerY" id="py5-ZH-buN"/>
@@ -321,7 +321,7 @@
             <objects>
                 <viewController restorationIdentifier="MainTabDapps" storyboardIdentifier="MainTabDapps" id="URj-ci-gpz" customClass="MainTabDapps" customModule="SplashWallet" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="bDv-Wa-XCx">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="813"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yur-G4-81u">
@@ -342,7 +342,7 @@
                                 </constraints>
                             </view>
                             <wkWebView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sxR-qy-Kd9">
-                                <rect key="frame" x="0.0" y="144" width="414" height="718"/>
+                                <rect key="frame" x="0.0" y="144" width="414" height="669"/>
                                 <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <wkWebViewConfiguration key="configuration">
                                     <audiovisualMediaTypes key="mediaTypesRequiringUserActionForPlayback" none="YES"/>

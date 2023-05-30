@@ -14,11 +14,26 @@ class MainTab: UITabBarController, UITabBarControllerDelegate {
         super.viewDidLoad()
         overrideUserInterfaceStyle = Theme.getThemes()[BaseData.instance.getTheme()].themeStyle
         
+        self.delegate = self
         self.updateState()
         
         let lineView = UIView(frame: CGRect(x: 0, y: 0, width: tabBar.frame.size.width, height: 1))
         lineView.backgroundColor = .base03
         tabBar.addSubview(lineView)
+    }
+
+    
+    func tabBarController(_ tabBarController: UITabBarController, shouldSelect viewController: UIViewController) -> Bool {
+        if (tabBarController.viewControllers?.firstIndex(of: viewController) == 1) {
+            let dappVC = DappVC(nibName: "DappVC", bundle: nil)
+            dappVC.dappURL = "https://dapps.splash.im"
+            dappVC.hidesBottomBarWhenPushed = true
+            if let navigation = tabBarController.selectedViewController as? UINavigationController {
+                navigation.pushViewController(dappVC, animated: true)
+            }
+            return false
+        }
+        return true
     }
     
     override func viewWillAppear(_ animated: Bool) {

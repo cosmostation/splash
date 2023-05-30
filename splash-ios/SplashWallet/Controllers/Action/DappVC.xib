@@ -11,7 +11,10 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="DappVC" customModule="SplashWallet" customModuleProvider="target">
             <connections>
+                <outlet property="sslImageView" destination="nDI-UV-Qho" id="2B9-sQ-NwZ"/>
                 <outlet property="urlLabel" destination="kda-DD-JDI" id="NyZ-TW-tRD"/>
+                <outlet property="urlTextField" destination="f8M-i5-4PD" id="qeY-nd-Z4V"/>
+                <outlet property="urlWrapView" destination="TNg-KX-Urc" id="Pa1-hS-04F"/>
                 <outlet property="view" destination="mv4-aA-NSP" id="ynZ-qG-VCa"/>
                 <outlet property="webView" destination="7uf-WQ-lYi" id="XRH-27-kIm"/>
             </connections>
@@ -49,9 +52,9 @@
                             </connections>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="w1h-6J-mpS">
-                            <rect key="frame" x="73" y="14" width="26" height="28"/>
+                            <rect key="frame" x="284" y="9" width="36" height="38"/>
                             <color key="tintColor" name="base05"/>
-                            <inset key="contentEdgeInsets" minX="5" minY="5" maxX="5" maxY="5"/>
+                            <inset key="contentEdgeInsets" minX="10" minY="10" maxX="10" maxY="10"/>
                             <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                             <state key="normal" image="browseRefresh"/>
                             <connections>
@@ -72,32 +75,65 @@
                                 <action selector="close" destination="-1" eventType="touchUpInside" id="B7r-bf-K6C"/>
                             </connections>
                         </button>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Url" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kda-DD-JDI">
-                            <rect key="frame" x="53" y="19" width="20" height="18"/>
-                            <color key="tintColor" name="base05"/>
-                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                        <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="f8M-i5-4PD" customClass="MDCOutlinedTextField">
+                            <rect key="frame" x="48" y="10" width="231" height="36"/>
+                            <color key="backgroundColor" name="base03"/>
                             <color key="textColor" name="base05"/>
-                            <nil key="highlightedColor"/>
-                        </label>
+                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                            <textInputTraits key="textInputTraits" keyboardType="URL" returnKeyType="go" textContentType="url"/>
+                        </textField>
+                        <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TNg-KX-Urc">
+                            <rect key="frame" x="48" y="9" width="231" height="38"/>
+                            <subviews>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="249" verticalHuggingPriority="251" text="Url" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kda-DD-JDI">
+                                    <rect key="frame" x="32" y="10" width="189" height="18"/>
+                                    <color key="tintColor" name="base05"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                    <color key="textColor" name="base05"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon_https" translatesAutoresizingMaskIntoConstraints="NO" id="nDI-UV-Qho">
+                                    <rect key="frame" x="10" y="13" width="12" height="12"/>
+                                    <constraints>
+                                        <constraint firstAttribute="width" constant="12" id="Q7u-WZ-qTW"/>
+                                        <constraint firstAttribute="height" constant="12" id="y4Z-BD-xN7"/>
+                                    </constraints>
+                                </imageView>
+                            </subviews>
+                            <color key="backgroundColor" name="base03"/>
+                            <constraints>
+                                <constraint firstItem="nDI-UV-Qho" firstAttribute="centerY" secondItem="TNg-KX-Urc" secondAttribute="centerY" id="8JU-3h-lva"/>
+                                <constraint firstItem="kda-DD-JDI" firstAttribute="leading" secondItem="nDI-UV-Qho" secondAttribute="trailing" constant="10" id="8RV-7b-2bc"/>
+                                <constraint firstAttribute="trailing" secondItem="kda-DD-JDI" secondAttribute="trailing" constant="10" id="H85-4r-8pw"/>
+                                <constraint firstItem="kda-DD-JDI" firstAttribute="top" secondItem="TNg-KX-Urc" secondAttribute="top" constant="10" id="QVC-Js-fF8"/>
+                                <constraint firstItem="nDI-UV-Qho" firstAttribute="leading" secondItem="TNg-KX-Urc" secondAttribute="leading" constant="10" id="hzn-mZ-gcr"/>
+                                <constraint firstAttribute="bottom" secondItem="kda-DD-JDI" secondAttribute="bottom" constant="10" id="tOK-yf-y8s"/>
+                            </constraints>
+                        </view>
                     </subviews>
                     <viewLayoutGuide key="safeArea" id="8qS-Op-8KX"/>
                     <gestureRecognizers/>
                     <constraints>
-                        <constraint firstItem="kda-DD-JDI" firstAttribute="leading" secondItem="Ged-Vo-igE" secondAttribute="trailing" constant="10" id="4kP-IP-jha"/>
+                        <constraint firstItem="f8M-i5-4PD" firstAttribute="top" secondItem="8qS-Op-8KX" secondAttribute="top" constant="10" id="1KR-WG-pZ1"/>
+                        <constraint firstItem="TNg-KX-Urc" firstAttribute="centerY" secondItem="Bnz-Gv-yAD" secondAttribute="centerY" id="5cM-07-g7C"/>
                         <constraint firstItem="riG-hf-Nzr" firstAttribute="centerY" secondItem="Bnz-Gv-yAD" secondAttribute="centerY" id="FZR-XR-yiT"/>
+                        <constraint firstItem="8qS-Op-8KX" firstAttribute="bottom" secondItem="f8M-i5-4PD" secondAttribute="bottom" constant="10" id="HXR-HI-OH9"/>
                         <constraint firstItem="riG-hf-Nzr" firstAttribute="leading" secondItem="Cdi-uP-0Te" secondAttribute="trailing" id="JhN-xB-jMv"/>
                         <constraint firstItem="w1h-6J-mpS" firstAttribute="centerY" secondItem="Bnz-Gv-yAD" secondAttribute="centerY" id="L4e-nP-cfi"/>
-                        <constraint firstItem="w1h-6J-mpS" firstAttribute="leading" secondItem="kda-DD-JDI" secondAttribute="trailing" id="YoK-CT-lBx"/>
+                        <constraint firstItem="w1h-6J-mpS" firstAttribute="leading" secondItem="TNg-KX-Urc" secondAttribute="trailing" constant="5" id="Okm-eA-b70"/>
+                        <constraint firstItem="Cdi-uP-0Te" firstAttribute="leading" secondItem="w1h-6J-mpS" secondAttribute="trailing" id="Q63-b7-MOe"/>
+                        <constraint firstItem="f8M-i5-4PD" firstAttribute="leading" secondItem="Ged-Vo-igE" secondAttribute="trailing" constant="5" id="Za1-Z7-Vik"/>
                         <constraint firstItem="Ged-Vo-igE" firstAttribute="centerY" secondItem="Bnz-Gv-yAD" secondAttribute="centerY" id="cEb-EM-XOq"/>
                         <constraint firstItem="Cdi-uP-0Te" firstAttribute="centerY" secondItem="Bnz-Gv-yAD" secondAttribute="centerY" id="d0r-mv-IMP"/>
+                        <constraint firstItem="TNg-KX-Urc" firstAttribute="leading" secondItem="Ged-Vo-igE" secondAttribute="trailing" constant="5" id="dDf-Wm-fQB"/>
                         <constraint firstAttribute="trailing" secondItem="riG-hf-Nzr" secondAttribute="trailing" constant="5" id="uDb-78-CE4"/>
                         <constraint firstItem="Ged-Vo-igE" firstAttribute="leading" secondItem="Bnz-Gv-yAD" secondAttribute="leading" constant="5" id="unA-ci-A7Q"/>
-                        <constraint firstItem="kda-DD-JDI" firstAttribute="centerY" secondItem="Bnz-Gv-yAD" secondAttribute="centerY" id="vXq-O3-GzQ"/>
                         <constraint firstAttribute="height" constant="56" id="xIL-ng-x2V"/>
+                        <constraint firstItem="w1h-6J-mpS" firstAttribute="leading" secondItem="f8M-i5-4PD" secondAttribute="trailing" constant="5" id="ziy-nL-32A"/>
                     </constraints>
                 </view>
                 <wkWebView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7uf-WQ-lYi">
-                    <rect key="frame" x="0.0" y="115" width="393" height="703"/>
+                    <rect key="frame" x="0.0" y="115" width="393" height="737"/>
                     <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <wkWebViewConfiguration key="configuration" allowsInlineMediaPlayback="YES">
                         <audiovisualMediaTypes key="mediaTypesRequiringUserActionForPlayback" none="YES"/>
@@ -114,7 +150,7 @@
                 <constraint firstItem="4m8-1Z-sRN" firstAttribute="trailing" secondItem="7uf-WQ-lYi" secondAttribute="trailing" id="Hx9-1q-Fa1"/>
                 <constraint firstItem="Bnz-Gv-yAD" firstAttribute="leading" secondItem="4m8-1Z-sRN" secondAttribute="leading" id="Kvf-cg-feE"/>
                 <constraint firstItem="Bnz-Gv-yAD" firstAttribute="trailing" secondItem="4m8-1Z-sRN" secondAttribute="trailing" id="RGA-oV-nua"/>
-                <constraint firstItem="4m8-1Z-sRN" firstAttribute="bottom" secondItem="7uf-WQ-lYi" secondAttribute="bottom" id="Sv3-SI-6Io"/>
+                <constraint firstAttribute="bottom" secondItem="7uf-WQ-lYi" secondAttribute="bottom" id="Sv3-SI-6Io"/>
                 <constraint firstItem="7uf-WQ-lYi" firstAttribute="top" secondItem="Bnz-Gv-yAD" secondAttribute="bottom" id="fbX-DI-sIr"/>
             </constraints>
             <point key="canvasLocation" x="-706.10687022900765" y="26.760563380281692"/>
@@ -125,8 +161,12 @@
         <image name="browseClose" width="24" height="24"/>
         <image name="browseForward" width="24" height="24"/>
         <image name="browseRefresh" width="16" height="16"/>
+        <image name="icon_https" width="12" height="18"/>
         <namedColor name="base01">
             <color red="0.98400002717971802" green="0.98799997568130493" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="base03">
+            <color red="0.90200001001358032" green="0.92500001192092896" blue="0.98400002717971802" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="base05">
             <color red="0.13300000131130219" green="0.13300000131130219" blue="0.13300000131130219" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

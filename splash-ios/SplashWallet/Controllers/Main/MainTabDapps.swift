@@ -21,21 +21,9 @@ class MainTabDapps: BaseVC {
         super.viewWillAppear(animated)
         self.navigationController?.setNavigationBarHidden(true, animated: false)
         let dappUrl = "https://dapps.splash.im"
-        if let url = URL(string: "\(dappUrl)/?theme=\(currentThemeParams())") {
+        if let url = URL(string: dappUrl) {
             webView.load(URLRequest(url: url))
         }
-    }
-    
-    func currentThemeParams() -> String {
-        var themeParams = "dark"
-        if (Theme.getThemes()[BaseData.instance.getTheme()].themeStyle == .unspecified) {
-            if (self.traitCollection.userInterfaceStyle != .dark) {
-                themeParams = "light"
-            }
-        } else if (Theme.getThemes()[BaseData.instance.getTheme()].themeStyle == .light) {
-            themeParams = "light"
-        }
-        return themeParams
     }
     
     func initWebView() {
