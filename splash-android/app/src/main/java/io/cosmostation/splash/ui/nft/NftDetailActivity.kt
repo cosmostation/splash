@@ -36,18 +36,18 @@ class NftDetailActivity : ActionBarBaseActivity() {
         id?.let {
             val objects = SplashWalletApp.instance.applicationViewModel.nftMap[it]
             objects?.let {
-                val contentJson = JSONObject(Gson().toJson(objects.content))
+                val displayJson = JSONObject(Gson().toJson(objects.display))
                 binding.type.text = objects.type
                 binding.objectId.text = id
                 try {
-                    val url = contentJson.getJSONObject("fields").getString("url").replace("ipfs://", SplashConstants.IPFS)
+                    val url = displayJson.getJSONObject("data").getString("image_url").replace("ipfs://", SplashConstants.IPFS)
                     val imageLoader = ImageLoader.Builder(this).components {
                         add(SvgDecoder.Factory())
                     }.placeholder(R.drawable.nft_default).build()
                     val request = ImageRequest.Builder(this).data(url).target(binding.image).size(640).transformations(RoundedCornersTransformation(20f)).build()
                     val disposable = imageLoader.enqueue(request)
-                    binding.title.text = contentJson.getJSONObject("fields").getString("name")
-                    binding.description.text = contentJson.getJSONObject("fields").getString("description")
+                    binding.title.text = displayJson.getJSONObject("data").getString("name")
+                    binding.description.text = displayJson.getJSONObject("data").getString("description")
                 } catch (_: Exception) {
                 }
             }

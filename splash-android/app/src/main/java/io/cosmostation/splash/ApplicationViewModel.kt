@@ -127,6 +127,7 @@ class ApplicationViewModel(application: Application) : AndroidViewModel(applicat
                 if (objects.isEmpty()) {
                     return@launch
                 }
+                nftMap.clear()
                 aggregateNfts(objects)
                 allObjectsLiveData.postValue(objects)
             } catch (_: Exception) {
@@ -164,12 +165,12 @@ class ApplicationViewModel(application: Application) : AndroidViewModel(applicat
                 if (objects.isEmpty()) {
                     return@launch
                 }
+                aggregateNfts(objects)
             } catch (_: Exception) { }
         }
     }
 
     private fun aggregateNfts(objects: List<SuiObjectInfo>) {
-        nftMap.clear()
         objects.filter { !it.type.contains("Coin") }.forEach {
             val id = it.objectId
             nftMap[id] = it

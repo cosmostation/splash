@@ -223,7 +223,11 @@ class CoinFragment : Fragment() {
                     }.let {
                         SplashWalletApp.instance.applicationViewModel.loadDynamicFields(it[0].display.data.kiosk)
                     }
-                } catch (_: Exception) { }
+                } catch (_: Exception) {
+                    binding.nftCount.text = "${getString(R.string.nfts)} (${nfts.size})"
+                }
+                nftAdapter.notifyDataSetChanged()
+                updateTabStatus()
             }
         }
 
@@ -238,8 +242,9 @@ class CoinFragment : Fragment() {
 
         SplashWalletApp.instance.applicationViewModel.allMultiObjectsMetaLiveData.observe(viewLifecycleOwner) { item ->
             item?.let {
-                nftAdapter.nfts.addAll(it)
-
+                if (!nftAdapter.nfts.containsAll(it)) {
+                    nftAdapter.nfts.addAll(it)
+                }
                 binding.nftCount.text = "${getString(R.string.nfts)} (${nftAdapter.nfts.size})"
                 nftAdapter.notifyDataSetChanged()
                 updateTabStatus()

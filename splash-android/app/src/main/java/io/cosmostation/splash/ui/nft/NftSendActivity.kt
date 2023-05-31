@@ -48,11 +48,11 @@ class NftSendActivity : ActionBarBaseActivity() {
                 binding.objectId.text = id
                 binding.type.text = objects.type
                 try {
-                    val contentJson = JSONObject(Gson().toJson(it.content))
+                    val displayJson = JSONObject(Gson().toJson(it.display))
                     binding.image.setImageURI(
-                        contentJson.getJSONObject("fields").getString("img_url").replace("ipfs://", SplashConstants.IPFS)
+                        displayJson.getJSONObject("data").getString("image_url").replace("ipfs://", SplashConstants.IPFS)
                     )
-                    binding.title.text = contentJson.getJSONObject("fields").getString("name")
+                    binding.title.text = displayJson.getJSONObject("data").getString("name")
                 } catch (_: Exception) {
                 }
             }
