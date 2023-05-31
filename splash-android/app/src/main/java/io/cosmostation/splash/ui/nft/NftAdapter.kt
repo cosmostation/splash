@@ -16,14 +16,15 @@ import io.cosmostation.splash.databinding.ItemNftBinding
 import io.cosmostation.suikotlin.model.SuiObjectInfo
 import org.json.JSONObject
 
-class NftAdapter(private val context: Context, val nfts: MutableList<SuiObjectInfo> = mutableListOf()) : RecyclerView.Adapter<NftViewHolder>() {
+class NftAdapter(private val context: Context, val nfts: MutableList<SuiObjectInfo> = mutableListOf(), val kioskNfts: MutableList<SuiObjectInfo> = mutableListOf()) : RecyclerView.Adapter<NftViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): NftViewHolder {
         val binding = ItemNftBinding.inflate(LayoutInflater.from(context), parent, false)
         return NftViewHolder(binding, null)
     }
 
     override fun onBindViewHolder(viewHolder: NftViewHolder, position: Int) {
-        val nft = nfts[position]
+        val allNfts = nfts + kioskNfts
+        val nft = allNfts[position]
         val displayJson = JSONObject(Gson().toJson(nft.display))
         viewHolder.binding.apply {
             try {
@@ -35,7 +36,8 @@ class NftAdapter(private val context: Context, val nfts: MutableList<SuiObjectIn
                 }.placeholder(R.drawable.nft_default).build()
                 val request = ImageRequest.Builder(context).data(url).target(image).size(320).transformations(RoundedCornersTransformation(20f)).build()
                 viewHolder.disposable = imageLoader.enqueue(request)
-            } catch (_: Exception) { }
+            } catch (_: Exception) {
+            }
 
             try {
                 title.text = displayJson.getJSONObject("data").getString("name")
@@ -49,6 +51,6 @@ class NftAdapter(private val context: Context, val nfts: MutableList<SuiObjectIn
     }
 
     override fun getItemCount(): Int {
-        return nfts.size
+        return nfts.size + kioskNfts.size
     }
 }

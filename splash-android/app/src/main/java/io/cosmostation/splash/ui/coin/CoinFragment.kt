@@ -13,7 +13,6 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.google.gson.Gson
 import com.journeyapps.barcodescanner.ScanContract
 import com.journeyapps.barcodescanner.ScanIntentResult
 import com.journeyapps.barcodescanner.ScanOptions
@@ -31,7 +30,6 @@ import io.cosmostation.splash.util.formatDecimal
 import io.cosmostation.splash.util.visibleOrGone
 import io.cosmostation.suikotlin.SuiClient
 import io.cosmostation.suikotlin.model.Network
-import org.json.JSONObject
 import java.math.BigDecimal
 import java.math.RoundingMode
 
@@ -215,17 +213,7 @@ class CoinFragment : Fragment() {
                 nftAdapter.nfts.clear()
                 val nfts = item.filter { it.display.data != null }
                 nftAdapter.nfts.addAll(nfts)
-
-                try {
-                    nfts.filter { nft ->
-                        val displayJson = JSONObject(Gson().toJson(nft.display))
-                        displayJson.getJSONObject("data").has("kiosk")
-                    }.let {
-                        SplashWalletApp.instance.applicationViewModel.loadDynamicFields(it[0].display.data.kiosk)
-                    }
-                } catch (_: Exception) {
-                    binding.nftCount.text = "${getString(R.string.nfts)} (${nfts.size})"
-                }
+                binding.nftCount.text = "${getString(R.string.nfts)} (${nftAdapter.itemCount})"
                 nftAdapter.notifyDataSetChanged()
                 updateTabStatus()
             }
@@ -236,16 +224,11 @@ class CoinFragment : Fragment() {
             coinAdapter.notifyDataSetChanged()
         }
 
-        SplashWalletApp.instance.applicationViewModel.dynamicFieldData.observe(viewLifecycleOwner) {
-            SplashWalletApp.instance.applicationViewModel.loadMultiObjects()
-        }
-
-        SplashWalletApp.instance.applicationViewModel.allMultiObjectsMetaLiveData.observe(viewLifecycleOwner) { item ->
+        SplashWalletApp.instance.applicationViewModel.allKioskObjectsMetaLiveData.observe(viewLifecycleOwner) { item ->
             item?.let {
-                if (!nftAdapter.nfts.containsAll(it)) {
-                    nftAdapter.nfts.addAll(it)
-                }
-                binding.nftCount.text = "${getString(R.string.nfts)} (${nftAdapter.nfts.size})"
+                nftAdapter.kioskNfts.clear()
+                nftAdapter.kioskNfts.addAll(it)
+                binding.nftCount.text = "${getString(R.string.nfts)} (${nftAdapter.itemCount})"
                 nftAdapter.notifyDataSetChanged()
                 updateTabStatus()
             }
