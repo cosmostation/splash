@@ -4,6 +4,10 @@ import Image from 'src/components/common/Image';
 import { styled } from '@mui/material/styles';
 import ImgView from 'src/components/common/Img';
 
+type IValidatorImgProps = {
+  'data-risk': string;
+};
+
 type SelectProps = {
   'data-select'?: string;
 };
@@ -23,18 +27,33 @@ export const StakeNameContainer = styled('div')({
 });
 
 export const ValidatorName = styled('div')({
+  position: 'relative',
+
   display: 'flex',
   alignItems: 'center',
 
   fontSize: '1.6rem',
 });
 
-export const ValidatorImg = styled(ImgView)({
+export const ValidatorImg = styled(ImgView)<IValidatorImgProps>(({ ...props }) => ({
   width: '3.6rem',
   maxHeight: '3.6rem',
   borderRadius: '1rem',
   marginRight: '1rem',
-});
+
+  filter: props['data-risk'] === 'true' ? 'brightness(0.2)' : 'none',
+}));
+
+export const RiskBar = styled('div')(({ theme }) => ({
+  position: 'absolute',
+  left: '0',
+  top: '35%',
+
+  transform: 'rotate(-45deg)',
+
+  color: theme.chainAccentColors.red,
+  fontSize: '1rem',
+}));
 
 export const ArrowImg = styled(Image)<SelectProps>(({ ...props }) => ({
   cursor: 'pointer',

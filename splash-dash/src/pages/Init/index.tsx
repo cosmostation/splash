@@ -11,7 +11,7 @@ export default function Init() {
 
   useEffect(() => {
     if (isUndefined(chainName)) {
-      navigate(`/testnet${PATH.HOME}`);
+      navigate(`/mainnet${PATH.HOME}`);
     }
   }, [chainName]);
 

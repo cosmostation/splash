@@ -1,6 +1,7 @@
 import {
   ArrowImg,
   Container,
+  RiskBar,
   StakeButton,
   StakeContainer,
   StakeNameContainer,
@@ -17,7 +18,6 @@ import StakingModal from 'src/components/Modal/StakingModal';
 import UnstakingModal from 'src/components/Modal/UnstakingModal';
 import { getChainInstanceState } from 'src/store/recoil/chainInstance';
 import { makeIAmountType } from 'src/function/makeIAmountType';
-import { plus } from 'src/util/big';
 import { useRecoilValue } from 'recoil';
 import { useState } from 'react';
 
@@ -45,10 +45,6 @@ export default function StakingCard({ index, stakeStatus, stakingStatus, setStak
     setStakingStatus(index);
   };
 
-  const onErrorImg = (e) => {
-    e.target.src = DefaultValidatorIcon;
-  };
-
   return (
     <Container data-select={isNowRow.toString()}>
       {{
@@ -58,7 +54,11 @@ export default function StakingCard({ index, stakeStatus, stakingStatus, setStak
           content: (
             <StakeNameContainer onClick={() => walletControl()}>
               <ValidatorName>
-                <ValidatorImg Img={stakeStatus.img || DefaultValidatorIcon} />
+                <ValidatorImg
+                  data-risk={stakeStatus?.atRisk?.toString() || 'false'}
+                  Img={stakeStatus.img || DefaultValidatorIcon}
+                />
+                {stakeStatus?.atRisk && <RiskBar>AT RISK</RiskBar>}
                 {stakeStatus.name}
               </ValidatorName>
               <ArrowImg data-select={isNowRow.toString()} Img={ArrowColorIcon} />
@@ -71,7 +71,7 @@ export default function StakingCard({ index, stakeStatus, stakingStatus, setStak
               <DisplayAmount data={makeIAmountType(stakeStatus.principal, chain.denom)} size="small" />
             </CardItem>
             <CardItem typeName="Starts earning">
-              <div>{`Epoch #${plus(stakeStatus.stakeActiveEpoch, 1)}`}</div>
+              <div>{`Epoch #${stakeStatus.stakeActiveEpoch}`}</div>
             </CardItem>
             <CardItem typeName="Reward">
               <DisplayAmount data={makeIAmountType(stakeStatus.estimatedReward || 0, chain.denom)} size="small" />

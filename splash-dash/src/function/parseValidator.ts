@@ -1,8 +1,6 @@
 import { orderBy } from 'lodash';
-import { plus } from 'src/util/big';
-import { SuiEvent, type SuiSystemStateSummary } from '@mysten/sui.js';
-import { calculateAPY } from './calculateAPY';
-import { roundFloat } from 'src/util/utils';
+import { SuiEvent, ValidatorsApy, type SuiSystemStateSummary } from '@mysten/sui.js';
+import { multiply } from 'src/util/big';
 
 interface IParsingValidatorsData {
   name: {
@@ -57,56 +55,16 @@ export function getValidatorAvgData(validatorAddress: string, validatorQueryData
   return event;
 }
 
-export function apyValidatorCalData(latestSystemState?: SuiSystemStateSummary, validatorQueryData?: SuiEvent[]) {
-  // TODO: validator apr calculate check
-  if (!validatorQueryData || !latestSystemState) {
-    return null;
-  }
-
-  const { stakeSubsidyStartEpoch, epoch, activeValidators } = latestSystemState || {};
-  if (Number(epoch) < Number(stakeSubsidyStartEpoch)) {
-    return activeValidators.reduce((acc, validator) => {
-      acc[validator.suiAddress] = 0;
-      return acc;
-    }, {} as ApyByValidator);
-  }
-
-  const avgEpochNumberAfterSubsidy = Math.max(
-    0,
-    Math.min(ROLLING_AVERAGE, Number(epoch) - Number(stakeSubsidyStartEpoch)),
-  );
-
-  const apyGroups: ApyGroups = {};
-  validatorQueryData?.forEach(({ parsedJson }) => {
-    const { stake, pool_staking_reward, validator_address } = parsedJson as ParsedJson;
-
-    if (!apyGroups[validator_address]) {
-      apyGroups[validator_address] = [];
-    }
-
-    const apyFloat = calculateAPY(stake, pool_staking_reward);
-
-    apyGroups[validator_address].push(Number.isNaN(apyFloat) || apyFloat > 10_000 ? 0 : apyFloat);
-  });
-
-  const apyByValidator: ApyByValidator = Object.entries(apyGroups).reduce((acc, [validatorAddr, apyArr]) => {
-    const apys = apyArr.slice(0, avgEpochNumberAfterSubsidy).map((entry) => entry);
-
-    const avgApy = apys.reduce((sum, apy) => Number(plus(sum, apy)), 0) / apys.length;
-    acc[validatorAddr] = roundFloat(avgApy * 100, 4);
-    return acc;
-  }, {} as ApyByValidator);
-
-  return apyByValidator;
-}
-
-export const parseValidatorsListData = (latestSystemState?: SuiSystemStateSummary, validatorQueryData?: SuiEvent[]) => {
-  const apyValidatorGroup = apyValidatorCalData(latestSystemState, validatorQueryData);
+export const parseValidatorsListData = (
+  latestSystemState?: SuiSystemStateSummary,
+  validatorQueryData?: SuiEvent[],
+  validatorsApy?: ValidatorsApy,
+) => {
   const sortValidators = orderBy(
     latestSystemState?.activeValidators,
     [
       (validator) => {
-        return +validator.stakingPoolSuiBalance;
+        return Number(validator.stakingPoolSuiBalance);
       },
     ],
     ['desc'],
@@ -120,6 +78,8 @@ export const parseValidatorsListData = (latestSystemState?: SuiSystemStateSummar
 
     const event = getValidatorAvgData(validator.suiAddress, validatorQueryData);
 
+    const getValidatorApy = validatorsApy?.apys.find((a) => a.address === validator.suiAddress);
+
     return {
       name: {
         name: validatorName,
@@ -127,8 +87,8 @@ export const parseValidatorsListData = (latestSystemState?: SuiSystemStateSummar
       },
       stake: totalStake.toString(),
       nextEpochStake: nextTotalStake.toString(),
-      apy: (apyValidatorGroup?.[validator.suiAddress] || '-').toString(),
-      commission: (+validator.commissionRate / 100).toString(),
+      apy: multiply(getValidatorApy?.apy || 0, 100),
+      commission: (Number(validator.commissionRate) / 100).toString(),
       address: validator.suiAddress,
       lastReward: event?.parsedJson?.pool_staking_reward || '0',
       atRisk: latestSystemState?.atRiskValidators.some(([address]) => address === validator.suiAddress),

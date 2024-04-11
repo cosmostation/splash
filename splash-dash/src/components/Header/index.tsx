@@ -11,6 +11,7 @@ import {
   MobileHeaderButton,
   MobileHeaderButtonWrapper,
   NetworkButton,
+  WalletIcon,
 } from './styled';
 
 import { ReactComponent as ArrowIcon } from 'src/assets/icons/common/ArrowIcon.svg';
@@ -30,8 +31,11 @@ import { reduceString } from 'src/function/stringFunctions';
 import useMediaQuery from '@mui/material/useMediaQuery';
 import { useRecoilValue } from 'recoil';
 import { useState } from 'react';
+import { useWalletKit } from '@mysten/wallet-kit';
 
 export default function Header() {
+  const { currentWallet } = useWalletKit();
+
   const localStorageInfo = useRecoilValue(localStorageState);
   const chain = useRecoilValue(getChainInstanceState);
 
@@ -79,6 +83,7 @@ export default function Header() {
                       setNetworkControlView(false);
                     }}
                   >
+                    <WalletIcon Img={currentWallet?.icon} />
                     {reduceString(localStorageInfo.account?.[0] || '', 6, 6)}
                     <ArrowImg Img={ArrowIcon} />
                   </ButtonWrapper>

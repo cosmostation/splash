@@ -5,6 +5,10 @@ import { device } from 'src/constant/muiSize';
 import { styled } from '@mui/material/styles';
 import ImgView from 'src/components/common/Img';
 
+type IValidatorImgProps = {
+  'data-risk': string;
+};
+
 type ActionButtonProps = {
   'data-on'?: string;
 };
@@ -52,17 +56,34 @@ export const NameContainer = styled('div')(({ theme }) => ({
   color: theme.colors.base01,
 }));
 
-export const ValidatorImg = styled(ImgView)({
+export const ValidatorImg = styled(ImgView)<IValidatorImgProps>(({ ...props }) => ({
   width: '5rem',
   maxHeight: '5rem',
   borderRadius: '1rem',
   marginRight: '1.4rem',
 
+  filter: props['data-risk'] === 'true' ? 'brightness(0.2)' : 'none',
+
   [`@media ${device.laptop}`]: {
     width: '3.6rem',
     maxHeight: '3.6rem',
   },
-});
+}));
+
+export const RiskBar = styled('div')(({ theme }) => ({
+  position: 'absolute',
+  left: '0',
+  top: '35%',
+
+  transform: 'rotate(-45deg)',
+
+  color: theme.chainAccentColors.red,
+  fontSize: '1.3rem',
+
+  [`@media ${device.laptop}`]: {
+    fontSize: '1rem',
+  },
+}));
 
 export const StakingContainer = styled('div')({
   display: 'flex',
@@ -91,6 +112,8 @@ export const ValidatorNameBox = styled('div')(({ theme }) => ({
 }));
 
 export const NameWrapper = styled('div')({
+  position: 'relative',
+
   display: 'flex',
   alignItems: 'center',
 });

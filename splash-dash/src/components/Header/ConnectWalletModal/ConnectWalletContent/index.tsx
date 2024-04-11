@@ -21,13 +21,20 @@ const ConnetWalletContent: React.FC<IConnectWalletContent> = ({ onCloseModal }) 
 
   const { connect, wallets } = useWalletKit();
 
-  const stakeSupportedWallets = wallets.filter((wallet) => {
-    if (!('wallet' in wallet)) {
-      return false;
-    }
+  const stakeSupportedWallets = wallets
+    .filter((wallet) => {
+      if (!('wallet' in wallet)) {
+        return false;
+      }
 
-    return wallet;
-  });
+      return wallet;
+    })
+    .sort((wallet) => {
+      if (wallet.name === 'Cosmostation Wallet') {
+        return -1;
+      }
+      return 1;
+    });
 
   const handleOnClickExtension = async (walletType: LocalStorage['walletType'], name?: string) => {
     setIsShowLoader(true);

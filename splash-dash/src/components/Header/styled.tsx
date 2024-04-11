@@ -1,6 +1,7 @@
 import Image from 'src/components/common/Image';
 import { device } from 'src/constant/muiSize';
 import { styled } from '@mui/material/styles';
+import ImgView from '../common/Img';
 
 type PercentBarProps = {
   'data-percent'?: string;
@@ -106,6 +107,12 @@ export const ButtonWrapper = styled('div')({
   padding: '0.8rem 1.2rem',
 
   textTransform: 'capitalize',
+});
+
+export const WalletIcon = styled(ImgView)({
+  width: '2.4rem',
+  height: '2.4rem',
+  marginRight: '1rem',
 });
 
 export const ArrowImg = styled(Image)({

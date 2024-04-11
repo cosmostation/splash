@@ -11,8 +11,8 @@ import { localStorageState } from 'src/store/recoil/localStorage';
 import { reduceString } from 'src/function/stringFunctions';
 import suiTokenSVG from 'src/assets/icons/common/SuiToken.svg';
 import { throttle } from 'lodash';
-import { useGetAllBalancesSwr } from 'src/requesters/swr/wave3/useGetAllBalancesSwr';
 import { useWalletKit } from '@mysten/wallet-kit';
+import { useMakeObjectsSwr } from 'src/requesters/swr/wave3/combine/useMakeObjectsSwr';
 
 export default function DropdownAccount() {
   const [localStorageInfo, setLocalStorageInfo] = useRecoilState(localStorageState);
@@ -20,7 +20,7 @@ export default function DropdownAccount() {
 
   const address = localStorageInfo.account?.[0] || '';
 
-  const { loading, makeData: suiAmount } = useGetAllBalancesSwr(address);
+  const { suiAmount, loading } = useMakeObjectsSwr(address);
 
   const [copyClick, setCopyClick] = useState(false);
   const timeout = useRef<NodeJS.Timeout>();

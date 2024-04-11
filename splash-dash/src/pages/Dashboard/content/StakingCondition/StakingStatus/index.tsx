@@ -23,7 +23,7 @@ export default function StakingStatus({ delegatedStakes }: IStakingStatusProps) 
 
   const sortValidators = orderBy(
     delegatedStakes,
-    [(delegate) => delegate.stakeRequestEpoch, (delegate) => delegate.principal],
+    [(delegate) => Number(delegate.stakeRequestEpoch), (delegate) => Number(delegate.principal)],
     ['desc', 'desc'],
   );
 

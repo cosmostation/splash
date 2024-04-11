@@ -6,11 +6,11 @@ import { getChainInstanceState } from 'src/store/recoil/chainInstance';
 import { localStorageState } from 'src/store/recoil/localStorage';
 import { makeIAmountType } from 'src/function/makeIAmountType';
 import { plus } from 'src/util/big';
-import { useGetAllBalancesSwr } from 'src/requesters/swr/wave3/useGetAllBalancesSwr';
 import { useGetStakesSwr } from 'src/requesters/swr/wave3/useGetStakesSwr';
 import { useMediaQuery } from '@mui/material';
 import { useMemo } from 'react';
 import { useRecoilValue } from 'recoil';
+import { useMakeObjectsSwr } from 'src/requesters/swr/wave3/combine/useMakeObjectsSwr';
 
 export default function MyAccountInfo() {
   const localStorageInfo = useRecoilValue(localStorageState);
@@ -20,7 +20,7 @@ export default function MyAccountInfo() {
 
   const isLaptop = useMediaQuery(device.laptop);
 
-  const { makeData: suiAmount } = useGetAllBalancesSwr(address);
+  const { suiAmount } = useMakeObjectsSwr(address);
   const { data: stakeData } = useGetStakesSwr(address);
 
   const stakeTokens = useMemo(() => {

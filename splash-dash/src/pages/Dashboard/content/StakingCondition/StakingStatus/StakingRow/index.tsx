@@ -4,6 +4,7 @@ import {
   EpochWrapper,
   NameContainer,
   PendingComment,
+  RiskBar,
   RowContainer,
   StakeButton,
   StakeContainer,
@@ -18,7 +19,6 @@ import StakingModal from 'src/components/Modal/StakingModal';
 import UnstakingModal from 'src/components/Modal/UnstakingModal';
 import { getChainInstanceState } from 'src/store/recoil/chainInstance';
 import { makeIAmountType } from 'src/function/makeIAmountType';
-import { plus } from 'src/util/big';
 import { useRecoilValue } from 'recoil';
 import { useState } from 'react';
 
@@ -51,12 +51,16 @@ export default function StakingRow({ index, stakeStatus, stakingStatus, setStaki
       <Container data-select={isNowRow.toString()}>
         <RowContainer onClick={() => walletControl()}>
           <NameContainer>
-            <ValidatorImg Img={stakeStatus.img || DefaultValidatorIcon} />
+            <ValidatorImg
+              data-risk={stakeStatus?.atRisk?.toString() || 'false'}
+              Img={stakeStatus.img || DefaultValidatorIcon}
+            />
+            {stakeStatus?.atRisk && <RiskBar>AT RISK</RiskBar>}
             {stakeStatus.name}
           </NameContainer>
           <DisplayAmount data={makeIAmountType(stakeStatus.principal, chain.denom)} size="large" />
           <EpochWrapper>
-            {`Epoch #${plus(stakeStatus.stakeActiveEpoch, 1)}`}
+            {`Epoch #${stakeStatus.stakeActiveEpoch}`}
             {stakeStatus.status === 'Pending' && <PendingComment>(Pending)</PendingComment>}
           </EpochWrapper>
           <DisplayAmount data={makeIAmountType(stakeStatus.estimatedReward || 0, chain.denom)} size="large" />

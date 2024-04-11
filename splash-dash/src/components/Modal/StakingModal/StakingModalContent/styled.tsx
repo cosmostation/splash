@@ -6,6 +6,10 @@ import { device } from 'src/constant/muiSize';
 import { styled } from '@mui/material/styles';
 import ImgView from 'src/components/common/Img';
 
+type IValidatorImgProps = {
+  'data-risk': string;
+};
+
 type ActionButtonProps = {
   'data-on'?: string;
 };
@@ -65,9 +69,26 @@ export const ValidatorNameBox = styled('div')(({ theme }) => ({
 }));
 
 export const NameWrapper = styled('div')({
+  position: 'relative',
+
   display: 'flex',
   alignItems: 'center',
 });
+
+export const RiskBar = styled('div')(({ theme }) => ({
+  position: 'absolute',
+  left: '0',
+  top: '35%',
+
+  transform: 'rotate(-45deg)',
+
+  color: theme.chainAccentColors.red,
+  fontSize: '1.3rem',
+
+  [`@media ${device.laptop}`]: {
+    fontSize: '1rem',
+  },
+}));
 
 export const DropdownWrapper = styled('div')({
   maxHeight: '50rem',
@@ -102,18 +123,20 @@ export const HyperLinkButton = styled('div')(({ theme }) => ({
   },
 }));
 
-export const ValidatorImg = styled(ImgView)({
+export const ValidatorImg = styled(ImgView)<IValidatorImgProps>(({ ...props }) => ({
   width: '5rem',
   maxHeight: '5rem',
   borderRadius: '1rem',
   marginRight: '1.4rem',
+
+  filter: props['data-risk'] === 'true' ? 'brightness(0.2)' : 'none',
 
   [`@media ${device.laptop}`]: {
     width: '3.6rem',
     maxHeight: '3.6rem',
     marginRight: '1.2rem',
   },
-});
+}));
 
 export const HeaderImg = styled('img')({
   cursor: 'pointer',
@@ -355,9 +378,13 @@ export const ValidatorDataRow = styled('div')(({ theme }) => ({
   color: theme.colors.base03,
 
   '& + &': {
-    marginLeft: '1rem',
-    paddingLeft: '1rem',
-    borderLeft: `0.1rem solid ${theme.colors.base02}`,
+    marginTop: '0.4rem',
+
+    [`@media ${device.laptop}`]: {
+      margin: '0 0 0 1rem',
+      paddingLeft: '1rem',
+      borderLeft: `0.1rem solid ${theme.colors.base02}`,
+    },
   },
 }));
 

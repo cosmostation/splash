@@ -8,5 +8,6 @@ export interface IDelegateObject {
   stakeRequestEpoch: string;
   stakeActiveEpoch: string;
   principal: string;
-  estimatedReward?: number | undefined;
+  estimatedReward?: string | undefined;
+  atRisk?: boolean;
 }

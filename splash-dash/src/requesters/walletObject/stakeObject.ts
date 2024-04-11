@@ -1,12 +1,12 @@
 import { SUI_SYSTEM_STATE_OBJECT_ID, TransactionBlock } from '@mysten/sui.js';
 
-import { DEFAULT_GAS_BUDGET_FOR_STAKE } from 'src/constant/coin';
 import { LocalStorage } from 'src/types/localStorage';
 
 export const stakeObject = async (
   validatorAddress: string,
   walletType: LocalStorage['walletType'],
   amount: number,
+  gasBudget: number,
   signAndExecuteTransactionBlock: any,
 ) => {
   if (walletType === 'sui-extension') {
@@ -14,7 +14,7 @@ export const stakeObject = async (
 
     const stakeCoin = tx.splitCoins(tx.gas, [tx.pure(amount)]);
 
-    tx.setGasBudget(DEFAULT_GAS_BUDGET_FOR_STAKE);
+    tx.setGasBudget(gasBudget);
 
     tx.moveCall({
       target: '0x3::sui_system::request_add_stake',

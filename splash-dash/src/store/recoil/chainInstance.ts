@@ -1,7 +1,7 @@
 import { atom, selector } from 'recoil';
 
 import AbstractChain from 'src/constant/chains/AbstractChain';
-import SuiChain from 'src/constant/chains/SuiTestnet/SuiTestnet';
+import SuiChain from 'src/constant/chains/SuiMainnet/SuiMainnet';
 import { getChainInstance } from '../getChainInstance';
 import { isNil } from 'lodash';
 import { useParams } from 'react-router-dom';

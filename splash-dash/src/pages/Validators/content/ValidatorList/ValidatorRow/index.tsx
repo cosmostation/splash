@@ -4,15 +4,16 @@ import { ReactComponent as ArrowColorIcon } from 'src/assets/icons/common/ArrowC
 import ConnectWalletModal from 'src/components/Header/ConnectWalletModal';
 import DefaultValidatorIcon from 'src/assets/icons/validator/DefaultValidator.svg';
 import DisplayAmount from 'src/components/DisplayAmount';
+import { IValidatorParseProps } from 'src/function/parseValidator';
 import Image from 'src/components/common/Image';
 import StakingModal from 'src/components/Modal/StakingModal';
 import { fixed } from 'src/util/big';
 import { getChainInstanceState } from 'src/store/recoil/chainInstance';
 import { localStorageState } from 'src/store/recoil/localStorage';
 import { makeIAmountType } from 'src/function/makeIAmountType';
+import { reduceString } from 'src/function/stringFunctions';
 import { useRecoilValue } from 'recoil';
 import { useState } from 'react';
-import { IValidatorParseProps } from 'src/function/parseValidator';
 
 export default function ValidatorList({ validator }: IValidatorParseProps) {
   const localStorageInfo = useRecoilValue(localStorageState);
@@ -47,7 +48,7 @@ export default function ValidatorList({ validator }: IValidatorParseProps) {
         <div>
           <DisplayAmount data={makeIAmountType(validator.nextEpochStake, chain.denom)} size="large" />
         </div>
-        <div>{fixed(validator.apy, 2)}%</div>
+        <div>{Number(validator.apy) > 100000 ? reduceString(validator.apy, 3, 5) : fixed(validator.apy, 2)}%</div>
         <div>{fixed(validator.commission, 2)}%</div>
         <div>
           <Image Img={ArrowColorIcon} />

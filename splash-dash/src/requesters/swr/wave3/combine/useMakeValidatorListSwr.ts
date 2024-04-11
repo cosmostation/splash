@@ -2,6 +2,7 @@ import { parseValidatorsListData } from 'src/function/parseValidator';
 import { useGetLatestSuiSystemStateSwr } from '../useGetLatestSuiSystemStateSwr';
 import { useMemo } from 'react';
 import { useQueryEventsSwr } from '../useQueryEventsSwr';
+import { useGetValidatorsApySwr } from '../useGetValidatorsApySwr';
 
 export const useMakeValidatorListSwr = () => {
   const { data: latestSystemState, loading: latestSystemStateLoading } = useGetLatestSuiSystemStateSwr();
@@ -9,18 +10,18 @@ export const useMakeValidatorListSwr = () => {
   const numberOfValidators = useMemo(() => latestSystemState?.activeValidators.length || null, [latestSystemState]);
 
   const { data: validatorQueryData, loading: validatorsQueryLoading } = useQueryEventsSwr(
-    // TODO: validator call number check
-    // Number(multiply(numberOfValidators || 0, ROLLING_AVERAGE)),
-    1000,
+    Number(numberOfValidators || 0),
     true,
   );
 
+  const { data: validatorsApy, loading: validatorsApyLoading } = useGetValidatorsApySwr();
+
   const validatorsData = useMemo(() => {
-    return parseValidatorsListData(latestSystemState, validatorQueryData);
-  }, [latestSystemState, validatorQueryData]);
+    return parseValidatorsListData(latestSystemState, validatorQueryData, validatorsApy);
+  }, [latestSystemState, validatorQueryData, validatorsApy]);
 
   return {
     data: validatorsData,
-    loading: latestSystemStateLoading && validatorsQueryLoading,
+    loading: latestSystemStateLoading && validatorsQueryLoading && validatorsApyLoading,
   };
 };

@@ -6,6 +6,7 @@ import {
   HeaderImg,
   HeaderTitle,
   NameWrapper,
+  RiskBar,
   StakeContent,
   StakeValue,
   StakingContainer,
@@ -27,13 +28,13 @@ import { getChainInstanceState } from 'src/store/recoil/chainInstance';
 import { localStorageState } from 'src/store/recoil/localStorage';
 import { makeIAmountType } from 'src/function/makeIAmountType';
 import { unstakeObject } from 'src/requesters/walletObject/unstakeObject';
-import { useGetAllBalancesSwr } from 'src/requesters/swr/wave3/useGetAllBalancesSwr';
 import { useMakeValidatorListSwr } from 'src/requesters/swr/wave3/combine/useMakeValidatorListSwr';
 import { useMediaQuery } from '@mui/material';
-import { useMemo } from 'react';
+import { useMemo, useState } from 'react';
 import { useRecoilValue } from 'recoil';
 import { useSnackbar } from 'notistack';
 import { useWalletKit } from '@mysten/wallet-kit';
+import { useMakeObjectsSwr } from 'src/requesters/swr/wave3/combine/useMakeObjectsSwr';
 
 interface IUnstakingModalContentProps {
   onCloseModal: React.Dispatch<React.SetStateAction<boolean>>;
@@ -49,8 +50,10 @@ const UnstakingModalContent: React.FC<IUnstakingModalContentProps> = ({ onCloseM
 
   const address = localStorageInfo.account?.[0] || '';
 
-  const { makeData: suiAmount } = useGetAllBalancesSwr(address);
+  const { suiAmount } = useMakeObjectsSwr(address);
   const { data: validatorsData } = useMakeValidatorListSwr();
+
+  const [isActionButton, setIsActionButton] = useState(false);
 
   const currentValidatorInfo = useMemo(() => {
     return validatorsData?.find((v) => v.address === stakeStatus.validatorAddress);
@@ -58,12 +61,12 @@ const UnstakingModalContent: React.FC<IUnstakingModalContentProps> = ({ onCloseM
 
   const isLaptop = useMediaQuery(device.laptop);
 
-  const isActiveButton = stakeStatus.status !== 'Pending';
+  const isActiveButton = !isActionButton && stakeStatus.status !== 'Pending';
 
   const callUnstake = async () => {
     if (!isActiveButton) {
       return;
-    } else if (Number(suiAmount?.totalBalance) < DEFAULT_GAS_BUDGET_FOR_UNSTAKE) {
+    } else if (Number(suiAmount?.amount) < DEFAULT_GAS_BUDGET_FOR_UNSTAKE) {
       enqueueSnackbar('Transaction failed', {
         variant: 'error',
         // @ts-ignore
@@ -71,6 +74,8 @@ const UnstakingModalContent: React.FC<IUnstakingModalContentProps> = ({ onCloseM
       });
       return;
     }
+
+    setIsActionButton(true);
 
     try {
       const txResult = await unstakeObject(
@@ -95,12 +100,16 @@ const UnstakingModalContent: React.FC<IUnstakingModalContentProps> = ({ onCloseM
         // @ts-ignore
         txHash: txResult.digest as string,
       });
+
+      setIsActionButton(false);
     } catch (e) {
       enqueueSnackbar('Failed to sign', {
         variant: 'error',
         // @ts-ignore
         errorMsg: (e as { message?: string }).message,
       });
+
+      setIsActionButton(false);
     }
   };
 
@@ -116,7 +125,11 @@ const UnstakingModalContent: React.FC<IUnstakingModalContentProps> = ({ onCloseM
         <StakingContainer>
           <ValidatorNameBox>
             <NameWrapper>
-              <ValidatorImg Img={currentValidatorInfo?.name.logo || DefaultValidatorIcon} />
+              <ValidatorImg
+                data-risk={currentValidatorInfo?.atRisk?.toString() || 'false'}
+                Img={currentValidatorInfo?.name.logo || DefaultValidatorIcon}
+              />
+              {currentValidatorInfo?.atRisk && <RiskBar>AT RISK</RiskBar>}
               {currentValidatorInfo?.name.name || ''}
             </NameWrapper>
           </ValidatorNameBox>
