@@ -6,10 +6,10 @@
 //
 
 import Foundation
-import web3swift
 import CryptoSwift
 import ed25519swift
 import Blake2
+import Web3Core
 
 public class BaseAccount {
     
@@ -168,11 +168,11 @@ public class BaseAccount {
     func getAddress(_ publicKey: Data, _ keynPath: KeynPath, _ prefix: String? = nil) -> String {
         if (keynPath.pubkeyType == .SUI_Ed25519) {
             let data = Data([UInt8](Data(count: 1)) + publicKey)
-            let hash = try! Blake2.hash(.b2b, size: 32, data: data)
+            let hash = try! Blake2b.hash(size: 32, data: data)
             return "0x" + hash.toHexString()
 
         } else if (keynPath.pubkeyType == .ETH_Keccak256) {
-            return Web3.Utils.publicToAddressString(publicKey)!
+            return Web3Core.Utilities.publicToAddressString(publicKey)!
 
         } else if (keynPath.pubkeyType == .COSMOS_Secp256k1) {
             let ripemd160 = try! RIPEMD160.hash(message: publicKey.sha256())
