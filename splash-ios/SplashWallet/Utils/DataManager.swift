@@ -159,10 +159,11 @@ class DataManager {
     func onFetchOwnedObjects(_ group: DispatchGroup, _ address: String) {
         group.enter()
         let ownedObjectsParams = JsonRpcRequest("suix_getOwnedObjects",
-                                                JSON(arrayLiteral: address, ["filter": nil, "options":["showContent":true, "showType":true]]))
+                                                JSON(arrayLiteral: address, ["filter": nil, "options":["showContent":true, "showDisplay":true,  "showType":true]]))
         SuiClient.shared.SuiRequest(ownedObjectsParams) { result, error in
-            result?["data"].arrayValue.forEach { data in
-                self.suiObjects.append(data["data"])
+            result?["data"].arrayValue.forEach { [weak self] data in
+                guard let self else { return }
+                suiObjects.append(data["data"])
             }
             group.leave()
         }

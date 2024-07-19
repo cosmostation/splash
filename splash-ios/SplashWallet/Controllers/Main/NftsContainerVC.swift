@@ -8,6 +8,7 @@
 import UIKit
 import SwiftyJSON
 import AlamofireImage
+import Kingfisher
 
 class NftsContainerVC: BaseVC {
     
@@ -60,9 +61,7 @@ class NftsContainerVC: BaseVC {
     @objc func onDataFetched() {
         suiNFTs.removeAll()
         DataManager.shared.suiObjects.forEach { object in
-            let typeS = object["type"].string?.lowercased()
-//            print("typeS ", typeS)
-            if (typeS?.contains("stakedsui") == false && typeS?.contains("coin") == false) {
+            if (object["display"]["data"].description != "null") {
                 suiNFTs.append(object)
             }
         }
@@ -85,12 +84,12 @@ extension NftsContainerVC: UICollectionViewDelegate, UICollectionViewDataSource,
         if let cell = collectionView.dequeueReusableCell(withReuseIdentifier:"NftCell", for: indexPath) as? NftCell {
             let suiNFT = suiNFTs[indexPath.row]
             if let url = suiNFT.nftULR() {
-                cell.imageView.af.setImage(withURL: url)
+                cell.imageView.kf.setImage(with: url)
             } else {
                 cell.imageView.image = UIImage(named: "nft_default")
             }
 
-            let name = suiNFT["content"]["fields"]["name"].stringValue
+            let name = suiNFT["display"]["data"]["name"].stringValue
             let id = suiNFT["objectId"].stringValue
             if (!name.isEmpty) {
                 cell.titleLabel.text = name
@@ -126,4 +125,9 @@ extension NftsContainerVC: UICollectionViewDelegate, UICollectionViewDataSource,
 class NftCell: UICollectionViewCell {
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var titleLabel: UILabel!
+    
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        imageView.image = nil
+    }
 }

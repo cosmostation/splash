@@ -71,7 +71,7 @@ class MainTabAsset: BaseVC, SelectAccountDelegate, MDCTabBarViewDelegate {
     func onSetTabbarView() {
         let coinTabBar = UITabBarItem(title: "Coins (0)", image: nil, tag: 0)
         let nftTabBar = UITabBarItem(title: "NFTs (0)", image: nil, tag: 1)
-        assetTabbar.items = [ coinTabBar, nftTabBar]
+        assetTabbar.items = [coinTabBar, nftTabBar]
         assetTabbar.barTintColor = .base01
         assetTabbar.selectionIndicatorStrokeColor = .base01
         assetTabbar.setTitleFont(font3, for: .normal)
@@ -80,7 +80,7 @@ class MainTabAsset: BaseVC, SelectAccountDelegate, MDCTabBarViewDelegate {
         assetTabbar.setTitleColor(UIColor.base05, for: .selected)
         assetTabbar.setSelectedItem(coinTabBar, animated: false)
         assetTabbar.tabBarDelegate = self
-        assetTabbar.preferredLayoutStyle = .fixed
+        assetTabbar.preferredLayoutStyle = .fixedClusteredLeading
         assetTabbar.rippleColor = .transparency
         
         coinsLayer.alpha = 1
@@ -122,8 +122,7 @@ class MainTabAsset: BaseVC, SelectAccountDelegate, MDCTabBarViewDelegate {
         
         var suiNFTs = Array<JSON>()
         DataManager.shared.suiObjects.forEach { object in
-            let typeS = object["type"].string?.lowercased()
-            if (typeS?.contains("stakedsui") == false && typeS?.contains("coin") == false) {
+            if (object["display"]["data"].description != "null") {
                 suiNFTs.append(object)
             }
         }
