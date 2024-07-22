@@ -32,15 +32,15 @@ class NftDetailVC: BaseVC {
         if let suiNFT = suiNFT {
             print("suiNFT ", suiNFT)
             if let url = suiNFT.nftULR() {
-                nftImgView.af.setImage(withURL: url)
+                nftImgView.kf.setImage(with: url)
             } else {
                 nftImgView.image = UIImage(named: "nft_default")
             }
             
-            let name = suiNFT["content"]["fields"]["name"].stringValue
+            let name = suiNFT["display"]["data"]["name"].stringValue
             let objectId = suiNFT["objectId"].stringValue
             let type = suiNFT["type"].stringValue
-            let description = suiNFT["content"]["fields"]["description"].stringValue
+            let description = suiNFT["display"]["data"]["description"].stringValue
             nftNameLabel.text = name
             nftObjectIdLabel.text = objectId
             nftTypeLabel.text = type
@@ -83,10 +83,7 @@ extension JSON {
     }
     
     public func rawNftUrlString() -> String? {
-        if let url = self["content"]["fields"]["url"].string {
-            return url
-        }
-        if let url = self["content"]["fields"]["img_url"].string {
+        if let url = self["display"]["data"]["image_url"].string {
             return url
         }
         return nil

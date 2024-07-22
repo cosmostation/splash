@@ -146,6 +146,7 @@
 		18230BE729954935008E16EC /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18230BE629954935008E16EC /* DataManager.swift */; };
 		18B8C4DC29EFBD25008FCECB /* injectScript.js in Resources */ = {isa = PBXBuildFile; fileRef = 18B8C4DB29EFBD25008FCECB /* injectScript.js */; };
 		36D11E5FA1F9B262CA123F90 /* Pods_SplashWallet.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2698CBB317311B31FFE8C043 /* Pods_SplashWallet.framework */; };
+		79BF332D2C491FE800515D78 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 79BF332C2C491FE800515D78 /* Kingfisher */; };
 		E11492AC295485CC00F090AF /* ImportPrivKeyVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E11492AA295485CC00F090AF /* ImportPrivKeyVC.swift */; };
 		E11492AD295485CC00F090AF /* ImportPrivKeyVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = E11492AB295485CC00F090AF /* ImportPrivKeyVC.xib */; };
 		E11492B0295485E000F090AF /* ImportMnemonicVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E11492AE295485E000F090AF /* ImportMnemonicVC.swift */; };
@@ -362,6 +363,7 @@
 				04CB251229B0A81C00FCCF96 /* QRCode in Frameworks */,
 				04444513296EC0D8008B6C3E /* Lottie in Frameworks */,
 				04CF7156294C8D7200134A84 /* Toast in Frameworks */,
+				79BF332D2C491FE800515D78 /* Kingfisher in Frameworks */,
 				04CF7150294C8D1C00134A84 /* SuiSwift in Frameworks */,
 				04CF714D294C8CD900134A84 /* SQLite in Frameworks */,
 				04CF7153294C8D5F00134A84 /* SwiftKeychainWrapper in Frameworks */,
@@ -742,6 +744,7 @@
 				04444512296EC0D8008B6C3E /* Lottie */,
 				04C930E329A4C50600229F8A /* AlamofireImage */,
 				04CB251129B0A81C00FCCF96 /* QRCode */,
+				79BF332C2C491FE800515D78 /* Kingfisher */,
 			);
 			productName = ssigner;
 			productReference = 045D260B2949BA4B00A7805D /* SplashWallet.app */;
@@ -780,6 +783,7 @@
 				04444511296EC0D8008B6C3E /* XCRemoteSwiftPackageReference "lottie-ios" */,
 				04C930E229A4C50600229F8A /* XCRemoteSwiftPackageReference "AlamofireImage" */,
 				04CB251029B0A81C00FCCF96 /* XCRemoteSwiftPackageReference "QRCode" */,
+				79BF332B2C491FE800515D78 /* XCRemoteSwiftPackageReference "Kingfisher" */,
 			);
 			productRefGroup = 045D260C2949BA4B00A7805D /* Products */;
 			projectDirPath = "";
@@ -1295,6 +1299,14 @@
 				kind = branch;
 			};
 		};
+		79BF332B2C491FE800515D78 /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/onevcat/Kingfisher.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 7.12.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -1332,6 +1344,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 04CF7154294C8D7200134A84 /* XCRemoteSwiftPackageReference "Toast-Swift" */;
 			productName = Toast;
+		};
+		79BF332C2C491FE800515D78 /* Kingfisher */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 79BF332B2C491FE800515D78 /* XCRemoteSwiftPackageReference "Kingfisher" */;
+			productName = Kingfisher;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
