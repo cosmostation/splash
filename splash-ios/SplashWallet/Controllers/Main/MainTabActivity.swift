@@ -30,21 +30,24 @@ class MainTabActivity: BaseVC {
         refresher.addTarget(self, action: #selector(onRequestFetch), for: .valueChanged)
         refresher.tintColor = .base05
         activityTable.addSubview(refresher)
+        
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
         self.navigationController?.setNavigationBarHidden(true, animated: false)
-        NotificationCenter.default.addObserver(self, selector: #selector(self.onDataFetched), name: Notification.Name("DataFetched"), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(self.onHistoryFetched), name: Notification.Name("HistoryFetched"), object: nil)
         mainTabVC = (self.parent)?.parent as? MainTab
         
         cAccount = DataManager.shared.account
         cChainConfig = cAccount.chainConfig
+        DataManager.shared.onFetchHistory(cAccount.baseAddress?.address ?? "")
         onUpdateView()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        NotificationCenter.default.removeObserver(self, name: Notification.Name("DataFetched"), object: nil)
+        NotificationCenter.default.removeObserver(self, name: Notification.Name("HistoryFetched"), object: nil)
         refresher.endRefreshing()
     }
     
@@ -85,7 +88,8 @@ class MainTabActivity: BaseVC {
         cChainConfig = cAccount.chainConfig
     }
     
-    @objc func onDataFetched() {
+    @objc func onHistoryFetched() {
+        print("onHistoryFetched")
         refresher.endRefreshing()
         onUpdateView()
     }
