@@ -209,7 +209,7 @@ class DataManager {
     
     func onFetchPrice(_ group: DispatchGroup) {
         group.enter()
-        AF.request("https://front.api.mintscan.io/v2/utils/market/price/coingecko_id/sui?currency=usd", method: .get)
+        AF.request("https://front.api.mintscan.io/v10/utils/market/price/coingecko_id/sui?currency=usd", method: .get)
             .responseDecodable(of: JSON.self) { response in
             switch response.result {
             case .success(let value):
