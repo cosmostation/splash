@@ -1,5 +1,7 @@
 import * as functions from "firebase-functions";
 import { Connection, JsonRpcProvider, TransactionBlock } from "@mysten/sui.js";
+import { Transaction } from "@mysten/sui/transactions";
+import { SuiClient } from "@mysten/sui/client";
 
 const bytesToHex = (bytes: Uint8Array): string => {
   return Buffer.from(bytes).toString("hex");
@@ -15,6 +17,19 @@ export const buildSuiTransactionBlock = functions.https.onRequest(
     const txBlock = TransactionBlock.from(request.body.txBlock);
     txBlock.setSenderIfNotSet(request.body.address);
     const build = await txBlock.build({ provider, onlyTransactionKind: false });
+    response.send(bytesToHex(build));
+  }
+);
+
+export const buildSuiTransaction = functions.https.onRequest(
+  async (request, response) => {
+    const client = new SuiClient({ url: request.body.rpc });
+
+    const txBlock = Transaction.from(request.body.txBlock);
+    txBlock.setSenderIfNotSet(request.body.address);
+
+    const build = await txBlock.build({ client, onlyTransactionKind: false });
+
     response.send(bytesToHex(build));
   }
 );
