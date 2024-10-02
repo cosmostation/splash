@@ -89,4 +89,6 @@
     <string name="staking_title">SUI Staking</string>
     <string name="staking_objects_title">Staking Object List</string>
     <string name="stake_now">Stake now</string>
+    <string name="notice">Notice</string>
+    <string name="notice_msg">You can now manage your Sui wallet along with various networks like Ethereum and Cosmos directly on the Cosmostation wallet.\n\nSimplify your experience by integrating all of your wallets into one convenient Multi-wallet platform with Cosmostation.</string>
 </resources>

@@ -1,4 +1,5 @@
 .DS_Store
+app/eostartkeystore
 
 # Gradle files
 .gradle/

@@ -36,6 +36,9 @@ class MainActivity : AppCompatActivity() {
             binding.bottomNavigation.selectedItemId = R.id.navigation_coins
         }, 250)
         processSchemeIntent(intent)
+
+        val dialog = ConfirmDialog()
+        dialog.show(supportFragmentManager, "ConfirmDialog")
     }
 
     override fun onNewIntent(intent: Intent?) {
