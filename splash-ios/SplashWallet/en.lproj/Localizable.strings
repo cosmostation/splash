@@ -160,3 +160,7 @@
 "error_min_stake_amount" = "Available for 1 SUI or more.";
 "error_pending" = "Pending. Unstaking is not possible.";
 "error_not_enough_stake" = "Not enough SUI coins (1.7 above).";
+
+"title_migration_app" = "Migrate from Splash to Cosmostation Wallet.";
+"msg_migration_app" = "Cosmostation Wallet is a non-custodial wallet that’s fully compatible with Splash Wallet and supports Sui, Ethereum, Cosmos, and many more networks—all in one app.\nSwitch to Cosmostation Wallet for broader network support, enhanced features, and a better user experience!";
+"download_app" = "Download App";

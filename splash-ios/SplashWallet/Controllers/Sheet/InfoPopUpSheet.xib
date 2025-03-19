@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="32700.99.1234" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22685"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="Pretendard-SemiBold.otf">
+            <string>Pretendard-SemiBold</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="InfoPopUpSheet" customModule="SplashWallet" customModuleProvider="target">
+            <connections>
+                <outlet property="actionBtn" destination="22C-qj-jF4" id="HXy-NV-nyj"/>
+                <outlet property="closeBtn" destination="29t-7M-bu7" id="edQ-CT-F2q"/>
+                <outlet property="infoLabel" destination="nH6-Pu-R7l" id="cve-3z-DQG"/>
+                <outlet property="infoView" destination="PLW-mI-7An" id="Okx-oU-rPP"/>
+                <outlet property="titleLabel" destination="BTu-PJ-3gg" id="Wsq-oP-qty"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PLW-mI-7An">
+                    <rect key="frame" x="28" y="284.33333333333326" width="337" height="308.66666666666674"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="title" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BTu-PJ-3gg">
+                            <rect key="frame" x="16" y="15.999999999999998" width="305" height="19.333333333333329"/>
+                            <fontDescription key="fontDescription" name="Pretendard-SemiBold" family="Pretendard" pointSize="16"/>
+                            <color key="textColor" name="text01"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nH6-Pu-R7l">
+                            <rect key="frame" x="16" y="51.333333333333385" width="305" height="167.33333333333337"/>
+                            <mutableString key="text">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.
+</mutableString>
+                            <fontDescription key="fontDescription" name="Pretendard-SemiBold" family="Pretendard" pointSize="14"/>
+                            <color key="textColor" name="text01"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="CDP-h6-Wea">
+                            <rect key="frame" x="16" y="238.66666666666669" width="305" height="54"/>
+                            <subviews>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="29t-7M-bu7" customClass="SeconButton" customModule="SplashWallet" customModuleProvider="target">
+                                    <rect key="frame" x="0.0" y="0.0" width="147.66666666666666" height="54"/>
+                                    <color key="backgroundColor" name="secondary"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="54" id="rkx-YT-BsB"/>
+                                    </constraints>
+                                    <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                    <state key="normal" title="앱스토어 이동" image="arrow_account">
+                                        <color key="titleColor" name="base01"/>
+                                    </state>
+                                    <buttonConfiguration key="configuration" style="plain" title="Cancel">
+                                        <color key="baseForegroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </buttonConfiguration>
+                                    <connections>
+                                        <action selector="onCloseAction:" destination="-1" eventType="touchUpInside" id="M2F-UO-mbH"/>
+                                    </connections>
+                                </button>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="22C-qj-jF4" customClass="BaseButton" customModule="SplashWallet" customModuleProvider="target">
+                                    <rect key="frame" x="157.66666666666663" y="0.0" width="147.33333333333337" height="54"/>
+                                    <color key="backgroundColor" name="primary"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="54" id="YQ2-D9-dTx"/>
+                                    </constraints>
+                                    <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                    <state key="normal" title="앱스토어 이동" image="arrow_account">
+                                        <color key="titleColor" name="base01"/>
+                                    </state>
+                                    <buttonConfiguration key="configuration" style="plain" image="arrow_account" imagePlacement="trailing" title="Download App" imagePadding="3">
+                                        <color key="baseForegroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </buttonConfiguration>
+                                    <connections>
+                                        <action selector="onMoveAction:" destination="-1" eventType="touchUpInside" id="WCH-wi-hkE"/>
+                                    </connections>
+                                </button>
+                            </subviews>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="54" id="5zu-Xd-13a"/>
+                            </constraints>
+                        </stackView>
+                    </subviews>
+                    <color key="backgroundColor" name="base03"/>
+                    <constraints>
+                        <constraint firstItem="nH6-Pu-R7l" firstAttribute="top" secondItem="BTu-PJ-3gg" secondAttribute="bottom" constant="16" id="C9Y-Ag-npf"/>
+                        <constraint firstItem="BTu-PJ-3gg" firstAttribute="top" secondItem="PLW-mI-7An" secondAttribute="top" constant="16" id="IJf-WX-LfJ"/>
+                        <constraint firstAttribute="bottom" secondItem="CDP-h6-Wea" secondAttribute="bottom" constant="16" id="RcW-SU-n4I"/>
+                        <constraint firstItem="CDP-h6-Wea" firstAttribute="top" secondItem="nH6-Pu-R7l" secondAttribute="bottom" constant="20" id="Wei-0f-dHR"/>
+                        <constraint firstItem="CDP-h6-Wea" firstAttribute="leading" secondItem="PLW-mI-7An" secondAttribute="leading" constant="16" id="d1V-ol-1Jw"/>
+                        <constraint firstAttribute="trailing" secondItem="BTu-PJ-3gg" secondAttribute="trailing" constant="16" id="dWp-Pi-fb4"/>
+                        <constraint firstAttribute="trailing" secondItem="nH6-Pu-R7l" secondAttribute="trailing" constant="16" id="kAX-3w-G48"/>
+                        <constraint firstItem="BTu-PJ-3gg" firstAttribute="leading" secondItem="PLW-mI-7An" secondAttribute="leading" constant="16" id="om1-4X-pkP"/>
+                        <constraint firstAttribute="trailing" secondItem="CDP-h6-Wea" secondAttribute="trailing" constant="16" id="s5e-aL-PLa"/>
+                        <constraint firstItem="nH6-Pu-R7l" firstAttribute="leading" secondItem="PLW-mI-7An" secondAttribute="leading" constant="16" id="uRW-kW-OTD"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
+            <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="PLW-mI-7An" firstAttribute="centerY" secondItem="fnl-2z-Ty3" secondAttribute="centerY" id="2HD-ui-P1J"/>
+                <constraint firstItem="PLW-mI-7An" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="28" id="6hy-Ns-CqG"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="PLW-mI-7An" secondAttribute="trailing" constant="28" id="Trs-tY-wxA"/>
+            </constraints>
+            <point key="canvasLocation" x="16" y="-11"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="arrow_account" width="24" height="24"/>
+        <namedColor name="base01">
+            <color red="0.98400002717971802" green="0.98799997568130493" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="base03">
+            <color red="0.90200001001358032" green="0.92500001192092896" blue="0.98400002717971802" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="primary">
+            <color red="0.19200000166893005" green="0.50999999046325684" blue="0.96100002527236938" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="secondary">
+            <color red="0.67799997329711914" green="0.80400002002716064" blue="0.98400002717971802" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="text01">
+            <color red="0.13300000131130219" green="0.13300000131130219" blue="0.13300000131130219" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
+</document>
