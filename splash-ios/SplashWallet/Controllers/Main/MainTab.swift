@@ -69,7 +69,7 @@ class MainTab: UITabBarController, UITabBarControllerDelegate {
             let recentChain = BaseData.instance.getRecentChain()
             if let recentAccount = BaseData.instance.getRecentAccount() {
                 let currectAccount = await recentAccount.prepareAccount(recentChain)
-                print("currectAccount ", currectAccount?.baseAddress?.chain , " ", currectAccount?.baseAddress?.address)
+//                print("currectAccount ", currectAccount?.baseAddress?.chain , " ", currectAccount?.baseAddress?.address)
                 DataManager.shared.account = currectAccount
                 DataManager.shared.loadAll()
                 NotificationCenter.default.post(name: Notification.Name("AccountReady"), object: nil, userInfo: nil)

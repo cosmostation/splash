@@ -61,17 +61,6 @@ class DataManager {
                     if ($1.0.contains(SUI_DENOM) == true) { return false }
                     return false
                 }
-                
-                self.suiTxs.append(contentsOf: self.suiToTxs)
-                self.suiFromTxs.forEach { fromTx in
-                    if (self.suiTxs.filter({ $0["digest"].stringValue == fromTx["digest"].stringValue }).first == nil) {
-                        self.suiTxs.append(fromTx)
-                    }
-                }
-                self.suiTxs.sort {
-                    return $0["checkpoint"].int64Value > $1["checkpoint"].int64Value
-                }
-                
 //                print("suiActiveValidators ", self.suiActiveValidators.count)
 //                print("suiObjects ", self.suiObjects.count)
 //                print("suiBalances ", self.suiBalances.count)
@@ -102,7 +91,7 @@ class DataManager {
             onFetchSystem(group)
             onFetchStakeInfo(group, address)
             onFetchOwnedObjects(group, address)
-            onFetchHistory(group, address)
+//            onFetchHistory(group, address)
             onFetchFee(group)
             
             if (self.account?.chainConfig is ChainSui) {
@@ -116,7 +105,6 @@ class DataManager {
         group.enter()
         let systemStateParams = JsonRpcRequest("suix_getLatestSuiSystemState", JSON())
         SuiClient.shared.SuiRequest(systemStateParams) { state, error in
-//            print("suiSystem ", state)
             self.suiSystem = state
             group.leave()
         }
@@ -138,7 +126,6 @@ class DataManager {
             SuiClient.shared.SuiRequest(param) { result, error in
                 if let result = result {
                     self.suiCoinMeta[denom] = result
-                    print("onFetchSuiCoinMeta ", result)
                     NotificationCenter.default.post(name: Notification.Name("DataFetched"), object: nil, userInfo: nil)
                 }
             }
@@ -169,7 +156,8 @@ class DataManager {
         }
     }
     
-    func onFetchHistory(_ group: DispatchGroup, _ address: String) {
+    func onFetchHistory(_ address: String) {
+        let group = DispatchGroup()
         group.enter()
         let toTxsParams = JsonRpcRequest("suix_queryTransactionBlocks",
                                          JSON(arrayLiteral: ["filter": ["ToAddress": address], "options": ["showEffects": true, "showInput":true, "showBalanceChanges":true]],
@@ -190,6 +178,19 @@ class DataManager {
                 self.suiFromTxs.append(data)
             }
             group.leave()
+        }
+        
+        group.notify(queue: .main) {
+            self.suiTxs.append(contentsOf: self.suiToTxs)
+            self.suiFromTxs.forEach { fromTx in
+                if (self.suiTxs.filter({ $0["digest"].stringValue == fromTx["digest"].stringValue }).first == nil) {
+                    self.suiTxs.append(fromTx)
+                }
+            }
+            self.suiTxs.sort {
+                return $0["checkpoint"].int64Value > $1["checkpoint"].int64Value
+            }
+            NotificationCenter.default.post(name: Notification.Name("HistoryFetched"), object: nil, userInfo: nil)
         }
     }
     
