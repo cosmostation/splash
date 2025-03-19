@@ -146,6 +146,8 @@
 		18230BE729954935008E16EC /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18230BE629954935008E16EC /* DataManager.swift */; };
 		18B8C4DC29EFBD25008FCECB /* injectScript.js in Resources */ = {isa = PBXBuildFile; fileRef = 18B8C4DB29EFBD25008FCECB /* injectScript.js */; };
 		36D11E5FA1F9B262CA123F90 /* Pods_SplashWallet.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2698CBB317311B31FFE8C043 /* Pods_SplashWallet.framework */; };
+		79B7F3692D829EBF00AA755B /* InfoPopUpSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79B7F3672D829EBE00AA755B /* InfoPopUpSheet.swift */; };
+		79B7F36A2D829EBF00AA755B /* InfoPopUpSheet.xib in Resources */ = {isa = PBXBuildFile; fileRef = 79B7F3682D829EBE00AA755B /* InfoPopUpSheet.xib */; };
 		79BF332D2C491FE800515D78 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 79BF332C2C491FE800515D78 /* Kingfisher */; };
 		E11492AC295485CC00F090AF /* ImportPrivKeyVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E11492AA295485CC00F090AF /* ImportPrivKeyVC.swift */; };
 		E11492AD295485CC00F090AF /* ImportPrivKeyVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = E11492AB295485CC00F090AF /* ImportPrivKeyVC.xib */; };
@@ -319,6 +321,8 @@
 		18B8C4DB29EFBD25008FCECB /* injectScript.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; name = injectScript.js; path = Resource/injectScript.js; sourceTree = "<group>"; };
 		2698CBB317311B31FFE8C043 /* Pods_SplashWallet.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SplashWallet.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		62F68EE4B302B1D840772F34 /* Pods-SplashWallet.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SplashWallet.debug.xcconfig"; path = "Target Support Files/Pods-SplashWallet/Pods-SplashWallet.debug.xcconfig"; sourceTree = "<group>"; };
+		79B7F3672D829EBE00AA755B /* InfoPopUpSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoPopUpSheet.swift; sourceTree = "<group>"; };
+		79B7F3682D829EBE00AA755B /* InfoPopUpSheet.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = InfoPopUpSheet.xib; sourceTree = "<group>"; };
 		80F36B42FDB6E39C13E01CE0 /* Pods-SplashWallet.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SplashWallet.release.xcconfig"; path = "Target Support Files/Pods-SplashWallet/Pods-SplashWallet.release.xcconfig"; sourceTree = "<group>"; };
 		E11492AA295485CC00F090AF /* ImportPrivKeyVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImportPrivKeyVC.swift; sourceTree = "<group>"; };
 		E11492AB295485CC00F090AF /* ImportPrivKeyVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ImportPrivKeyVC.xib; sourceTree = "<group>"; };
@@ -394,6 +398,8 @@
 				04188E1629DAA08600C7D7D6 /* BaseSheet.xib */,
 				04BD3DAD29E5128E006C7810 /* TxCheckSheet.swift */,
 				04BD3DAE29E5128E006C7810 /* TxCheckSheet.xib */,
+				79B7F3672D829EBE00AA755B /* InfoPopUpSheet.swift */,
+				79B7F3682D829EBE00AA755B /* InfoPopUpSheet.xib */,
 			);
 			path = Sheet;
 			sourceTree = "<group>";
@@ -844,6 +850,7 @@
 				04F4062829EFFD0D00CD88E4 /* StakeVC.xib in Resources */,
 				047AEF2929B6F0D0001A5B26 /* SettingHeader.xib in Resources */,
 				04CF70EA294B06A900134A84 /* CreateNameVC.xib in Resources */,
+				79B7F36A2D829EBF00AA755B /* InfoPopUpSheet.xib in Resources */,
 				0444450C296C0781008B6C3E /* BaseHeader.xib in Resources */,
 				04CF70F9294B2BEE00134A84 /* SetPincodeVC.xib in Resources */,
 				04BD3DBC29E51D65006C7810 /* TxCheckStakeCell.xib in Resources */,
@@ -938,6 +945,7 @@
 				04BD3D9029E2BC2E006C7810 /* CoinsContainerVC.swift in Sources */,
 				04F4062729EFFD0D00CD88E4 /* StakeVC.swift in Sources */,
 				04C930E929A63D0000229F8A /* ActivityCell.swift in Sources */,
+				79B7F3692D829EBF00AA755B /* InfoPopUpSheet.swift in Sources */,
 				04F4062329EFA75800CD88E4 /* StakeInfoTimerCell.swift in Sources */,
 				04F56FEE295AE9DA00050BFD /* DashBoardVC.swift in Sources */,
 				181B419029BAC9B90096F2BA /* DappVC.swift in Sources */,

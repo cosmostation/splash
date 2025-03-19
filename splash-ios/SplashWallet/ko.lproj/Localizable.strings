@@ -159,3 +159,7 @@
 "error_min_stake_amount" = "1 SUI이상 가능합니다.";
 "error_pending" = "팬딩상태 입니다. 언스테이킹이 불가능합니다.";
 "error_not_enough_stake" = "SUI 코인이 충분하지 않습니다 (1.7 이상가능).";
+
+"title_migration_app" = "Splash에서 Cosmostation Wallet으로 이동하세요.";
+"msg_migration_app" = "Cosmostation Wallet은\nSplash의 상위 호환 논커스터디 월렛으로,\nSui를 포함해 Ethereum, Cosmos 등 다양한 네트워크를 하나의 지갑에서 관리할 수 있습니다.\n보다 넓은 지원과 강화된 기능을 갖춘 Cosmostation Wallet으로 전환하세요.";
+"download_app" = "앱 설치하기";

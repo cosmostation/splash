@@ -9,6 +9,7 @@ import UIKit
 import SuiSwift
 
 class MainTab: UITabBarController, UITabBarControllerDelegate {
+    private var hasPresentedSheet = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -20,6 +21,20 @@ class MainTab: UITabBarController, UITabBarControllerDelegate {
         let lineView = UIView(frame: CGRect(x: 0, y: 0, width: tabBar.frame.size.width, height: 1))
         lineView.backgroundColor = .base03
         tabBar.addSubview(lineView)
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        if !hasPresentedSheet {
+            if let navController = selectedViewController as? UINavigationController {
+                let currentVC = navController.topViewController
+                let sheet = InfoPopUpSheet(nibName: "InfoPopUpSheet", bundle: nil)
+                sheet.viewController = currentVC
+                sheet.modalPresentationStyle = .overFullScreen
+                currentVC?.present(sheet, animated: true)
+                hasPresentedSheet = true
+            }
+        }
     }
 
     
