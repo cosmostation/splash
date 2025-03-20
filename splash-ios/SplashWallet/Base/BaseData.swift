@@ -341,18 +341,18 @@ final class BaseData : NSObject{
     
     
     let ACCOUNT_TABLE           = Table("base_account")
-    let ACCOUNT_ID              = Expression<Int64>("id")
-    let ACCOUNT_UUID            = Expression<String>("uuid")
-    let ACCOUNT_NAME            = Expression<String>("name")
-    let ACCOUNT_WITH_MNEMONIC   = Expression<Bool>("withMnemonic")
-    let ACCOUNT_TIME            = Expression<Int64>("time")
-    let ACCOUNT_FAVO            = Expression<Bool>("favo")
+    let ACCOUNT_ID              = SQLite.Expression<Int64>("id")
+    let ACCOUNT_UUID            = SQLite.Expression<String>("uuid")
+    let ACCOUNT_NAME            = SQLite.Expression<String>("name")
+    let ACCOUNT_WITH_MNEMONIC   = SQLite.Expression<Bool>("withMnemonic")
+    let ACCOUNT_TIME            = SQLite.Expression<Int64>("time")
+    let ACCOUNT_FAVO            = SQLite.Expression<Bool>("favo")
     
     let ADDRESS_TABLE           = Table("base_address")
-    let ADDRESS_ID              = Expression<Int64>("id")
-    let ADDRESS_ACCOUNT_ID      = Expression<Int64>("account_id")
-    let ADDRESS_CHAIN           = Expression<String>("chain")
-    let ADDRESS_ADDRESS         = Expression<String>("address")
+    let ADDRESS_ID              = SQLite.Expression<Int64>("id")
+    let ADDRESS_ACCOUNT_ID      = SQLite.Expression<Int64>("account_id")
+    let ADDRESS_CHAIN           = SQLite.Expression<String>("chain")
+    let ADDRESS_ADDRESS         = SQLite.Expression<String>("address")
 }
 
 extension Date {
