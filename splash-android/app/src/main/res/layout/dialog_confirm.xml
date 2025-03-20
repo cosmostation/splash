@@ -12,7 +12,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="start"
-        android:text="Manage All Your Wallets in One Cosmostation Wallet!"
+        android:text="Migrate from Splash to Cosmostation Wallet!"
         android:textColor="@color/color_mode_base05"
         android:textSize="18sp" />
 
