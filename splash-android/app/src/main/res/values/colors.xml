@@ -18,4 +18,5 @@
     <color name="color_mode_base04">#98AED8</color>
     <color name="color_mode_base05">#222222</color>
     <color name="color_only_base01">#ffffff</color>
+    <color name="color_only_black01">#222222</color>
 </resources>

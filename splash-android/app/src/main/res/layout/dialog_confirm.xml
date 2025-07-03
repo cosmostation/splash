@@ -13,7 +13,7 @@
         android:layout_height="wrap_content"
         android:gravity="start"
         android:text="Migrate from Splash to Cosmostation Wallet!"
-        android:textColor="@color/color_mode_base05"
+        android:textColor="@color/color_only_black01"
         android:textSize="18sp" />
 
     <TextView
@@ -23,7 +23,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:text="@string/notice_msg"
-        android:textColor="@color/color_mode_base05" />
+        android:textColor="@color/color_only_black01" />
 
     <LinearLayout
         android:layout_width="match_parent"
