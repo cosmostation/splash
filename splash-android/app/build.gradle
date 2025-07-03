@@ -4,12 +4,12 @@ apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-kapt'
 
 android {
-    compileSdk 34
+    compileSdk 35
 
     defaultConfig {
         applicationId "io.cosmostation.splash"
         minSdkVersion 26
-        targetSdkVersion 34
+        targetSdkVersion 35
         versionCode 106
         versionName "1.0.5"
     }
@@ -30,16 +30,17 @@ android {
     }
 
     kotlinOptions {
-        jvmTarget = '1.8'
+        jvmTarget = '21'
     }
 
     compileOptions {
-        sourceCompatibility JavaVersion.VERSION_1_8
-        targetCompatibility JavaVersion.VERSION_1_8
+        sourceCompatibility JavaVersion.VERSION_21
+        targetCompatibility JavaVersion.VERSION_21
     }
     buildFeatures {
         dataBinding true
         viewBinding true
+        buildConfig true
     }
     namespace 'io.cosmostation.splash'
 }
@@ -95,7 +96,7 @@ dependencies {
     //couroutine
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:1.6.4"
     //persistant
-    def room_version = "2.5.0"
+    def room_version = "2.7.1"
     implementation "androidx.room:room-runtime:$room_version"
     kapt "androidx.room:room-compiler:$room_version"
     implementation "androidx.room:room-ktx:$room_version"

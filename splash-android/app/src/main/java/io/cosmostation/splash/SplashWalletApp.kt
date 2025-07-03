@@ -35,13 +35,15 @@ class SplashWalletApp : Application(), ViewModelStoreOwner {
     private val mViewModelStore = ViewModelStore()
     lateinit var applicationViewModel: ApplicationViewModel
 
-    override fun getViewModelStore(): ViewModelStore {
-        return mViewModelStore
-    }
+    override val viewModelStore: ViewModelStore
+        get() = mViewModelStore
 
     override fun onCreate() {
         super.onCreate()
-        applicationViewModel = ViewModelProvider(this, ViewModelProvider.AndroidViewModelFactory(this))[ApplicationViewModel::class.java]
+        applicationViewModel = ViewModelProvider(
+            this,
+            ViewModelProvider.AndroidViewModelFactory(this)
+        )[ApplicationViewModel::class.java]
         CipherHelper.init(this)
         SuiClient.initialize()
         val network = SplashConstants.networks[Prefs.network] ?: Network.Mainnet()
@@ -54,7 +56,11 @@ class SplashWalletApp : Application(), ViewModelStoreOwner {
 
     private fun setupFresco() {
         Fresco.initialize(
-            applicationContext, ImagePipelineConfig.newBuilder(applicationContext).setMemoryChunkType(MemoryChunkType.BUFFER_MEMORY).setImageTranscoderType(ImageTranscoderType.JAVA_TRANSCODER).experiment().setNativeCodeDisabled(true).build()
+            applicationContext,
+            ImagePipelineConfig.newBuilder(applicationContext)
+                .setMemoryChunkType(MemoryChunkType.BUFFER_MEMORY)
+                .setImageTranscoderType(ImageTranscoderType.JAVA_TRANSCODER).experiment()
+                .setNativeCodeDisabled(true).build()
         )
     }
 
@@ -64,7 +70,11 @@ class SplashWalletApp : Application(), ViewModelStoreOwner {
         val serverUrl = "wss://$relayUrl?projectId=$projectId"
         val connectionType = ConnectionType.AUTOMATIC
         val metaData = Core.Model.AppMetaData(
-            getString(R.string.app_name), getString(R.string.app_name), getString(R.string.app_name), listOf(), "splashwallet://wc"
+            getString(R.string.app_name),
+            getString(R.string.app_name),
+            getString(R.string.app_name),
+            listOf(),
+            "splashwallet://wc"
         )
         CoreClient.initialize(metaData, serverUrl, connectionType, this, null)
         SignClient.initialize(Sign.Params.Init(CoreClient)) {}

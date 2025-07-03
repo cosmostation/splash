@@ -19,7 +19,7 @@ class ImportPrivateKeyViewModel : ViewModel() {
         val id = AppDatabase.getInstance().walletDao().insert(wallet)
         Prefs.currentWalletId = id
         SplashWalletApp.instance.applicationViewModel.loadWallet()
-        create.call()
+        create.postValue(Unit)
     }
 
 }
