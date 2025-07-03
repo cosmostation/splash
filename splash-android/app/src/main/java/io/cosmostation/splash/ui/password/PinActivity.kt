@@ -58,7 +58,7 @@ class PinActivity : AppCompatActivity() {
             return
         } else if (it == DELETE_CODE) {
             if (inputPins.size > 0) {
-                inputPins.removeLast()
+                inputPins.removeAt(inputPins.lastIndex)
             }
         } else {
             if (inputPins.size < CODE_LENGTH) {
