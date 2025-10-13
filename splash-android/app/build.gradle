@@ -58,7 +58,17 @@ dependencies {
     implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
     implementation 'androidx.appcompat:appcompat:1.6.0'
 
-    implementation 'com.facebook.fresco:fresco:3.0.0'
+    implementation 'com.facebook.fresco:fresco:3.6.0'
+    implementation 'com.facebook.fresco:imagepipeline-base:3.6.0'
+    implementation('com.facebook.fresco:drawee:3.6.0') {
+        exclude group: "com.facebook.fresco", module: "imagepipeline"
+        exclude group: "com.facebook.fresco", module: "nativeimagetranscoder"
+        exclude group: "com.facebook.fresco", module: "nativeimagefilters"
+        exclude group: "com.facebook.fresco", module: "native-memory"
+        exclude group: "com.facebook.fresco", module: "webpsupport"
+        exclude group: "com.facebook.fresco", module: "static-webp"
+        exclude group: "com.facebook.soloader"
+    }
     implementation 'com.google.android.material:material:1.8.0'
 
     //QR code

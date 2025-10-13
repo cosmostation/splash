@@ -50,7 +50,7 @@ class SplashWalletApp : Application(), ViewModelStoreOwner {
         SuiClient.configure(network)
         setupFresco()
         initWalletConnect()
-        ThemeMode()
+        themeMode()
         WebView.setWebContentsDebuggingEnabled(true)
     }
 
@@ -59,8 +59,7 @@ class SplashWalletApp : Application(), ViewModelStoreOwner {
             applicationContext,
             ImagePipelineConfig.newBuilder(applicationContext)
                 .setMemoryChunkType(MemoryChunkType.BUFFER_MEMORY)
-                .setImageTranscoderType(ImageTranscoderType.JAVA_TRANSCODER).experiment()
-                .setNativeCodeDisabled(true).build()
+                .setImageTranscoderType(ImageTranscoderType.JAVA_TRANSCODER).build()
         )
     }
 
@@ -80,7 +79,7 @@ class SplashWalletApp : Application(), ViewModelStoreOwner {
         SignClient.initialize(Sign.Params.Init(CoreClient)) {}
     }
 
-    private fun ThemeMode() {
+    private fun themeMode() {
         val themeColor: String? = ThemeUtils.modLoad(applicationContext)
         ThemeUtils.applyTheme(themeColor)
 
