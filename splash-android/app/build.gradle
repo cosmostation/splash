@@ -10,8 +10,8 @@ android {
         applicationId "io.cosmostation.splash"
         minSdkVersion 26
         targetSdkVersion 35
-        versionCode 108
-        versionName "1.0.6"
+        versionCode 109
+        versionName "1.0.7"
     }
     packagingOptions {
         jniLibs {
